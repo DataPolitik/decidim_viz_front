@@ -8,18 +8,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
+import { TabViewModule } from 'primeng/tabview';
+import { GraphComponentComponent } from './graph-component/graph-component.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GraphComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PlotlyModule
+    PlotlyModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

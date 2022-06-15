@@ -1,8 +1,9 @@
-<plotly-plot
- *ngIf="this.graph !== undefined"
-  [data]="graph.data"
-  [layout]="graph.layout"
-  [updateOnlyWithRevision]="true"
-  [revision]="this.revision"
-  [style]="{position: 'relative', width: '100%', height: '100%'}">
-</plotly-plot>'
+<p-tabView [activeIndex]="activeIndex">
+  <p-tabPanel header="Endorses">
+    <app-graph-component  graphToCall="endorses" [graphTitle]="this.graphTitle"></app-graph-component>
+  </p-tabPanel>
+  <p-tabPanel header="Comments">
+    <app-graph-component  graphToCall="comments" [graphTitle]="this.graphTitle"></app-graph-component>
+  </p-tabPanel>
+</p-tabView>
+

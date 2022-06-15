@@ -1,4 +1,4 @@
-export interface Endorsements{
+export interface GraphResponse{
   'users': Array<Array<number>>,
   'positions': Array<Array<number>>,
   'usernames': Array<string>
