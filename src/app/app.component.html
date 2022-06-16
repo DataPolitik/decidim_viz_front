@@ -1,9 +1,8 @@
-<p-tabView [activeIndex]="activeIndex">
+<p-tabView [activeIndex]="activeIndex" (onChange)="this.changeType($event)">
   <p-tabPanel header="Endorses">
-    <app-graph-component  graphToCall="endorses" [graphTitle]="this.graphTitle"></app-graph-component>
+    <app-graph-component *ngIf="this.type == 'endorsements'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component>
   </p-tabPanel>
   <p-tabPanel header="Comments">
-    <app-graph-component  graphToCall="comments" [graphTitle]="this.graphTitle"></app-graph-component>
+    <app-graph-component *ngIf="this.type == 'comments'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component>
   </p-tabPanel>
 </p-tabView>
-

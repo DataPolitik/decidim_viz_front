@@ -44,7 +44,7 @@ export class GraphComponentComponent implements OnInit {
       functionEndorses = this.stats.getEndorses();
     }
     else{
-      functionEndorses = this.stats.getEndorses();
+      functionEndorses = this.stats.getComments();
     }
 
     functionEndorses.subscribe(
