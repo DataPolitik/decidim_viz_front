@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AgChartsAngularModule } from 'ag-charts-angular';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,15 +11,18 @@ import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { TabViewModule } from 'primeng/tabview';
 import { GraphComponentComponent } from './graph-component/graph-component.component';
+import { HistogramsComponent } from './histograms/histograms.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
     AppComponent,
-    GraphComponentComponent
+    GraphComponentComponent,
+    HistogramsComponent
   ],
   imports: [
+    AgChartsAngularModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

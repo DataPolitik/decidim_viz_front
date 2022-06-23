@@ -18,9 +18,12 @@ export class AppComponent {
     if(event.index == 0){
       this.type="endorsements";
       this.graphTitle = 'Endorsements';
-    }else{
+    }else if(event.index == 1){
       this.type="comments";
       this.graphTitle = 'Comments';
+    }else{
+      this.type="stats";
+
     }
   }
 
