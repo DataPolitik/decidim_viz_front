@@ -1,15 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AgChartOptions } from 'ag-charts-community';
 import { Observable, Subscription } from 'rxjs';
-import { Histogram } from '../models/histogram.model';
-import { StatsService } from '../services/stats.service';
+import { Histogram } from '../../models/histogram.model';
+import { StatsService } from '../../services/stats.service';
 
 @Component({
   selector: 'app-histograms',
-  templateUrl: './histograms.component.html',
-  styleUrls: ['./histograms.component.css']
+  templateUrl: './interaction-histograms.component.html',
+  styleUrls: ['./interaction-histograms.component.css']
 })
-export class HistogramsComponent implements OnInit, OnDestroy {
+export class InteractionHistogramComponent implements OnInit, OnDestroy {
   private commentsSubscription: Subscription | undefined;
   private endorsesSubscription: Subscription | undefined;
 

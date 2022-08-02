@@ -1,0 +1,62 @@
+<section *ngIf="!user_loading; else still_loading">
+  <h2>
+    Evolución temporal de usuarios
+  </h2>
+  <div>
+    <app-metrics-histogram
+      [response]="this.user_metrics?.history?.slice(0)?.reverse()"
+      xName="Fecha"
+      yName="Número de usuarios">
+    </app-metrics-histogram>
+  </div>
+
+</section>
+
+
+<section *ngIf="!proposal_loading; else still_loading">
+  <h2>
+    Evolución temporal de propuestas
+  </h2>
+  <div>
+    <app-metrics-histogram
+    [response]="this.proposal_metrics?.history?.slice(0)?.reverse()"
+    xName="Fecha"
+    yName="Número de propuestas">
+    </app-metrics-histogram>
+  </div>
+
+</section>
+
+
+<section *ngIf="!participatory_processes_loading; else still_loading">
+  <h2>
+    Evolución temporal de propuestas
+  </h2>
+  <div>
+    <app-metrics-histogram
+    [response]="this.participatory_processes_metrics?.history?.slice(0)?.reverse()"
+    xName="Fecha"
+    yName="Número de procesos participativos">
+    </app-metrics-histogram>
+  </div>
+
+</section>
+
+<section *ngIf="!comments_loading; else still_loading">
+  <h2>
+    Evolución temporal de comentarios
+  </h2>
+  <div>
+    <app-metrics-histogram
+    [response]="this.comments_metrics?.history?.slice(0)?.reverse()"
+    xName="Fecha"
+    yName="Número de comentarios">
+    </app-metrics-histogram>
+  </div>
+
+</section>
+
+
+<ng-template #still_loading>
+  Cargando datos
+</ng-template>

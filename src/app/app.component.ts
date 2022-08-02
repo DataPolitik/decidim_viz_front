@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { InMemoryCache } from '@apollo/client/core';
+import {HttpLink} from 'apollo-angular/http';
+import { Apollo } from 'apollo-angular';
+import { DECIDIM_API } from './config/decidim_api';
 import { StatsService } from './services/stats.service';
 
 @Component({
@@ -13,7 +17,7 @@ export class AppComponent {
   public caller;
   public graphTitle: string = '';
   public type: string = 'endorsements'
-  
+
 
   changeType(event: any){
     if(event.index == 0){
@@ -28,9 +32,18 @@ export class AppComponent {
     }
   }
 
-  constructor(private stats: StatsService){
+  constructor(private stats: StatsService, private apollo: Apollo, private httpLink: HttpLink){
     this.caller = stats.getEndorses;
     this.graphTitle = 'Endorsements';
+
+    DECIDIM_API.forEach(api_details => {
+      this.apollo.createNamed(api_details.name, {
+        cache: new InMemoryCache(),
+        link: httpLink.create({
+          uri: api_details.url,
+        }),
+      });
+    });
   }
 
 

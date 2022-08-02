@@ -2,7 +2,7 @@
   <p-tabPanel>
     <ng-template pTemplate="header">
       <i class="pi pi-calendar"></i>
-      <span>Estadísticas generales</span>
+      <span>Demografía</span>
     </ng-template>
     <!-- <app-graph-component *ngIf="this.type == 'endorsements'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component> -->
     <app-stats></app-stats>
@@ -12,7 +12,8 @@
       <i class="pi pi-calendar"></i>
       <span>Dinámica temporal</span>
     </ng-template>
-    <app-graph-component *ngIf="this.type == 'comments'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component>
+    <app-history></app-history>
+    <!-- <app-graph-component *ngIf="this.type == 'comments'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component> -->
   </p-tabPanel>
   <p-tabPanel>
     <ng-template pTemplate="header">

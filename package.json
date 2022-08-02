@@ -18,20 +18,20 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@apollo/client": "^3.0.0",
     "ag-charts-angular": "^5.3.0",
     "ag-charts-community": "^5.3.0",
     "ag-grid-angular": "^27.3.0",
     "ag-grid-community": "^27.3.0",
     "angular-plotly.js": "^4.0.4",
     "apollo-angular": "^3.0.1",
+    "graphql": "^16",
     "plotly.js-dist-min": "^2.12.1",
     "primeicons": "^5.0.0",
     "primeng": "^13.4.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@apollo/client": "^3.0.0",
-    "graphql": "^16"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.1",

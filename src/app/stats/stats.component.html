@@ -1,15 +1,32 @@
-<section *ngIf="!user_loading; else still_loading">
-  Futureu tiene un total de {{this.user_metrics?.count }} usuarios registrados.
-</section>
-<section *ngIf="!proposal_loading; else still_loading">
-  Hay un total de {{this.proposal_metrics?.count }} propuestas realizadas.
-</section>
-<section *ngIf="!participatory_processes_loading; else still_loading">
-  Hay un total de {{this.participatory_processes_metrics?.count }} procesos participativos iniciados.
-</section>
-<section *ngIf="!comments_loading; else still_loading">
-  Hay un total de {{this.comments_metrics?.count }} comentarios.
-</section>
+<div id="general_stats">
+  <h2>
+    Actualmente, Futureu tiene...
+  </h2>
+
+  <section *ngIf="!user_loading; else still_loading">
+    ...un total de {{this.user_metrics?.count }} usuarios registrados.
+  </section>
+  <section *ngIf="!proposal_loading; else still_loading">
+    ...{{this.proposal_metrics?.count }} propuestas realizadas.
+  </section>
+  <section *ngIf="!participatory_processes_loading; else still_loading">
+    ...{{this.participatory_processes_metrics?.count }} procesos participativos iniciados.
+  </section>
+  <section *ngIf="!comments_loading && languages; else still_loading">
+    ...{{this.comments_metrics?.count }} comentarios escritos en {{this.languages.length }} idiomas diferentes.
+  </section>
+</div>
+<div>
+  <h2>Idiomas de los comentarios</h2>
+  <p>
+    En Futureu, podemos encontrar comentarios escritos en los siguientes idiomas:
+  </p>
+  <ag-charts-angular *ngIf="this.language_count.length > 0 && this.options"
+    style="height: 900px"
+    [options]="this.options"
+  ></ag-charts-angular>
+</div>
+
 
 <ng-template #still_loading>
   Cargando datos

@@ -31,4 +31,12 @@ export class StatsService {
   getCommentsHistogram() {
     return this.http.get<Histogram>(this.host + '/stats/comments/histogram');
   }
+
+  getLanguages(){
+    return this.http.get<Array<string>>(this.host + '/stats/languages/');
+  }
+
+  getLanguagesCount(language: string){
+    return this.http.get<Array<string>>(this.host + '/stats/languages/count/'+language);
+  }
 }
