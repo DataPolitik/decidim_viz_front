@@ -1,11 +1,24 @@
-<p-tabView [activeIndex]="activeIndex" (onChange)="this.changeType($event)">
-  <p-tabPanel header="Endorses">
-    <app-graph-component *ngIf="this.type == 'endorsements'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component>
+<p-tabView [activeIndex]="activeIndex" (onChange)="this.changeType($event)" class="stats">
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-calendar"></i>
+      <span>Estadísticas generales</span>
+    </ng-template>
+    <!-- <app-graph-component *ngIf="this.type == 'endorsements'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component> -->
+    <app-stats></app-stats>
   </p-tabPanel>
-  <p-tabPanel header="Comments">
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-calendar"></i>
+      <span>Dinámica temporal</span>
+    </ng-template>
     <app-graph-component *ngIf="this.type == 'comments'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component>
   </p-tabPanel>
-  <p-tabPanel header="Stats">
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="pi pi-calendar"></i>
+      <span>Redes de interacción</span>
+    </ng-template>
     <app-histograms *ngIf="this.type == 'stats'"></app-histograms>
   </p-tabPanel>
 </p-tabView>

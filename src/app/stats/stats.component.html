@@ -1,0 +1,16 @@
+<section *ngIf="!user_loading; else still_loading">
+  Futureu tiene un total de {{this.user_metrics?.count }} usuarios registrados.
+</section>
+<section *ngIf="!proposal_loading; else still_loading">
+  Hay un total de {{this.proposal_metrics?.count }} propuestas realizadas.
+</section>
+<section *ngIf="!participatory_processes_loading; else still_loading">
+  Hay un total de {{this.participatory_processes_metrics?.count }} procesos participativos iniciados.
+</section>
+<section *ngIf="!comments_loading; else still_loading">
+  Hay un total de {{this.comments_metrics?.count }} comentarios.
+</section>
+
+<ng-template #still_loading>
+  Cargando datos
+</ng-template>

@@ -13,6 +13,7 @@ export class AppComponent {
   public caller;
   public graphTitle: string = '';
   public type: string = 'endorsements'
+  
 
   changeType(event: any){
     if(event.index == 0){

@@ -12,6 +12,8 @@ import { PlotlyModule } from 'angular-plotly.js';
 import { TabViewModule } from 'primeng/tabview';
 import { GraphComponentComponent } from './graph-component/graph-component.component';
 import { HistogramsComponent } from './histograms/histograms.component';
+import { StatsComponent } from './stats/stats.component';
+import { GraphQLModule } from './graphql.module';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -19,7 +21,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
   declarations: [
     AppComponent,
     GraphComponentComponent,
-    HistogramsComponent
+    HistogramsComponent,
+    StatsComponent
   ],
   imports: [
     AgChartsAngularModule,
@@ -27,7 +30,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AppRoutingModule,
     HttpClientModule,
     PlotlyModule,
-    TabViewModule
+    TabViewModule,
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -37,6 +37,29 @@ export class HistogramsComponent implements OnInit, OnDestroy {
               yName: 'Size'
             },
           ],
+          axes: [
+            {
+              type: 'number',
+              position: 'left',
+              title: {
+                text: 'Proposals',
+              },
+              label: {
+                format: ',.0f',
+                fontSize: 10,
+              },
+            },
+            {
+              type: 'category',
+              position: 'bottom',
+              title: {
+                text: 'Endorses',
+              },
+              label: {
+                fontSize: 10,
+              },
+            },
+          ],
         };
 
       }

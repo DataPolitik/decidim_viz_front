@@ -21,6 +21,7 @@ export class GraphComponentComponent implements OnInit {
     const textMarkers: Array<string> = [];
     const xx: Array<number> = [];
     const yy: Array<number> = [];
+    const colors: Array<string> = [];
     const colorscale = [
       "rgb(68, 1, 84)",
       "rgb(72, 40, 120)",
@@ -51,6 +52,7 @@ export class GraphComponentComponent implements OnInit {
         (response: GraphResponse) => {
           for (let userIdA in response.users){
             const coordinatesA = response.positions[userIdA];
+            const color = response.colors[userIdA];
             for (let userIdB in response.users[userIdA]){
               const coordinatesB = response.positions[userIdB];
               const phi = response.users[userIdA][userIdB];
@@ -61,7 +63,7 @@ export class GraphComponentComponent implements OnInit {
                     y: [coordinatesA[1], coordinatesB[1]],
                     type: 'scatter',
                     mode: 'lines',
-                    line: {color: colorscale[colorIndex], width: '1'},
+                    line: {color: "rgb("+color[0]+","+color[1]+","+color[2]+")", width: '1'},
                     marker: {color: 'black', size: 5},
                     text: (textMarkers),
                     hoverinfo: 'text'
@@ -76,6 +78,7 @@ export class GraphComponentComponent implements OnInit {
             textMarkers.push(response.usernames[key])
             xx.push(coordinates[0])
             yy.push(coordinates[1])
+            colors.push("black");
           }
           this.revision += 1;
 
