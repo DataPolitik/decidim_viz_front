@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
-import { AgChartOptions } from 'ag-charts-community';
+import { AgChartOptions, AgHierarchyChartOptions } from 'ag-charts-community';
 import { Apollo } from 'apollo-angular';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { METRICS_COMMENTS, METRICS_PARTICIPATORY_PROCESSES, METRICS_PROPOSALS, METRICS_USERS } from '../graphql/graphql.queries';
+import { Category, CategoryResponse } from '../models/category.model';
+import { LanguagesCount } from '../models/languages.count.model';
 import { Metrics } from '../models/metrics.model';
+import { Proposal, ProposalResponse } from '../models/proposal.model';
 import { StatsService } from '../services/stats.service';
 
 
@@ -19,7 +22,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   private languageCountSubject = new BehaviorSubject<number>(0);
   private languageCountObservable = this.languageCountSubject.asObservable();
 
-  public options: AgChartOptions | undefined;
+  public languageTreeMapOptions: AgHierarchyChartOptions | undefined;
 
 
   constructor(private apollo: Apollo, private statsService: StatsService) {}
@@ -34,6 +37,10 @@ export class StatsComponent implements OnInit, OnDestroy  {
   participatory_processes_metrics: Metrics | undefined;
   comments_metrics: Metrics | undefined;
 
+  categories: Array<Category> | undefined = undefined;
+  categoriesByProposals: Array<Category> | undefined = undefined;
+  proposalsBySupports: Array<Proposal> | undefined = undefined;
+  proposalsByComments: Array<Proposal> | undefined = undefined;
   languages: Array<string> | undefined = undefined;
   language_count: Array<{name:string, size: number, color: number}> = [];
 
@@ -62,25 +69,42 @@ export class StatsComponent implements OnInit, OnDestroy  {
       this.comments_metrics = data.metrics[0];
     }));
 
-    this.processLanguageTreemap();
+    this.subs.add( this.statsService.getProposalsBySupports(15).subscribe((response: ProposalResponse) => {
+      this.proposalsBySupports = response.proposals;
+    }));
+
+    this.subs.add( this.statsService.getProposalsByComments(15).subscribe((response: ProposalResponse) => {
+      this.proposalsByComments = response.proposals;
+    }));
+
+    this.subs.add( this.statsService.getCategories().subscribe((response: CategoryResponse) => {
+      this.categories = response.categories;
+    }));
+
+    this.subs.add( this.statsService.getCategoriesByProposals(15).subscribe((response: CategoryResponse) => {
+      this.categoriesByProposals = response.categories;
+    }));
 
     this.subs.add(this.statsService.getLanguages().subscribe(
       (languages_response) => {
         this.languages = languages_response;
         let counter = 0;
-        this.languages.forEach(
-          (language: string) => {
-            this.subs.add(this.statsService.getLanguagesCount(language).subscribe(
-              (language_count) => {this.language_count?.push({
-                name: language,
-                size: Number(language_count),
-                color: 100*(Number(language_count)/22519)
-              });
+        this.subs.add(
+          this.statsService.getLanguagesCount().subscribe(
+            (response: LanguagesCount) => {
+              response.languages.forEach(
+                (language_detail) => {
+                  this.language_count?.push({
+                    name: language_detail.language,
+                    size: Number(language_detail.count),
+                    color: 100*(Number(language_detail.count)/22519)
+                  })
+                }
+              );
               this.processLanguageTreemap();
             }
-           ));
-          }
-        );
+          )
+        )
       }
     ));
 
@@ -89,20 +113,38 @@ export class StatsComponent implements OnInit, OnDestroy  {
     );
   }
 
+  processCategoryTreeMap(){
+
+  }
+
   processLanguageTreemap() {
-    const data = {
+    const languageTreeMapData = {
       name: 'Root',
       children: this.language_count
     }
-    this.options = {
+    this.languageTreeMapOptions = {
       type: 'hierarchy',
-      data,
+      data: languageTreeMapData,
       series: [
         {
           type: 'treemap',
           labelKey: 'name',
           sizeKey: 'size',
-          colorKey: 'color',
+          colorKey: undefined,
+          labels: {
+            small:{
+              enabled: true,
+              fontSize: 10,
+            },
+            medium:{
+              enabled: true,
+              fontSize: 10,
+            },
+            large:{
+              enabled: true,
+              fontSize: 30,
+            }
+          },
           tooltip: {
             renderer: (params) => {
               return {
@@ -113,12 +155,8 @@ export class StatsComponent implements OnInit, OnDestroy  {
         },
       ],
       title: {
-        text: 'S&P 500 index stocks categorized by sectors and industries.',
-      },
-      subtitle: {
-        text:
-          'Area represents market cap. Color represents change from the day before.',
-      },
+        text: 'Proporción de lenguajes utilizados en Futureu',
+      }
     };
   }
 

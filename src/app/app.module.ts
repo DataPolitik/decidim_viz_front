@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { TabViewModule } from 'primeng/tabview';
+import {TableModule} from 'primeng/table';
 import { GraphComponentComponent } from './graph-component/graph-component.component';
 import { InteractionHistogramComponent } from './histograms/interactions/interaction-histograms.component';
 import { StatsComponent } from './stats/stats.component';
@@ -35,6 +36,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     HttpClientModule,
     PlotlyModule,
     TabViewModule,
+    TableModule,
     GraphQLModule
   ],
   providers: [],
