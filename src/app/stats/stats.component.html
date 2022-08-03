@@ -74,7 +74,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-category>
           <tr>
-              <td>{{category.name_en}}</td>
+              <td>{{category.name_es}}</td>
               <td>{{category.categories}}</td>
           </tr>
       </ng-template>
@@ -84,17 +84,32 @@
 
 </div>
 <div>
-  <h2>Idiomas de los comentarios</h2>
-  <p>
-    En Futureu, podemos encontrar comentarios escritos en los siguientes idiomas:
-  </p>
+  <h2>Comentarios</h2>
+  <h3>
+    Idiomas de los comentarios
+  </h3>
   <div class="container">
-    <ag-charts-angular *ngIf="this.language_count.length > 0 && this.languageTreeMapOptions"
-      class="histogram"
+    <ag-charts-angular *ngIf="this.languageCount.length > 0 && this.languageTreeMapOptions"
+      class="treemap"
       style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
       [options]="this.languageTreeMapOptions"
     ></ag-charts-angular>
   </div>
+  <h3>Categorías más comentadas</h3>
+  <p-table [value]="this.categoriesByComments" *ngIf="this.categoriesByComments ; else still_loading">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Título</th>
+            <th>Número de comentarios</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+        <tr>
+            <td>{{category.name_en}}</td>
+            <td>{{category.comments}}</td>
+        </tr>
+    </ng-template>
+  </p-table>
 </div>
 
 

@@ -23,6 +23,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   private languageCountObservable = this.languageCountSubject.asObservable();
 
   public languageTreeMapOptions: AgHierarchyChartOptions | undefined;
+  public categoryCommentsTreeMapOptions: AgHierarchyChartOptions | undefined;
 
 
   constructor(private apollo: Apollo, private statsService: StatsService) {}
@@ -39,10 +40,12 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
   categories: Array<Category> | undefined = undefined;
   categoriesByProposals: Array<Category> | undefined = undefined;
+  categoriesByComments: Array<Category> | undefined = undefined;
   proposalsBySupports: Array<Proposal> | undefined = undefined;
   proposalsByComments: Array<Proposal> | undefined = undefined;
   languages: Array<string> | undefined = undefined;
-  language_count: Array<{name:string, size: number, color: number}> = [];
+  languageCount: Array<{name:string, size: number, color: number}> = [];
+  categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
 
 
 
@@ -81,6 +84,11 @@ export class StatsComponent implements OnInit, OnDestroy  {
       this.categories = response.categories;
     }));
 
+    this.subs.add( this.statsService.getCategoriesByComments().subscribe((response: CategoryResponse) => {
+      this.categoriesByComments = response.categories;
+    }));
+
+
     this.subs.add( this.statsService.getCategoriesByProposals(15).subscribe((response: CategoryResponse) => {
       this.categoriesByProposals = response.categories;
     }));
@@ -94,7 +102,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
             (response: LanguagesCount) => {
               response.languages.forEach(
                 (language_detail) => {
-                  this.language_count?.push({
+                  this.languageCount?.push({
                     name: language_detail.language,
                     size: Number(language_detail.count),
                     color: 100*(Number(language_detail.count)/22519)
@@ -113,14 +121,12 @@ export class StatsComponent implements OnInit, OnDestroy  {
     );
   }
 
-  processCategoryTreeMap(){
 
-  }
 
   processLanguageTreemap() {
     const languageTreeMapData = {
       name: 'Root',
-      children: this.language_count
+      children: this.languageCount
     }
     this.languageTreeMapOptions = {
       type: 'hierarchy',

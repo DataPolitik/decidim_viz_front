@@ -51,6 +51,10 @@ export class StatsService {
     return this.http.get<CategoryResponse>(this.host + '/stats/categories/proposals/'+limit);
   }
 
+  getCategoriesByComments(){
+    return this.http.get<CategoryResponse>(this.host + '/stats/categories/comments/');
+  }
+
   getLanguages(){
     return this.http.get<Array<string>>(this.host + '/stats/languages/');
   }
