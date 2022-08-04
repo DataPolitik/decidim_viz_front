@@ -1,0 +1,38 @@
+#container{
+  height: 100vh;
+}
+
+#header{
+  height: 6vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 3px #FFE9D7;
+}
+
+
+#scrollable{
+  overflow-y: scroll;
+}
+
+#content{
+  height: 90vh;
+}
+
+#footer{
+  height: 5vh;
+}
+
+#logo{
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 400;
+  line-height: 70px;
+}
+

@@ -15,8 +15,12 @@ import { GraphComponentComponent } from './graph-component/graph-component.compo
 import { InteractionHistogramComponent } from './histograms/interactions/interaction-histograms.component';
 import { StatsComponent } from './stats/stats.component';
 import { GraphQLModule } from './graphql.module';
+import {TabMenuModule} from 'primeng/tabmenu';
 import { HistoryComponent } from './history/history.component';
 import { MetricsHistogramComponent } from './histograms/metrics/metrics-histograms.component';
+import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
+import { DemografiaComponent } from './content/demografia/demografia.component';
+import { InteraccionesComponent } from './content/interacciones/interacciones.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -27,7 +31,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     InteractionHistogramComponent,
     StatsComponent,
     HistoryComponent,
-    MetricsHistogramComponent
+    MetricsHistogramComponent,
+    NavigationMenuComponent,
+    DemografiaComponent,
+    InteraccionesComponent
   ],
   imports: [
     AgChartsAngularModule,
@@ -37,6 +44,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     PlotlyModule,
     TabViewModule,
     TableModule,
+    TabMenuModule,
     GraphQLModule
   ],
   providers: [],

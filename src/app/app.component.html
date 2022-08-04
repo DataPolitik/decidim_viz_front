@@ -1,25 +1,19 @@
-<p-tabView [activeIndex]="activeIndex" (onChange)="this.changeType($event)" class="stats">
-  <p-tabPanel>
-    <ng-template pTemplate="header">
-      <i class="pi pi-calendar"></i>
-      <span>Demografía</span>
-    </ng-template>
-    <!-- <app-graph-component *ngIf="this.type == 'endorsements'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component> -->
-    <app-stats></app-stats>
-  </p-tabPanel>
-  <p-tabPanel>
-    <ng-template pTemplate="header">
-      <i class="pi pi-calendar"></i>
-      <span>Dinámica temporal</span>
-    </ng-template>
-    <app-history></app-history>
-    <!-- <app-graph-component *ngIf="this.type == 'comments'" [graphToCall]="this.type" [graphTitle]="this.graphTitle"></app-graph-component> -->
-  </p-tabPanel>
-  <p-tabPanel>
-    <ng-template pTemplate="header">
-      <i class="pi pi-calendar"></i>
-      <span>Redes de interacción</span>
-    </ng-template>
-    <app-histograms *ngIf="this.type == 'stats'"></app-histograms>
-  </p-tabPanel>
-</p-tabView>
+<div id="container">
+  <div id="header">
+    <app-navigation-menu id="header_navigation"></app-navigation-menu>
+    <div>
+      <h2>Futureu.europe.eu</h2>
+    </div>
+    <div id="logo">
+      Decidim.Vis
+    </div>
+  </div>
+  <div id="scrollable">
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+    <div id="footer">
+
+    </div>
+  </div>
+</div>

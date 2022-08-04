@@ -12,29 +12,18 @@ import { StatsService } from './services/stats.service';
 })
 export class AppComponent {
   title = 'decidim_viz_front';
-  activeIndex = 0;
+
 
   public caller;
-  public graphTitle: string = '';
-  public type: string = 'endorsements'
 
 
-  changeType(event: any){
-    if(event.index == 0){
-      this.type="endorsements";
-      this.graphTitle = 'Endorsements';
-    }else if(event.index == 1){
-      this.type="comments";
-      this.graphTitle = 'Comments';
-    }else{
-      this.type="stats";
 
-    }
-  }
+
+
 
   constructor(private stats: StatsService, private apollo: Apollo, private httpLink: HttpLink){
     this.caller = stats.getEndorses;
-    this.graphTitle = 'Endorsements';
+
 
     DECIDIM_API.forEach(api_details => {
       this.apollo.createNamed(api_details.name, {

@@ -1,0 +1,15 @@
+:host ::ng-deep .p-tabmenuitem{
+  font-family: Verdana, Geneva, sans-serif; font-size: 22px; font-style: normal; font-variant: normal; font-weight: 550; line-height: 23px;
+}
+
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
+  color: #447777;
+}
+
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled){
+  color: #B4D6B4;
+}
+
+:host ::ng-deep .p-menuitem-icon{
+  font-size: 1.5rem;
+}
