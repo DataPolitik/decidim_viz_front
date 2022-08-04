@@ -7,7 +7,7 @@ import { CategoryResponse } from '../models/category.model';
 import { GraphResponse } from '../models/graph_response.model';
 import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
-import { ProposalResponse } from '../models/proposal.model';
+import { Proposal, ProposalResponse } from '../models/proposal.model';
 
 
 @Injectable({
@@ -41,6 +41,14 @@ export class StatsService {
 
   getProposalsByComments(limit: number){
     return this.http.get<ProposalResponse>(this.host + '/stats/proposals/comments/'+limit);
+  }
+
+  getMostCommentedProposal(){
+    return this.http.get<Proposal>(this.host + '/stats/proposals/comments/first');
+  }
+
+  getMostEndorsedProposal(){
+    return this.http.get<Proposal>(this.host + '/stats/proposals/endorses/first');
   }
 
   getCategories(){

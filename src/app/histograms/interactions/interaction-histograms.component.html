@@ -1,16 +1,30 @@
 <div>
   <ag-charts-angular
     class="histogram"
-    *ngIf="this.optionsComments !== undefined"
+    *ngIf="this.optionsComments !== undefined; else still_loading"
     style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
     [options]="optionsComments">
   </ag-charts-angular>
 </div>
+<div *ngIf="this.topCommented; else still_loading">
+  <p *ngIf="this.topCommented.title_en">The most commented proposal is: {{ this.topCommented.title_en }}</p>
+  <p *ngIf="this.topCommented.title_es">The most commented proposal is: {{ this.topCommented.title_es }}</p>
+  <p *ngIf="this.topCommented.title_fr">The most commented proposal is: {{ this.topCommented.title_fr }}</p>
+</div>
 <div>
   <ag-charts-angular
     class="histogram"
-    *ngIf="this.optionsEndorses !== undefined"
+    *ngIf="this.optionsEndorses !== undefined; else still_loading"
     style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
     [options]="optionsEndorses">
 </ag-charts-angular>
+<div *ngIf="this.topEndorsed; else still_loading">
+  <p *ngIf="this.topEndorsed.title_es">The most endorsed proposal is: {{ this.topEndorsed.title_es }}</p>
+  <p *ngIf="this.topEndorsed.title_fr">The most endorsed proposal is: {{ this.topEndorsed.title_fr }}</p>
+  <p *ngIf="this.topEndorsed.title_fr">The most endorsed proposal is: {{ this.topEndorsed.title_fr }}</p>
 </div>
+</div>
+
+<ng-template #still_loading>
+  Cargando datos
+</ng-template>

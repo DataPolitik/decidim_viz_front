@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AgChartOptions, AgHistogramSeriesOptions } from 'ag-charts-community';
 import { Observable, Subscription } from 'rxjs';
+import { Proposal } from 'src/app/models/proposal.model';
 import { Histogram } from '../../models/histogram.model';
 import { StatsService } from '../../services/stats.service';
 
@@ -12,9 +13,14 @@ import { StatsService } from '../../services/stats.service';
 export class InteractionHistogramComponent implements OnInit, OnDestroy {
   private commentsSubscription: Subscription | undefined;
   private endorsesSubscription: Subscription | undefined;
+  private topCommentedSubscription: Subscription | undefined;
+  private topEndorsedSubscription: Subscription | undefined;
 
   public optionsComments: AgChartOptions | undefined = undefined;
   public optionsEndorses: AgChartOptions | undefined = undefined;
+
+  public topCommented: Proposal | undefined = undefined;
+  public topEndorsed: Proposal | undefined = undefined;
 
   constructor(private stats: StatsService) {  }
 
@@ -75,11 +81,25 @@ export class InteractionHistogramComponent implements OnInit, OnDestroy {
           this.optionsEndorses.data = response.histogram;
       }
     );
+
+    this.topCommentedSubscription = this.stats.getMostCommentedProposal().subscribe(
+      (response: Proposal) => {
+        this.topCommented = response
+      }
+    );
+
+    this.topEndorsedSubscription = this.stats.getMostEndorsedProposal().subscribe(
+      (response: Proposal) => {
+        this.topEndorsed = response
+      }
+    );
   }
 
   ngOnDestroy(){
     this.commentsSubscription?.unsubscribe();
     this.endorsesSubscription?.unsubscribe();
+    this.topCommentedSubscription?.unsubscribe();
+    this.topEndorsedSubscription?.unsubscribe();
   }
 
 }
