@@ -21,6 +21,8 @@ import { MetricsHistogramComponent } from './histograms/metrics/metrics-histogra
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { DemografiaComponent } from './content/demografia/demografia.component';
 import { InteraccionesComponent } from './content/interacciones/interacciones.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StillLoadingComponent } from './still-loading/still-loading.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -34,7 +36,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MetricsHistogramComponent,
     NavigationMenuComponent,
     DemografiaComponent,
-    InteraccionesComponent
+    InteraccionesComponent,
+    StillLoadingComponent
   ],
   imports: [
     AgChartsAngularModule,
@@ -45,7 +48,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     TabViewModule,
     TableModule,
     TabMenuModule,
-    GraphQLModule
+    GraphQLModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

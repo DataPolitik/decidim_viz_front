@@ -8,6 +8,15 @@ import { LanguagesCount } from '../models/languages.count.model';
 import { Metrics } from '../models/metrics.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
 import { StatsService } from '../services/stats.service';
+import {
+  faUsers,
+  faLightbulb,
+  faDiagramProject,
+  faUsersBetweenLines,
+  faLanguage,
+  faHandsClapping,
+  faComments,
+  faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 
 import { execute_metrics_query } from '../utils/metrics.utils';
@@ -24,6 +33,15 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
   public languageTreeMapOptions: AgHierarchyChartOptions | undefined;
   public categoryCommentsTreeMapOptions: AgHierarchyChartOptions | undefined;
+
+  public faUsers = faUsers;
+  public faLightbulb = faLightbulb;
+  public faDiagramProject = faDiagramProject;
+  public faUsersBetweenLines = faUsersBetweenLines;
+  public faLanguage = faLanguage;
+  public faHandsClapping = faHandsClapping;
+  public faComments = faComments;
+  public faLayerGroup = faLayerGroup;
 
 
   constructor(private apollo: Apollo, private statsService: StatsService) {}
