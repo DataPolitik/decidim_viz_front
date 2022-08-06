@@ -16,11 +16,10 @@ import { InteractionHistogramComponent } from './histograms/interactions/interac
 import { StatsComponent } from './stats/stats.component';
 import { GraphQLModule } from './graphql.module';
 import {TabMenuModule} from 'primeng/tabmenu';
-import { HistoryComponent } from './history/history.component';
 import { MetricsHistogramComponent } from './histograms/metrics/metrics-histograms.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { DemografiaComponent } from './content/demografia/demografia.component';
-import { InteraccionesComponent } from './content/interacciones/interacciones.component';
+import { MetricsComponent } from './content/metrics/metrics.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StillLoadingComponent } from './still-loading/still-loading.component';
 
@@ -32,11 +31,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     GraphComponentComponent,
     InteractionHistogramComponent,
     StatsComponent,
-    HistoryComponent,
     MetricsHistogramComponent,
     NavigationMenuComponent,
     DemografiaComponent,
-    InteraccionesComponent,
+    MetricsComponent,
     StillLoadingComponent
   ],
   imports: [

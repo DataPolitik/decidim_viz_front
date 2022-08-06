@@ -22,9 +22,9 @@ export class NavigationMenuComponent implements OnInit {
         routerLink: ['/demografia']
       },
       {
-        label: 'Interacciones',
+        label: 'Metricas',
         icon: 'pi pi-fw pi-calendar',
-        routerLink: ['/interacciones']
+        routerLink: ['/metricas']
       },
   ];
   }
