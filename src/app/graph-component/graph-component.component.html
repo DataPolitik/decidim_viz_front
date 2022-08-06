@@ -1,8 +1,11 @@
-<plotly-plot
- *ngIf="this.graph !== undefined"
-  [data]="graph.data"
-  [layout]="graph.layout"
-  [updateOnlyWithRevision]="true"
-  [revision]="this.revision"
-  [style]="{position: 'relative', width: '100%', height: '100%'}">
-</plotly-plot>'
+<div class="graph">
+  <plotly-plot
+   *ngIf="this.graph !== undefined"
+    [data]="graph.data"
+    [layout]="graph.layout"
+    [updateOnlyWithRevision]="true"
+    [revision]="this.revision"
+    [useResizeHandler]="true"
+    [style]="{position: 'relative', display: 'block'}">
+  </plotly-plot>'
+</div>

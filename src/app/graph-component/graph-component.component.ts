@@ -95,8 +95,8 @@ export class GraphComponentComponent implements OnInit {
           this.graph = {
             data: graphdata,
             layout: {
-              width: 1524,
-               height: 1024,
+              width: 1300,
+               height: 1300,
                title: this.graphTitle,
                 xaxis: {'showticklabels': false},
                 yaxis: {'showticklabels': false},

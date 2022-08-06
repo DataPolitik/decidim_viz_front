@@ -1,0 +1,17 @@
+#interaction_tabView{
+  margin-left: 4vw;
+}
+
+.graph{
+  display: block;
+  height: 100px;
+  width: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  padding-left: 8vw;
+}
+
+
+::ng-deep  .p-tabview .p-tabview-nav{
+  border: none;
+}

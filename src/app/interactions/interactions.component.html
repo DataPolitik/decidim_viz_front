@@ -1,0 +1,24 @@
+<div id="interactions">
+  <h2>
+    Interacciones
+  </h2>
+
+<div id="interaction_tabView">
+  <p-tabView >
+    <p-tabPanel header="Red de comentarios">
+      <div class="graph">
+        <app-graph-component  [graphToCall]="this.commentsGraphType" [graphTitle]="this.commentsGraphTitle"></app-graph-component>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Red de apoyos">
+      <div class="graph">
+        <app-graph-component   [graphToCall]="this.endorsementsGraphType" [graphTitle]="this.endorsementsGraphTitle"></app-graph-component>
+      </div>
+    </p-tabPanel>
+
+  </p-tabView>
+</div>
+
+
+
+</div>

@@ -22,6 +22,7 @@ import { DemografiaComponent } from './content/demografia/demografia.component';
 import { MetricsComponent } from './content/metrics/metrics.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StillLoadingComponent } from './still-loading/still-loading.component';
+import { InteractionsComponent } from './interactions/interactions.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -35,7 +36,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     NavigationMenuComponent,
     DemografiaComponent,
     MetricsComponent,
-    StillLoadingComponent
+    StillLoadingComponent,
+    InteractionsComponent
   ],
   imports: [
     AgChartsAngularModule,
