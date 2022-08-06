@@ -18,13 +18,18 @@ export class NavigationMenuComponent implements OnInit {
     this.menuItems = [
       {
         label: 'Demografía',
-        icon: 'pi pi-fw pi-home',
+        icon: 'pi pi-fw pi-users',
         routerLink: ['/demografia']
       },
       {
         label: 'Metricas',
-        icon: 'pi pi-fw pi-calendar',
+        icon: 'pi pi-fw pi-chart-pie',
         routerLink: ['/metricas']
+      },
+      {
+        label: 'Interacciones',
+        icon: 'pi pi-fw pi-comments',
+        routerLink: ['/interacciones']
       },
   ];
   }
