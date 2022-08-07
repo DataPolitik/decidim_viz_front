@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,12 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { TabViewModule } from 'primeng/tabview';
-import {TableModule} from 'primeng/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TableModule } from 'primeng/table';
 import { GraphComponentComponent } from './graph-component/graph-component.component';
 import { InteractionHistogramComponent } from './histograms/interactions/interaction-histograms.component';
 import { StatsComponent } from './stats/stats.component';
 import { GraphQLModule } from './graphql.module';
-import {TabMenuModule} from 'primeng/tabmenu';
+import { TabMenuModule } from 'primeng/tabmenu';
 import { MetricsHistogramComponent } from './histograms/metrics/metrics-histograms.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { DemografiaComponent } from './content/demografia/demografia.component';
@@ -42,14 +46,18 @@ PlotlyModule.plotlyjs = PlotlyJS;
   imports: [
     AgChartsAngularModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    CalendarModule,
+    CheckboxModule,
     HttpClientModule,
     PlotlyModule,
     TabViewModule,
     TableModule,
     TabMenuModule,
     GraphQLModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

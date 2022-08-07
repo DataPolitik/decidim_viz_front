@@ -2,6 +2,12 @@
   <h2>
     Métricas
   </h2>
+  <section id="filters">
+    <span>Mostrando desde </span>
+    <p-calendar [(ngModel)]="dateFrom" dateFormat="dd/mm/yy"  [readonlyInput]="true" [showIcon]="true" (onSelect)="this.dateChanged()"></p-calendar>
+    <span>Hasta el</span>
+    <p-calendar [(ngModel)]="dateTo"   dateFormat="dd/mm/yy"  [readonlyInput]="true" [showIcon]="true" (onSelect)="this.dateChanged()"></p-calendar>
+  </section>
   <h3>
     Evolución temporal de usuarios
   </h3>

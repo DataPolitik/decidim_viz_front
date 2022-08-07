@@ -1,3 +1,29 @@
+#filters{
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+}
+
+#filters span{
+  margin-left: 10px;
+  margin-right: 19px;
+}
+
+:host ::ng-deep .p-calendar{
+  height: 12px;
+  width: 135px;
+}
+
+:host ::ng-deep .p-calendar .p-inputtext{
+  border: none;
+}
+
+:host ::ng-deep .p-calendar .p-button{
+  background-color: transparent;
+  color: black;
+  border: none;
+}
+
 .histogram_chart{
   width: 90%;
   height: 70%;
