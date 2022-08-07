@@ -7,6 +7,7 @@ import { CategoryResponse } from '../models/category.model';
 import { GraphResponse } from '../models/graph_response.model';
 import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
+import { Metrics } from '../models/metrics.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
 
 
@@ -49,6 +50,22 @@ export class StatsService {
 
   getMostEndorsedProposal(){
     return this.http.get<Proposal>(this.host + '/stats/proposals/endorses/first');
+  }
+
+  getDailyNumberOfProposalsByRange(date_from: string, date_to:string){
+    return this.http.get<Metrics>(this.host + '/stats/proposals/by_date/daily/'+date_from+'/'+date_to+'/');
+  }
+
+  getAccumulatedNumberOfProposalsByRange(date_from: string, date_to:string){
+    return this.http.get<Metrics>(this.host + '/stats/proposals/by_date/cumulative/'+date_from+'/'+date_to+'/');
+  }
+
+  getDailyNumberOfCommentsByRange(date_from: string, date_to:string){
+    return this.http.get<Metrics>(this.host + '/stats/comments/by_date/daily/'+date_from+'/'+date_to+'/');
+  }
+
+  getAccumulatedNumberOfCommentsByRange(date_from: string, date_to:string){
+    return this.http.get<Metrics>(this.host + '/stats/comments/by_date/cumulative/'+date_from+'/'+date_to+'/');
   }
 
   getCategories(){

@@ -4,20 +4,37 @@
   </h2>
   <section id="filters">
     <span>Mostrando desde </span>
-    <p-calendar [(ngModel)]="dateFrom" dateFormat="dd/mm/yy"  [readonlyInput]="true" [showIcon]="true" (onSelect)="this.dateChanged()"></p-calendar>
+    <p-calendar [(ngModel)]="dateFrom"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      (ngModelChange)="this.dateChanged()"></p-calendar>
     <span>Hasta el</span>
-    <p-calendar [(ngModel)]="dateTo"   dateFormat="dd/mm/yy"  [readonlyInput]="true" [showIcon]="true" (onSelect)="this.dateChanged()"></p-calendar>
+    <p-calendar [(ngModel)]="dateTo"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      (ngModelChange)="this.dateChanged()"></p-calendar>
   </section>
   <h3>
     Evolución temporal de usuarios
   </h3>
   <section *ngIf="!user_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-        [response]="this.user_metrics?.history?.slice(0)?.reverse()"
-        xName="Fecha"
-        yName="Número de usuarios">
-      </app-metrics-histogram>
+      <p-tabView>
+        <p-tabPanel header="Acumulado">
+
+        </p-tabPanel>
+        <p-tabPanel header="Diario">
+          <app-metrics-histogram
+            [response]="this.user_metrics?.history?.slice(0)?.reverse()"
+            xName="Fecha"
+            yName="Número de usuarios">
+          </app-metrics-histogram>
+        </p-tabPanel>
+    </p-tabView>
+
+
     </div>
 
   </section>
@@ -26,13 +43,24 @@
     Evolución temporal de propuestas
   </h3>
 
-  <section *ngIf="!proposal_loading; else still_loading" class="histogram_chart">
+  <section *ngIf="!daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-      [response]="this.proposal_metrics?.history?.slice(0)?.reverse()"
-      xName="Fecha"
-      yName="Número de propuestas">
-      </app-metrics-histogram>
+      <p-tabView>
+        <p-tabPanel header="Acumulado">
+          <app-metrics-histogram
+            [response]="this.accumulated_proposal_metrics?.history?.slice(0)?.reverse()"
+            xName="Fecha"
+            yName="Número de propuestas">
+          </app-metrics-histogram>
+        </p-tabPanel>
+        <p-tabPanel header="Diario">
+          <app-metrics-histogram
+            [response]="this.daily_proposal_metrics?.history?.slice(0)?.reverse()"
+            xName="Fecha"
+            yName="Número de propuestas">
+          </app-metrics-histogram>
+      </p-tabPanel>
+    </p-tabView>
     </div>
 
   </section>
@@ -54,13 +82,24 @@
   <h3>
     Comentarios
   </h3>
-  <section *ngIf="!comments_loading; else still_loading" class="histogram_chart">
+  <section *ngIf="!daily_comment_loading && !accumulated_comment_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-      [response]="this.comments_metrics?.history?.slice(0)?.reverse()"
-      xName="Fecha"
-      yName="Número de comentarios">
-      </app-metrics-histogram>
+      <p-tabView>
+        <p-tabPanel header="Acumulado">
+          <app-metrics-histogram
+            [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
+            xName="Fecha"
+            yName="Número de propuestas">
+          </app-metrics-histogram>
+        </p-tabPanel>
+        <p-tabPanel header="Diario">
+          <app-metrics-histogram
+            [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
+            xName="Fecha"
+            yName="Número de propuestas">
+          </app-metrics-histogram>
+      </p-tabPanel>
+    </p-tabView>
     </div>
 
   </section>

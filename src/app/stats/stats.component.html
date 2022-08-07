@@ -9,8 +9,8 @@
     <p *ngIf="!user_loading; else still_loading">
       <fa-icon [icon]="this.faUsers"></fa-icon> {{this.user_metrics?.count }} usuarios registrados.
     </p>
-    <p *ngIf="!proposal_loading; else still_loading">
-      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.proposal_metrics?.count }} propuestas realizadas.
+    <p *ngIf="!daily_proposal_loading; else still_loading">
+      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} propuestas realizadas.
     </p>
     <p *ngIf="this.categories; else still_loading">
       <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} categorías.
@@ -18,7 +18,7 @@
     <p *ngIf="!participatory_processes_loading; else still_loading">
       <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.participatory_processes_metrics?.count }} procesos participativos iniciados.
     </p>
-    <p *ngIf="!comments_loading && languages; else still_loading">
+    <p *ngIf="!daily_comment_loading && languages; else still_loading">
       <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} comentarios escritos en {{this.languages.length }} idiomas diferentes.
     </p>
   </section>

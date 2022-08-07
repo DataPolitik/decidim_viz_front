@@ -44,15 +44,16 @@ export class StatsComponent implements OnInit, OnDestroy  {
   public faLayerGroup = faLayerGroup;
 
 
-  constructor(private apollo: Apollo, private statsService: StatsService) {}
+  constructor(private apollo: Apollo, protected statsService: StatsService) {}
 
   user_loading: boolean = true;
-  proposal_loading: boolean = true;
+  daily_proposal_loading: boolean = true;
+  daily_comment_loading: boolean = true;
   participatory_processes_loading: boolean = true;
-  comments_loading: boolean = true;
 
   user_metrics: Metrics | undefined;
-  proposal_metrics: Metrics | undefined;
+  daily_proposal_metrics: Metrics | undefined;
+  daily_comment_metrics: Metrics | undefined;
   participatory_processes_metrics: Metrics | undefined;
   comments_metrics: Metrics | undefined;
 
@@ -71,22 +72,23 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
   ngOnInit(): void {
     this.subs.add(execute_metrics_query(this.apollo, METRICS_USERS).subscribe(({ data, loading }) => {
-      this.user_loading = loading;
+      this.user_loading = false;
       this.user_metrics = data.metrics[0];
     }));
 
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PROPOSALS).subscribe(({ data, loading }) => {
-      this.proposal_loading = loading;
-      this.proposal_metrics = data.metrics[0];
+      this.daily_proposal_loading = false;
+      this.daily_proposal_metrics = data.metrics[0];
+      console.log(this.daily_proposal_metrics)
     }));
 
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
-      this.participatory_processes_loading = loading;
+      this.participatory_processes_loading = false;
       this.participatory_processes_metrics = data.metrics[0];
     }));
 
     this.subs.add( execute_metrics_query(this.apollo, METRICS_COMMENTS).subscribe(({ data, loading }) => {
-      this.comments_loading = loading;
+      this.daily_comment_loading = false;
       this.comments_metrics = data.metrics[0];
     }));
 
