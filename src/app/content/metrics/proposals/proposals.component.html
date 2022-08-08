@@ -4,22 +4,27 @@
 
 <section *ngIf="!this.daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
   <div>
-    <p-tabView>
+    <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="Acumulado">
-        <app-metrics-histogram
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
           [response]="this.accumulated_proposal_metrics?.history?.slice(0)?.reverse()"
           xName="Fecha"
           yName="Número de propuestas">
         </app-metrics-histogram>
       </p-tabPanel>
       <p-tabPanel header="Diario">
-        <app-metrics-histogram
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
           [response]="this.daily_proposal_metrics?.history?.slice(0)?.reverse()"
           xName="Fecha"
           yName="Número de propuestas">
         </app-metrics-histogram>
     </p-tabPanel>
   </p-tabView>
+  <section *ngIf="this.isEmpty">
+    <p>
+      No se han encontrado resultados para las fechas indicadas.
+    </p>
+  </section>
   </div>
 
 </section>

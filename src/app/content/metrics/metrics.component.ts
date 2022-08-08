@@ -12,9 +12,6 @@ export class MetricsComponent extends StatsComponent implements OnInit {
   public dateFrom: Date = new Date();
   public dateTo: Date = new Date();
 
-
-
-
   public dateFromAsString: string | undefined;
   public dateToAsString: string | undefined;
 

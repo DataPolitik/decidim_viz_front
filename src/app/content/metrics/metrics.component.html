@@ -19,29 +19,29 @@
   <div>
     <p-tabView>
       <p-tabPanel header="Propuestas">
-        <app-metrics-proposals *ngIf="this.dateFromAsString && this.dateToAsString"
-          [dateFromAsString]="this.dateFromAsString"
-          [dateToAsString]="this.dateToAsString">
+        <app-metrics-proposals *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
         </app-metrics-proposals>
       </p-tabPanel>
       <p-tabPanel header="Procesos participativos">
-        <app-metrics-participative-processes *ngIf="this.dateFromAsString && this.dateToAsString"
-          [dateFromAsString]="this.dateFromAsString"
-          [dateToAsString]="this.dateToAsString">
+        <app-metrics-participative-processes *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
         >
         </app-metrics-participative-processes>
 
       </p-tabPanel>
       <p-tabPanel header="Comentarios">
-        <app-metrics-comments *ngIf="this.dateFromAsString && this.dateToAsString"
-          [dateFromAsString]="this.dateFromAsString"
-          [dateToAsString]="this.dateToAsString">
+        <app-metrics-comments *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
         </app-metrics-comments>
       </p-tabPanel>
       <p-tabPanel header="Usuarios">
-        <app-metrics-users *ngIf="this.dateFromAsString && this.dateToAsString"
-          [dateFromAsString]="this.dateFromAsString"
-          [dateToAsString]="this.dateToAsString">
+        <app-metrics-users *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
         </app-metrics-users>
       </p-tabPanel>
     </p-tabView>
