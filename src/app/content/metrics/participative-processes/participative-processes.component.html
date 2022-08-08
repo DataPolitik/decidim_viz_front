@@ -1,0 +1,17 @@
+<h3>
+  Procesos participativos
+</h3>
+<section *ngIf="!this.participatory_processes_loading; else still_loading" class="histogram_chart">
+  <div>
+    <app-metrics-histogram
+    [response]="this.participatory_processes_metrics?.history?.slice(0)?.reverse()"
+    xName="Fecha"
+    yName="Número de procesos participativos">
+    </app-metrics-histogram>
+  </div>
+
+</section>
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

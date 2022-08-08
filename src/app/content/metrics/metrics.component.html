@@ -16,93 +16,36 @@
       [showIcon]="true"
       (ngModelChange)="this.dateChanged()"></p-calendar>
   </section>
-  <h3>
-    Evolución temporal de usuarios
-  </h3>
-  <section *ngIf="!user_loading; else still_loading" class="histogram_chart">
-    <div>
-      <p-tabView>
-        <p-tabPanel header="Acumulado">
+  <div>
+    <p-tabView>
+      <p-tabPanel header="Propuestas">
+        <app-metrics-proposals *ngIf="this.dateFromAsString && this.dateToAsString"
+          [dateFromAsString]="this.dateFromAsString"
+          [dateToAsString]="this.dateToAsString">
+        </app-metrics-proposals>
+      </p-tabPanel>
+      <p-tabPanel header="Procesos participativos">
+        <app-metrics-participative-processes *ngIf="this.dateFromAsString && this.dateToAsString"
+          [dateFromAsString]="this.dateFromAsString"
+          [dateToAsString]="this.dateToAsString">
+        >
+        </app-metrics-participative-processes>
 
-        </p-tabPanel>
-        <p-tabPanel header="Diario">
-          <app-metrics-histogram
-            [response]="this.user_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de usuarios">
-          </app-metrics-histogram>
-        </p-tabPanel>
-    </p-tabView>
-
-
-    </div>
-
-  </section>
-
-  <h3>
-    Evolución temporal de propuestas
-  </h3>
-
-  <section *ngIf="!daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
-    <div>
-      <p-tabView>
-        <p-tabPanel header="Acumulado">
-          <app-metrics-histogram
-            [response]="this.accumulated_proposal_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
-        </p-tabPanel>
-        <p-tabPanel header="Diario">
-          <app-metrics-histogram
-            [response]="this.daily_proposal_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
+      </p-tabPanel>
+      <p-tabPanel header="Comentarios">
+        <app-metrics-comments *ngIf="this.dateFromAsString && this.dateToAsString"
+          [dateFromAsString]="this.dateFromAsString"
+          [dateToAsString]="this.dateToAsString">
+        </app-metrics-comments>
+      </p-tabPanel>
+      <p-tabPanel header="Usuarios">
+        <app-metrics-users *ngIf="this.dateFromAsString && this.dateToAsString"
+          [dateFromAsString]="this.dateFromAsString"
+          [dateToAsString]="this.dateToAsString">
+        </app-metrics-users>
       </p-tabPanel>
     </p-tabView>
-    </div>
-
-  </section>
-
-  <h3>
-    Procesos participativos
-  </h3>
-  <section *ngIf="!participatory_processes_loading; else still_loading" class="histogram_chart">
-    <div>
-      <app-metrics-histogram
-      [response]="this.participatory_processes_metrics?.history?.slice(0)?.reverse()"
-      xName="Fecha"
-      yName="Número de procesos participativos">
-      </app-metrics-histogram>
-    </div>
-
-  </section>
-
-  <h3>
-    Comentarios
-  </h3>
-  <section *ngIf="!daily_comment_loading && !accumulated_comment_loading; else still_loading" class="histogram_chart">
-    <div>
-      <p-tabView>
-        <p-tabPanel header="Acumulado">
-          <app-metrics-histogram
-            [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
-        </p-tabPanel>
-        <p-tabPanel header="Diario">
-          <app-metrics-histogram
-            [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
-      </p-tabPanel>
-    </p-tabView>
-    </div>
-
-  </section>
+  </div>
 </div>
 
 <ng-template #still_loading>

@@ -1,0 +1,30 @@
+<h3>
+  Evolución temporal de propuestas
+</h3>
+
+<section *ngIf="!this.daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
+  <div>
+    <p-tabView>
+      <p-tabPanel header="Acumulado">
+        <app-metrics-histogram
+          [response]="this.accumulated_proposal_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de propuestas">
+        </app-metrics-histogram>
+      </p-tabPanel>
+      <p-tabPanel header="Diario">
+        <app-metrics-histogram
+          [response]="this.daily_proposal_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de propuestas">
+        </app-metrics-histogram>
+    </p-tabPanel>
+  </p-tabView>
+  </div>
+
+</section>
+
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

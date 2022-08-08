@@ -79,7 +79,6 @@ export class StatsComponent implements OnInit, OnDestroy  {
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PROPOSALS).subscribe(({ data, loading }) => {
       this.daily_proposal_loading = false;
       this.daily_proposal_metrics = data.metrics[0];
-      console.log(this.daily_proposal_metrics)
     }));
 
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {

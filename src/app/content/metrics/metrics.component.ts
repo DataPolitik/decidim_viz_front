@@ -12,10 +12,11 @@ export class MetricsComponent extends StatsComponent implements OnInit {
   public dateFrom: Date = new Date();
   public dateTo: Date = new Date();
 
-  public accumulated_proposal_loading: boolean = true;
-  public accumulated_comment_loading: boolean = true;
-  public accumulated_proposal_metrics: Metrics | undefined;
-  public accumulated_comment_metrics: Metrics | undefined;
+
+
+
+  public dateFromAsString: string | undefined;
+  public dateToAsString: string | undefined;
 
   override ngOnInit(): void {
     this.dateFrom.setDate(this.dateFrom.getDate() - 90)
@@ -34,34 +35,9 @@ export class MetricsComponent extends StatsComponent implements OnInit {
     //// TODO: REMOVE THIS WORKAROUND WHEN THE BUG GET FIXED
 
 
-    const dateFromAsString = fixedDateFrom.toISOString().split('T')[0];
-    const dateToAsString = fixedDateTo.toISOString().split('T')[0];
-    this.statsService.getDailyNumberOfProposalsByRange(dateFromAsString, dateToAsString).subscribe(
-      (response: Metrics) => {
-        this.daily_proposal_loading = false;
-        this.daily_proposal_metrics = response;
-      }
-    )
+    this.dateFromAsString = fixedDateFrom.toISOString().split('T')[0];
+    this.dateToAsString = fixedDateTo.toISOString().split('T')[0];
 
-    this.statsService.getAccumulatedNumberOfProposalsByRange(dateFromAsString, dateToAsString).subscribe(
-      (response: Metrics) => {
-        this.accumulated_proposal_loading = false;
-        this.accumulated_proposal_metrics = response;
-      }
-    )
 
-    this.statsService.getDailyNumberOfCommentsByRange(dateFromAsString, dateToAsString).subscribe(
-      (response: Metrics) => {
-        this.daily_comment_loading = false;
-        this.daily_comment_metrics = response;
-      }
-    )
-
-    this.statsService.getAccumulatedNumberOfCommentsByRange(dateFromAsString, dateToAsString).subscribe(
-      (response: Metrics) => {
-        this.accumulated_comment_loading = false;
-        this.accumulated_comment_metrics = response;
-      }
-    )
   }
 }

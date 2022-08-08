@@ -1,0 +1,24 @@
+<h3>
+  Evolución temporal de usuarios
+</h3>
+<section *ngIf="!this.user_loading; else still_loading" class="histogram_chart">
+  <div>
+    <p-tabView>
+      <p-tabPanel header="Acumulado">
+
+      </p-tabPanel>
+      <p-tabPanel header="Diario">
+        <app-metrics-histogram
+          [response]="this.user_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de usuarios">
+        </app-metrics-histogram>
+      </p-tabPanel>
+  </p-tabView>
+</div>
+
+</section>
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>
