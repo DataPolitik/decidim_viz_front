@@ -54,7 +54,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   user_metrics: Metrics | undefined;
   daily_proposal_metrics: Metrics | undefined;
   daily_comment_metrics: Metrics | undefined;
-  participatory_processes_metrics: Metrics | undefined;
+  daily_participatory_processes_metrics: Metrics | undefined;
   comments_metrics: Metrics | undefined;
 
   categories: Array<Category> | undefined = undefined;
@@ -80,7 +80,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
       this.participatory_processes_loading = false;
-      this.participatory_processes_metrics = data.metrics[0];
+      this.daily_participatory_processes_metrics = data.metrics[0];
     }));
 
     this.subs.add( execute_metrics_query(this.apollo, METRICS_COMMENTS).subscribe(({ data, loading }) => {

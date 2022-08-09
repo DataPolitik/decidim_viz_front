@@ -10,6 +10,7 @@ export abstract class AbstractMetricsComponent extends StatsComponent {
   public dateToAsString: string = '';
 
   public isEmpty = true;
+  public loadedGraphs: number = 0;
 
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit();

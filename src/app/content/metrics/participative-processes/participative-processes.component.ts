@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { groupBy, of, reduce, mergeMap } from 'rxjs';
 import { PARTICIPATORY_PROCESSES } from 'src/app/graphql/graphql.queries';
+import { Metrics } from 'src/app/models/metrics.model';
 import { Metrics_History } from 'src/app/models/metrics_history.model';
 import { execute_metrics_query, groupByAndCount } from 'src/app/utils/metrics.utils';
 import { AbstractMetricsComponent } from '../abstract-metrics/abstract-metrics.component';
@@ -11,6 +12,7 @@ import { AbstractMetricsComponent } from '../abstract-metrics/abstract-metrics.c
   styleUrls: ['./participative-processes.component.css']
 })
 export class ParticipativeProcessesComponent extends AbstractMetricsComponent implements OnInit {
+  public accumulated_participatory_processes_metrics : Metrics | undefined;
 
   override ngOnInit(): void {
     this.dateChanged();
@@ -32,25 +34,43 @@ export class ParticipativeProcessesComponent extends AbstractMetricsComponent im
           )
         }
         const groupedData = groupByAndCount(cleanedData,['publishedAt']);
-        const history:  Metrics_History[] = [];
+        const dailyHistory:  Metrics_History[] = [];
+        const accumulatedyHistory:  Metrics_History[] = [];
 
-        groupedData[0].forEach((element: { count: any; value: any; }) => {
-          history.push(
+        let accumulated = 0;
+        groupedData[0].forEach((element: { count: any; value: any; accumulated: any}) => {
+          dailyHistory.push(
             {
               'value': element.count,
-              'key': element.value
+              'key': element.value,
             } as Metrics_History
           )
+          accumulatedyHistory.push(
+            {
+              'value': accumulated,
+              'key': element.value,
+            } as Metrics_History
+          )
+          accumulated = accumulated + element.count;
         }
         )
 
-        this.participatory_processes_metrics = {
+        this.daily_participatory_processes_metrics = {
           'count': cleanedData.length,
-          'name': 'participatoryProcesses',
-          'history': history
+          'name': 'dailyParticipatoryProcesses',
+          'history': dailyHistory
         }
 
+        this.accumulated_participatory_processes_metrics = {
+          'count': cleanedData.length,
+          'name': 'accumulatedParticipatoryProcesses',
+          'history': accumulatedyHistory
+        }
+
+        console.log(this.accumulated_participatory_processes_metrics);
+
         this.participatory_processes_loading = false;
+        this.loadedGraphs = 2;
       }));
     }
   }

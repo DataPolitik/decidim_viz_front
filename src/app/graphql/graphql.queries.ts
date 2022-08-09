@@ -50,7 +50,7 @@ const METRICS_COMMENTS = gql`
 
 const PARTICIPATORY_PROCESSES = gql`
 query getParticipatoryProcesses($dateFrom: String!, $dateTo: String!){
-  participatoryProcesses(filter: {publishedSince: $dateFrom, publishedBefore: $dateTo }, order: {publishedAt: "asc"}) {
+  participatoryProcesses(filter: {publishedSince: $dateFrom, publishedBefore: $dateTo }, order: {publishedAt: "desc"}) {
     id,
     slug,
     publishedAt,

@@ -2,17 +2,29 @@
   Procesos participativos
 </h3>
 <section *ngIf="!this.participatory_processes_loading; else still_loading" class="histogram_chart">
-  <div *ngIf="!this.isEmpty">
-    <app-metrics-histogram
-      [response]="this.participatory_processes_metrics?.history?.slice(0)?.reverse()"
-      xName="Fecha"
-      yName="Número de procesos participativos">
-    </app-metrics-histogram>
-  </div>
+  <div>
+    <p-tabView *ngIf="!this.isEmpty">
+      <p-tabPanel header="Acumulado">
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.accumulated_participatory_processes_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de procesos participativos">
+        </app-metrics-histogram>
+      </p-tabPanel>
+      <p-tabPanel header="Diario">
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.daily_participatory_processes_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de procesos participativos">
+        </app-metrics-histogram>
+    </p-tabPanel>
+  </p-tabView>
   <section *ngIf="this.isEmpty">
-    No se han encontrado resultados para las fechas indicadas.
+    <p>
+      No se han encontrado resultados para las fechas indicadas.
+    </p>
   </section>
-
+  </div>
 </section>
 
 <ng-template #still_loading>

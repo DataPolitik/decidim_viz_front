@@ -16,9 +16,6 @@ export class ProposalsComponent extends AbstractMetricsComponent implements OnIn
   private accumulatedSubscription: Subscription | undefined;
   private dailySubscription: Subscription | undefined;
 
-  public loadedGraphs = 0;
-
-
   override ngOnInit(): void {
     this.dateChanged();
     this.loadedGraphs = 0;

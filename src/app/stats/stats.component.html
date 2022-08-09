@@ -16,7 +16,7 @@
       <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} categorías.
     </p>
     <p *ngIf="!participatory_processes_loading; else still_loading">
-      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.participatory_processes_metrics?.count }} procesos participativos iniciados.
+      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} procesos participativos iniciados.
     </p>
     <p *ngIf="!daily_comment_loading && languages; else still_loading">
       <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} comentarios escritos en {{this.languages.length }} idiomas diferentes.
