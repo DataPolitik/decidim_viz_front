@@ -32,6 +32,7 @@ import { ParticipativeProcessesComponent } from './content/metrics/participative
 import { CommentsComponent } from './content/metrics/comments/comments.component';
 import { UsersComponent } from './content/metrics/users/users.component';
 
+
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({

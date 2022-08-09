@@ -1,16 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Metrics } from 'src/app/models/metrics.model';
-import { StatsComponent } from 'src/app/stats/stats.component';
+import { AbstractMetricsComponent } from '../abstract-metrics/abstract-metrics.component';
 
 @Component({
   selector: 'app-metrics-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent extends StatsComponent implements OnInit {
-  @Input() dateFromAsString: string = '';
-  @Input() dateToAsString: string = '';
-
+export class CommentsComponent extends AbstractMetricsComponent implements OnInit {
   public accumulated_comment_loading: boolean = true;
   public accumulated_comment_metrics: Metrics | undefined;
 

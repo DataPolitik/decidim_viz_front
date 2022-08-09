@@ -27,7 +27,7 @@ import { execute_metrics_query } from '../utils/metrics.utils';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit, OnDestroy  {
-  private subs = new Subscription();
+  protected subs = new Subscription();
   private languageCountSubject = new BehaviorSubject<number>(0);
   private languageCountObservable = this.languageCountSubject.asObservable();
 
@@ -44,7 +44,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   public faLayerGroup = faLayerGroup;
 
 
-  constructor(private apollo: Apollo, protected statsService: StatsService) {}
+  constructor(protected apollo: Apollo, protected statsService: StatsService) {}
 
   user_loading: boolean = true;
   daily_proposal_loading: boolean = true;
@@ -65,9 +65,6 @@ export class StatsComponent implements OnInit, OnDestroy  {
   languages: Array<string> | undefined = undefined;
   languageCount: Array<{name:string, size: number, color: number}> = [];
   categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
-
-
-
 
 
   ngOnInit(): void {

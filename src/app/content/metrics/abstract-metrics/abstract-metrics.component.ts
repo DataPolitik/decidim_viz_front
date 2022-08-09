@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { StatsComponent } from 'src/app/stats/stats.component';
 
-@Component({
-  selector: 'app-content-metrics',
-  templateUrl: './metrics.component.html',
-  styleUrls: ['./metrics.component.css']
-})
-export class MetricsComponent extends StatsComponent implements OnInit {
-  public dateFrom: Date = new Date();
-  public dateTo: Date = new Date();
+@Component({ template: '' })
+export abstract class AbstractMetricsComponent extends StatsComponent {
+  @Input() public dateFrom: Date = new Date();
+  @Input() public dateTo: Date = new Date();
 
-  public dateFromAsString: string | undefined;
-  public dateToAsString: string | undefined;
+  public dateFromAsString: string = '';
+  public dateToAsString: string = '';
 
-  override ngOnInit(): void {
-    this.dateFrom.setDate(this.dateFrom.getDate() - 90)
+  public isEmpty = true;
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.ngOnInit();
   }
 
-  public dateChanged(){
+  public dateChanged(): void{
 
     /// THIS IS A WORKAROUND FOR THIS BUG OF PRIME_NG
     /// https://github.com/primefaces/primeng/issues/2426
@@ -32,7 +30,6 @@ export class MetricsComponent extends StatsComponent implements OnInit {
 
     this.dateFromAsString = fixedDateFrom.toISOString().split('T')[0];
     this.dateToAsString = fixedDateTo.toISOString().split('T')[0];
-
-
   }
+
 }

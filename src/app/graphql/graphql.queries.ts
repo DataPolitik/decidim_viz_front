@@ -48,4 +48,18 @@ const METRICS_COMMENTS = gql`
   }
 }`
 
-export {METRICS_USERS, METRICS_PROPOSALS, METRICS_PARTICIPATORY_PROCESSES, METRICS_COMMENTS}
+const PARTICIPATORY_PROCESSES = gql`
+query getParticipatoryProcesses($dateFrom: String!, $dateTo: String!){
+  participatoryProcesses(filter: {publishedSince: $dateFrom, publishedBefore: $dateTo }, order: {publishedAt: "asc"}) {
+    id,
+    slug,
+    publishedAt,
+    title {
+      translations {
+        text
+      }
+    }
+  }
+}`
+
+export {METRICS_USERS, METRICS_PROPOSALS, METRICS_PARTICIPATORY_PROCESSES, METRICS_COMMENTS, PARTICIPATORY_PROCESSES}
