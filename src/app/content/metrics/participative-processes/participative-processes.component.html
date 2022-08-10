@@ -6,14 +6,14 @@
     <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="Acumulado">
         <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
-          [response]="this.accumulated_participatory_processes_metrics?.history?.slice(0)?.reverse()"
+          [response]="this.accumulated_participatory_processes_metrics?.history"
           xName="Fecha"
           yName="Número de procesos participativos">
         </app-metrics-histogram>
       </p-tabPanel>
       <p-tabPanel header="Diario">
         <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
-          [response]="this.daily_participatory_processes_metrics?.history?.slice(0)?.reverse()"
+          [response]="this.daily_participatory_processes_metrics?.history"
           xName="Fecha"
           yName="Número de procesos participativos">
         </app-metrics-histogram>
