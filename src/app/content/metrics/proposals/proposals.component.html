@@ -28,6 +28,9 @@
   </div>
 
 </section>
+<section id="maps" *ngIf="!this.isEmpty">
+  <app-maps></app-maps>
+</section>
 
 
 <ng-template #still_loading>
