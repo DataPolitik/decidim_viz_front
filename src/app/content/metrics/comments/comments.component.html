@@ -1,30 +1,35 @@
+<h3>
+  Evolución temporal de comentarios
+</h3>
 
-  <h3>
-    Comentarios
-  </h3>
-  <section *ngIf="!this.daily_comment_loading && !this.accumulated_comment_loading; else still_loading" class="histogram_chart">
-    <div>
-      <p-tabView>
-        <p-tabPanel header="Acumulado">
-          <app-metrics-histogram
-            [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
-        </p-tabPanel>
-        <p-tabPanel header="Diario">
-          <app-metrics-histogram
-            [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
-            xName="Fecha"
-            yName="Número de propuestas">
-          </app-metrics-histogram>
+<section *ngIf="!this.daily_comment_loading && !this.accumulated_comment_loading; else still_loading" class="histogram_chart">
+  <div>
+    <p-tabView *ngIf="!this.isEmpty">
+      <p-tabPanel header="Acumulado">
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de comentarios">
+        </app-metrics-histogram>
       </p-tabPanel>
-    </p-tabView>
-    </div>
-
+      <p-tabPanel header="Diario">
+        <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
+          xName="Fecha"
+          yName="Número de comentarios">
+        </app-metrics-histogram>
+    </p-tabPanel>
+  </p-tabView>
+  <section *ngIf="this.isEmpty">
+    <p>
+      No se han encontrado resultados para las fechas indicadas.
+    </p>
   </section>
+  </div>
+
+</section>
 
 
-  <ng-template #still_loading>
-    <app-still-loading></app-still-loading>
-  </ng-template>
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

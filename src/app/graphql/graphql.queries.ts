@@ -69,6 +69,7 @@ const PARTICIPATORY_PROCESSES_COUNT = gql`
     }
 }`
 
+
 export {
   METRICS_USERS,
   METRICS_PROPOSALS,
