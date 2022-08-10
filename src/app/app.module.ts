@@ -30,7 +30,6 @@ import { InteractionsComponent } from './interactions/interactions.component';
 import { ProposalsComponent } from './content/metrics/proposals/proposals.component';
 import { ParticipativeProcessesComponent } from './content/metrics/participative-processes/participative-processes.component';
 import { CommentsComponent } from './content/metrics/comments/comments.component';
-import { UsersComponent } from './content/metrics/users/users.component';
 
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -49,8 +48,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     InteractionsComponent,
     ProposalsComponent,
     ParticipativeProcessesComponent,
-    CommentsComponent,
-    UsersComponent
+    CommentsComponent
   ],
   imports: [
     AgChartsAngularModule,

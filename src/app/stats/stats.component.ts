@@ -46,12 +46,12 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
   constructor(protected apollo: Apollo, protected statsService: StatsService) {}
 
-  user_loading: boolean = true;
+  daily_user_loading: boolean = true;
   daily_proposal_loading: boolean = true;
   daily_comment_loading: boolean = true;
   participatory_processes_loading: boolean = true;
 
-  user_metrics: Metrics | undefined;
+  daily_user_metrics: Metrics | undefined;
   daily_proposal_metrics: Metrics | undefined;
   daily_comment_metrics: Metrics | undefined;
   daily_participatory_processes_metrics: Metrics | undefined;
@@ -69,8 +69,8 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
   ngOnInit(): void {
     this.subs.add(execute_metrics_query(this.apollo, METRICS_USERS).subscribe(({ data, loading }) => {
-      this.user_loading = false;
-      this.user_metrics = data.metrics[0];
+      this.daily_user_loading = false;
+      this.daily_user_metrics = data.metrics[0];
     }));
 
     this.subs.add(execute_metrics_query(this.apollo, METRICS_PROPOSALS).subscribe(({ data, loading }) => {

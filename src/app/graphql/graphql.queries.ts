@@ -69,6 +69,28 @@ const PARTICIPATORY_PROCESSES_COUNT = gql`
     }
 }`
 
+const USERS = gql`
+query getUsers($dateFrom: String!, $dateTo: String!){
+  useers(filter: {publishedSince: $dateFrom, publishedBefore: $dateTo }, order: {publishedAt: "asc"}) {
+    id,
+    slug,
+    publishedAt,
+    title {
+      translations {
+        text
+      }
+    }
+  }
+}`
+
+const USERS_COUNT = gql`
+  query getUsersCount($dateTo: String!){
+    users {
+        id
+    }
+  }`
+
+
 
 export {
   METRICS_USERS,
@@ -76,5 +98,7 @@ export {
   METRICS_PARTICIPATORY_PROCESSES,
   METRICS_COMMENTS,
   PARTICIPATORY_PROCESSES,
-  PARTICIPATORY_PROCESSES_COUNT
+  PARTICIPATORY_PROCESSES_COUNT,
+  USERS,
+  USERS_COUNT
 }

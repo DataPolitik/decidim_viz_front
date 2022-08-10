@@ -6,8 +6,8 @@
     Datos generales
   </h3>
   <section id="summary">
-    <p *ngIf="!user_loading; else still_loading">
-      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.user_metrics?.count }} usuarios registrados.
+    <p *ngIf="!daily_user_loading; else still_loading">
+      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} usuarios registrados.
     </p>
     <p *ngIf="!daily_proposal_loading; else still_loading">
       <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} propuestas realizadas.
