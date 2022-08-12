@@ -20,6 +20,7 @@ import {
 
 
 import { execute_metrics_query } from '../utils/metrics.utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stats',
@@ -43,8 +44,19 @@ export class StatsComponent implements OnInit, OnDestroy  {
   public faComments = faComments;
   public faLayerGroup = faLayerGroup;
 
+  private graphTitle: string = ''
+  private graphContexText: string = ''
 
-  constructor(protected apollo: Apollo, protected statsService: StatsService) {}
+  constructor(protected apollo: Apollo,
+              protected statsService: StatsService,
+              protected translate_service: TranslateService) {
+    translate_service.get('stats.graph.title').subscribe((res: string) => {
+      this.graphTitle = res;
+    });
+    translate_service.get('stats.graph.context_text').subscribe((res: string) => {
+      this.graphContexText = res;
+    });
+  }
 
   daily_user_loading: boolean = true;
   daily_proposal_loading: boolean = true;
@@ -170,14 +182,14 @@ export class StatsComponent implements OnInit, OnDestroy  {
           tooltip: {
             renderer: (params) => {
               return {
-                content: `<b>Número de comentarios</b>: ${params.datum.datum.size}`,
+                content: `<b>`+this.graphContexText+`</b>: ${params.datum.datum.size}`,
               };
             },
           },
         },
       ],
       title: {
-        text: 'Proporción de lenguajes utilizados en Futureu',
+        text: this.graphTitle,
       }
     };
   }

@@ -6,12 +6,66 @@
       "proposals_done": "propuestas realizadas.",
       "categories": "categorías.",
       "started_participative_processes": "procesos participativos iniciados.",
-      "comments": "comentarios escritos en",
-      "languages": "idiomas diferentes."
+      "comments_language": "comentarios escritos en",
+      "proposals": "Propuestas",
+      "most_endorsed_proposals": "Propuestas con mayor apoyo",
+      "title": "Título",
+      "endorsements": "Apoyos",
+      "most_commented_proposals": "Propuestas más comentadas",
+      "areas_with_more_proposals": "Áreas con más propuestas",
+      "languages": "idiomas diferentes.",
+      "comments_written_language": "Idiomas de los comentarios",
+      "most_commented_categories": "Categorías más comentadas",
+      "comments": "Comentarios",
+      "graph": {
+        "title": "Proporción de lenguajes utilizados",
+        "context_text": "Número de comentarios"
+      }
   },
   "menu": {
       "demography": "Demografía",
       "metrics": "Métricas",
       "interactions": "Interacciones"
+  },
+  "still_loading":{
+    "message": "Cargando datos..."
+  },
+  "metrics":{
+    "metrics": "Métricas",
+    "showing_from": "Mostrando desde",
+    "showing_to": "Hasta el",
+    "date": "Fecha",
+    "accumulated": "Acumulado",
+    "daily": "Diario",
+    "menu": {
+      "proposals": "Propuestas",
+      "participative_proccesses": "Procesos participativos",
+      "comments": "Comentarios"
+    },
+    "proposals":{
+      "title": "Evolución temporal de propuestas",
+      "number_of_proposals": "Número de propuestas",
+      "geolocalization": "Geolocalización de las propuestas",
+      "exists": "Existen",
+      "geolocalization_proposals": "propuestas geolocalizadas."
+    },
+    "participative_proccesses":{
+      "title": "Evolución temporal de procesos participativos",
+      "number_of_proccesses": "Número de procesos participativos"
+    },
+    "comments":{
+      "title": "Evolución temporal de los comentarios",
+      "number_of_comments": "Número de comentarios"
+    }
+  },
+  "interactions":{
+    "title": "Interacciones",
+    "comments_network": "Red de comentarios",
+    "endorsements_network": "Red de apoyos",
+    "comments": "Comentarios",
+    "endorsements": "Apoyos"
+  },
+  "errors":{
+    "no_results": "No se han encontrado resultados para las fechas indicadas."
   }
 }

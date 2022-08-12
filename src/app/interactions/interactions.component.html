@@ -1,18 +1,18 @@
 <div id="interactions">
   <h2>
-    Interacciones
+    {{'interactions.title' | translate}}
   </h2>
 
 <div id="interaction_tabView">
   <p-tabView >
-    <p-tabPanel header="Red de comentarios">
+    <p-tabPanel header="{{'interactions.comments' | translate}}">
       <div class="graph">
-        <app-graph-component  [graphToCall]="this.commentsGraphType" [graphTitle]="this.commentsGraphTitle"></app-graph-component>
+        <app-graph-component  [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
       </div>
     </p-tabPanel>
-    <p-tabPanel header="Red de apoyos">
+    <p-tabPanel header="{{'interactions.endorsements' | translate}}">
       <div class="graph">
-        <app-graph-component   [graphToCall]="this.endorsementsGraphType" [graphTitle]="this.endorsementsGraphTitle"></app-graph-component>
+        <app-graph-component   [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
       </div>
     </p-tabPanel>
 

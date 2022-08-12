@@ -1,28 +1,28 @@
 <h3>
-  Evolución temporal de propuestas
+  {{'metrics.proposals.title' | translate }}
 </h3>
 
 <section *ngIf="!this.daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
   <div>
     <p-tabView *ngIf="!this.isEmpty">
-      <p-tabPanel header="Acumulado">
+      <p-tabPanel header="{{'metrics.accumulated' | translate}}">
         <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
           [response]="this.accumulated_proposal_metrics?.history?.slice(0)?.reverse()"
-          xName="Fecha"
-          yName="Número de propuestas">
+          xName="{{'metrics.date' | translate}}"
+          yName="{{'metrics.proposals.number_of_proposals' | translate}}">
         </app-metrics-histogram>
       </p-tabPanel>
-      <p-tabPanel header="Diario">
+      <p-tabPanel header="{{'metrics.daily' | translate}}">
         <app-metrics-histogram *ngIf="this.loadedGraphs == 2"
           [response]="this.daily_proposal_metrics?.history?.slice(0)?.reverse()"
-          xName="Fecha"
-          yName="Número de propuestas">
+          xName="{{'metrics.date' | translate}}"
+          yName="{{'metrics.proposals.number_of_proposals' | translate}}">
         </app-metrics-histogram>
     </p-tabPanel>
   </p-tabView>
   <section *ngIf="this.isEmpty">
     <p>
-      No se han encontrado resultados para las fechas indicadas.
+      {{'errors.no_results' | translate }}
     </p>
   </section>
   </div>
@@ -30,10 +30,10 @@
 </section>
 <section id="maps" *ngIf="!this.isEmpty">
   <h2>
-    Geolocalización de las propuestas
+    {{'metrics.proposals.geolocalization' | translate }}
   </h2>
   <p>
-    Existen {{this.numberOfGeographicalProposals}} propuestas geolocalizadas.
+    {{'metrics.proposals.exists' | translate }} {{this.numberOfGeographicalProposals}} {{'metrics.proposals.geolocalization_proposals' | translate }}
   </p>
   <app-maps #maps></app-maps>
 </section>

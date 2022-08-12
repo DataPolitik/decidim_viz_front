@@ -1,15 +1,15 @@
 <div id="history">
   <h2>
-    Métricas
+    {{"metrics.metrics" | translate }}
   </h2>
   <section id="filters">
-    <span>Mostrando desde </span>
+    <span>{{"metrics.showing_from" | translate }} </span>
     <p-calendar [(ngModel)]="dateFrom"
       dateFormat="dd/mm/yy"
       [readonlyInput]="true"
       [showIcon]="true"
       (ngModelChange)="this.dateChanged()"></p-calendar>
-    <span>Hasta el</span>
+    <span>{{"metrics.showing_to" | translate }}</span>
     <p-calendar [(ngModel)]="dateTo"
       dateFormat="dd/mm/yy"
       [readonlyInput]="true"
@@ -18,20 +18,20 @@
   </section>
   <div>
     <p-tabView>
-      <p-tabPanel header="Propuestas">
+      <p-tabPanel header="{{'metrics.menu.proposals' | translate }}">
         <app-metrics-proposals *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
           [dateTo]="this.dateTo">
         </app-metrics-proposals>
       </p-tabPanel>
-      <p-tabPanel header="Procesos participativos">
+      <p-tabPanel header="{{'metrics.menu.participative_proccesses' | translate }}">
         <app-metrics-participative-processes *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
           [dateTo]="this.dateTo">
         >
         </app-metrics-participative-processes>
       </p-tabPanel>
-      <p-tabPanel header="Comentarios">
+      <p-tabPanel header="{{'metrics.menu.comments' | translate }}">
         <app-metrics-comments *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
           [dateTo]="this.dateTo">

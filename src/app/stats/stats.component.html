@@ -19,22 +19,22 @@
       <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} {{'stats.started_participative_processes' | translate}}
     </p>
     <p *ngIf="!daily_comment_loading && languages; else still_loading">
-      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.languages' | translate}}
+      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.comments_language' | translate}}
     </p>
   </section>
 </div>
 <div>
-  <h2>Propuestas</h2>
+  <h2>{{'stats.proposals' | translate}}</h2>
   <section>
     <h3>
-      Propuestas con mayor apoyo <fa-icon [icon]="this.faHandsClapping"></fa-icon>
+      {{'stats.most_endorsed_proposals' | translate}} <fa-icon [icon]="this.faHandsClapping"></fa-icon>
     </h3>
     <div *ngIf="this.proposalsBySupports" class="demographic_table">
       <p-table [value]="this.proposalsBySupports">
         <ng-template pTemplate="header">
             <tr>
-                <th>Título</th>
-                <th>Apoyos</th>
+                <th>{{'stats.title' | translate}}</th>
+                <th>{{'stats.endorsements' | translate}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-proposal>
@@ -47,14 +47,14 @@
     </div>
 
     <h3>
-      Propuestas con más comentarios <fa-icon [icon]="this.faComments"></fa-icon>
+      {{'stats.most_commented_proposals' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
     </h3>
     <div *ngIf="this.proposalsByComments" class="demographic_table">
       <p-table [value]="this.proposalsByComments">
         <ng-template pTemplate="header">
             <tr>
-                <th>Título</th>
-                <th>Comentarios</th>
+                <th>{{'stats.title' | translate}}</th>
+                <th>{{'stats.comments' | translate}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-proposal>
@@ -67,14 +67,14 @@
     </div>
 
     <h3>
-      Áreas con más propuestas <fa-icon [icon]="this.faLayerGroup"></fa-icon>
+      {{'stats.areas_with_more_proposals' | translate}} <fa-icon [icon]="this.faLayerGroup"></fa-icon>
     </h3>
     <div *ngIf="this.categoriesByProposals"  class="demographic_table">
       <p-table [value]="this.categoriesByProposals">
         <ng-template pTemplate="header">
             <tr>
-                <th>Título</th>
-                <th>Número de propuestas</th>
+                <th>{{'stats.title' | translate}}</th>
+                <th>{{'stats.proposals' | translate}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-category>
@@ -88,9 +88,9 @@
   </section>
 </div>
 <div>
-  <h2>Comentarios</h2>
+  <h2>{{'stats.comments' | translate}}</h2>
   <h3>
-    Idiomas de los comentarios <fa-icon [icon]="this.faLanguage"></fa-icon>
+    {{'stats.comments_written_language' | translate}} <fa-icon [icon]="this.faLanguage"></fa-icon>
   </h3>
   <div class="container" class="demographic_table">
     <ag-charts-angular *ngIf="this.languageCount.length > 0 && this.languageTreeMapOptions"
@@ -100,14 +100,14 @@
     ></ag-charts-angular>
   </div>
   <h3>
-    Categorías más comentadas <fa-icon [icon]="this.faComments"></fa-icon>
+    {{'stats.most_commented_categories' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
   </h3>
   <div *ngIf="this.categoriesByComments; else still_loading" class="demographic_table">
     <p-table [value]="this.categoriesByComments">
       <ng-template pTemplate="header">
           <tr>
-              <th>Título</th>
-              <th>Número de comentarios</th>
+              <th>{{'stats.title' | translate}}</th>
+              <th>{{'stats.comments' | translate}}</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-category>
