@@ -1,25 +1,25 @@
 <div id="general_stats">
   <h2>
-    Demografía
+    {{'stats.demography' | translate}}
   </h2>
   <h3>
-    Datos generales
+    {{'stats.general_data' | translate}}
   </h3>
   <section id="summary">
     <p *ngIf="!daily_user_loading; else still_loading">
-      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} usuarios registrados.
+      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} {{'stats.users_registered' | translate}}
     </p>
     <p *ngIf="!daily_proposal_loading; else still_loading">
-      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} propuestas realizadas.
+      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} {{'stats.proposals_done' | translate}}
     </p>
     <p *ngIf="this.categories; else still_loading">
-      <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} categorías.
+      <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} {{'stats.categories' | translate}}
     </p>
     <p *ngIf="!participatory_processes_loading; else still_loading">
-      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} procesos participativos iniciados.
+      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} {{'stats.started_participative_processes' | translate}}
     </p>
     <p *ngIf="!daily_comment_loading && languages; else still_loading">
-      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} comentarios escritos en {{this.languages.length }} idiomas diferentes.
+      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.languages' | translate}}
     </p>
   </section>
 </div>

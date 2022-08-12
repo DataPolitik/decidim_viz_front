@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgChartsAngularModule } from 'ag-charts-angular';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
@@ -32,7 +32,8 @@ import { ParticipativeProcessesComponent } from './content/metrics/participative
 import { CommentsComponent } from './content/metrics/comments/comments.component';
 import { MapsComponent } from './maps/maps.component';
 import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-viewer.component';
-
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -69,9 +70,19 @@ PlotlyModule.plotlyjs = PlotlyJS;
     TabMenuModule,
     GraphQLModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+                 loader: {
+                     provide: TranslateLoader,
+                     useFactory: HttpLoaderFactory,
+                    deps: [HttpClient]
+                   }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {    return new TranslateHttpLoader(http);}

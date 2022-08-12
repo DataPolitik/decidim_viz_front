@@ -4,6 +4,8 @@ import {HttpLink} from 'apollo-angular/http';
 import { Apollo } from 'apollo-angular';
 import { DECIDIM_API } from './config/decidim_api';
 import { StatsService } from './services/stats.service';
+import {TranslateService} from "@ngx-translate/core";
+import { CONFIGS } from './config/config.dev';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +14,16 @@ import { StatsService } from './services/stats.service';
 })
 export class AppComponent {
   title = 'decidim_viz_front';
-
-
   public caller;
 
-
-
-
-
-
-  constructor(private stats: StatsService, private apollo: Apollo, private httpLink: HttpLink){
+  constructor(private stats: StatsService,
+              private apollo: Apollo,
+              private httpLink: HttpLink,
+              private translate: TranslateService){
     this.caller = stats.getEndorses;
 
+    translate.setDefaultLang(CONFIGS.defaultLanguage);
+    translate.use(CONFIGS.defaultLanguage);
 
     DECIDIM_API.forEach(api_details => {
       this.apollo.createNamed(api_details.name, {

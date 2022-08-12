@@ -1,0 +1,17 @@
+{
+  "stats": {
+      "demography": "Demografía",
+      "general_data": "Datos generales",
+      "users_registered": "usuarios registrados.",
+      "proposals_done": "propuestas realizadas.",
+      "categories": "categorías.",
+      "started_participative_processes": "procesos participativos iniciados.",
+      "comments": "comentarios escritos en",
+      "languages": "idiomas diferentes."
+  },
+  "menu": {
+      "demography": "Demografía",
+      "metrics": "Métricas",
+      "interactions": "Interacciones"
+  }
+}
