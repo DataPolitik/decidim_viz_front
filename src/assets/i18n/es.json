@@ -65,7 +65,13 @@
     "comments": "Comentarios",
     "endorsements": "Apoyos"
   },
+  "proposal_viewer":{
+    "proposal": "Propuesta",
+    "general_data": "Datos generales",
+    "comments": "Comentarios"
+  },
   "errors":{
-    "no_results": "No se han encontrado resultados para las fechas indicadas."
+    "no_results": "No se han encontrado resultados para las fechas indicadas.",
+    "no_proposal_found": "No se ha encontrado la propuesta. Es posible que nuestra base de datos aún no se haya actualizado."
   }
 }

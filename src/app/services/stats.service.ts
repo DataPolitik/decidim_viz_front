@@ -28,6 +28,10 @@ export class StatsService {
     return this.http.get<GraphResponse>(this.host + '/stats/comments');
   }
 
+  getProposal(idProposal: string){
+    return this.http.get<Proposal>(this.host + '/stats/proposal/' + idProposal);
+  }
+
   getEndorsesHistogram() {
     return this.http.get<Histogram>(this.host + '/stats/endorsements/histogram');
   }

@@ -1,7 +1,14 @@
-<h2>Propuesta: </h2>
-<h3>
-  Datos generales
-</h3>
-<h3>
-  Comentarios
-</h3>
+<section id="proposal_info" *ngIf="this.isFound && this.proposal">
+  <h2>{{ 'proposal_viewer.proposal' | translate }} : {{this.proposal.title_es}}</h2>
+  <h3>
+    {{ 'proposal_viewer.general_data' | translate }}
+  </h3>
+  <h3>
+    {{ 'proposal_viewer.comments' | translate }}
+  </h3>
+</section>
+<section id="not_found" *ngIf="!this.isFound">
+  <p>
+    {{'errors.no_proposal_found' | translate}}
+  </p>
+</section>
