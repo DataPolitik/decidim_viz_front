@@ -11,6 +11,7 @@ import XyzSource from 'ol/source/XYZ';
 import VectorSource from 'ol/source/Vector';
 import {Circle, Fill, Icon, Style} from 'ol/style';
 import { Proposal } from '../models/proposal.model';
+import { MAP_CONFIG } from '../config/map';
 
 
 
@@ -28,7 +29,7 @@ export class MapsComponent implements OnInit {
   view!: View;
   marker!: Feature;
 
-  private styleGreen = new Style({
+  private greenStyle = new Style({
     image: new Circle({
       radius: 7,
       fill: new Fill({
@@ -61,7 +62,7 @@ export class MapsComponent implements OnInit {
 
   private generateFeature(latitude: number, longitude: number, name: string): Feature{
     return new Feature({
-      geometry: new Point([latitude, longitude]),
+      geometry: new Point(fromLonLat([latitude, longitude])),
       name: name,
       population: 4000,
       rainfall: 500,
@@ -69,9 +70,18 @@ export class MapsComponent implements OnInit {
     });
   }
 
-  public addMarker(latitude: number, longitude: number, name: string, proposalToAdd: Proposal){
+  public addMarker(proposalToAdd: Proposal, showIcon = true){
+    const latitude: number = parseFloat(proposalToAdd.latitude);
+    const longitude: number = parseFloat(proposalToAdd.longitude);
+    const name = proposalToAdd.id.toString();
+
     const newMarker = this.generateFeature(latitude, longitude, name);
-    newMarker.setStyle(this.styleGreen);
+    if(showIcon){
+      newMarker.setStyle(this.iconStyle);
+    }else{
+      newMarker.setStyle(this.greenStyle);
+    }
+
     newMarker.setProperties(
       {
         'idProposal':proposalToAdd.id,
@@ -103,8 +113,8 @@ export class MapsComponent implements OnInit {
 
     // View and map
     this.view = new View({
-      center: fromLonLat([40,0]),
-      zoom: 4
+      center: fromLonLat([MAP_CONFIG.center_latitude, MAP_CONFIG.center_longitude]),
+      zoom: MAP_CONFIG.center_zoom
     });
 
     this.map = new Map({
@@ -148,8 +158,7 @@ export class MapsComponent implements OnInit {
       if (features.length > 0){
         const feature = features[0];
         const title = feature.get('title_es');
-        const url = feature.get('url');
-        const htmlText = '<b>${title}</b><br /><a href="${url}" title=${title}>Ver en instancia</a>';
+        const htmlText = '<b>'+title+'</b><br />';
         this.content.innerHTML = htmlText;
         this.overlay.setPosition(coordinate);
       }

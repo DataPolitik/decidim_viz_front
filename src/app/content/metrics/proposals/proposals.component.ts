@@ -1,6 +1,8 @@
-import { Component, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MapsComponent } from 'src/app/maps/maps.component';
 import { Metrics } from 'src/app/models/metrics.model';
+import { Proposal } from 'src/app/models/proposal.model';
 import { AbstractMetricsComponent } from '../abstract-metrics/abstract-metrics.component';
 
 @Component({
@@ -10,11 +12,15 @@ import { AbstractMetricsComponent } from '../abstract-metrics/abstract-metrics.c
 })
 export class ProposalsComponent extends AbstractMetricsComponent implements OnInit, OnDestroy {
 
+  @ViewChild(MapsComponent) maps!: MapsComponent;
+
   public accumulated_proposal_metrics: Metrics | undefined;
   public accumulated_proposal_loading: boolean = true;
+  public numberOfGeographicalProposals: number = 0;
 
   private accumulatedSubscription: Subscription | undefined;
   private dailySubscription: Subscription | undefined;
+  private proposalsSubscription: Subscription | undefined;
 
   override ngOnInit(): void {
     this.dateChanged();
@@ -30,7 +36,6 @@ export class ProposalsComponent extends AbstractMetricsComponent implements OnIn
         }
       )
 
-
       this.dailySubscription = this.statsService.getDailyNumberOfProposalsByRange(this.dateFromAsString, this.dateToAsString ).subscribe(
         (response: Metrics) => {
           this.daily_proposal_loading = false;
@@ -39,12 +44,27 @@ export class ProposalsComponent extends AbstractMetricsComponent implements OnIn
           this.isEmpty = response.history.length == 0;
         }
       )
+
+      this.proposalsSubscription = this.statsService.getProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
+        (response: Array<Proposal>) => {
+          response.forEach(
+            (proposal: Proposal) => {
+              if (proposal.latitude.length > 0 && proposal.longitude.length > 0){
+                this.maps.addMarker(proposal);
+                this.numberOfGeographicalProposals = this.numberOfGeographicalProposals + 1;
+              }
+            }
+          )
+        }
+      )
+
     }
   }
 
   override ngOnDestroy(): void {
     this.accumulatedSubscription?.unsubscribe();
     this.dailySubscription?.unsubscribe();
+    this.proposalsSubscription?.unsubscribe();
   }
 
 

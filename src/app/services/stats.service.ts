@@ -60,6 +60,11 @@ export class StatsService {
     return this.http.get<Metrics>(this.host + '/stats/proposals/by_date/cumulative/'+date_from+'/'+date_to+'/');
   }
 
+
+  getProposalsByRange(date_from: string, date_to:string){
+    return this.http.get<Array<Proposal>>(this.host + '/stats/proposals/by_date/'+date_from+'/'+date_to+'/');
+  }
+
   getDailyNumberOfCommentsByRange(date_from: string, date_to:string){
     return this.http.get<Metrics>(this.host + '/stats/comments/by_date/daily/'+date_from+'/'+date_to+'/');
   }

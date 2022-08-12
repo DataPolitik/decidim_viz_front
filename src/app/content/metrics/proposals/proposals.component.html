@@ -29,7 +29,13 @@
 
 </section>
 <section id="maps" *ngIf="!this.isEmpty">
-  <app-maps></app-maps>
+  <h2>
+    Geolocalización de las propuestas
+  </h2>
+  <p>
+    Existen {{this.numberOfGeographicalProposals}} propuestas geolocalizadas.
+  </p>
+  <app-maps #maps></app-maps>
 </section>
 
 
