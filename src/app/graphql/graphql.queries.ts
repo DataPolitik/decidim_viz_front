@@ -62,6 +62,13 @@ const PARTICIPATORY_PROCESSES = gql`
     }
 }`
 
+const GET_PROPOSAL_BY_ID = gql`
+query getProposalById($id: number!){
+  participatoryProcesses(filter: {publishedBefore: $dateTo }) {
+    id
+  }
+}`
+
 const PARTICIPATORY_PROCESSES_COUNT = gql`
   query getParticipatoryProcessesCount($dateTo: String!){
     participatoryProcesses(filter: {publishedBefore: $dateTo }) {
