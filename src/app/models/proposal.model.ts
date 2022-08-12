@@ -8,6 +8,9 @@ export interface Proposal{
   title_fr: string | null,
   title_en: string | null,
   endorsements: number,
+  url: string,
+  latitude: string,
+  longitude: string,
   category: number,
   comments: number
 }
