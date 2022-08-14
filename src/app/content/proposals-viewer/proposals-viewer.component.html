@@ -1,11 +1,45 @@
 <section id="proposal_info" *ngIf="this.isFound && this.proposal">
   <h2>{{ 'proposal_viewer.proposal' | translate }} : {{this.proposal.title_es}}</h2>
-  <h3>
-    {{ 'proposal_viewer.general_data' | translate }}
-  </h3>
+  <section>
+    <a [href]="this.proposal.url" title="{{ 'proposal_viewer.go_to' | translate }}">{{ 'proposal_viewer.go_to' | translate }}</a>
+  </section>
   <h3>
     {{ 'proposal_viewer.comments' | translate }}
   </h3>
+  <section *ngIf="this.comments_histogram">
+    <div>
+      {{ 'proposal_viewer.total_comments' | translate }}: {{this.comments_histogram.count}}
+    </div>
+    <div>
+      <h4>
+        {{ 'proposal_viewer.comments_histogram' | translate }}
+      </h4>
+      <app-metrics-histogram
+      [response]="this.comments_histogram.history.slice(0).reverse()"
+      xName="{{'proposal_viewer.date' | translate}}"
+      yName="{{'proposal_viewer.number_of_comments' | translate}}">
+    </app-metrics-histogram>
+    </div>
+  </section>
+  <h3>
+    {{ 'proposal_viewer.users' | translate }}
+  </h3>
+  <div *ngIf="this.users_histogram">
+    <p-table [value]="this.users_histogram.history">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>{{'proposal_viewer.user_name' | translate}}</th>
+              <th>{{'stats.comments' | translate}}</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+          <tr>
+              <td>{{user.name}}</td>
+              <td>{{user.count}}</td>
+          </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </section>
 <section id="not_found" *ngIf="!this.isFound">
   <p>

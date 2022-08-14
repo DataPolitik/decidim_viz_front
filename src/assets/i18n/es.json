@@ -67,8 +67,14 @@
   },
   "proposal_viewer":{
     "proposal": "Propuesta",
-    "general_data": "Datos generales",
-    "comments": "Comentarios"
+    "comments": "Comentarios",
+    "users": "Usuarios",
+    "go_to": "Ir a la página de la propuesta",
+    "date": "Fecha",
+    "number_of_comments": "Número de comentarios",
+    "total_comments": "Número de comentarios hasta la fecha: ",
+    "comments_histogram": "Histograma de comentarios",
+    "user_name": "Nombre de usuario"
   },
   "errors":{
     "no_results": "No se han encontrado resultados para las fechas indicadas.",

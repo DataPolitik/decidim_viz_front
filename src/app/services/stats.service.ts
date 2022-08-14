@@ -24,8 +24,16 @@ export class StatsService {
     return this.http.get<GraphResponse>(this.host + '/stats/endorsements');
   }
 
+  getUsersByProposal(idProposal: string | number){
+    return this.http.get<Metrics>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
+  }
+
   getComments() {
     return this.http.get<GraphResponse>(this.host + '/stats/comments');
+  }
+
+  getCommentsByProposal(idProposal: string | number) {
+    return this.http.get<Metrics>(this.host + '/stats/comments/by_proposal/'+idProposal+'/daily/');
   }
 
   getProposal(idProposal: string){
