@@ -34,6 +34,11 @@ import { MapsComponent } from './maps/maps.component';
 import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-viewer.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { FooterComponent } from './footer/footer.component';
+
+import {MenuModule} from 'primeng/menu';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -54,12 +59,14 @@ PlotlyModule.plotlyjs = PlotlyJS;
     ParticipativeProcessesComponent,
     CommentsComponent,
     MapsComponent,
-    ProposalsViewerComponent
+    ProposalsViewerComponent,
+    FooterComponent
   ],
   imports: [
     AgChartsAngularModule,
     BrowserModule,
     BrowserAnimationsModule,
+    DropdownModule,
     AppRoutingModule,
     CalendarModule,
     CheckboxModule,
@@ -71,6 +78,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     GraphQLModule,
     FontAwesomeModule,
     FormsModule,
+    MenuModule,
     TranslateModule.forRoot({
                  loader: {
                      provide: TranslateLoader,

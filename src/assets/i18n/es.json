@@ -76,6 +76,9 @@
     "comments_histogram": "Histograma de comentarios",
     "user_name": "Nombre de usuario"
   },
+  "footer":{
+    "language": "Idioma"
+  },
   "errors":{
     "no_results": "No se han encontrado resultados para las fechas indicadas.",
     "no_proposal_found": "No se ha encontrado la propuesta. Es posible que nuestra base de datos aún no se haya actualizado."

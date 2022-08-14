@@ -1,0 +1,10 @@
+#footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+:host ::ng-deep .p-dropdown {
+  border: 0 none;
+}

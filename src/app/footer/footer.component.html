@@ -1,0 +1,13 @@
+<div id="footer">
+  <div>
+    <p>
+      Futureu.europe.eu
+    </p>
+  </div>
+  <div>
+    <p-dropdown [options]="languageItems"
+                [(ngModel)]="currentLanguage"
+                optionLabel="name"
+                (onChange)="this.changeLanguage($event)"></p-dropdown>
+  </div>
+</div>
