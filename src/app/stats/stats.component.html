@@ -39,7 +39,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-proposal>
             <tr>
-                <td>{{proposal.title_es}}</td>
+              <td>
+                <a [routerLink]="['/proposal/' + proposal.id]"  title="Ir a la propuesta">{{proposal.title_es}}</a>
+              </td>
                 <td>{{proposal.endorsements}}</td>
             </tr>
         </ng-template>
@@ -59,7 +61,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-proposal>
             <tr>
-                <td>{{proposal.title_es}}</td>
+                <td>
+                  <a [routerLink]="['/proposal/' + proposal.id]"  title="Ir a la propuesta">{{proposal.title_es}}</a>
+                </td>
                 <td>{{proposal.comments}}</td>
             </tr>
         </ng-template>
