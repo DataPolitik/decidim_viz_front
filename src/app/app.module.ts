@@ -38,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
 
 import {MenuModule} from 'primeng/menu';
 import {DropdownModule} from 'primeng/dropdown';
+import { StatsDashboardComponent } from './stats/stats-dashboard/stats-dashboard.component';
 
 
 
@@ -61,7 +62,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     CommentsComponent,
     MapsComponent,
     ProposalsViewerComponent,
-    FooterComponent
+    FooterComponent,
+    StatsDashboardComponent
   ],
   imports: [
     AgChartsAngularModule,

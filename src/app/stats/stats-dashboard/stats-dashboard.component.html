@@ -1,0 +1,33 @@
+<h3 *ngIf="this.title && this.icon">
+  {{title | translate}} <fa-icon [icon]="this.icon"></fa-icon>
+</h3>
+<h3 *ngIf="this.title && !this.icon">
+  {{title | translate}}
+</h3>
+<div *ngIf="this.data" class="demographic_table">
+  <div *ngIf="this.gini" class="demographic_table--gini">
+    <span>{{'stats.gini' | translate}}: </span>
+    <span>{{this.gini | number:'1.3'}}</span>
+  </div>
+  <p-table [value]="this.data">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>{{'stats.title' | translate}}</th>
+            <th>{{countColumnName | translate}}</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-element>
+        <tr>
+          <td *ngIf="this.isProposal">
+            <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{element.title_es}}</a>
+          </td>
+          <td *ngIf="!this.isProposal">
+            {{element[titleColumn]}}
+          </td>
+          <td>
+            {{element[countColumn]}}
+          </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>

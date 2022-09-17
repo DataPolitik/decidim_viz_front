@@ -1,4 +1,6 @@
-export interface ProposalResponse{
+import { AbstractDash } from "./abstract_dash.model"
+
+export interface ProposalResponse extends AbstractDash{
   proposals: Array<Proposal>
 }
 

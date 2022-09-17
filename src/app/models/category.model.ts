@@ -1,4 +1,6 @@
-export interface CategoryResponse{
+import { AbstractDash } from "./abstract_dash.model"
+
+export interface CategoryResponse extends AbstractDash{
   categories: Array<Category>
 }
 

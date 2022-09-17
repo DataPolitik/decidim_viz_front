@@ -26,69 +26,37 @@
 <div>
   <h2>{{'stats.proposals' | translate}}</h2>
   <section>
-    <h3>
-      {{'stats.most_endorsed_proposals' | translate}} <fa-icon [icon]="this.faHandsClapping"></fa-icon>
-    </h3>
-    <div *ngIf="this.proposalsBySupports" class="demographic_table">
-      <p-table [value]="this.proposalsBySupports">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>{{'stats.title' | translate}}</th>
-                <th>{{'stats.endorsements' | translate}}</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-proposal>
-            <tr>
-              <td>
-                <a [routerLink]="['/proposal/' + proposal.id]"  title="Ir a la propuesta">{{proposal.title_es}}</a>
-              </td>
-                <td>{{proposal.endorsements}}</td>
-            </tr>
-        </ng-template>
-    </p-table>
-    </div>
+    <app-stats-dashboard
+      [data]="this.proposalsBySupports"
+      [gini]="this.proposalsBySupportsGini"
+      title="stats.most_endorsed_proposals"
+      countColumnName="stats.endorsements"
+      countColumn="endorsements"
+      titleColumn="title_es"
+      [icon]="this.faHandsClapping"
+    ></app-stats-dashboard>
 
-    <h3>
-      {{'stats.most_commented_proposals' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
-    </h3>
-    <div *ngIf="this.proposalsByComments" class="demographic_table">
-      <p-table [value]="this.proposalsByComments">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>{{'stats.title' | translate}}</th>
-                <th>{{'stats.comments' | translate}}</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-proposal>
-            <tr>
-                <td>
-                  <a [routerLink]="['/proposal/' + proposal.id]"  title="Ir a la propuesta">{{proposal.title_es}}</a>
-                </td>
-                <td>{{proposal.comments}}</td>
-            </tr>
-        </ng-template>
-      </p-table>
-    </div>
+    <app-stats-dashboard
+      [data]="this.proposalsByComments"
+      [gini]="this.proposalsByCommentsGini"
+      countColumnName="stats.comments"
+      title="stats.most_commented_proposals"
+      countColumn="comments"
+      titleColumn="title_es"
+      [icon]="this.faComments"
+    ></app-stats-dashboard>
 
-    <h3>
-      {{'stats.areas_with_more_proposals' | translate}} <fa-icon [icon]="this.faLayerGroup"></fa-icon>
-    </h3>
-    <div *ngIf="this.categoriesByProposals"  class="demographic_table">
-      <p-table [value]="this.categoriesByProposals">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>{{'stats.title' | translate}}</th>
-                <th>{{'stats.proposals' | translate}}</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-category>
-            <tr>
-                <td>{{category.name_es}}</td>
-                <td>{{category.categories}}</td>
-            </tr>
-        </ng-template>
-      </p-table>
-    </div>
+    <app-stats-dashboard
+      [data]="this.categoriesByProposals"
+      [gini]="this.categoriesGini"
+      countColumnName="stats.proposals"
+      title="stats.areas_with_more_proposals"
+      countColumn="categories"
+      titleColumn="name_es"
+      [icon]="this.faLayerGroup"
+      [isProposal]=false
+    ></app-stats-dashboard>
+
   </section>
 </div>
 <div>

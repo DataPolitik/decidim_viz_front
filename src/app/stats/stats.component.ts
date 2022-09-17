@@ -70,10 +70,13 @@ export class StatsComponent implements OnInit, OnDestroy  {
   comments_activities: Activities | undefined;
 
   categories: Array<Category> | undefined = undefined;
+  categoriesGini: number | undefined = undefined;
   categoriesByProposals: Array<Category> | undefined = undefined;
   categoriesByComments: Array<Category> | undefined = undefined;
   proposalsBySupports: Array<Proposal> | undefined = undefined;
+  proposalsBySupportsGini: number | undefined = undefined;
   proposalsByComments: Array<Proposal> | undefined = undefined;
+  proposalsByCommentsGini: number | undefined = undefined;
   languages: Array<string> | undefined = undefined;
   languageCount: Array<{name:string, size: number, color: number}> = [];
   categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
@@ -102,10 +105,12 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
     this.subs.add( this.statsService.getProposalsBySupports(15).subscribe((response: ProposalResponse) => {
       this.proposalsBySupports = response.proposals;
+      this.proposalsBySupportsGini = response.gini;
     }));
 
     this.subs.add( this.statsService.getProposalsByComments(15).subscribe((response: ProposalResponse) => {
       this.proposalsByComments = response.proposals;
+      this.proposalsByCommentsGini = response.gini;
     }));
 
     this.subs.add( this.statsService.getCategories().subscribe((response: CategoryResponse) => {
@@ -119,6 +124,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
     this.subs.add( this.statsService.getCategoriesByProposals(15).subscribe((response: CategoryResponse) => {
       this.categoriesByProposals = response.categories;
+      this.categoriesGini = response.gini;
     }));
 
     this.subs.add(this.statsService.getLanguages().subscribe(

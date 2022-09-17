@@ -17,6 +17,7 @@
       "comments_written_language": "Idiomas de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
       "comments": "Comentarios",
+      "gini": "Índice de Gini",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"
