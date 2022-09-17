@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DemografiaComponent } from './demografia.component';
+import { StatsContentComponent } from './stats-content.component';
 
-describe('DemografiaComponent', () => {
-  let component: DemografiaComponent;
-  let fixture: ComponentFixture<DemografiaComponent>;
+describe('StatsComponent', () => {
+  let component: StatsContentComponent;
+  let fixture: ComponentFixture<StatsContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DemografiaComponent ]
+      declarations: [ StatsContentComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DemografiaComponent);
+    fixture = TestBed.createComponent(StatsContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

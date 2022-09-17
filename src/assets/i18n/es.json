@@ -1,6 +1,6 @@
 {
   "stats": {
-      "demography": "Demografía",
+      "stats": "Estadísticas",
       "general_data": "Datos generales",
       "users_registered": "usuarios registrados.",
       "proposals_done": "propuestas realizadas.",
@@ -23,7 +23,7 @@
       }
   },
   "menu": {
-      "demography": "Demografía",
+      "stats": "Estadísticas",
       "activities": "Actividades",
       "interactions": "Interacciones"
   },

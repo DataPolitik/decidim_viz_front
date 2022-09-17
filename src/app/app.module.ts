@@ -22,7 +22,7 @@ import { GraphQLModule } from './graphql.module';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ActivitiesHistogramComponent } from './histograms/activities/activities-histograms.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
-import { DemografiaComponent } from './content/demografia/demografia.component';
+import { StatsContentComponent } from './content/stats/stats-content.component';
 import { ActivitiesComponent } from './content/activities/activities.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StillLoadingComponent } from './still-loading/still-loading.component';
@@ -51,7 +51,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     StatsComponent,
     ActivitiesHistogramComponent,
     NavigationMenuComponent,
-    DemografiaComponent,
+    StatsComponent,
+    StatsContentComponent,
     ActivitiesComponent,
     StillLoadingComponent,
     InteractionsComponent,
