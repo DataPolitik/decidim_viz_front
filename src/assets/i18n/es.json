@@ -24,14 +24,14 @@
   },
   "menu": {
       "demography": "Demografía",
-      "metrics": "Métricas",
+      "activities": "Métricas",
       "interactions": "Interacciones"
   },
   "still_loading":{
     "message": "Cargando datos..."
   },
-  "metrics":{
-    "metrics": "Métricas",
+  "activities":{
+    "activities": "Actividad",
     "showing_from": "Mostrando desde",
     "showing_to": "Hasta el",
     "date": "Fecha",

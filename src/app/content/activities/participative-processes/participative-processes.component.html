@@ -1,0 +1,32 @@
+<h3>
+  {{'activities.participative_proccesses.title' | translate }}
+</h3>
+<section *ngIf="!this.participatory_processes_loading; else still_loading" class="histogram_chart">
+  <div>
+    <p-tabView *ngIf="!this.isEmpty">
+      <p-tabPanel header="{{'activities.accumulated' | translate}}">
+        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.accumulated_participatory_processes_activities?.history"
+          xName="{{'activities.date' | translate }}"
+          yName="{{'activities.participative_proccesses.number_of_proccesses' | translate}}">
+        </app-activities-histogram>
+      </p-tabPanel>
+      <p-tabPanel header="{{'activities.daily' | translate}}">
+        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.daily_participatory_processes_activities?.history"
+          xName="{{'activities.date' | translate }}"
+          yName="{{'activities.participative_proccesses.number_of_proccesses' | translate}}">
+        </app-activities-histogram>
+    </p-tabPanel>
+  </p-tabView>
+  <section *ngIf="this.isEmpty">
+    <p>
+      {{'errors.no_results' | translate }}
+    </p>
+  </section>
+  </div>
+</section>
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

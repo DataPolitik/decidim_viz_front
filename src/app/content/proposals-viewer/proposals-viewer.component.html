@@ -14,11 +14,11 @@
       <h4>
         {{ 'proposal_viewer.comments_histogram' | translate }}
       </h4>
-      <app-metrics-histogram
+      <app-activities-histogram
       [response]="this.comments_histogram.history.slice(0).reverse()"
       xName="{{'proposal_viewer.date' | translate}}"
       yName="{{'proposal_viewer.number_of_comments' | translate}}">
-    </app-metrics-histogram>
+    </app-activities-histogram>
     </div>
   </section>
   <h3>

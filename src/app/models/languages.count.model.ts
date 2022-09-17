@@ -1,4 +1,4 @@
-import { Metrics_History } from "./metrics_history.model";
+import { Activities_History } from "./activities_history.model";
 
 export interface LanguagesCount{
   languages: Array<LanguageCount>

@@ -1,0 +1,46 @@
+<div id="history">
+  <h2>
+    {{"activities.activities" | translate }}
+  </h2>
+  <section id="filters">
+    <span>{{"activities.showing_from" | translate }} </span>
+    <p-calendar [(ngModel)]="dateFrom"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      (ngModelChange)="this.dateChanged()"></p-calendar>
+    <span>{{"activities.showing_to" | translate }}</span>
+    <p-calendar [(ngModel)]="dateTo"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      (ngModelChange)="this.dateChanged()"></p-calendar>
+  </section>
+  <div>
+    <p-tabView>
+      <p-tabPanel header="{{'activities.menu.proposals' | translate }}">
+        <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
+        </app-activities-proposals>
+      </p-tabPanel>
+      <p-tabPanel header="{{'activities.menu.participative_proccesses' | translate }}">
+        <app-activities-participative-processes *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
+        >
+        </app-activities-participative-processes>
+      </p-tabPanel>
+      <p-tabPanel header="{{'activities.menu.comments' | translate }}">
+        <app-activities-comments *ngIf="this.dateFrom && this.dateTo"
+          [dateFrom]="this.dateFrom"
+          [dateTo]="this.dateTo">
+        </app-activities-comments>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

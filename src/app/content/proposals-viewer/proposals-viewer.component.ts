@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Metrics } from 'src/app/models/metrics.model';
+import { Activities } from 'src/app/models/activities.model';
 import { Proposal } from 'src/app/models/proposal.model';
 import { StatsService } from 'src/app/services/stats.service';
 
@@ -14,8 +14,8 @@ export class ProposalsViewerComponent implements OnInit, OnDestroy {
 
   public proposal: Proposal | undefined;
   public isFound : boolean | undefined = undefined;
-  public comments_histogram: Metrics | undefined;
-  public users_histogram: Metrics | undefined;
+  public comments_histogram: Activities | undefined;
+  public users_histogram: Activities | undefined;
 
   private id: string | null;
   private proposalSubscription!: Subscription;

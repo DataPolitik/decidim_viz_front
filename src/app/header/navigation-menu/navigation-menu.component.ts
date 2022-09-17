@@ -15,7 +15,7 @@ export class NavigationMenuComponent implements OnInit {
   public graphTitle: string = '';
   public activeIndex = 0;
 
-  private buildMenuItems(demography: string, metrics: string, interactions: string){
+  private buildMenuItems(demography: string, activities: string, interactions: string){
     this.menuItems = [
       {
         label: demography,
@@ -23,7 +23,7 @@ export class NavigationMenuComponent implements OnInit {
         routerLink: ['/demografia']
       },
       {
-        label: metrics,
+        label: activities,
         icon: 'pi pi-fw pi-chart-pie',
         routerLink: ['/metricas']
       },
@@ -37,27 +37,27 @@ export class NavigationMenuComponent implements OnInit {
 
   constructor(private translate_service: TranslateService) {
     let demographyName = '';
-    let metricsName = '';
+    let activitiesName = '';
     let interactionsName = '';
 
     translate_service.get('menu.demography').subscribe((res: string) => {
       demographyName = res;
-      if(demographyName.length > 0 && metricsName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(demographyName, metricsName, interactionsName);
+      if(demographyName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
+        this.buildMenuItems(demographyName, activitiesName, interactionsName);
       }
     });
 
-    translate_service.get('menu.metrics').subscribe((res: string) => {
-      metricsName = res;
-      if(demographyName.length > 0 && metricsName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(demographyName, metricsName, interactionsName);
+    translate_service.get('menu.activities').subscribe((res: string) => {
+      activitiesName = res;
+      if(demographyName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
+        this.buildMenuItems(demographyName, activitiesName, interactionsName);
       }
     });
 
     translate_service.get('menu.interactions').subscribe((res: string) => {
       interactionsName = res;
-      if(demographyName.length > 0 && metricsName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(demographyName, metricsName, interactionsName);
+      if(demographyName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
+        this.buildMenuItems(demographyName, activitiesName, interactionsName);
       }
     });
   }

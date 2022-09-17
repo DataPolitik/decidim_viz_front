@@ -7,7 +7,7 @@ import { CategoryResponse } from '../models/category.model';
 import { GraphResponse } from '../models/graph_response.model';
 import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
-import { Metrics } from '../models/metrics.model';
+import { Activities } from '../models/activities.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
 
 
@@ -25,7 +25,7 @@ export class StatsService {
   }
 
   getUsersByProposal(idProposal: string | number){
-    return this.http.get<Metrics>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
+    return this.http.get<Activities>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
   }
 
   getComments() {
@@ -33,7 +33,7 @@ export class StatsService {
   }
 
   getCommentsByProposal(idProposal: string | number) {
-    return this.http.get<Metrics>(this.host + '/stats/comments/by_proposal/'+idProposal+'/daily/');
+    return this.http.get<Activities>(this.host + '/stats/comments/by_proposal/'+idProposal+'/daily/');
   }
 
   getProposal(idProposal: string){
@@ -65,11 +65,11 @@ export class StatsService {
   }
 
   getDailyNumberOfProposalsByRange(date_from: string, date_to:string){
-    return this.http.get<Metrics>(this.host + '/stats/proposals/by_date/daily/'+date_from+'/'+date_to+'/');
+    return this.http.get<Activities>(this.host + '/stats/proposals/by_date/daily/'+date_from+'/'+date_to+'/');
   }
 
   getAccumulatedNumberOfProposalsByRange(date_from: string, date_to:string){
-    return this.http.get<Metrics>(this.host + '/stats/proposals/by_date/cumulative/'+date_from+'/'+date_to+'/');
+    return this.http.get<Activities>(this.host + '/stats/proposals/by_date/cumulative/'+date_from+'/'+date_to+'/');
   }
 
 
@@ -78,11 +78,11 @@ export class StatsService {
   }
 
   getDailyNumberOfCommentsByRange(date_from: string, date_to:string){
-    return this.http.get<Metrics>(this.host + '/stats/comments/by_date/daily/'+date_from+'/'+date_to+'/');
+    return this.http.get<Activities>(this.host + '/stats/comments/by_date/daily/'+date_from+'/'+date_to+'/');
   }
 
   getAccumulatedNumberOfCommentsByRange(date_from: string, date_to:string){
-    return this.http.get<Metrics>(this.host + '/stats/comments/by_date/cumulative/'+date_from+'/'+date_to+'/');
+    return this.http.get<Activities>(this.host + '/stats/comments/by_date/cumulative/'+date_from+'/'+date_to+'/');
   }
 
   getCategories(){

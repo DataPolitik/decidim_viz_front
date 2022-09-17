@@ -20,16 +20,16 @@ import { InteractionHistogramComponent } from './histograms/interactions/interac
 import { StatsComponent } from './stats/stats.component';
 import { GraphQLModule } from './graphql.module';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { MetricsHistogramComponent } from './histograms/metrics/metrics-histograms.component';
+import { ActivitiesHistogramComponent } from './histograms/activities/activities-histograms.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
 import { DemografiaComponent } from './content/demografia/demografia.component';
-import { MetricsComponent } from './content/metrics/metrics.component';
+import { ActivitiesComponent } from './content/activities/activities.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StillLoadingComponent } from './still-loading/still-loading.component';
 import { InteractionsComponent } from './interactions/interactions.component';
-import { ProposalsComponent } from './content/metrics/proposals/proposals.component';
-import { ParticipativeProcessesComponent } from './content/metrics/participative-processes/participative-processes.component';
-import { CommentsComponent } from './content/metrics/comments/comments.component';
+import { ProposalsComponent } from './content/activities/proposals/proposals.component';
+import { ParticipativeProcessesComponent } from './content/activities/participative-processes/participative-processes.component';
+import { CommentsComponent } from './content/activities/comments/comments.component';
 import { MapsComponent } from './maps/maps.component';
 import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-viewer.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -49,10 +49,10 @@ PlotlyModule.plotlyjs = PlotlyJS;
     GraphComponentComponent,
     InteractionHistogramComponent,
     StatsComponent,
-    MetricsHistogramComponent,
+    ActivitiesHistogramComponent,
     NavigationMenuComponent,
     DemografiaComponent,
-    MetricsComponent,
+    ActivitiesComponent,
     StillLoadingComponent,
     InteractionsComponent,
     ProposalsComponent,
@@ -93,4 +93,4 @@ PlotlyModule.plotlyjs = PlotlyJS;
 export class AppModule { }
 
 // required for AOT compilation
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {    return new TranslateHttpLoader(http);}
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {    return new TranslateHttpLoader(http, './assets/i18n/');}

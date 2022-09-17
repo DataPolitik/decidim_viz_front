@@ -1,0 +1,32 @@
+<h3>
+  Usarios
+</h3>
+<section *ngIf="!this.daily_user_loading; else still_loading" class="histogram_chart">
+  <div>
+    <p-tabView *ngIf="!this.isEmpty">
+      <p-tabPanel header="Acumulado">
+        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.accumulated_users_activities?.history"
+          xName="Fecha"
+          yName="Número de procesos participativos">
+        </app-activities-histogram>
+      </p-tabPanel>
+      <p-tabPanel header="Diario">
+        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+          [response]="this.daily_user_activities?.history"
+          xName="Fecha"
+          yName="Número de procesos participativos">
+        </app-activities-histogram>
+    </p-tabPanel>
+  </p-tabView>
+  <section *ngIf="this.isEmpty">
+    <p>
+      No se han encontrado resultados para las fechas indicadas.
+    </p>
+  </section>
+  </div>
+</section>
+
+<ng-template #still_loading>
+  <app-still-loading></app-still-loading>
+</ng-template>

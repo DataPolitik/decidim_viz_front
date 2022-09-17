@@ -7,11 +7,11 @@
   </h3>
   <section *ngIf="!user_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-        [response]="this.user_metrics?.history?.slice(0)?.reverse()"
+      <app-activities-histogram
+        [response]="this.user_activities?.history?.slice(0)?.reverse()"
         xName="Fecha"
         yName="Número de usuarios">
-      </app-metrics-histogram>
+      </app-activities-histogram>
     </div>
 
   </section>
@@ -22,11 +22,11 @@
 
   <section *ngIf="!proposal_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-      [response]="this.proposal_metrics?.history?.slice(0)?.reverse()"
+      <app-activities-histogram
+      [response]="this.proposal_activities?.history?.slice(0)?.reverse()"
       xName="Fecha"
       yName="Número de propuestas">
-      </app-metrics-histogram>
+      </app-activities-histogram>
     </div>
 
   </section>
@@ -36,11 +36,11 @@
   </h3>
   <section *ngIf="!participatory_processes_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-      [response]="this.participatory_processes_metrics?.history?.slice(0)?.reverse()"
+      <app-activities-histogram
+      [response]="this.participatory_processes_activities?.history?.slice(0)?.reverse()"
       xName="Fecha"
       yName="Número de procesos participativos">
-      </app-metrics-histogram>
+      </app-activities-histogram>
     </div>
 
   </section>
@@ -50,11 +50,11 @@
   </h3>
   <section *ngIf="!comments_loading; else still_loading" class="histogram_chart">
     <div>
-      <app-metrics-histogram
-      [response]="this.comments_metrics?.history?.slice(0)?.reverse()"
+      <app-activities-histogram
+      [response]="this.comments_activities?.history?.slice(0)?.reverse()"
       xName="Fecha"
       yName="Número de comentarios">
-      </app-metrics-histogram>
+      </app-activities-histogram>
     </div>
 
   </section>
