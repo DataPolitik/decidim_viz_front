@@ -6,9 +6,9 @@ import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-v
 import { InteractionsComponent } from './interactions/interactions.component';
 
 const routes: Routes = [
-  { path: '', component: StatsContentComponent },
-  { path: 'stats', component: StatsContentComponent },
+  { path: '', component: ActivitiesComponent },
   { path: 'activities', component: ActivitiesComponent },
+  { path: 'stats', component: StatsContentComponent },
   { path: 'interacciones', component: InteractionsComponent },
   { path: 'proposal/:id', component: ProposalsViewerComponent },
 ];
