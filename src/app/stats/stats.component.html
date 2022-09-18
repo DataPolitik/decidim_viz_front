@@ -27,6 +27,7 @@
   <h2>{{'stats.proposals' | translate}}</h2>
   <section>
     <app-stats-dashboard
+      *ngIf="this.proposalsBySupports"
       [data]="this.proposalsBySupports"
       [gini]="this.proposalsBySupportsGini"
       title="stats.most_endorsed_proposals"
@@ -37,6 +38,7 @@
     ></app-stats-dashboard>
 
     <app-stats-dashboard
+      *ngIf="this.proposalsByComments"
       [data]="this.proposalsByComments"
       [gini]="this.proposalsByCommentsGini"
       countColumnName="stats.comments"
@@ -47,6 +49,7 @@
     ></app-stats-dashboard>
 
     <app-stats-dashboard
+      *ngIf="this.categoriesByProposals"
       [data]="this.categoriesByProposals"
       [gini]="this.categoriesGini"
       countColumnName="stats.proposals"
