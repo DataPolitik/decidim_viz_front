@@ -32,7 +32,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   private languageCountSubject = new BehaviorSubject<number>(0);
   private languageCountObservable = this.languageCountSubject.asObservable();
 
-  public languageTreeMapOptions: AgHierarchyChartOptions | undefined;
+  public languageTreeMapOptions: AgChartOptions | undefined;
   public categoryCommentsTreeMapOptions: AgHierarchyChartOptions | undefined;
 
   public faUsers = faUsers;
@@ -70,7 +70,8 @@ export class StatsComponent implements OnInit, OnDestroy  {
   comments_metrics: Activities | undefined;
 
   categories: Array<Category> | undefined = undefined;
-  categoriesGini: number | undefined = undefined;
+  categoriesByProposalsGini: number | undefined = undefined;
+  categoriesByCommentsGini: number | undefined = undefined;
   categoriesByProposals: Array<Category> | undefined = undefined;
   categoriesByComments: Array<Category> | undefined = undefined;
   proposalsBySupports: Array<Proposal> | undefined = undefined;
@@ -119,12 +120,13 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
     this.subs.add( this.statsService.getCategoriesByComments().subscribe((response: CategoryResponse) => {
       this.categoriesByComments = response.categories;
+      this.categoriesByCommentsGini = response.gini;
     }));
 
 
     this.subs.add( this.statsService.getCategoriesByProposals(15).subscribe((response: CategoryResponse) => {
       this.categoriesByProposals = response.categories;
-      this.categoriesGini = response.gini;
+      this.categoriesByProposalsGini = response.gini;
     }));
 
     this.subs.add(this.statsService.getLanguages().subscribe(
@@ -158,40 +160,14 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
 
   processLanguageTreemap() {
-    const languageTreeMapData = {
-      name: 'Root',
-      children: this.languageCount
-    }
     this.languageTreeMapOptions = {
-      type: 'hierarchy',
-      data: languageTreeMapData,
+      data: this.languageCount,
       series: [
         {
-          type: 'treemap',
+          type: 'pie',
           labelKey: 'name',
-          sizeKey: 'size',
-          colorKey: undefined,
-          labels: {
-            small:{
-              enabled: true,
-              fontSize: 10,
-            },
-            medium:{
-              enabled: true,
-              fontSize: 10,
-            },
-            large:{
-              enabled: true,
-              fontSize: 30,
-            }
-          },
-          tooltip: {
-            renderer: (params) => {
-              return {
-                content: `<b>`+this.graphContexText+`</b>: ${params.datum.datum.size}`,
-              };
-            },
-          },
+          angleKey: 'size',
+          innerRadiusOffset: -70,
         },
       ],
       title: {

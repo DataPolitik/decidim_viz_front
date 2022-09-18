@@ -51,7 +51,7 @@
     <app-stats-dashboard
       *ngIf="this.categoriesByProposals"
       [data]="this.categoriesByProposals"
-      [gini]="this.categoriesGini"
+      [gini]="this.categoriesByProposalsGini"
       countColumnName="stats.proposals"
       title="stats.areas_with_more_proposals"
       countColumn="categories"
@@ -78,20 +78,17 @@
     {{'stats.most_commented_categories' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
   </h3>
   <div *ngIf="this.categoriesByComments; else still_loading" class="demographic_table">
-    <p-table [value]="this.categoriesByComments">
-      <ng-template pTemplate="header">
-          <tr>
-              <th>{{'stats.title' | translate}}</th>
-              <th>{{'stats.comments' | translate}}</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-category>
-          <tr>
-              <td>{{category.name_en}}</td>
-              <td>{{category.comments}}</td>
-          </tr>
-      </ng-template>
-    </p-table>
+    <app-stats-dashboard
+      *ngIf="this.categoriesByComments"
+      [data]="this.categoriesByComments"
+      [gini]="this.categoriesByCommentsGini"
+      countColumnName="stats.proposals"
+      title="stats.most_commented_categories"
+      countColumn="comments"
+      titleColumn="name_en"
+      [icon]="this.faComments"
+      [isProposal]=false
+    ></app-stats-dashboard>
   </div>
 </div>
 
