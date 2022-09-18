@@ -3,7 +3,7 @@ import { groupBy, of, reduce, mergeMap } from 'rxjs';
 import { PARTICIPATORY_PROCESSES, PARTICIPATORY_PROCESSES_COUNT } from 'src/app/graphql/graphql.queries';
 import { Activities } from 'src/app/models/activities.model';
 import { Activities_History } from 'src/app/models/activities_history.model';
-import { execute_activities_query, groupByAndCount } from 'src/app/utils/activities.utils';
+import { execute_metrics_query, groupByAndCount } from 'src/app/utils/metrics.utils';
 import { AbstractActivitiesComponent } from '../abstract-activities/abstract-activities.component';
 
 @Component({
@@ -13,13 +13,14 @@ import { AbstractActivitiesComponent } from '../abstract-activities/abstract-act
 })
 export class ParticipativeProcessesComponent extends AbstractActivitiesComponent implements OnInit {
   public accumulated_participatory_processes_activities : Activities | undefined;
+  public daily_participatory_processes_activities : Activities | undefined;
 
   private getHistoricalData(countData: number){
     const parameters={
       dateFrom: this.dateFromAsString,
       dateTo: this.dateToAsString
     }
-    this.subs.add(execute_activities_query(this.apollo, PARTICIPATORY_PROCESSES, parameters).subscribe(({ data, loading }) => {
+    this.subs.add(execute_metrics_query(this.apollo, PARTICIPATORY_PROCESSES, parameters).subscribe(({ data, loading }) => {
       const cleanedData: any = [];
       this.isEmpty = data.participatoryProcesses.length == 0;
       for(let i=0; i < data.participatoryProcesses.length; ++i){
@@ -77,7 +78,7 @@ export class ParticipativeProcessesComponent extends AbstractActivitiesComponent
         dateTo: this.dateFromAsString,
       }
 
-      this.subs.add(execute_activities_query(this.apollo, PARTICIPATORY_PROCESSES_COUNT, parameters).subscribe(({ data, loading }) => {
+      this.subs.add(execute_metrics_query(this.apollo, PARTICIPATORY_PROCESSES_COUNT, parameters).subscribe(({ data, loading }) => {
         const countData = data.participatoryProcesses.length;
         this.getHistoricalData(countData);
       }));

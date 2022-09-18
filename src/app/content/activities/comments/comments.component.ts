@@ -10,7 +10,7 @@ import { AbstractActivitiesComponent } from '../abstract-activities/abstract-act
 })
 export class CommentsComponent extends AbstractActivitiesComponent implements OnInit, OnDestroy {
 
-  public accumulated_comment_activities: Activities | undefined;
+  public accumulated_comment_metrics: Activities | undefined;
   public accumulated_comment_loading: boolean = true;
 
   private accumulatedSubscription: Subscription | undefined;
@@ -24,7 +24,7 @@ export class CommentsComponent extends AbstractActivitiesComponent implements On
       this.accumulatedSubscription = this.statsService.getAccumulatedNumberOfCommentsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
         (response: Activities) => {
           this.accumulated_comment_loading = false;
-          this.accumulated_comment_activities = response;
+          this.accumulated_comment_metrics = response;
           this.loadedGraphs = this.loadedGraphs + 1;
           this.isEmpty = response.history.length == 0;
         }
@@ -34,7 +34,7 @@ export class CommentsComponent extends AbstractActivitiesComponent implements On
       this.dailySubscription = this.statsService.getDailyNumberOfCommentsByRange(this.dateFromAsString, this.dateToAsString ).subscribe(
         (response: Activities) => {
           this.daily_comment_loading = false;
-          this.daily_comment_activities = response;
+          this.daily_comment_metrics = response;
           this.loadedGraphs = this.loadedGraphs + 1;
           this.isEmpty = response.history.length == 0;
         }

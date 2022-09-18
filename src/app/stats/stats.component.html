@@ -7,19 +7,19 @@
   </h3>
   <section id="summary">
     <p *ngIf="!daily_user_loading; else still_loading">
-      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_activities?.count }} {{'stats.users_registered' | translate}}
+      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} {{'stats.users_registered' | translate}}
     </p>
     <p *ngIf="!daily_proposal_loading; else still_loading">
-      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_activities?.count }} {{'stats.proposals_done' | translate}}
+      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} {{'stats.proposals_done' | translate}}
     </p>
     <p *ngIf="this.categories; else still_loading">
       <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} {{'stats.categories' | translate}}
     </p>
     <p *ngIf="!participatory_processes_loading; else still_loading">
-      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_activities?.count }} {{'stats.started_participative_processes' | translate}}
+      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} {{'stats.started_participative_processes' | translate}}
     </p>
     <p *ngIf="!daily_comment_loading && languages; else still_loading">
-      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_activities?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.comments_language' | translate}}
+      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.comments_language' | translate}}
     </p>
   </section>
 </div>

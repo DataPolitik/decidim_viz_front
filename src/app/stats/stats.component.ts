@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { AgChartOptions, AgHierarchyChartOptions } from 'ag-charts-community';
 import { Apollo } from 'apollo-angular';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { ACTIVITIES_COMMENTS, ACTIVITIES_PARTICIPATORY_PROCESSES, ACTIVITIES_PROPOSALS, ACTIVITIES_USERS } from '../graphql/graphql.queries';
+import { METRICS_COMMENTS, METRICS_PARTICIPATORY_PROCESSES, METRICS_PROPOSALS, METRICS_USERS } from '../graphql/graphql.queries';
 import { Category, CategoryResponse } from '../models/category.model';
 import { LanguagesCount } from '../models/languages.count.model';
 import { Activities } from '../models/activities.model';
@@ -19,7 +19,7 @@ import {
   faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 
 
-import { execute_activities_query } from '../utils/activities.utils';
+import { execute_metrics_query } from '../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -63,11 +63,11 @@ export class StatsComponent implements OnInit, OnDestroy  {
   daily_comment_loading: boolean = true;
   participatory_processes_loading: boolean = true;
 
-  daily_user_activities: Activities | undefined;
-  daily_proposal_activities: Activities | undefined;
-  daily_comment_activities: Activities | undefined;
-  daily_participatory_processes_activities: Activities | undefined;
-  comments_activities: Activities | undefined;
+  daily_user_metrics: Activities | undefined;
+  daily_proposal_metrics: Activities | undefined;
+  daily_comment_metrics: Activities | undefined;
+  daily_participatory_processes_metrics: Activities | undefined;
+  comments_metrics: Activities | undefined;
 
   categories: Array<Category> | undefined = undefined;
   categoriesGini: number | undefined = undefined;
@@ -83,24 +83,24 @@ export class StatsComponent implements OnInit, OnDestroy  {
 
 
   ngOnInit(): void {
-    this.subs.add(execute_activities_query(this.apollo, ACTIVITIES_USERS).subscribe(({ data, loading }) => {
+    this.subs.add(execute_metrics_query(this.apollo, METRICS_USERS).subscribe(({ data, loading }) => {
       this.daily_user_loading = false;
-      this.daily_user_activities = data.activities[0];
+      this.daily_user_metrics = data.metrics[0];
     }));
 
-    this.subs.add(execute_activities_query(this.apollo, ACTIVITIES_PROPOSALS).subscribe(({ data, loading }) => {
+    this.subs.add(execute_metrics_query(this.apollo, METRICS_PROPOSALS).subscribe(({ data, loading }) => {
       this.daily_proposal_loading = false;
-      this.daily_proposal_activities = data.activities[0];
+      this.daily_proposal_metrics = data.metrics[0];
     }));
 
-    this.subs.add(execute_activities_query(this.apollo, ACTIVITIES_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
+    this.subs.add(execute_metrics_query(this.apollo, METRICS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
       this.participatory_processes_loading = false;
-      this.daily_participatory_processes_activities = data.activities[0];
+      this.daily_participatory_processes_metrics = data.metrics[0];
     }));
 
-    this.subs.add( execute_activities_query(this.apollo, ACTIVITIES_COMMENTS).subscribe(({ data, loading }) => {
+    this.subs.add( execute_metrics_query(this.apollo, METRICS_COMMENTS).subscribe(({ data, loading }) => {
       this.daily_comment_loading = false;
-      this.comments_activities = data.activities[0];
+      this.comments_metrics= data.metrics[0];
     }));
 
     this.subs.add( this.statsService.getProposalsBySupports(15).subscribe((response: ProposalResponse) => {

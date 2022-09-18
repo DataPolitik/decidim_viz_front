@@ -1,8 +1,8 @@
 import {gql} from 'apollo-angular'
 
-const ACTIVITIES_USERS = gql`
+const METRICS_USERS = gql`
 {
-  activities(names: "users") {
+  metrics(names: "users") {
     count
     name
     history {
@@ -12,9 +12,9 @@ const ACTIVITIES_USERS = gql`
   }
 }`;
 
-const ACTIVITIES_PROPOSALS = gql`
+const METRICS_PROPOSALS = gql`
 {
-  activities(names: "proposals") {
+  metrics(names: "proposals") {
     count
     name
     history {
@@ -24,9 +24,9 @@ const ACTIVITIES_PROPOSALS = gql`
   }
 }`
 
-const ACTIVITIES_PARTICIPATORY_PROCESSES = gql`
+const METRICS_PARTICIPATORY_PROCESSES = gql`
 {
-  activities(names: "participatory_processes") {
+  metrics(names: "participatory_processes") {
     count
     name
     history {
@@ -36,9 +36,9 @@ const ACTIVITIES_PARTICIPATORY_PROCESSES = gql`
   }
 }`
 
-const ACTIVITIES_COMMENTS = gql`
+const METRICS_COMMENTS = gql`
 {
-  activities(names: "comments") {
+  metrics(names: "comments") {
     count
     name
     history {
@@ -100,10 +100,10 @@ const USERS_COUNT = gql`
 
 
 export {
-  ACTIVITIES_USERS,
-  ACTIVITIES_PROPOSALS,
-  ACTIVITIES_PARTICIPATORY_PROCESSES,
-  ACTIVITIES_COMMENTS,
+  METRICS_USERS,
+  METRICS_PROPOSALS,
+  METRICS_PARTICIPATORY_PROCESSES,
+  METRICS_COMMENTS,
   PARTICIPATORY_PROCESSES,
   PARTICIPATORY_PROCESSES_COUNT,
   USERS,

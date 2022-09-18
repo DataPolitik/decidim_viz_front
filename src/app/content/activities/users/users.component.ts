@@ -3,7 +3,7 @@ import { groupBy, of, reduce, mergeMap } from 'rxjs';
 import { USERS, USERS_COUNT } from 'src/app/graphql/graphql.queries';
 import { Activities } from 'src/app/models/activities.model';
 import { Activities_History } from 'src/app/models/activities_history.model';
-import { execute_activities_query, groupByAndCount } from 'src/app/utils/activities.utils';
+import { execute_activities_query, groupByAndCount } from 'src/app/utils/metrics.utils';
 import { AbstractActivitiesComponent } from '../abstract-activities/abstract-activities.component';
 
 @Component({

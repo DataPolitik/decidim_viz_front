@@ -15,6 +15,7 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
   @ViewChild(MapsComponent) maps!: MapsComponent;
 
   public accumulated_proposal_activities: Activities | undefined;
+  public daily_proposal_activities: Activities | undefined;
   public accumulated_proposal_loading: boolean = true;
   public numberOfGeographicalProposals: number = 0;
 

@@ -2,7 +2,7 @@ import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
 
 
-export function execute_activities_query(apollo_instance: Apollo, gql_to_execute: DocumentNode, parameters = {} ){
+export function execute_metrics_query(apollo_instance: Apollo, gql_to_execute: DocumentNode, parameters = {} ){
     return apollo_instance.use('futureu').watchQuery<any>({
       query: gql_to_execute,
       variables: parameters
