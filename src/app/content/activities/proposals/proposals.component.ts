@@ -66,6 +66,7 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
     this.accumulatedSubscription?.unsubscribe();
     this.dailySubscription?.unsubscribe();
     this.proposalsSubscription?.unsubscribe();
+    this.loadedGraphs = 0;
   }
 
 

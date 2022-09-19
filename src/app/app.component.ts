@@ -6,6 +6,7 @@ import { DECIDIM_API } from './config/decidim_api';
 import { StatsService } from './services/stats.service';
 import {TranslateService} from "@ngx-translate/core";
 import { CONFIGS } from './config/config.dev';
+import { TemporalLimits } from './models/temporal-limits.model';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,8 @@ export class AppComponent {
         }),
       });
     });
+
+    this.stats.subscribeTemporalLimits();
   }
 
 

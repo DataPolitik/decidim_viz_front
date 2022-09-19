@@ -2,21 +2,25 @@
   <h2>
     {{"activities.activities" | translate }}
   </h2>
-  <section id="filters">
+  <section id="filters" *ngIf="dateFrom && dateTo && dateFromLimit && dateToLimit">
     <span>{{"activities.showing_from" | translate }} </span>
     <p-calendar [(ngModel)]="dateFrom"
       dateFormat="dd/mm/yy"
       [readonlyInput]="true"
       [showIcon]="true"
+      [minDate]="dateFromLimit"
+      [maxDate]="dateToLimit"
       (ngModelChange)="this.dateChanged()"></p-calendar>
     <span>{{"activities.showing_to" | translate }}</span>
     <p-calendar [(ngModel)]="dateTo"
       dateFormat="dd/mm/yy"
       [readonlyInput]="true"
       [showIcon]="true"
+      [minDate]="dateFromLimit"
+      [maxDate]="dateToLimit"
       (ngModelChange)="this.dateChanged()"></p-calendar>
   </section>
-  <div>
+  <div *ngIf="dateFrom && dateTo">
     <p-tabView>
       <p-tabPanel header="{{'activities.menu.proposals' | translate }}">
         <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"

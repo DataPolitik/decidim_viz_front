@@ -6,14 +6,14 @@
   <div>
     <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="{{'activities.accumulated' | translate}}">
-        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+        <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
           [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
           xName="{{'activities.date' | translate}}"
           yName="{{'activities.comments.number_of_comments' | translate}}">
         </app-activities-histogram>
       </p-tabPanel>
       <p-tabPanel header="{{'activities.daily' | translate}}">
-        <app-activities-histogram *ngIf="this.loadedGraphs == 2"
+        <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
           [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
           xName="{{'activities.date' | translate}}"
           yName="{{'activities.comments.number_of_comments' | translate}}">

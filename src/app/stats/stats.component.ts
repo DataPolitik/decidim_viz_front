@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef  } from '@angular/core';
 import { AgChartOptions, AgHierarchyChartOptions } from 'ag-charts-community';
 import { Apollo } from 'apollo-angular';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -48,6 +48,7 @@ export class StatsComponent implements OnInit, OnDestroy  {
   private graphContexText: string = ''
 
   constructor(protected apollo: Apollo,
+              protected ref: ChangeDetectorRef,
               protected statsService: StatsService,
               protected translate_service: TranslateService) {
     translate_service.get('stats.graph.title').subscribe((res: string) => {

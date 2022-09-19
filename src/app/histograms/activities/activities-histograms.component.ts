@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AgChartOptions } from 'ag-charts-community';
-import { Activities } from 'src/app/models/activities.model';
 import { Activities_History } from 'src/app/models/activities_history.model';
 
 @Component({

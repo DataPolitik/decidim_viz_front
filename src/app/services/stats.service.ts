@@ -9,6 +9,9 @@ import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
 import { Activities } from '../models/activities.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
+import { BehaviorSubject } from 'rxjs';
+import { TemporalLimits } from '../models/temporal-limits.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -19,8 +22,22 @@ export class StatsService {
 
   constructor(private http: HttpClient) { }
 
-  getEndorses() {
+  private temporalLimitsSubjects = new BehaviorSubject<TemporalLimits | undefined>(undefined);
+  private temporalLimitsObservable = this.temporalLimitsSubjects.asObservable();
 
+  getTemporalLimits(): Observable<TemporalLimits | undefined>{
+    return this.temporalLimitsObservable;
+  }
+
+  subscribeTemporalLimits(){
+    return this.http.get<TemporalLimits>(this.host + '/stats/dates').subscribe(
+      (temporaLimits: TemporalLimits) => {
+        this.temporalLimitsSubjects.next(temporaLimits);
+      }
+    )
+  }
+
+  getEndorses() {
     return this.http.get<GraphResponse>(this.host + '/stats/endorsements');
   }
 
