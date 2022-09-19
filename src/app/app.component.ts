@@ -6,7 +6,10 @@ import { DECIDIM_API } from './config/decidim_api';
 import { StatsService } from './services/stats.service';
 import {TranslateService} from "@ngx-translate/core";
 import { CONFIGS } from './config/config.dev';
-import { TemporalLimits } from './models/temporal-limits.model';
+import { Subscription } from 'rxjs';
+import { PARTICIPATORY_PROCESSES, TEMPORAL_LIMITS_PARTICIPATORY_PROCESSES } from './graphql/graphql.queries';
+import { execute_metrics_query } from './utils/metrics.utils';
+import { TemporalLimitsGraphHQL } from './models/temporal-limits-graphql.model';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +17,8 @@ import { TemporalLimits } from './models/temporal-limits.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  protected subs = new Subscription();
+
   title = 'decidim_viz_front';
   public caller;
 
@@ -35,9 +40,20 @@ export class AppComponent {
       });
     });
 
-    this.stats.subscribeTemporalLimits();
-  }
+    this.stats.subscribeTemporalLimitsAPI();
 
+    this.subs.add(execute_metrics_query(this.apollo, TEMPORAL_LIMITS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
+      const fromDate = data['participatoryProcesses'][0]['publishedAt'];
+      const toDate = data['participatoryProcesses'].at(-1)['publishedAt'];
+
+      const temporalLimits: TemporalLimitsGraphHQL = {
+        'participatory_processes_from': fromDate,
+        'participatory_processes_to': toDate
+      }
+      this.stats.setTemporalLimitsGraphHQL(temporalLimits);
+    }));
+
+  }
 
 
 }

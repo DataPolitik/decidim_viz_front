@@ -10,8 +10,9 @@ import { LanguagesCount } from '../models/languages.count.model';
 import { Activities } from '../models/activities.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
 import { BehaviorSubject } from 'rxjs';
-import { TemporalLimits } from '../models/temporal-limits.model';
+import { TemporalLimitsAPI as TemporalLimitsAPI } from '../models/temporal-limits-api.model';
 import { Observable } from 'rxjs';
+import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 
 
 @Injectable({
@@ -22,19 +23,30 @@ export class StatsService {
 
   constructor(private http: HttpClient) { }
 
-  private temporalLimitsSubjects = new BehaviorSubject<TemporalLimits | undefined>(undefined);
-  private temporalLimitsObservable = this.temporalLimitsSubjects.asObservable();
+  private temporalLimitsAPISubjects = new BehaviorSubject<TemporalLimitsAPI | undefined>(undefined);
+  private temporalLimitsAPIObservable = this.temporalLimitsAPISubjects.asObservable();
 
-  getTemporalLimits(): Observable<TemporalLimits | undefined>{
-    return this.temporalLimitsObservable;
+  private temporalLimitsGraphHQLSubjects = new BehaviorSubject<TemporalLimitsGraphHQL | undefined>(undefined);
+  private temporalLimitsGraphHQLSObservable = this.temporalLimitsGraphHQLSubjects.asObservable();
+
+  getTemporalLimitsAPI(): Observable<TemporalLimitsAPI | undefined>{
+    return this.temporalLimitsAPIObservable;
   }
 
-  subscribeTemporalLimits(){
-    return this.http.get<TemporalLimits>(this.host + '/stats/dates').subscribe(
-      (temporaLimits: TemporalLimits) => {
-        this.temporalLimitsSubjects.next(temporaLimits);
+  getTemporalLimitsGraphHQL(): Observable<TemporalLimitsGraphHQL | undefined>{
+    return this.temporalLimitsGraphHQLSObservable;
+  }
+
+  subscribeTemporalLimitsAPI(){
+    return this.http.get<TemporalLimitsAPI>(this.host + '/stats/dates').subscribe(
+      (temporaLimits: TemporalLimitsAPI) => {
+        this.temporalLimitsAPISubjects.next(temporaLimits);
       }
     )
+  }
+
+  setTemporalLimitsGraphHQL(temporalLimits: TemporalLimitsGraphHQL){
+    this.temporalLimitsGraphHQLSubjects.next(temporalLimits);
   }
 
   getEndorses() {

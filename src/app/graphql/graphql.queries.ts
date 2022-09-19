@@ -98,6 +98,14 @@ const USERS_COUNT = gql`
   }`
 
 
+  const TEMPORAL_LIMITS_PARTICIPATORY_PROCESSES = gql`
+  query getTemporalLimits{
+    participatoryProcesses(order: {publishedAt: "asc"}) {
+      publishedAt
+    }
+  }`
+
+
 
 export {
   METRICS_USERS,
@@ -107,5 +115,6 @@ export {
   PARTICIPATORY_PROCESSES,
   PARTICIPATORY_PROCESSES_COUNT,
   USERS,
-  USERS_COUNT
+  USERS_COUNT,
+  TEMPORAL_LIMITS_PARTICIPATORY_PROCESSES
 }

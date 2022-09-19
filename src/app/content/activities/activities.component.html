@@ -21,7 +21,7 @@
       (ngModelChange)="this.dateChanged()"></p-calendar>
   </section>
   <div *ngIf="dateFrom && dateTo">
-    <p-tabView>
+    <p-tabView (onChange)="handleChange($event)">
       <p-tabPanel header="{{'activities.menu.proposals' | translate }}">
         <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
