@@ -105,12 +105,12 @@ export class StatsComponent implements OnInit, OnDestroy  {
       this.comments_metrics= data.metrics[0];
     }));
 
-    this.subs.add( this.statsService.getProposalsBySupports(15).subscribe((response: ProposalResponse) => {
+    this.subs.add( this.statsService.getProposalsBySupports(30).subscribe((response: ProposalResponse) => {
       this.proposalsBySupports = response.proposals;
       this.proposalsBySupportsGini = response.gini;
     }));
 
-    this.subs.add( this.statsService.getProposalsByComments(15).subscribe((response: ProposalResponse) => {
+    this.subs.add( this.statsService.getProposalsByComments(30).subscribe((response: ProposalResponse) => {
       this.proposalsByComments = response.proposals;
       this.proposalsByCommentsGini = response.gini;
     }));
