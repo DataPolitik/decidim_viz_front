@@ -26,12 +26,7 @@ export class NavigationMenuComponent implements OnInit {
         label: stats,
         icon: 'pi pi-fw pi-users',
         routerLink: ['/stats']
-      },
-      {
-        label: interactions,
-        icon: 'pi pi-fw pi-comments',
-        routerLink: ['/interacciones']
-      },
+      }
   ];
   }
 
