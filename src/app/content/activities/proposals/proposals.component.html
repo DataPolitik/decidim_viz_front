@@ -1,7 +1,7 @@
-<h3>
-  {{'activities.proposals.title' | translate }}
-</h3>
 
+  <h3>
+    {{'activities.proposals.title' | translate }}
+  </h3>
 <section *ngIf="!this.daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
   <div>
     <p-tabView *ngIf="!this.isEmpty">
@@ -26,16 +26,15 @@
     </p>
   </section>
   </div>
-
 </section>
+<h3>
+  {{'activities.proposals.geolocalization' | translate }}
+</h3>
 <section id="maps" *ngIf="!this.isEmpty">
-  <h2>
-    {{'activities.proposals.geolocalization' | translate }}
-  </h2>
+  <app-maps #maps></app-maps>
   <p>
     {{'activities.proposals.exists' | translate }} {{this.numberOfGeographicalProposals}} {{'activities.proposals.geolocalization_proposals' | translate }}
   </p>
-  <app-maps #maps></app-maps>
 </section>
 
 

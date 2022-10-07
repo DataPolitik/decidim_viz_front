@@ -35,6 +35,7 @@ import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-v
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 import {MenuModule} from 'primeng/menu';
 import {DropdownModule} from 'primeng/dropdown';
@@ -82,6 +83,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     FontAwesomeModule,
     FormsModule,
     MenuModule,
+    TooltipModule,
     TranslateModule.forRoot({
                  loader: {
                      provide: TranslateLoader,

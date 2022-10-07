@@ -6,7 +6,7 @@
 
 body{
   overflow-y: hidden;
-  background-color: #FFFCFC;
+  background-color: white;
 }
 
 
@@ -42,4 +42,6 @@ section{
   width: 80vw;
   height: 75vh;
 }
+
+
 

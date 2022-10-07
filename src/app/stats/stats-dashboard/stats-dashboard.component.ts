@@ -20,6 +20,7 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() countColumn: string  = '';
   @Input() icon: IconProp | undefined = undefined;
   @Input() isProposal: boolean = true;
+  @Input() x_axis_title: string = '';
 
   private translated_title: string = '';
 
@@ -68,8 +69,32 @@ export class StatsDashboardComponent<T> implements OnInit {
             },
         ],
         legend: {
-          position: 'bottom'
-        }
+          position: 'bottom',
+          enabled: false
+        },
+        axes: [
+          {
+            type: 'number',
+            position: 'left',
+            title: {
+              text: this.countColumn,
+            },
+            label: {
+              format: ',.0f',
+              fontSize: 10,
+            },
+          },
+          {
+            type: 'category',
+            position: 'bottom',
+            title: {
+              text: this.x_axis_title,
+            },
+            label: {
+              fontSize: 10,
+            },
+          },
+        ],
     };
   }
 }

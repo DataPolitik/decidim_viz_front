@@ -19,7 +19,7 @@
       <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} {{'stats.started_participative_processes' | translate}}
     </p>
     <p *ngIf="!daily_comment_loading && languages; else still_loading">
-      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments' | translate}} {{this.languages.length }} {{'stats.comments_language' | translate}}
+      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments_language' | translate}} {{this.languages.length }} {{'stats.languages' | translate}}
     </p>
   </section>
 </div>
@@ -33,7 +33,8 @@
       title="stats.most_endorsed_proposals"
       countColumnName="stats.endorsements"
       countColumn="endorsements"
-      titleColumn="title_es"
+      titleColumn="id"
+      x_axis_title="Identificador de la propuesta"
       [icon]="this.faHandsClapping"
     ></app-stats-dashboard>
 
@@ -44,7 +45,8 @@
       countColumnName="stats.comments"
       title="stats.most_commented_proposals"
       countColumn="comments"
-      titleColumn="title_es"
+      titleColumn="id"
+      x_axis_title="Identificador de la propuesta"
       [icon]="this.faComments"
     ></app-stats-dashboard>
 

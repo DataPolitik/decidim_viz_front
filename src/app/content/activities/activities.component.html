@@ -28,13 +28,13 @@
           [dateTo]="this.dateTo">
         </app-activities-proposals>
       </p-tabPanel>
-      <p-tabPanel header="{{'activities.menu.participative_proccesses' | translate }}">
+      <!-- <p-tabPanel header="{{'activities.menu.participative_proccesses' | translate }}">
         <app-activities-participative-processes *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
           [dateTo]="this.dateTo">
         >
         </app-activities-participative-processes>
-      </p-tabPanel>
+      </p-tabPanel> -->
       <p-tabPanel header="{{'activities.menu.comments' | translate }}">
         <app-activities-comments *ngIf="this.dateFrom && this.dateTo"
           [dateFrom]="this.dateFrom"
