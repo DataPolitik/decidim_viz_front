@@ -15,7 +15,7 @@ export class NavigationMenuComponent implements OnInit {
   public graphTitle: string = '';
   public activeIndex = 0;
 
-  private buildMenuItems(stats: string, activities: string, interactions: string){
+  private buildMenuItems(stats: string, activities: string, interactions: string, about: string){
     this.menuItems = [
       {
         label: activities,
@@ -26,6 +26,11 @@ export class NavigationMenuComponent implements OnInit {
         label: stats,
         icon: 'pi pi-fw pi-users',
         routerLink: ['/stats']
+      },
+      {
+        label: about,
+        icon: 'pi pi-fw pi-about',
+        routerLink: ['/about']
       }
   ];
   }
@@ -34,25 +39,33 @@ export class NavigationMenuComponent implements OnInit {
     let statsName = '';
     let activitiesName = '';
     let interactionsName = '';
+    let aboutName = '';
 
     translate_service.get('menu.stats').subscribe((res: string) => {
       statsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
     translate_service.get('menu.activities').subscribe((res: string) => {
       activitiesName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
     translate_service.get('menu.interactions').subscribe((res: string) => {
       interactionsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
+      }
+    });
+
+    translate_service.get('menu.about').subscribe((res: string) => {
+      aboutName = res;
+      if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
   }

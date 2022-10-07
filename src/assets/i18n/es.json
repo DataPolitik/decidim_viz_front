@@ -26,7 +26,8 @@
   "menu": {
       "stats": "Estadísticas",
       "activities": "Actividades",
-      "interactions": "Interacciones"
+      "interactions": "Interacciones",
+      "about": "Acerca de Decidim.vis"
   },
   "still_loading":{
     "message": "Cargando datos..."

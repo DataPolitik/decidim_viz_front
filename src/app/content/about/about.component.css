@@ -1,0 +1,15 @@
+.about_ul{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+  margin-left: 47px;
+}
+
+p{
+  padding-left: 20px;
+  margin-left: 40px;
+}

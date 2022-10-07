@@ -27,15 +27,7 @@
   </section>
   </div>
 </section>
-<h3>
-  {{'activities.proposals.geolocalization' | translate }}
-</h3>
-<section id="maps" *ngIf="!this.isEmpty">
-  <app-maps #maps></app-maps>
-  <p>
-    {{'activities.proposals.exists' | translate }} {{this.numberOfGeographicalProposals}} {{'activities.proposals.geolocalization_proposals' | translate }}
-  </p>
-</section>
+
 
 
 <ng-template #still_loading>

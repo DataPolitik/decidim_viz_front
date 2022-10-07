@@ -21,27 +21,14 @@
       (ngModelChange)="this.dateChanged()"></p-calendar>
   </section>
   <div *ngIf="dateFrom && dateTo">
-    <p-tabView (onChange)="handleChange($event)">
-      <p-tabPanel header="{{'activities.menu.proposals' | translate }}">
-        <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
-          [dateFrom]="this.dateFrom"
-          [dateTo]="this.dateTo">
-        </app-activities-proposals>
-      </p-tabPanel>
-      <!-- <p-tabPanel header="{{'activities.menu.participative_proccesses' | translate }}">
-        <app-activities-participative-processes *ngIf="this.dateFrom && this.dateTo"
-          [dateFrom]="this.dateFrom"
-          [dateTo]="this.dateTo">
-        >
-        </app-activities-participative-processes>
-      </p-tabPanel> -->
-      <p-tabPanel header="{{'activities.menu.comments' | translate }}">
-        <app-activities-comments *ngIf="this.dateFrom && this.dateTo"
-          [dateFrom]="this.dateFrom"
-          [dateTo]="this.dateTo">
-        </app-activities-comments>
-      </p-tabPanel>
-    </p-tabView>
+    <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
+      [dateFrom]="this.dateFrom"
+      [dateTo]="this.dateTo">
+    </app-activities-proposals>
+      <app-activities-comments *ngIf="this.dateFrom && this.dateTo"
+      [dateFrom]="this.dateFrom"
+      [dateTo]="this.dateTo">
+    </app-activities-comments>
   </div>
 </div>
 
