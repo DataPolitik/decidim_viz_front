@@ -4,5 +4,5 @@
 }
 
 .stats_chart{
-  height: 900px;
+  min-height: 600px;
 }

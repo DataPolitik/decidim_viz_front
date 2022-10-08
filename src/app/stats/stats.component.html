@@ -1,10 +1,14 @@
 <div id="general_stats">
-  <h2>
-    {{'stats.stats' | translate}}
-  </h2>
-  <h3>
-    {{'stats.general_data' | translate}}
-  </h3>
+  <div id="internal_navigation" fragment="internal_navigation">
+    <span class="internal_navigation__text">Ir a </span>
+    <a class="internal_navigation__link" href="/stats#proposals">{{'stats.proposals' | translate}}</a>
+    <a class="internal_navigation__link" href="/stats#comments">{{'stats.comments' | translate}}</a>
+  </div>
+  <div>
+    <h2>
+      {{'stats.stats' | translate}}
+    </h2>
+  </div>
   <section id="summary">
     <p *ngIf="!daily_user_loading; else still_loading">
       <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} {{'stats.users_registered' | translate}}
@@ -24,12 +28,16 @@
   </section>
 </div>
 <div>
-  <h2>{{'stats.proposals' | translate}}</h2>
+  <div class="title_with_anchor">
+    <a class="internal_navigation__link" href="/stats#internal_navigation">↑</a>
+    <h2 id="proposals" fragment="proposals">{{'stats.proposals' | translate}}</h2>
+  </div>
   <section>
     <app-stats-dashboard
       *ngIf="this.proposalsBySupports"
       [data]="this.proposalsBySupports"
       [gini]="this.proposalsBySupportsGini"
+      gini_title="stats.polarization"
       title="stats.most_endorsed_proposals"
       countColumnName="stats.endorsements"
       countColumn="endorsements"
@@ -42,6 +50,7 @@
       *ngIf="this.proposalsByComments"
       [data]="this.proposalsByComments"
       [gini]="this.proposalsByCommentsGini"
+      gini_title="stats.inequality"
       countColumnName="stats.comments"
       title="stats.most_commented_proposals"
       countColumn="comments"
@@ -54,10 +63,12 @@
       *ngIf="this.categoriesByProposals"
       [data]="this.categoriesByProposals"
       [gini]="this.categoriesByProposalsGini"
+      gini_title="stats.gini"
       countColumnName="stats.proposals"
       title="stats.areas_with_more_proposals"
       countColumn="categories"
-      titleColumn="name_es"
+      titleColumn="id"
+      x_axis_title="Identificador del área"
       [icon]="this.faLayerGroup"
       [isProposal]=false
     ></app-stats-dashboard>
@@ -65,7 +76,10 @@
   </section>
 </div>
 <div>
-  <h2>{{'stats.comments' | translate}}</h2>
+  <div class="title_with_anchor">
+    <a class="internal_navigation__link" href="/stats#internal_navigation">↑</a>
+    <h2 id="comments" fragment="comments">{{'stats.comments' | translate}}</h2>
+  </div>
   <h3>
     {{'stats.comments_written_language' | translate}} <fa-icon [icon]="this.faLanguage"></fa-icon>
   </h3>

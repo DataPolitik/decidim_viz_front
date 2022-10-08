@@ -7,7 +7,7 @@
 </h3>
 <div *ngIf="this.gini" class="demographic_table--gini">
   <span class="additional_info" pTooltip="El índice de Gini calcula la desigualdad existente en una muestra. Siendo 0 la máxima igualdad y 1 la máxima desigualdad.">ⓘ </span>
-  <span>{{'stats.gini' | translate}}: </span>
+  <span>{{this.gini_title | translate}}: </span>
   <span>{{this.gini | number:'1.3'}}</span>
 </div>
 
@@ -16,7 +16,7 @@
     <div class="stats_chart">
       <ag-charts-angular
           *ngIf="this.options && this.data"
-          style="display:block; top: 0; right: 0; bottom: 0; left: 0; height: 100%; width: 100%;"
+          style="display:block; top: 0; right: 0; bottom: 0; left: 0; height: 600px; width: 100%;"
           [options]="options">
       </ag-charts-angular>
     </div>
@@ -47,4 +47,5 @@
     </div>
   </p-tabPanel>
 </p-tabView>
+ghfgh
 </div>

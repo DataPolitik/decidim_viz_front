@@ -14,6 +14,7 @@ export class StatsDashboardComponent<T> implements OnInit {
 
   @Input() data: Array<T> | undefined = undefined;
   @Input() gini: number | undefined = undefined;
+  @Input() gini_title: string = '';
   @Input() title: string = '';
   @Input() countColumnName: string  = '';
   @Input() titleColumn: string  = '';

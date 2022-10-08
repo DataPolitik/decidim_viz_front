@@ -1,7 +1,6 @@
 {
   "stats": {
       "stats": "Estadísticas",
-      "general_data": "Datos generales",
       "users_registered": "usuarios",
       "proposals_done": "propuestas",
       "categories": "categorías",
@@ -17,7 +16,9 @@
       "comments_written_language": "Idiomas de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
       "comments": "Comentarios",
-      "gini": "Índice de Gini",
+      "gini": "Gini",
+      "inequality": "Desigualdad",
+      "polarization": "Polarización",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"

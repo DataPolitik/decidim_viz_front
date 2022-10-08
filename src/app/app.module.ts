@@ -36,7 +36,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
 import {TooltipModule} from 'primeng/tooltip';
-
+import { ChipModule } from 'primeng/chip';
 import {MenuModule} from 'primeng/menu';
 import {DropdownModule} from 'primeng/dropdown';
 import { StatsDashboardComponent } from './stats/stats-dashboard/stats-dashboard.component';
@@ -76,6 +76,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AppRoutingModule,
     CalendarModule,
     CheckboxModule,
+    ChipModule,
     HttpClientModule,
     PlotlyModule,
     TabViewModule,
