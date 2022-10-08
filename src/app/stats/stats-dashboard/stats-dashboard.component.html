@@ -1,3 +1,4 @@
+<div id="stats_dashboard">
 <h3 *ngIf="this.title && this.icon">
   {{title | translate}} <fa-icon [icon]="this.icon"></fa-icon>
 </h3>
@@ -22,22 +23,22 @@
   </p-tabPanel>
   <p-tabPanel leftIcon="pi pi-table">
     <div *ngIf="this.data" class="demographic_table" >
-      <p-table [value]="this.data">
+      <p-table [value]="this.data" [scrollable]="true" scrollHeight="500px" responsiveLayout="scroll">
         <ng-template pTemplate="header">
             <tr>
-                <th>{{'stats.title' | translate}}</th>
-                <th>{{countColumnName | translate}}</th>
+                <th pResizableColumn style="flex-basis:85%">{{'stats.title' | translate}}</th>
+                <th pResizableColumn style="flex-basis:15%">{{countColumnName | translate}}</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-element>
             <tr>
-              <td *ngIf="this.isProposal">
+              <td *ngIf="this.isProposal" style="flex-basis:85%">
                 <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{element.title_es}}</a>
               </td>
-              <td *ngIf="!this.isProposal">
+              <td *ngIf="!this.isProposal" style="flex-basis:875%">
                 {{element[titleColumn]}}
               </td>
-              <td>
+              <td style="flex-basis:15%">
                 {{element[countColumn]}}
               </td>
             </tr>
@@ -46,6 +47,4 @@
     </div>
   </p-tabPanel>
 </p-tabView>
-
-
-
+</div>

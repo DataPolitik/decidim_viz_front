@@ -3,7 +3,7 @@
 }
 
 #header{
-  height: 6vh;
+  height: 8vh;
   padding-left: 2vh;
   padding-right: 2vh;
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 #content{
-  height: 85vh;
+  height: 81vh;
 }
 
 #footer{

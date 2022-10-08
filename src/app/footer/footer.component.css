@@ -2,8 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top-width: 0 !important;
 }
 
 :host ::ng-deep .p-dropdown {
   border: 0 none;
+}
+
+p
+{
+  font-size: 14px;
 }

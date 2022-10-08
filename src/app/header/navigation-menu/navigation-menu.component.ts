@@ -29,7 +29,7 @@ export class NavigationMenuComponent implements OnInit {
       },
       {
         label: about,
-        icon: 'pi pi-fw pi-about',
+        icon: 'pi pi-fw pi-question-circle',
         routerLink: ['/about']
       }
   ];
