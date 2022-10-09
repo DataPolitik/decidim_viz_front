@@ -13,3 +13,7 @@ p
 {
   font-size: 14px;
 }
+
+.footer_link{
+  text-decoration: none;
+}

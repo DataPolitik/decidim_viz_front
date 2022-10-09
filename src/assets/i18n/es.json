@@ -26,6 +26,31 @@
         "context_text": "Número de comentarios"
       }
   },
+  "about":{
+      "title": "Acerca de Decidim.vs",
+      "in3": "Instituto Interdisciplinario de Internet",
+      "platoniq": "Fundación Platoniq",
+      "d2": "D2, Espacio de Datos y Democracia",
+      "what_is_this": "¿Qué es Decidim.vis?",
+      "p1p1": "Decidim.vis es una prueba de concepto de un visor de información de una instancia de",
+      "p1p2": "El objetivo de Decidim.vis es atender a la necesidad de la Comunidad de usuarios de Decidim de conseguir, rapidamente, métricas e información estadística que les puedan ser de utilidad",
+      "p2p1": "Decidim.vis es un proyecto impulsado por",
+      "p2p2": "unidad de investigación del grupo",
+      "p2p3": "del",
+      "p2p4": "de la",
+      "p2p5": "con el apoyo de iniciativas como la asociación",
+      "p2p6": "y la",
+      "p2p7": "en el marco del",
+      "p2p8": "con el objetivo de construir una herramienta para hacer la participación democrática en la plataforma Decidim más transparente y reflexiva",
+      "where_does_the_data_come_from": "¿De dónde saca los datos Decidim.vis?",
+      "p3p1": "Decidim.vis obtiene los datos de dos fuentes",
+      "p3p2": "API de de la instancia de Decidim",
+      "p3p3": "Ficheros de descarga masiva de Decidim",
+      "p3p4": "Actualmente, para la prueba de concepto, utilizamos la instancia de",
+      "p3p5": "como fuente de datos",
+      "can_i_help": "¿Puedo hacer comentarios o dar feedback al proyecto?",
+      "p4p1": "Por supuesto. Puedes hacerlo, entrando en"
+  },
   "menu": {
       "stats": "Estadísticas",
       "activities": "Actividad",
