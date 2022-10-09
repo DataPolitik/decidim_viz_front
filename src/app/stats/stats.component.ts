@@ -21,6 +21,7 @@ import {
 
 import { execute_metrics_query } from '../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
+import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../models/activities_users_comments.model';
 
 @Component({
   selector: 'app-stats',
@@ -79,6 +80,8 @@ export class StatsComponent implements OnInit, OnDestroy  {
   proposalsBySupportsGini: number | undefined = undefined;
   proposalsByComments: Array<Proposal> | undefined = undefined;
   proposalsByCommentsGini: number | undefined = undefined;
+  usersByComments: Array<UsersByCommentsHistoryCommentInfo> | undefined = undefined;
+  usersByCommentsGini: number | undefined = undefined;
   languages: Array<string> | undefined = undefined;
   languageCount: Array<{name:string, size: number, color: number}> = [];
   categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
@@ -103,6 +106,11 @@ export class StatsComponent implements OnInit, OnDestroy  {
     this.subs.add( execute_metrics_query(this.apollo, METRICS_COMMENTS).subscribe(({ data, loading }) => {
       this.daily_comment_loading = false;
       this.comments_metrics= data.metrics[0];
+    }));
+
+    this.subs.add( this.statsService.getUsersByComments(30).subscribe((response: UsersByCommentsHistory) => {
+      this.usersByComments = response.comments;
+      this.usersByCommentsGini = response.gini;
     }));
 
     this.subs.add( this.statsService.getProposalsBySupports(30).subscribe((response: ProposalResponse) => {

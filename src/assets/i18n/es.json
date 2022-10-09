@@ -1,6 +1,7 @@
 {
   "stats": {
       "stats": "Estadísticas",
+      "users": "Usuarios",
       "users_registered": "usuarios",
       "proposals_done": "propuestas",
       "categories": "categorías",
@@ -11,6 +12,7 @@
       "title": "Título",
       "endorsements": "Apoyos",
       "most_commented_proposals": "Propuestas más comentadas",
+      "most_active_users_by_comments": "Usuarios con más comentarios",
       "areas_with_more_proposals": "Áreas con más propuestas",
       "languages": "idiomas",
       "comments_written_language": "Idiomas de los comentarios",

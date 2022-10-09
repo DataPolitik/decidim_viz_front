@@ -2,6 +2,7 @@
   <div id="internal_navigation" fragment="internal_navigation">
     <span class="internal_navigation__text">Ir a </span>
     <a class="internal_navigation__link" href="/stats#proposals">{{'stats.proposals' | translate}}</a>
+    <a class="internal_navigation__link" href="/stats#users">{{'stats.users' | translate}}</a>
     <a class="internal_navigation__link" href="/stats#comments">{{'stats.comments' | translate}}</a>
   </div>
   <div>
@@ -73,6 +74,26 @@
       [isProposal]=false
     ></app-stats-dashboard>
 
+  </section>
+</div>
+<div>
+  <div class="title_with_anchor">
+    <a class="internal_navigation__link" href="/stats#internal_navigation">↑</a>
+    <h2 id="users" fragment="users">{{'stats.users' | translate}}</h2>
+  </div>
+  <section>
+      <app-stats-dashboard
+        *ngIf="this.usersByComments"
+        [data]="this.usersByComments"
+        [gini]="this.usersByCommentsGini"
+        gini_title="stats.gini"
+        countColumnName="stats.comments"
+        title="stats.most_active_users_by_comments"
+        countColumn="comments"
+        titleColumn="name"
+        [icon]="this.faComments"
+        [isProposal]=false
+      ></app-stats-dashboard>
   </section>
 </div>
 <div>

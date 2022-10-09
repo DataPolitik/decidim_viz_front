@@ -13,6 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TemporalLimitsAPI as TemporalLimitsAPI } from '../models/temporal-limits-api.model';
 import { Observable } from 'rxjs';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
+import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 
 
 @Injectable({
@@ -63,6 +64,10 @@ export class StatsService {
 
   getCommentsByProposal(idProposal: string | number) {
     return this.http.get<Activities>(this.host + '/stats/comments/by_proposal/'+idProposal+'/daily/');
+  }
+
+  getUsersByComments(limit: number) {
+    return this.http.get<UsersByCommentsHistory>(this.host + '/stats/users/by_comments/'+limit);
   }
 
   getProposal(idProposal: string){
