@@ -1,5 +1,5 @@
 export const CONFIGS = {
-  host: "http://127.0.0.1",
+  host: "http://135.181.86.47",
   port: "8000",
   defaultLanguage: 'es'
 };
