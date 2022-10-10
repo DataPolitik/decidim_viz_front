@@ -27,14 +27,14 @@
       }
   },
   "about":{
-      "title": "About Decidim.vis",
+      "title": "About Decidim.viz",
       "in3": "Internet Interdisciplinary Institute",
       "platoniq": "Platoniq foundation",
       "d2": "D2, Espacio de Datos y Democracia",
-      "what_is_this": "What is Decidim.vis?",
-      "p1p1": "Decidim.vis is a proof of concept of an information viewer of a single instance of",
-      "p1p2": "The objective of Decidim.vis is to meet the need of the Decidim user community to quickly obtain metrics and statistical information that may be useful to them",
-      "p2p1": "Decidim.vis is a project driven by",
+      "what_is_this": "What is Decidim.viz?",
+      "p1p1": "Decidim.viz is a proof of concept of an information viewer of a single instance of",
+      "p1p2": "The objective of Decidim.viz is to meet the need of the Decidim user community to quickly obtain metrics and statistical information that may be useful to them",
+      "p2p1": "Decidim.viz is a project driven by",
       "p2p2": "group research unit",
       "p2p3": "from",
       "p2p4": "of the",
@@ -42,8 +42,8 @@
       "p2p6": "and the",
       "p2p7": "within the framework of the",
       "p2p8": "with the aim of building a tool to make democratic participation in the Decidim platform more transparent and reflexive",
-      "where_does_the_data_come_from": "Where does Decidim.vis get its data from?",
-      "p3p1": "Decidim.vis obtains data from two sources",
+      "where_does_the_data_come_from": "Where does Decidim.viz get its data from?",
+      "p3p1": "Decidim.viz obtains data from two sources",
       "p3p2": "Decidim instance API",
       "p3p3": "Decidim mass download files",
       "p3p4": "Currently, for the Proof of Concept, we use the instance of",
@@ -55,7 +55,7 @@
       "stats": "Statistics",
       "activities": "Activity",
       "interactions": "Interactions",
-      "about": "About Decidim.vis"
+      "about": "About Decidim.viz"
   },
   "still_loading":{
     "message": "Loading data..."
