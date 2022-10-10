@@ -1,0 +1,116 @@
+{
+  "stats": {
+      "stats": "Statistics",
+      "users": "People",
+      "users_registered": "people",
+      "proposals_done": "proposals",
+      "categories": "categories",
+      "started_participative_processes": "participative processes",
+      "comments_language": "comments on",
+      "proposals": "Proposals",
+      "most_endorsed_proposals": "Proposals with greater support",
+      "title": "Title",
+      "endorsements": "Supports",
+      "most_commented_proposals": "Most commented proposals",
+      "most_active_users_by_comments": "Users with more comments",
+      "areas_with_more_proposals": "Areas with more proposals",
+      "languages": "languages",
+      "comments_written_language": "Commentary languages",
+      "most_commented_categories": "Most commented categories",
+      "comments": "Comments",
+      "gini": "Gini",
+      "inequality": "Inequality",
+      "polarization": "Polarization",
+      "graph": {
+        "title": "Proportion of languages used",
+        "context_text": "Number of comments"
+      }
+  },
+  "about":{
+      "title": "About Decidim.vis",
+      "in3": "Internet Interdisciplinary Institute",
+      "platoniq": "Platoniq foundation",
+      "d2": "D2, Espacio de Datos y Democracia",
+      "what_is_this": "What is Decidim.vis?",
+      "p1p1": "Decidim.vis is a proof of concept of an information viewer of a single instance of",
+      "p1p2": "The objective of Decidim.vis is to meet the need of the Decidim user community to quickly obtain metrics and statistical information that may be useful to them.",
+      "p2p1": "Decidim.vis is a project driven by",
+      "p2p2": "group research unit",
+      "p2p3": "from",
+      "p2p4": "of the",
+      "p2p5": "with the support of initiatives such as the association",
+      "p2p6": "and the",
+      "p2p7": "within the framework of the",
+      "p2p8": "with the aim of building a tool to make democratic participation in the Decidim platform more transparent and reflexive.",
+      "where_does_the_data_come_from": "Where does Decidim.vis get its data from?",
+      "p3p1": "Decidim.vis obtains data from two sources",
+      "p3p2": "Decidim instance API",
+      "p3p3": "Decidim mass download files",
+      "p3p4": "Currently, for the Proof of Concept, we use the instance of",
+      "p3p5": "as a source of data",
+      "can_i_help": "Can I make comments or give feedback on the project?",
+      "p4p1": "Of course. You can do so by visiting"
+  },
+  "menu": {
+      "stats": "Statistics",
+      "activities": "Activity",
+      "interactions": "Interactions",
+      "about": "About Decidim.vis"
+  },
+  "still_loading":{
+    "message": "Loading data..."
+  },
+  "activities":{
+    "activities": "Activity",
+    "showing_from": "Showing from",
+    "showing_to": "Up to",
+    "date": "Date",
+    "accumulated": "Accumulated",
+    "daily": "Daily",
+    "menu": {
+      "proposals": "Proposals",
+      "participative_proccesses": "Participatory processes",
+      "comments": "Comments"
+    },
+    "proposals":{
+      "title": "Temporal evolution of proposals",
+      "number_of_proposals": "Number of proposals",
+      "geolocalization": "Geolocation of proposals",
+      "exists": "There are",
+      "geolocalization_proposals": "geolocalized proposals."
+    },
+    "participative_proccesses":{
+      "title": "Temporal evolution of participatory processes",
+      "number_of_proccesses": "Number of participatory processes"
+    },
+    "comments":{
+      "title": "Temporal evolution of comments",
+      "number_of_comments": "Number of comments"
+    }
+  },
+  "interactions":{
+    "title": "Interactions",
+    "comments_network": "Comment Network",
+    "endorsements_network": "Endorsement Network",
+    "comments": "Comments",
+    "endorsements": "Endorsements"
+  },
+  "proposal_viewer":{
+    "proposal": "Proposal",
+    "comments": "Comments",
+    "users": "Users",
+    "go_to": "Go to the proposal page",
+    "date": "Date",
+    "number_of_comments": "Number of comments",
+    "total_comments": "Number of comments made until today:  ",
+    "comments_histogram": "Histogram of comments",
+    "user_name": "User name"
+  },
+  "footer":{
+    "language": "Language"
+  },
+  "errors":{
+    "no_results": "No results were found for the dates indicated.",
+    "no_proposal_found": "The proposal has not been found. It is possible that our database has not yet been updated."
+  }
+}
