@@ -35,43 +35,40 @@ export class NavigationMenuComponent implements OnInit {
   ];
   }
 
-  constructor(private translate_service: TranslateService) {
+  constructor(private translate_service: TranslateService) {  }
+
+  ngOnInit(): void {
     let statsName = '';
     let activitiesName = '';
     let interactionsName = '';
     let aboutName = '';
-
-    translate_service.get('menu.stats').subscribe((res: string) => {
+    this.translate_service.stream('menu.stats').subscribe((res: string) => {
       statsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
         this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
-    translate_service.get('menu.activities').subscribe((res: string) => {
+    this.translate_service.stream('menu.activities').subscribe((res: string) => {
       activitiesName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
         this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
-    translate_service.get('menu.interactions').subscribe((res: string) => {
+    this.translate_service.stream('menu.interactions').subscribe((res: string) => {
       interactionsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
         this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
-    translate_service.get('menu.about').subscribe((res: string) => {
+    this.translate_service.stream('menu.about').subscribe((res: string) => {
       aboutName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
         this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
-  }
-
-  ngOnInit(): void {
-
   }
 
 

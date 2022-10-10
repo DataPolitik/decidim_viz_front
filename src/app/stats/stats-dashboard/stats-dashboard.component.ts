@@ -24,9 +24,13 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() x_axis_title: string = '';
 
   private translated_title: string = '';
+  private translated_var_name: string = '';
 
   constructor(private router: Router, private translate: TranslateService) {
     this.toolTipRenderer = this.toolTipRenderer.bind(this);
+    this.translate.stream('stats.axis_x_help').subscribe((res: string) => {
+      this.translated_var_name = res;
+    });
    }
 
   private toolTipRenderer(params: any){
@@ -34,8 +38,9 @@ export class StatsDashboardComponent<T> implements OnInit {
     if(this.isProposal){
       contentText += ' ' + 'Click para más información';
     }
+    console.log(params)
     return {
-      title: params.xValue,
+      title: params.datum.title_es,
       content: contentText,
     };
   }
@@ -89,7 +94,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: 'category',
             position: 'bottom',
             title: {
-              text: this.x_axis_title,
+              text: this.x_axis_title + ' (' + this.translated_var_name + ')',
             },
             label: {
               fontSize: 10,

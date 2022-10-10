@@ -18,9 +18,9 @@
       "comments_written_language": "Commentary languages",
       "most_commented_categories": "Most commented categories",
       "comments": "Comments",
-      "gini": "Gini",
       "inequality": "Inequality",
       "polarization": "Polarization",
+      "axis_x_help": "Hover on the bar for more information",
       "graph": {
         "title": "Proportion of languages used",
         "context_text": "Number of comments"
