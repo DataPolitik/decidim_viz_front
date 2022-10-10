@@ -3,14 +3,14 @@
     Interacciones
   </h2>
   <h3>
-    Evolución temporal de usuarios
+    Evolución temporal de Personas
   </h3>
   <section *ngIf="!user_loading; else still_loading" class="histogram_chart">
     <div>
       <app-activities-histogram
         [response]="this.user_activities?.history?.slice(0)?.reverse()"
         xName="Fecha"
-        yName="Número de usuarios">
+        yName="Número de personas">
       </app-activities-histogram>
     </div>
 

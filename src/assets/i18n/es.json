@@ -1,8 +1,8 @@
 {
   "stats": {
       "stats": "Estadísticas",
-      "users": "Usuarios",
-      "users_registered": "usuarios",
+      "users": "Personas",
+      "users_registered": "personas",
       "proposals_done": "propuestas",
       "categories": "categorías",
       "started_participative_processes": "procesos participativos",
@@ -12,13 +12,12 @@
       "title": "Título",
       "endorsements": "Apoyos",
       "most_commented_proposals": "Propuestas más comentadas",
-      "most_active_users_by_comments": "Usuarios con más comentarios",
+      "most_active_users_by_comments": "Personas con más comentarios",
       "areas_with_more_proposals": "Áreas con más propuestas",
       "languages": "idiomas",
       "comments_written_language": "Idiomas de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
       "comments": "Comentarios",
-      "gini": "Gini",
       "inequality": "Desigualdad",
       "polarization": "Polarización",
       "graph": {
@@ -33,7 +32,7 @@
       "d2": "D2, Espacio de Datos y Democracia",
       "what_is_this": "¿Qué es Decidim.vis?",
       "p1p1": "Decidim.vis es una prueba de concepto de un visor de información de una instancia de",
-      "p1p2": "El objetivo de Decidim.vis es atender a la necesidad de la Comunidad de usuarios de Decidim de conseguir, rapidamente, métricas e información estadística que les puedan ser de utilidad",
+      "p1p2": "El objetivo de Decidim.vis es proveer de visualizaciones, métricas e información estadística de utilidad a personas interesadas",
       "p2p1": "Decidim.vis es un proyecto impulsado por",
       "p2p2": "unidad de investigación del grupo",
       "p2p3": "del",
@@ -98,7 +97,7 @@
   "proposal_viewer":{
     "proposal": "Propuesta",
     "comments": "Comentarios",
-    "users": "Usuarios",
+    "users": "Personas",
     "go_to": "Ir a la página de la propuesta",
     "date": "Fecha",
     "number_of_comments": "Número de comentarios",
