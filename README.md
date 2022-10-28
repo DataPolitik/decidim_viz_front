@@ -10,6 +10,10 @@ Once Angular is installed, you need to get all the dependencies of the project. 
 
 `npm install -g @angular/cli`
 
+## Configuration
+
+The folder **/src/app/config/** contains configuration file that you need to adjust before launching or building the application
+
 ## Executing
 
 You can execute the front end in your localhost by using the following command:
