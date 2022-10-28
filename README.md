@@ -10,6 +10,12 @@ Once Angular is installed, you need to get all the dependencies of the project. 
 
 `npm install -g @angular/cli`
 
+## Executing
+
+You can execute the front end in your localhost by using the following command:
+
+`npm run`
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
