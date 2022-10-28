@@ -1,27 +1,21 @@
-# DecidimVizFront
+# Decidim Viz - Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+This repository contains the front-end part of Decidim.viz (http://viz.platoniq.net/). This projects aims to develop a dashboard to extract data from Decidim instances (https://meta.decidim.org/). 
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This front-end is coded in Typescript + Angular. So you need to install Angular in your computer. Typically, you can install Angular with the command `npm install -g @angular/cli`. If you need support, a good place to go is the Angular installation guide https://angular.io/guide/setup-local.
 
-## Code scaffolding
+Once Angular is installed, you need to get all the dependencies of the project. In the project folder, execute the following commnad:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`npm install -g @angular/cli`
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## About the front-end site
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This front-end is connected to a back-end using a REST API. You can download and contribute to the back-end by going to its Github repository: https://github.com/DataPolitik/decidim_viz_back
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
