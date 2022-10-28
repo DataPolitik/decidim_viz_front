@@ -19,3 +19,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 This front-end is connected to a back-end using a REST API. You can download and contribute to the back-end by going to its Github repository: https://github.com/DataPolitik/decidim_viz_back
 
 
+## Can I contribute?
+
+Sure, please, go to the issues section (https://github.com/DataPolitik/decidim_viz_front/issues) to sse pending task, if you need inspiration. Also, you can propose new tasks by creating a new issue. Please, feel free to implement your contribution and, then, creating a pull request (https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). 
