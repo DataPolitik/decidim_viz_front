@@ -20,7 +20,7 @@
       "comments": "Comentarios",
       "inequality": "Desigualdad",
       "polarization": "Polarización",
-      "axis_x_help": "Seleccionar la barra para más información",
+      "axis_x_help": "Seleccionar el punto para más información",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"

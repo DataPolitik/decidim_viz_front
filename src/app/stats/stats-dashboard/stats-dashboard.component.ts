@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TranslateService } from '@ngx-translate/core';
-import { AgChartOptions } from 'ag-charts-community';
+import { AgCartesianAxisOptions, AgChartOptions } from 'ag-charts-community';
 
 @Component({
   selector: 'app-stats-dashboard',
@@ -19,6 +19,7 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() countColumnName: string  = '';
   @Input() titleColumn: string  = '';
   @Input() countColumn: string  = '';
+  @Input() typeColumnCount: any  = 'number';
   @Input() icon: IconProp | undefined = undefined;
   @Input() isProposal: boolean = true;
   @Input() x_axis_title: string = '';
@@ -51,20 +52,22 @@ export class StatsDashboardComponent<T> implements OnInit {
     if(!this.data){
       return
     }
+
     let axis_x_content = this.x_axis_title;
     if(this.isProposal){
       axis_x_content += ' ' + ' (' + this.translated_var_name + ')'
     }
+
+    console.log(this.data);
     this.options = {
         data: this.data,
         title: {
             text: this.translated_title,
         },
         series: [
-            { type: 'column',
+            { type: 'scatter',
                xKey: this.titleColumn,
                yKey: this.countColumn,
-               stacked: false,
                tooltip: {
                 renderer: this.toolTipRenderer,
                },
@@ -96,7 +99,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             },
           },
           {
-            type: 'category',
+            type: this.typeColumnCount,
             position: 'bottom',
             title: {
               text: axis_x_content,

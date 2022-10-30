@@ -108,17 +108,23 @@ export class StatsComponent implements OnInit, OnDestroy  {
       this.comments_metrics= data.metrics[0];
     }));
 
-    this.subs.add( this.statsService.getUsersByComments(30).subscribe((response: UsersByCommentsHistory) => {
+    this.subs.add( this.statsService.getUsersByComments(50).subscribe((response: UsersByCommentsHistory) => {
       this.usersByComments = response.comments;
       this.usersByCommentsGini = response.gini;
     }));
 
-    this.subs.add( this.statsService.getProposalsBySupports(30).subscribe((response: ProposalResponse) => {
+    this.subs.add( this.statsService.getProposalsBySupports(50).subscribe((response: ProposalResponse) => {
+      for (let i = 0; i < response.proposals.length; ++i){
+        response.proposals[i].position = i + 1;
+      }
       this.proposalsBySupports = response.proposals;
       this.proposalsBySupportsGini = response.gini;
     }));
 
-    this.subs.add( this.statsService.getProposalsByComments(30).subscribe((response: ProposalResponse) => {
+    this.subs.add( this.statsService.getProposalsByComments(50).subscribe((response: ProposalResponse) => {
+      for (let i = 0; i < response.proposals.length; ++i){
+        response.proposals[i].position = i + 1;
+      }
       this.proposalsByComments = response.proposals;
       this.proposalsByCommentsGini = response.gini;
     }));

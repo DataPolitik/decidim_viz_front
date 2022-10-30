@@ -14,5 +14,6 @@ export interface Proposal{
   latitude: string,
   longitude: string,
   category: number,
-  comments: number
+  comments: number,
+  position: number
 }
