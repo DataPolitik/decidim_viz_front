@@ -58,7 +58,6 @@ export class StatsDashboardComponent<T> implements OnInit {
       axis_x_content += ' ' + ' (' + this.translated_var_name + ')'
     }
 
-    console.log(this.data);
     this.options = {
         data: this.data,
         title: {

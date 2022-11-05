@@ -52,10 +52,10 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public dateToAsString: string | undefined;
 
   public subMenuitems: MenuItem[] = [
-    {label: 'Dinámica temporal', routerLink: ['/activities'], command: e => this.takeAction(e)} ,
-    {label: 'Datos generales', routerLink: ['/activities'], command: e => this.takeAction(e)},
-    {label: 'Idiomas', routerLink: ['/activities'], command: e => this.takeAction(e)},
-    {label: 'Valores destacados', routerLink: ['/activities'], command: e => this.takeAction(e)},
+    {label: 'Dinámica temporal',  command: e => this.takeAction(e, "dynamics")} ,
+    {label: 'Datos generales',  command: e => this.takeAction(e, "general")},
+    {label: 'Idiomas',  command: e => this.takeAction(e, "languages")},
+    {label: 'Valores destacados',  command: e => this.takeAction(e, "featured")},
   ];
 
   public languageTreeMapOptions: AgChartOptions | undefined;
@@ -115,17 +115,17 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       });
   }
 
-  private takeAction(e: any): void {
-    if (e.item.label == 'Dinámica temporal'){
-      document.getElementById("filters")?.scrollIntoView();
+  private takeAction(e: any, section: string): void {
+    if (section == 'dynamics'){
+      document.getElementById("dynamics_section")?.scrollIntoView();
     }
-    else if (e.item.label == 'Datos generales'){
-      document.getElementById("general_stats")?.scrollIntoView();
+    else if (section == 'general'){
+      document.getElementById("general_stats_section")?.scrollIntoView();
     }
-    else if (e.item.label == 'Idiomas'){
-      document.getElementById("comments")?.scrollIntoView();
+    else if (section == 'languages'){
+      document.getElementById("languages_section")?.scrollIntoView();
     }else{
-      document.getElementById("comments")?.scrollIntoView();
+      document.getElementById("featured_section")?.scrollIntoView();
     }
   }
 

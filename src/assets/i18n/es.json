@@ -1,6 +1,6 @@
 {
   "stats": {
-      "stats": "Estadísticas",
+      "stats": "Datos generales",
       "users": "Personas",
       "users_registered": "personas",
       "proposals_done": "propuestas",
@@ -15,9 +15,9 @@
       "most_active_users_by_comments": "Personas con más comentarios",
       "areas_with_more_proposals": "Áreas con más propuestas",
       "languages": "idiomas",
+      "featured": "Valores destacados",
       "comments_written_language": "Idiomas de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
-      "comments": "Comentarios",
       "inequality": "Desigualdad",
       "polarization": "Polarización",
       "axis_x_help": "Seleccionar el punto para más información",
@@ -61,7 +61,7 @@
     "message": "Cargando datos..."
   },
   "activities":{
-    "activities": "Actividad",
+    "dynamics": "Dinámica temporal",
     "showing_from": "Mostrando desde",
     "showing_to": "Hasta el",
     "date": "Fecha",

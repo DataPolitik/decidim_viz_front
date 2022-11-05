@@ -9,9 +9,22 @@
   margin-right: 19px;
 }
 
+#history_submenu{
+  position: absolute;
+  top: 9vh;
+  left: 27vw;
+  z-index: 1;
+}
+
 #submenu{
   display: flex;
   align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.new_section{
+  padding-top: 8vh;
 }
 
 :host ::ng-deep .p-calendar{
