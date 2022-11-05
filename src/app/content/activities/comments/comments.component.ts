@@ -16,6 +16,9 @@ export class CommentsComponent extends AbstractActivitiesComponent implements On
   private accumulatedSubscription: Subscription | undefined;
   private dailySubscription: Subscription | undefined;
 
+  daily_comment_loading: boolean = true;
+  public daily_comment_metrics: Activities | undefined;
+
   override ngOnInit(): void {
     this.dateChanged();
     this.loadedGraphs = 0;
@@ -42,7 +45,7 @@ export class CommentsComponent extends AbstractActivitiesComponent implements On
     }
   }
 
-  override ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.accumulatedSubscription?.unsubscribe();
     this.dailySubscription?.unsubscribe();
   }

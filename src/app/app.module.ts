@@ -17,12 +17,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TableModule } from 'primeng/table';
 import { GraphComponentComponent } from './graph-component/graph-component.component';
 import { InteractionHistogramComponent } from './histograms/interactions/interaction-histograms.component';
-import { StatsComponent } from './stats/stats.component';
 import { GraphQLModule } from './graphql.module';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ActivitiesHistogramComponent } from './histograms/activities/activities-histograms.component';
 import { NavigationMenuComponent } from './header/navigation-menu/navigation-menu.component';
-import { StatsContentComponent } from './content/stats/stats-content.component';
 import { ActivitiesComponent } from './content/activities/activities.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StillLoadingComponent } from './still-loading/still-loading.component';
@@ -51,11 +49,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AppComponent,
     GraphComponentComponent,
     InteractionHistogramComponent,
-    StatsComponent,
     ActivitiesHistogramComponent,
     NavigationMenuComponent,
-    StatsComponent,
-    StatsContentComponent,
     ActivitiesComponent,
     StillLoadingComponent,
     InteractionsComponent,

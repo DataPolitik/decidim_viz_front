@@ -1,16 +1,27 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { StatsComponent } from 'src/app/stats/stats.component';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { Subscription } from 'rxjs';
+import { StatsService } from 'src/app/services/stats.service';
+
 
 @Component({ template: '' })
-export abstract class AbstractActivitiesComponent extends StatsComponent {
+export abstract class AbstractActivitiesComponent implements OnInit {
   @Input() public dateFrom: Date = new Date();
   @Input() public dateTo: Date = new Date();
+
+  protected subs = new Subscription();
 
   public dateFromAsString: string = '';
   public dateToAsString: string = '';
 
   public isEmpty = true;
   public loadedGraphs: number = 0;
+
+  constructor(protected statsService: StatsService, protected apollo: Apollo){}
+
+  ngOnInit(){
+
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit();

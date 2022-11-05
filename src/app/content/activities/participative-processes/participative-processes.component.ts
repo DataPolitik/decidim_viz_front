@@ -14,6 +14,8 @@ import { AbstractActivitiesComponent } from '../abstract-activities/abstract-act
 export class ParticipativeProcessesComponent extends AbstractActivitiesComponent implements OnInit {
   public accumulated_participatory_processes_activities : Activities | undefined;
   public daily_participatory_processes_activities : Activities | undefined;
+  public participatory_processes_loading: boolean = true;
+
 
   private getHistoricalData(countData: number){
     const parameters={

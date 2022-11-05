@@ -23,6 +23,8 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
   private dailySubscription: Subscription | undefined;
   private proposalsSubscription: Subscription | undefined;
 
+  daily_proposal_loading: boolean = true;
+
   override ngOnInit(): void {
     this.dateChanged();
     this.loadedGraphs = 0;
@@ -62,7 +64,7 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
     }
   }
 
-  override ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.accumulatedSubscription?.unsubscribe();
     this.dailySubscription?.unsubscribe();
     this.proposalsSubscription?.unsubscribe();
