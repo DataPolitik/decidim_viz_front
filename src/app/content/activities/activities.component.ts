@@ -25,6 +25,7 @@ import {
 import { execute_metrics_query } from '../../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../../models/activities_users_comments.model';
+import { MenuItem } from 'primeng/api/menuitem';
 
 @Component({
   selector: 'app-content-activities',
@@ -32,6 +33,14 @@ import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../..
   styleUrls: ['./activities.component.css']
 })
 export class ActivitiesComponent implements OnInit, OnDestroy {
+  private temporalLimitsAPISubscription:  Subscription |undefined = undefined;
+  private temporalLimitsGraphHQLSubscription:  Subscription |undefined = undefined;
+
+  private languageCountSubject = new BehaviorSubject<number>(0);
+  private languageCountObservable = this.languageCountSubject.asObservable();
+
+  protected subs = new Subscription();
+
   public dateFromLimit: Date | undefined = undefined;
   public dateToLimit: Date | undefined = undefined;
   public dateFrom: Date | undefined = undefined;
@@ -42,12 +51,12 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public dateFromAsString: string | undefined;
   public dateToAsString: string | undefined;
 
-  private temporalLimitsAPISubscription:  Subscription |undefined = undefined;
-  private temporalLimitsGraphHQLSubscription:  Subscription |undefined = undefined;
-
-  protected subs = new Subscription();
-  private languageCountSubject = new BehaviorSubject<number>(0);
-  private languageCountObservable = this.languageCountSubject.asObservable();
+  public subMenuitems: MenuItem[] = [
+    {label: 'Dinámica temporal', routerLink: ['/activities'], command: e => this.takeAction(e)} ,
+    {label: 'Datos generales', routerLink: ['/activities'], command: e => this.takeAction(e)},
+    {label: 'Idiomas', routerLink: ['/activities'], command: e => this.takeAction(e)},
+    {label: 'Valores destacados', routerLink: ['/activities'], command: e => this.takeAction(e)},
+  ];
 
   public languageTreeMapOptions: AgChartOptions | undefined;
   public categoryCommentsTreeMapOptions: AgHierarchyChartOptions | undefined;
@@ -91,6 +100,9 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public languageCount: Array<{name:string, size: number, color: number}> = [];
   public categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
 
+
+
+
   constructor(protected apollo: Apollo,
     protected ref: ChangeDetectorRef,
     protected statsService: StatsService,
@@ -101,6 +113,20 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
       translate_service.get('stats.graph.context_text').subscribe((res: string) => {
       this.graphContexText = res;
       });
+  }
+
+  private takeAction(e: any): void {
+    if (e.item.label == 'Dinámica temporal'){
+      document.getElementById("filters")?.scrollIntoView();
+    }
+    else if (e.item.label == 'Datos generales'){
+      document.getElementById("general_stats")?.scrollIntoView();
+    }
+    else if (e.item.label == 'Idiomas'){
+      document.getElementById("comments")?.scrollIntoView();
+    }else{
+      document.getElementById("comments")?.scrollIntoView();
+    }
   }
 
 

@@ -9,6 +9,11 @@
   margin-right: 19px;
 }
 
+#submenu{
+  display: flex;
+  align-items: center;
+}
+
 :host ::ng-deep .p-calendar{
   height: 12px;
   width: 135px;

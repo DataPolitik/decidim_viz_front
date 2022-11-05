@@ -1,4 +1,8 @@
 <div id="history">
+  <div id="submenu">
+    <span>{{"activities.submenu" | translate }}</span>
+    <p-tabMenu [model]="this.subMenuitems"></p-tabMenu>
+  </div>
   <h2>
     {{"activities.activities" | translate }}
   </h2>
@@ -33,12 +37,6 @@
 </div>
 
 <div id="general_stats">
-  <div id="internal_navigation" fragment="internal_navigation">
-    <span class="internal_navigation__text">Ir a </span>
-    <a class="internal_navigation__link" href="/stats#proposals">{{'stats.proposals' | translate}}</a>
-    <a class="internal_navigation__link" href="/stats#users">{{'stats.users' | translate}}</a>
-    <a class="internal_navigation__link" href="/stats#comments">{{'stats.comments' | translate}}</a>
-  </div>
   <div>
     <h2>
       {{'stats.stats' | translate}}
