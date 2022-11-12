@@ -11,6 +11,11 @@
   padding-left: 8vw;
 }
 
+.graphComponent{
+  display: inline-block;
+  height: 70vh;
+  width:  68vw;
+}
 
 ::ng-deep  .p-tabview .p-tabview-nav{
   border: none;

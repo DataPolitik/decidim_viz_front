@@ -1,11 +1,3 @@
-<div class="graph">
-  <plotly-plot
-   *ngIf="this.graph !== undefined"
-    [data]="graph.data"
-    [layout]="graph.layout"
-    [updateOnlyWithRevision]="true"
-    [revision]="this.revision"
-    [useResizeHandler]="true"
-    [style]="{position: 'relative', display: 'block'}">
-  </plotly-plot>'
+<div class="graph" >
+  <iframe *ngIf="url" class="graph_iframe"  frameBorder="0" [src]="url"></iframe>
 </div>

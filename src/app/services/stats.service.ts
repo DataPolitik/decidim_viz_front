@@ -51,7 +51,7 @@ export class StatsService {
   }
 
   getEndorses() {
-    return this.http.get<GraphResponse>(this.host + '/stats/endorsements');
+    return this.http.get(this.host + '/stats/endorsements',{responseType: 'text'});
   }
 
   getUsersByProposal(idProposal: string | number){

@@ -39,6 +39,7 @@ import {MenuModule} from 'primeng/menu';
 import {DropdownModule} from 'primeng/dropdown';
 import { StatsDashboardComponent } from './stats/stats-dashboard/stats-dashboard.component';
 import { AboutComponent } from './content/about/about.component';
+import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
 
 
 
@@ -61,7 +62,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     ProposalsViewerComponent,
     FooterComponent,
     StatsDashboardComponent,
-    AboutComponent
+    AboutComponent,
+    SafeHtmlPipe
   ],
   imports: [
     AgChartsAngularModule,
