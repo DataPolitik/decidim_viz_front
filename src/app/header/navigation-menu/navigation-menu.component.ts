@@ -23,6 +23,11 @@ export class NavigationMenuComponent implements OnInit {
         routerLink: ['/activities']
       },
       {
+        label: interactions,
+        icon: 'pi pi-fw pi-share-alt',
+        routerLink: ['/interactions']
+      },
+      {
         label: about,
         icon: 'pi pi-fw pi-question-circle',
         routerLink: ['/about']

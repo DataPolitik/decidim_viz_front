@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: ActivitiesComponent },
   { path: 'activities', component: ActivitiesComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'interacciones', component: InteractionsComponent },
+  { path: 'interactions', component: InteractionsComponent },
   { path: 'proposal/:id', component: ProposalsViewerComponent },
 ];
 

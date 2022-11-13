@@ -54,7 +54,7 @@
   "menu": {
       "stats": "Statistics",
       "activities": "Activity",
-      "interactions": "Interactions",
+      "interactions": "Networks",
       "about": "About Decidim.viz"
   },
   "still_loading":{
