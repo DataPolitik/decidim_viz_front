@@ -62,8 +62,8 @@
   },
   "activities":{
     "dynamics": "Dinámica temporal",
-    "showing_from": "Mostrando desde",
-    "showing_to": "Hasta el",
+    "showing_from": "Desde",
+    "showing_to": "Hasta",
     "date": "Fecha",
     "accumulated": "Acumulado",
     "daily": "Diario",
