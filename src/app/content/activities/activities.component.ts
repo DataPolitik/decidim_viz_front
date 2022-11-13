@@ -52,8 +52,8 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public dateToAsString: string | undefined;
 
   public subMenuitems: MenuItem[] = [
-    {label: 'Dinámica temporal',  command: e => this.takeAction(e, "dynamics")} ,
     {label: 'Datos generales',  command: e => this.takeAction(e, "general")},
+    {label: 'Dinámica temporal',  command: e => this.takeAction(e, "dynamics")} ,
     {label: 'Idiomas',  command: e => this.takeAction(e, "languages")},
     {label: 'Valores destacados',  command: e => this.takeAction(e, "featured")},
   ];
