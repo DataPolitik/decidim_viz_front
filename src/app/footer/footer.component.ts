@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { CONFIGS } from '../config/config.dev';
 import { LANGUAGES } from '../config/language.config';
 
 interface Language {
@@ -17,7 +18,9 @@ export class FooterComponent implements OnInit, OnDestroy {
   private languageSubscription: Subscription | undefined;
   private isLanguageReceived: boolean = false;
 
+
   public LANGUAGES_DICT: any = LANGUAGES;
+  public download_url = CONFIGS.host + ':' + CONFIGS.port + "/stats/data/";
 
   public languageItems: Language[] = [];
   public currentLanguage!: string;
