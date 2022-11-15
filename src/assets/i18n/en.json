@@ -107,7 +107,8 @@
     "user_name": "User name"
   },
   "footer":{
-    "language": "Language"
+    "language": "Language",
+    "download_data": "Download raw data"
   },
   "errors":{
     "no_results": "No results were found for the dates indicated.",

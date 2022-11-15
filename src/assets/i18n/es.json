@@ -108,7 +108,8 @@
     "user_name": "Nombre de usuario"
   },
   "footer":{
-    "language": "Idioma"
+    "language": "Idioma",
+    "download_data": "Descargar datos en bruto"
   },
   "errors":{
     "no_results": "No se han encontrado resultados para las fechas indicadas.",
