@@ -1,0 +1,70 @@
+#filters{
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+}
+
+#filters span{
+  margin-left: 10px;
+  margin-right: 19px;
+}
+
+#history_submenu{
+  position: absolute;
+  top: 9vh;
+  left: 27vw;
+  z-index: 1;
+}
+
+#submenu{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.new_section{
+  padding-top: 8vh;
+}
+
+
+.histogram_chart{
+  width: 90%;
+  height: 70%;
+}
+
+.treemap{
+  position: inherit !important;
+  height: 700px;
+  width: 700px;
+}
+
+#internal_navigation{
+  padding-left: 10px;
+  margin-top: 25px;
+  margin-left: 10px;
+  font-size: 15px !important;
+}
+
+.internal_navigation__text{
+  font-size: 15px;
+}
+.internal_navigation__link{
+  font-size: 15px;
+  display: inline-block;
+  padding: 5px;
+  padding-left: 20px;
+  color:rgb(108, 117, 125);
+
+}
+
+.internal_navigation__link:link{
+  text-decoration: none;
+}
+
+.title_with_anchor h2{
+  display: inline-block;
+  margin-left: 0;
+  padding: 0;
+  vertical-align: middle;
+}

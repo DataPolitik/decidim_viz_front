@@ -54,7 +54,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public subMenuitems: MenuItem[] = [
     {label: 'Datos generales',  command: e => this.takeAction(e, "general")},
     {label: 'Dinámica temporal',  command: e => this.takeAction(e, "dynamics")} ,
-    {label: 'Idiomas',  command: e => this.takeAction(e, "languages")},
     {label: 'Valores destacados',  command: e => this.takeAction(e, "featured")},
   ];
 
@@ -122,9 +121,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
     else if (section == 'general'){
       document.getElementById("general_stats_section")?.scrollIntoView();
     }
-    else if (section == 'languages'){
-      document.getElementById("languages_section")?.scrollIntoView();
-    }else{
+else{
       document.getElementById("featured_section")?.scrollIntoView();
     }
   }

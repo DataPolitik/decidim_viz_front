@@ -64,21 +64,6 @@
 </div>
 
 <div>
-  <div class="new_section" id="languages_section"></div>
-  <div class="title_with_anchor">
-    <a class="internal_navigation__link" href="/activities#top">↑</a>
-    <h2 id="languages" fragment="languages">{{'stats.languages' | translate}}</h2>
-  </div>
-  <h3>
-    {{'stats.comments_written_language' | translate}} <fa-icon [icon]="this.faLanguage"></fa-icon>
-  </h3>
-  <div class="container" class="demographic_table">
-    <ag-charts-angular *ngIf="this.languageCount.length > 0 && this.languageTreeMapOptions"
-      class="treemap"
-      style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
-      [options]="this.languageTreeMapOptions"
-    ></ag-charts-angular>
-  </div>
   <div>
     <div class="new_section" id="featured_section"></div>
     <div class="title_with_anchor">
