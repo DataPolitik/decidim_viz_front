@@ -8,7 +8,7 @@
 <div *ngIf="this.gini" class="demographic_table--gini">
   <span class="additional_info" pTooltip="El índice de Gini calcula la desigualdad existente en una muestra. Siendo 0 la máxima igualdad y 1 la máxima desigualdad.">ⓘ </span>
   <span>{{this.gini_title | translate}}: </span>
-  <span>{{this.gini | number:'1.3'}}</span>
+  <span>{{this.gini.value | number:'1.3'}}</span>
 </div>
 
 <p-tabView>
@@ -26,20 +26,24 @@
       <p-table [value]="this.data" [scrollable]="true" scrollHeight="500px" responsiveLayout="scroll">
         <ng-template pTemplate="header">
             <tr>
-                <th pResizableColumn style="flex-basis:85%">{{'stats.title' | translate}}</th>
+                <th pResizableColumn style="flex-basis:70%">{{'stats.title' | translate}}</th>
                 <th pResizableColumn style="flex-basis:15%">{{countColumnName | translate}}</th>
+                <th pResizableColumn style="flex-basis:15%">{{'stats.gini_contribution' | translate}} {{this.gini_title | translate | lowercase}}</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-element>
+        <ng-template pTemplate="body" let-element let-i="rowIndex">
             <tr>
-              <td *ngIf="this.isProposal" style="flex-basis:85%">
+              <td *ngIf="this.isProposal" style="flex-basis:70%">
                 <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{element.title_es}}</a>
               </td>
-              <td *ngIf="!this.isProposal" style="flex-basis:875%">
+              <td *ngIf="!this.isProposal" style="flex-basis:70%">
                 {{element[titleColumn]}}
               </td>
               <td style="flex-basis:15%">
                 {{element[countColumn]}}
+              </td>
+              <td style="flex-basis:15%" *ngIf="this.gini">
+                {{this.gini.contributions[i] | number:'1.5' }}
               </td>
             </tr>
         </ng-template>

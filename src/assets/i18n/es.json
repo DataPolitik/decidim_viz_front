@@ -16,11 +16,13 @@
       "areas_with_more_proposals": "Áreas con más propuestas",
       "languages": "idiomas",
       "featured": "Valores destacados",
+      "comments": "Comentarios",
       "comments_written_language": "Idiomas de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
       "inequality": "Desigualdad",
       "polarization": "Polarización",
       "axis_x_help": "Seleccionar el punto para más información",
+      "gini_contribution": "Contribución a ",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"

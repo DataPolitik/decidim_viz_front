@@ -21,6 +21,7 @@
       "inequality": "Inequality",
       "polarization": "Polarization",
       "axis_x_help": "Hover on the bar for more information",
+      "gini_contribution": "Contribution to ",
       "graph": {
         "title": "Proportion of languages used",
         "context_text": "Number of comments"

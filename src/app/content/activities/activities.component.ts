@@ -26,6 +26,7 @@ import { execute_metrics_query } from '../../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../../models/activities_users_comments.model';
 import { MenuItem } from 'primeng/api/menuitem';
+import { AbstractDash, Gini } from 'src/app/models/abstract_dash.model';
 
 @Component({
   selector: 'app-content-activities',
@@ -85,16 +86,16 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   public comments_metrics: Activities | undefined;
 
   public categories: Array<Category> | undefined = undefined;
-  public categoriesByProposalsGini: number | undefined = undefined;
-  public categoriesByCommentsGini: number | undefined = undefined;
+  public categoriesByProposalsGini: Gini | undefined = undefined;
+  public categoriesByCommentsGini: Gini | undefined = undefined;
+  public proposalsBySupportsGini: Gini | undefined = undefined;
+  public proposalsByCommentsGini: Gini | undefined = undefined;
+  public usersByCommentsGini: Gini | undefined = undefined;
   public categoriesByProposals: Array<Category> | undefined = undefined;
   public categoriesByComments: Array<Category> | undefined = undefined;
   public proposalsBySupports: Array<Proposal> | undefined = undefined;
-  public proposalsBySupportsGini: number | undefined = undefined;
   public proposalsByComments: Array<Proposal> | undefined = undefined;
-  public proposalsByCommentsGini: number | undefined = undefined;
   public usersByComments: Array<UsersByCommentsHistoryCommentInfo> | undefined = undefined;
-  public usersByCommentsGini: number | undefined = undefined;
   public languages: Array<string> | undefined = undefined;
   public languageCount: Array<{name:string, size: number, color: number}> = [];
   public categoryCommentCount: Array<{name:string, size: number, color: number}> = [];

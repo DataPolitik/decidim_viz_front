@@ -1,3 +1,9 @@
 export interface AbstractDash{
-  gini: number
+  gini: Gini
+}
+
+
+export interface Gini{
+  value: number,
+  contributions: Array<number>
 }

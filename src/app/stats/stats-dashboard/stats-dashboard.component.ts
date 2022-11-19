@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TranslateService } from '@ngx-translate/core';
-import { AgCartesianAxisOptions, AgChartOptions } from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
+import { Gini } from 'src/app/models/abstract_dash.model';
 
 @Component({
   selector: 'app-stats-dashboard',
@@ -13,7 +14,7 @@ export class StatsDashboardComponent<T> implements OnInit {
   public options: AgChartOptions | undefined;
 
   @Input() data: Array<T> | undefined = undefined;
-  @Input() gini: number | undefined = undefined;
+  @Input() gini: Gini | undefined = undefined;
   @Input() gini_title: string = '';
   @Input() title: string = '';
   @Input() countColumnName: string  = '';
