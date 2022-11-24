@@ -66,12 +66,10 @@ export class StatsDashboardComponent<T> implements OnInit {
             text: this.translated_title,
         },
         series: [
-            { type: 'scatter',
+            { type: 'column',
                xKey: this.titleColumn,
                yKey: this.countColumn,
-               marker:{
-                fill: this.fillColor
-               },
+               fill: this.fillColor,
                tooltip: {
                 renderer: this.toolTipRenderer,
                },
