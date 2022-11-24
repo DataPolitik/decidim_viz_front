@@ -32,7 +32,6 @@ import { MapsComponent } from './maps/maps.component';
 import { ProposalsViewerComponent } from './content/proposals-viewer/proposals-viewer.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { FooterComponent } from './footer/footer.component';
 import {TooltipModule} from 'primeng/tooltip';
 import { ChipModule } from 'primeng/chip';
 import {MenuModule} from 'primeng/menu';
@@ -62,7 +61,6 @@ PlotlyModule.plotlyjs = PlotlyJS;
     CommentsComponent,
     MapsComponent,
     ProposalsViewerComponent,
-    FooterComponent,
     StatsDashboardComponent,
     StatsContentComponent,
     AboutComponent,
