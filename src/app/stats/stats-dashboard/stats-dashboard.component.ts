@@ -20,6 +20,7 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() countColumnName: string  = '';
   @Input() titleColumn: string  = '';
   @Input() countColumn: string  = '';
+  @Input() fillColor: string  = '';
   @Input() typeColumnCount: any  = 'number';
   @Input() icon: IconProp | undefined = undefined;
   @Input() isProposal: boolean = true;
@@ -68,6 +69,9 @@ export class StatsDashboardComponent<T> implements OnInit {
             { type: 'scatter',
                xKey: this.titleColumn,
                yKey: this.countColumn,
+               marker:{
+                fill: this.fillColor
+               },
                tooltip: {
                 renderer: this.toolTipRenderer,
                },

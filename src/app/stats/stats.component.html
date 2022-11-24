@@ -1,15 +1,4 @@
 <div id="general_stats">
-  <div id="internal_navigation" fragment="internal_navigation">
-    <span class="internal_navigation__text">Ir a </span>
-    <a class="internal_navigation__link" href="/stats#proposals">{{'stats.proposals' | translate}}</a>
-    <a class="internal_navigation__link" href="/stats#users">{{'stats.users' | translate}}</a>
-    <a class="internal_navigation__link" href="/stats#comments">{{'stats.comments' | translate}}</a>
-  </div>
-  <div>
-    <h2>
-      {{'stats.stats' | translate}}
-    </h2>
-  </div>
   <section id="summary">
     <p *ngIf="!daily_user_loading; else still_loading">
       <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} {{'stats.users_registered' | translate}}

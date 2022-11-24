@@ -1,3 +1,8 @@
+#summary{
+  display: flex;
+  justify-content: space-around;
+}
+
 #filters{
   display: flex;
   font-size: 13px;
@@ -9,18 +14,34 @@
   margin-right: 19px;
 }
 
+.submenu_intro{
+  margin-top: 15px;
+  margin-left: 35px;
+  font-size: 25px;
+}
+
+
 #history_submenu{
+  vertical-align: middle;
   position: absolute;
-  top: 9vh;
-  left: 27vw;
+  width: 100%;
+  background-color: rgb(250, 239, 239);
   z-index: 1;
 }
 
 #submenu{
   display: flex;
-  align-items: center;
+  align-items: left;
   text-align: center;
   margin: 0 auto;
+}
+
+#submenu__title{
+  font-size: 20px;
+}
+
+.submenu__element{
+  background-color: transparent;
 }
 
 .new_section{
@@ -38,6 +59,12 @@
 
 :host ::ng-deep .p-calendar .p-button{
   background-color: transparent;
+  color: black;
+  border: none;
+}
+
+:host ::ng-deep  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  background-color: rgb(250, 239, 239);
   color: black;
   border: none;
 }
