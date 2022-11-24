@@ -123,7 +123,7 @@
   <h3>
     {{'stats.most_commented_categories' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
   </h3>
-  <div *ngIf="this.categoriesByComments; else still_loading" class="demographic_table">
+  <div *ngIf="this.categoriesByComments; else still_loading">
     <app-stats-dashboard
       *ngIf="this.categoriesByComments"
       [data]="this.categoriesByComments"
