@@ -1,5 +1,6 @@
 export const CONFIGS = {
   host: "http://localhost",
   port: "8000",
-  defaultLanguage: 'es'
+  defaultLanguage: 'es',
+  instanceName: 'futureu.europa.eu'
 };

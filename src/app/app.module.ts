@@ -41,6 +41,7 @@ import { StatsDashboardComponent } from './stats/stats-dashboard/stats-dashboard
 import { AboutComponent } from './content/about/about.component';
 import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
 import { StatsContentComponent } from './content/stats/stats-content.component';
+import { AboutInstanceComponent } from './content/about-instance/about-instance.component';
 
 
 
@@ -65,7 +66,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     StatsDashboardComponent,
     StatsContentComponent,
     AboutComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    AboutInstanceComponent
   ],
   imports: [
     AgChartsAngularModule,

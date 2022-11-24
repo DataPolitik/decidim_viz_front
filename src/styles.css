@@ -55,8 +55,7 @@ section{
 
 #history_submenu{
   vertical-align: middle;
-  position: absolute;
-  width: 100%;
+  width: 98vw;
   background-color: rgb(250, 239, 239);
   z-index: 1;
 }
