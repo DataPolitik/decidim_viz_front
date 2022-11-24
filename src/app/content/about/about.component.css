@@ -18,3 +18,7 @@ p{
 .about_content{
   text-align: justify;
 }
+
+#history_submenu{
+  margin-top: -28px;
+}

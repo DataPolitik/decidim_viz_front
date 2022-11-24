@@ -48,6 +48,8 @@ section{
   width: 98vw;
   background-color: rgb(250, 239, 239);
   z-index: 1;
+  position: fixed;
+  width: 100vw;
 }
 
 #submenu{
