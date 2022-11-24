@@ -1,21 +1,17 @@
-<div id="interactions">
-  <h2>
-    {{'interactions.title' | translate}}
-  </h2>
+<a id="top"></a>
+<div id="history_submenu">
+  <div id="submenu">
+    <i class="pi pi-chevron-right submenu_intro"></i>
+    <p-tabMenu class="submenu__element" [model]="this.subMenuitems"></p-tabMenu>
+  </div>
+</div>
 
 <div id="interaction_tabView">
-  <p-tabView >
-    <p-tabPanel header="{{'interactions.comments' | translate}}">
-      <div class="graph">
-        <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
-      </div>
-    </p-tabPanel>
-    <p-tabPanel header="{{'interactions.endorsements' | translate}}">
-      <div class="graph">
-        <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
-      </div>
-    </p-tabPanel>
+  <div class="graph" *ngIf="this.currentElement == 'comments'">
+    <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
+  </div>
+  <div class="graph" *ngIf="this.currentElement == 'endorsements'">
+    <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
+  </div>
+</div>
 
-  </p-tabView>
-</div>
-</div>

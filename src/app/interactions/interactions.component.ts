@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-interactions',
@@ -8,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class InteractionsComponent implements OnInit {
   public commentsGraphType: string = "comments";
   public endorsementsGraphType: string = "endorsements";
+  public currentElement = 'comments';
+
+  public subMenuitems: MenuItem[] = [
+    {label: 'Comentarios',  command: e => this.takeAction(e, "comments")},
+    {label: 'Apoyos',  command: e => this.takeAction(e, "endorsements")}
+  ];
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  private takeAction(e: any, section: string): void {
+    this.currentElement = section;
   }
 
 }

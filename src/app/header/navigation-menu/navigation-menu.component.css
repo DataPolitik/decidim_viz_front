@@ -1,10 +1,10 @@
 :host ::ng-deep .p-tabmenuitem{
-  font-family: Verdana, Geneva, sans-serif; font-size: 22px; font-style: normal; font-variant: normal; font-weight: 550; line-height: 23px;
+  font-family: Verdana, Geneva, sans-serif; font-size: 22px; font-style: normal; font-variant: normal; font-weight: 550; line-height: 23px; background-color: #8F9696 !important;
 }
 
 
 :host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
-  color: #447777;
+  color: #447777; background-color: #8F9696 !important;
 }
 
 :host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled){
@@ -22,5 +22,12 @@
 }
 
 :host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link-active {
-      color: #2196F3 !important;
+      color: black !important; background-color: #8F9696;
+}
+
+
+:host ::ng-deep  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+  background: #8F9696 !important;
+  border-color: #6c757d;
+  color: #FFFFFF;
 }

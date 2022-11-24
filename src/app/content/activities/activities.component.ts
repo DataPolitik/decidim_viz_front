@@ -122,7 +122,7 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
     else if (section == 'general'){
       document.getElementById("general_stats_section")?.scrollIntoView();
     }
-else{
+    else{
       document.getElementById("featured_section")?.scrollIntoView();
     }
   }
