@@ -1,5 +1,6 @@
 #interaction_tabView{
   margin-left: 4vw;
+  margin-top: 4vh;
 }
 
 .graph{
@@ -19,4 +20,8 @@
 
 ::ng-deep  .p-tabview .p-tabview-nav{
   border: none;
+}
+
+#history_submenu{
+  margin-top: -39px;
 }
