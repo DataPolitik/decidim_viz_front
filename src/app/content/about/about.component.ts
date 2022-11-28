@@ -9,7 +9,9 @@ import { MenuItem } from 'primeng/api';
 export class AboutComponent implements OnInit {
 
   public subMenuitems: MenuItem[] = [
-    {label: 'Repositorio de GitHub',  command: e => this.takeAction(e, "github")}
+    {label: 'Ir a Decidim.org',  command: e => this.takeAction(e, "decidim")},
+    {label: 'Repositorio de GitHub (Front-end)',  command: e => this.takeAction(e, "front")},
+    {label: 'Repositorio de GitHub (Back-end)',  command: e => this.takeAction(e, "back")}
   ];
 
   constructor() { }
@@ -18,8 +20,14 @@ export class AboutComponent implements OnInit {
   }
 
   private takeAction(e: any, section: string): void {
-    if (section == 'github'){
+    if (section == 'decidim'){
+      window.location.href = 'https://decidim.org/'
+    }
+    else if (section == 'front'){
       window.location.href = 'https://github.com/DataPolitik/decidim_viz_front'
+    }
+    else if (section == 'back'){
+      window.location.href = 'https://github.com/DataPolitik/decidim_viz_back'
     }
   }
 

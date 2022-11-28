@@ -10,6 +10,7 @@ import { CONFIGS } from 'src/app/config/config.dev';
 export class AboutInstanceComponent implements OnInit {
 
   public subMenuitems: MenuItem[] = [
+    {label: 'Ir a ' + CONFIGS.instanceName,  command: e => this.takeAction(e, "go")},
     {label: 'Descarga de datos en bruto',  command: e => this.takeAction(e, "raw")}
   ];
 
@@ -19,7 +20,10 @@ export class AboutInstanceComponent implements OnInit {
   }
 
   private takeAction(e: any, section: string): void {
-    if (section == 'raw'){
+    if (section == 'go'){
+      window.location.href = "https://futureu.europa.eu/";
+    }
+    else if (section == 'raw'){
       const server: string = CONFIGS.host + ':' + CONFIGS.port;
       window.location.href = server + '/stats/data/';
     }
