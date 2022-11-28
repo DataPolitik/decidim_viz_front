@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Activities } from 'src/app/models/activities.model';
 import { AbstractActivitiesComponent } from '../abstract-activities/abstract-activities.component';

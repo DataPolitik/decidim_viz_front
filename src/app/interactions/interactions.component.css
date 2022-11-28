@@ -25,3 +25,22 @@
 #history_submenu{
   margin-top: -39px;
 }
+
+.target_color{
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+}
+
+#interaction_tabView__communities{
+  margin: 0 auto;
+  margin-top: 65vh;
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+.community_card{
+  display: inline-block;
+  width: 450px;
+  margin: 15px;
+}

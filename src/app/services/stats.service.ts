@@ -14,6 +14,7 @@ import { TemporalLimitsAPI as TemporalLimitsAPI } from '../models/temporal-limit
 import { Observable } from 'rxjs';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
+import { ColorCommunities } from '../models/color_communities.model';
 
 
 @Injectable({
@@ -52,6 +53,10 @@ export class StatsService {
 
   getEndorses() {
     return this.http.get(this.host + '/stats/endorsements',{responseType: 'text'});
+  }
+
+  getEndorsesColors(): Observable<ColorCommunities> {
+    return this.http.get<ColorCommunities>(this.host + '/stats/endorsements/colors');
   }
 
   getUsersByProposal(idProposal: string | number){

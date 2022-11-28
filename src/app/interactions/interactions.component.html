@@ -13,5 +13,23 @@
   <div class="graph" *ngIf="this.currentElement == 'endorsements'">
     <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
   </div>
+  <div id="interaction_tabView__communities">
+    <p-card class="community_card" *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
+      <ng-template pTemplate="header" >
+        <h3 [style]="'color:' + item.key +';'">
+          Comunidad:  {{indexOfelement + 1}}
+        </h3>
+      </ng-template>
+          <ul>
+            <li>Color: <div class="target_color" [style]="'background-color:' + item.key +';'"> </div></li>
+            <li>Total number of people: {{getLenghtOfCommunity(item.key)}}</li>
+            <li>% over the total network: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
+          </ul>
+      <ng-template pTemplate="footer">
+
+      </ng-template>
+
+    </p-card>
+  </div>
 </div>
 
