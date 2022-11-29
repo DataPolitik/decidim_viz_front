@@ -37,16 +37,29 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   private takeAction(e: any, section: string): void {
     this.currentElement = section;
+    this.getCommunitiesNodes();
   }
 
   private getCommunitiesNodes(): void {
-    this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
-      (response: ColorCommunities) => {
-        this.totalNodes = response.total;
-        this.colorsNodes = response.colors.users;
-        this.communitiesProposals = response.colors.proposals;
-      }
-    )
+    if (this.currentElement == 'comments'){
+      this.colorSubscription = this.statsService.getCommentsColors().subscribe(
+        (response: ColorCommunities) => {
+          this.totalNodes = response.total;
+          this.colorsNodes = response.colors.users;
+          this.communitiesProposals = response.colors.proposals;
+        }
+      )
+    }else{
+      this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
+        (response: ColorCommunities) => {
+          this.totalNodes = response.total;
+          this.colorsNodes = response.colors.users;
+          this.communitiesProposals = response.colors.proposals;
+        }
+      )
+    }
+
+
   }
 
   public getLenghtOfCommunity(key: any): number{

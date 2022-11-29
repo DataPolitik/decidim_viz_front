@@ -59,6 +59,10 @@ export class StatsService {
     return this.http.get<ColorCommunities>(this.host + '/stats/endorsements/colors');
   }
 
+  getCommentsColors(): Observable<ColorCommunities> {
+    return this.http.get<ColorCommunities>(this.host + '/stats/comments/colors');
+  }
+
   getUsersByProposal(idProposal: string | number){
     return this.http.get<Activities>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
   }
