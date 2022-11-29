@@ -26,7 +26,12 @@
             <li>% over the total network: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
           </ul>
       <ng-template pTemplate="footer">
-
+          <div>
+            <h4>Most endorsed proposals</h4>
+            <ul class="proposal_list" *ngIf="this.communitiesProposals">
+              <li *ngFor="let prop of getProposals(item.key) | keyvalue">{{prop.key}}</li>
+            </ul>
+          </div>
       </ng-template>
 
     </p-card>

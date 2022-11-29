@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 import { StatsService } from '../services/stats.service';
 import { ColorCommunities } from '../models/color_communities.model';
+import { CONFIGS } from '../config/config.dev';
 
 @Component({
   selector: 'app-interactions',
@@ -17,6 +18,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public currentElement = 'comments';
   public totalNodes: number = 0;
   public colorsNodes: { [id: string]: string[]; }[] = [];
+  public communitiesProposals: any[] = [];
 
   public subMenuitems: MenuItem[] = [
     {label: 'Comentarios',  command: e => this.takeAction(e, "comments")},
@@ -41,7 +43,8 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
       (response: ColorCommunities) => {
         this.totalNodes = response.total;
-        this.colorsNodes = response.colors;
+        this.colorsNodes = response.colors.users;
+        this.communitiesProposals = response.colors.proposals;
       }
     )
   }
@@ -54,4 +57,8 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     return Number(this.colorsNodes[key]['length']) / this.totalNodes;
   }
 
+  public getProposals(color: string): any[]{
+    const communities = this.communitiesProposals[color as any];
+    return communities;
+  }
 }

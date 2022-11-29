@@ -36,11 +36,15 @@
   margin: 0 auto;
   margin-top: 65vh;
   margin-bottom: 10vh;
-  text-align: center;
 }
 
 .community_card{
   display: inline-block;
   width: 450px;
   margin: 15px;
+}
+
+.proposal_list{
+  height: 120px;
+  overflow-y: scroll;
 }

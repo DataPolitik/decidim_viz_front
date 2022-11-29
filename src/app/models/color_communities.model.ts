@@ -1,4 +1,9 @@
 export interface ColorCommunities{
   total: number,
-  colors: Array<{[id: string]: Array<string>}>
+  colors: ColorDataCommunities
+}
+
+interface ColorDataCommunities{
+  users: Array<{[id: string]: Array<string>}>,
+  proposals: Array<{[id: string | number]: Array<any>}>
 }
