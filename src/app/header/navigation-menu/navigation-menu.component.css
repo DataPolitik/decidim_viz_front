@@ -3,6 +3,10 @@
 }
 
 
+:host ::ng-deep .p-tabmenu .p-tabmenu-nav{
+  background-color: #8F9696;
+}
+
 :host ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
   color: #447777; background-color: #8F9696 !important;
 }
@@ -26,8 +30,20 @@
 }
 
 
-:host ::ng-deep  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+:host ::ng-deep  #header_content .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   background: #8F9696 !important;
   border-color: #6c757d;
   color: #FFFFFF;
+}
+
+#header_submenu{
+  width: 100vw;
+  background-color: rgb(250, 239, 239);
+}
+
+#header_content{
+  width: 100vw;
+  height: 6vh;
+  background-color: #8F9696;
+  padding-left: 2vh;
 }

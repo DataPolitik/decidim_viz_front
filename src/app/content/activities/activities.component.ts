@@ -27,6 +27,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../../models/activities_users_comments.model';
 import { MenuItem } from 'primeng/api/menuitem';
 import { AbstractDash, Gini } from 'src/app/models/abstract_dash.model';
+import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
+import { SubMenuService } from 'src/app/services/sub_menu.service';
 
 @Component({
   selector: 'app-content-activities',
@@ -51,13 +53,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
 
   public dateFromAsString: string | undefined;
   public dateToAsString: string | undefined;
-
-  public subMenuitems: MenuItem[] = [
-    {label: 'Datos generales',  command: e => this.takeAction(e, "general")},
-    {label: 'Dinámica temporal',  command: e => this.takeAction(e, "dynamics")} ,
-    {label: 'Valores destacados',  command: e => this.takeAction(e, "featured")},
-  ];
-
   public languageTreeMapOptions: AgChartOptions | undefined;
   public categoryCommentsTreeMapOptions: AgHierarchyChartOptions | undefined;
 
@@ -103,28 +98,26 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
 
 
 
-  constructor(protected apollo: Apollo,
-    protected ref: ChangeDetectorRef,
-    protected statsService: StatsService,
-    protected translate_service: TranslateService) {
-      translate_service.get('stats.graph.title').subscribe((res: string) => {
-      this.graphTitle = res;
-      });
-      translate_service.get('stats.graph.context_text').subscribe((res: string) => {
-      this.graphContexText = res;
-      });
-  }
+  constructor(
+        protected apollo: Apollo,
+        protected ref: ChangeDetectorRef,
+        protected statsService: StatsService,
+        protected translate_service: TranslateService,
+        private subMenuService: SubMenuService) {
+          translate_service.get('stats.graph.title').subscribe((res: string) => {
+          this.graphTitle = res;
+          });
+          translate_service.get('stats.graph.context_text').subscribe((res: string) => {
+          this.graphContexText = res;
+          });
 
-  private takeAction(e: any, section: string): void {
-    if (section == 'dynamics'){
-      document.getElementById("dynamics_section")?.scrollIntoView();
-    }
-    else if (section == 'general'){
-      document.getElementById("general_stats_section")?.scrollIntoView();
-    }
-    else{
-      document.getElementById("featured_section")?.scrollIntoView();
-    }
+
+          this.subMenuService.setEntries([
+              { label: 'submenu.activities.general_data', action: () => {document.getElementById("general_stats_section")?.scrollIntoView()}},
+              { label: 'submenu.activities.dynamics', action: () => {document.getElementById("dynamics_section")?.scrollIntoView()}},
+              { label: 'submenu.activities.featured', action: () => {document.getElementById("featured_section")?.scrollIntoView()}},
+            ] as SubMenuEntry[]
+          );
   }
 
 

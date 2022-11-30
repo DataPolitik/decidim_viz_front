@@ -22,6 +22,7 @@ import {
 import { execute_metrics_query } from '../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
 import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../models/activities_users_comments.model';
+import { StatsService } from '../services/stats.service';
 
 @Component({
   selector: 'app-stats',

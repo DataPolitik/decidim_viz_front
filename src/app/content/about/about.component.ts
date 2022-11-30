@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
+import { SubMenuService } from 'src/app/services/sub_menu.service';
 
 @Component({
   selector: 'app-about',
@@ -8,27 +10,16 @@ import { MenuItem } from 'primeng/api';
 })
 export class AboutComponent implements OnInit {
 
-  public subMenuitems: MenuItem[] = [
-    {label: 'Ir a Decidim.org',  command: e => this.takeAction(e, "decidim")},
-    {label: 'Repositorio de GitHub (Front-end)',  command: e => this.takeAction(e, "front")},
-    {label: 'Repositorio de GitHub (Back-end)',  command: e => this.takeAction(e, "back")}
-  ];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private subMenuService: SubMenuService) {
+    this.subMenuService.setEntries([
+        { label: 'submenu.about.goto', action: () => {window.location.href = "https://decidim.org/"}},
+        { label: 'submenu.about.front', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_front"}},
+        { label: 'submenu.about.back', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_back"}}
+      ] as SubMenuEntry[]
+    );
   }
 
-  private takeAction(e: any, section: string): void {
-    if (section == 'decidim'){
-      window.location.href = 'https://decidim.org/'
-    }
-    else if (section == 'front'){
-      window.location.href = 'https://github.com/DataPolitik/decidim_viz_front'
-    }
-    else if (section == 'back'){
-      window.location.href = 'https://github.com/DataPolitik/decidim_viz_back'
-    }
+  ngOnInit(): void {
   }
 
 }

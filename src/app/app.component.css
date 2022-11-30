@@ -1,19 +1,7 @@
 #container{
-  height: 100vh;
+  height: 98vh;
 }
 
-#header{
-  height: 8vh;
-  padding-left: 2vh;
-  padding-right: 2vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #8F9696;
-  border-bottom: solid 3px #FFE9D7;
-}
 
 #footer{
   border-top: solid 3px #FFE9D7;
@@ -25,13 +13,11 @@
 }
 
 #content{
-  height: 90vh;
+  height: 88vh;
   padding-right: 3vw;
 }
 
-#footer{
-  height: 5vh;
-}
+
 
 #logo{
   font-family: Tahoma,Verdana,Segoe,sans-serif;

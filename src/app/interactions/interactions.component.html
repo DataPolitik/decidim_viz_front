@@ -1,11 +1,4 @@
 <a id="top"></a>
-<div id="history_submenu">
-  <div id="submenu">
-    <i class="pi pi-chevron-right submenu_intro"></i>
-    <p-tabMenu class="submenu__element" [model]="this.subMenuitems"></p-tabMenu>
-  </div>
-</div>
-
 <div id="interaction_tabView">
   <div class="graph" *ngIf="this.currentElement == 'comments'">
     <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>

@@ -15,9 +15,7 @@
 }
 
 
-.new_section{
-  padding-top: 8vh;
-}
+
 
 :host ::ng-deep .p-calendar{
   height: 12px;

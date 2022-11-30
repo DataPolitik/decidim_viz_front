@@ -4,6 +4,8 @@ import { MenuItem } from 'primeng/api';
 import { StatsService } from '../services/stats.service';
 import { ColorCommunities } from '../models/color_communities.model';
 import { CONFIGS } from '../config/config.dev';
+import { SubMenuService } from '../services/sub_menu.service';
+import { SubMenuEntry } from '../models/sub_menu_entry.model';
 
 @Component({
   selector: 'app-interactions',
@@ -20,12 +22,14 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public colorsNodes: { [id: string]: string[]; }[] = [];
   public communitiesProposals: any[] = [];
 
-  public subMenuitems: MenuItem[] = [
-    {label: 'Comentarios',  command: e => this.takeAction(e, "comments")},
-    {label: 'Apoyos',  command: e => this.takeAction(e, "endorsements")}
-  ];
 
-  constructor(private statsService: StatsService) { }
+  constructor(private statsService: StatsService, private subMenuService: SubMenuService) {
+    this.subMenuService.setEntries([
+        { label: 'submenu.interactions.comments', action: () => {this.currentElement = "comments"; this.getCommunitiesNodes();}},
+        { label: 'submenu.interactions.endorsements', action: () => {this.currentElement = "endorsements"; this.getCommunitiesNodes();}}
+      ] as SubMenuEntry[]
+    );
+  }
 
   ngOnInit(): void {
     this.getCommunitiesNodes();
@@ -35,10 +39,6 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     this.colorSubscription?.unsubscribe();
   }
 
-  private takeAction(e: any, section: string): void {
-    this.currentElement = section;
-    this.getCommunitiesNodes();
-  }
 
   private getCommunitiesNodes(): void {
     if (this.currentElement == 'comments'){

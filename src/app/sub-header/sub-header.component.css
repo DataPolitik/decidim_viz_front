@@ -1,0 +1,16 @@
+#submenu ul{
+  list-style: none;
+}
+
+#submenu ul li{
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+#submenu ul li:hover{
+  color: #6c757d;
+}

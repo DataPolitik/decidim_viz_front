@@ -11,21 +11,13 @@ import { Activities } from '../../models/activities.model';
 import { Proposal, ProposalResponse } from '../../models/proposal.model';
 import { StatsService } from '../../services/stats.service';
 
-import {
-  faUsers,
-  faLightbulb,
-  faDiagramProject,
-  faUsersBetweenLines,
-  faLanguage,
-  faHandsClapping,
-  faComments,
-  faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 
 
-import { execute_metrics_query } from '../../utils/metrics.utils';
 import { TranslateService } from '@ngx-translate/core';
-import { UsersByCommentsHistory, UsersByCommentsHistoryCommentInfo } from '../../models/activities_users_comments.model';
 import { MenuItem } from 'primeng/api/menuitem';
+import { SubMenuService } from 'src/app/services/sub_menu.service';
+import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
 
 @Component({
   selector: 'app-content-stats-content',
@@ -39,22 +31,10 @@ export class StatsContentComponent implements OnInit, OnDestroy {
   private languageCountObservable = this.languageCountSubject.asObservable();
 
   protected subs = new Subscription();
-
-
-  public subMenuitems: MenuItem[] = [
-    {label: 'Idiomas',  command: e => this.takeAction(e, "languages")}
-  ];
-
   public languageTreeMapOptions: AgChartOptions | undefined;
 
   public faLanguage = faLanguage;
-
-
   private graphTitle: string = ''
-  private graphContexText: string = ''
-
-
-
   public languages: Array<string> | undefined = undefined;
   public languageCount: Array<{name:string, size: number, color: number}> = [];
   public categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
@@ -65,10 +45,14 @@ export class StatsContentComponent implements OnInit, OnDestroy {
   constructor(protected apollo: Apollo,
     protected ref: ChangeDetectorRef,
     protected statsService: StatsService,
-    protected translate_service: TranslateService) { }
+    protected translate_service: TranslateService,
+    private subMenuService: SubMenuService) {
 
-
-
+      this.subMenuService.setEntries([
+        { label: 'submenu.stats.languages', action: () => {}},
+      ] as SubMenuEntry[]
+    );
+    }
 
 
   ngOnInit(): void {

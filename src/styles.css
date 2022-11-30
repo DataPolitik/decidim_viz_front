@@ -8,6 +8,8 @@ body{
   overflow-y: hidden;
   overflow-x: hidden;
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -35,6 +37,9 @@ section{
   padding-left: 5vw;
 }
 
+.new_section{
+  padding-top: 4vh;
+}
 
 .submenu_intro{
   margin-top: 15px;
@@ -43,14 +48,6 @@ section{
 }
 
 
-#history_submenu{
-  vertical-align: middle;
-  width: 98vw;
-  background-color: rgb(250, 239, 239);
-  z-index: 1;
-  position: fixed;
-  width: 100vw;
-}
 
 #submenu{
   display: flex;

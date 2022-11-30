@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { CONFIGS } from 'src/app/config/config.dev';
+import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
+import { SubMenuService } from 'src/app/services/sub_menu.service';
 
 @Component({
   selector: 'app-about-instance',
@@ -9,24 +11,15 @@ import { CONFIGS } from 'src/app/config/config.dev';
 })
 export class AboutInstanceComponent implements OnInit {
 
-  public subMenuitems: MenuItem[] = [
-    {label: 'Ir a ' + CONFIGS.instanceName,  command: e => this.takeAction(e, "go")},
-    {label: 'Descarga de datos en bruto',  command: e => this.takeAction(e, "raw")}
-  ];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private subMenuService: SubMenuService) {
+      this.subMenuService.setEntries([
+        { label: CONFIGS.instanceName, action: () => {window.location.href = "https://futureu.europa.eu/"}},
+        { label: 'submenu.about_instance.download', action: () => {const server: string = CONFIGS.host + ':' + CONFIGS.port; window.location.href = server + '/stats/data/';}}
+      ] as SubMenuEntry[]
+    );
   }
 
-  private takeAction(e: any, section: string): void {
-    if (section == 'go'){
-      window.location.href = "https://futureu.europa.eu/";
-    }
-    else if (section == 'raw'){
-      const server: string = CONFIGS.host + ':' + CONFIGS.port;
-      window.location.href = server + '/stats/data/';
-    }
+  ngOnInit(): void {
   }
 
 }

@@ -28,6 +28,25 @@
         "context_text": "Número de comentarios"
       }
   },
+  "submenu":{
+    "activities": {
+      "general_data": "Datos generales",
+      "dynamics": "Dinámica temporal",
+      "featured": "Valores destacados"
+    },"interactions": {
+      "comments": "Comentarios",
+      "endorsements": "Apoyos"
+    },"stats": {
+      "languages": "Idiomas"
+    },"about_instance": {
+      "goto": "Web de la instancia",
+      "download": "Descarga de datos masivos"
+    },"about": {
+      "goto": "Ir a Decidim.org",
+      "front": "Repositorio de GitHub (Front-end)",
+      "back": "Repositorio de GitHub (Back-end)"
+    }
+  },
   "about":{
       "title": "Acerca de Decidim.vs",
       "in3": "Instituto Interdisciplinario de Internet",
