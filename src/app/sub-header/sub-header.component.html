@@ -2,7 +2,7 @@
   <div id="submenu">
     <i class="pi pi-chevron-right submenu_intro"></i>
     <ul>
-      <li class="entry" *ngFor="let item of this.entries"><a (click)="this.executeAction(item)">{{item.label | translate}}</a> </li>
+      <li *ngFor="let item of this.entries"><a (click)="this.executeAction(item)" title="{{item.label | translate}}">{{item.label | translate}}</a> </li>
     </ul>
   </div>
 </div>
