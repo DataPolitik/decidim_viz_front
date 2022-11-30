@@ -27,5 +27,8 @@
   font-weight: 400;
   line-height: 70px;
   color: #FAEFEF;
+  position: absolute;
+  right: 1vw;
+  top: 0px;
 }
 
