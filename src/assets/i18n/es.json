@@ -48,7 +48,7 @@
     }
   },
   "about":{
-      "title": "Acerca de Decidim.vs",
+      "title": "Decidim.vs y ",
       "in3": "Instituto Interdisciplinario de Internet",
       "platoniq": "Fundación Platoniq",
       "d2": "D2, Espacio de Datos y Democracia",
@@ -72,11 +72,14 @@
       "can_i_help": "¿Puedo hacer comentarios o dar feedback al proyecto?",
       "p4p1": "Por supuesto. Puedes hacerlo, entrando en"
   },
+  "instance":{
+    "description": "La Conferencia sobre el Futuro de Europa proporciona herramientas (como esta instancia de Decidim) y recursos para que los ciudadanos europeos debatan sobre los retos y las prioridades de Europa. Sea cual sea tu procedencia u ocupación, este es el foro para reflexionar sobre el rumbo que quieres imprimir a la Unión Europea."
+  },
   "menu": {
       "stats": "Estadísticas",
       "activities": "Actividad",
       "interactions": "Comunidad",
-      "about": "Acerca de Decidim.viz"
+      "about": "Decidim.viz y "
   },
   "still_loading":{
     "message": "Cargando datos..."

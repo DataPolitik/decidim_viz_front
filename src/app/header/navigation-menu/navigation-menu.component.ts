@@ -16,7 +16,7 @@ export class NavigationMenuComponent implements OnInit {
   public graphTitle: string = '';
   public activeIndex = 0;
 
-  private buildMenuItems(stats: string, activities: string, interactions: string, about: string, about_instance: string){
+  private buildMenuItems(stats: string, activities: string, interactions: string, about: string){
     this.menuItems = [
       {
         label: activities,
@@ -32,11 +32,6 @@ export class NavigationMenuComponent implements OnInit {
         label: stats,
         icon: 'pi pi-fw pi-chart-pie',
         routerLink: ['/stats']
-      },
-      {
-        label: about_instance,
-        icon: 'pi pi-fw pi-info-circle',
-        routerLink: ['/instance']
       },
       {
         label: about,
@@ -58,28 +53,28 @@ export class NavigationMenuComponent implements OnInit {
     this.translate_service.stream('menu.stats').subscribe((res: string) => {
       statsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName, instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
       }
     });
 
     this.translate_service.stream('menu.activities').subscribe((res: string) => {
       activitiesName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName, instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
       }
     });
 
     this.translate_service.stream('menu.interactions').subscribe((res: string) => {
       interactionsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName, instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
       }
     });
 
     this.translate_service.stream('menu.about').subscribe((res: string) => {
       aboutName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName, instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
       }
     });
   }

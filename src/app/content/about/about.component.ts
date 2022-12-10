@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { CONFIGS } from 'src/app/config/config.dev';
 import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
 import { SubMenuService } from 'src/app/services/sub_menu.service';
 
@@ -9,6 +9,7 @@ import { SubMenuService } from 'src/app/services/sub_menu.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  public instanceName = CONFIGS.instanceName;
 
   constructor(private subMenuService: SubMenuService) {
     this.subMenuService.setEntries([
