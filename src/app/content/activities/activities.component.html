@@ -3,10 +3,10 @@
 <div id="general_stats">
   <section id="summary">
     <p *ngIf="!daily_user_loading; else still_loading">
-      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }} {{'stats.users_registered' | translate}}
+      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }}
     </p>
     <p *ngIf="!daily_proposal_loading; else still_loading">
-      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }} {{'stats.proposals_done' | translate}}
+      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }}
     </p>
     <p *ngIf="this.categories; else still_loading">
       <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} {{'stats.categories' | translate}}
@@ -21,27 +21,6 @@
 </div>
 <div class="new_section" id="dynamics_section"></div>
 <div id="history">
-  <h2 id="dynamics">
-    {{"activities.dynamics" | translate }}
-  </h2>
-  <section id="filters" *ngIf="dateFrom && dateTo && dateFromLimit && dateToLimit">
-    <span>{{"activities.showing_from" | translate }} </span>
-    <p-calendar [(ngModel)]="dateFrom"
-      dateFormat="dd/mm/yy"
-      [readonlyInput]="true"
-      [showIcon]="true"
-      [minDate]="dateFromLimit"
-      [maxDate]="dateToLimit"
-      (ngModelChange)="this.dateChanged()"></p-calendar>
-    <span>{{"activities.showing_to" | translate }}</span>
-    <p-calendar [(ngModel)]="dateTo"
-      dateFormat="dd/mm/yy"
-      [readonlyInput]="true"
-      [showIcon]="true"
-      [minDate]="dateFromLimit"
-      [maxDate]="dateToLimit"
-      (ngModelChange)="this.dateChanged()"></p-calendar>
-  </section>
   <div *ngIf="dateFrom && dateTo">
     <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
       [dateFrom]="this.dateFrom"
@@ -51,6 +30,24 @@
       [dateFrom]="this.dateFrom"
       [dateTo]="this.dateTo">
     </app-activities-comments>
+    <section id="filters" *ngIf="dateFrom && dateTo && dateFromLimit && dateToLimit">
+      <span>{{"activities.showing_from" | translate }} </span>
+      <p-calendar [(ngModel)]="dateFrom"
+        dateFormat="dd/mm/yy"
+        [readonlyInput]="true"
+        [showIcon]="true"
+        [minDate]="dateFromLimit"
+        [maxDate]="dateToLimit"
+        (ngModelChange)="this.dateChanged()"></p-calendar>
+      <span>{{"activities.showing_to" | translate }}</span>
+      <p-calendar [(ngModel)]="dateTo"
+        dateFormat="dd/mm/yy"
+        [readonlyInput]="true"
+        [showIcon]="true"
+        [minDate]="dateFromLimit"
+        [maxDate]="dateToLimit"
+        (ngModelChange)="this.dateChanged()"></p-calendar>
+    </section>
   </div>
 </div>
 
@@ -59,9 +56,7 @@
     <div class="new_section" id="featured_section"></div>
     <div class="title_with_anchor">
       <a class="internal_navigation__link" href="/activities#top">↑</a>
-      <h2 id="featured" fragment="featured">{{'stats.featured' | translate}}</h2>
     </div>
-    <h3>{{'stats.proposals' | translate}}</h3>
     <section>
       <app-stats-dashboard
         *ngIf="this.proposalsBySupports"
@@ -103,20 +98,14 @@
       countColumnName="stats.comments"
       title="stats.most_active_users_by_comments"
       countColumn="comments"
-      fillColor="#FF9B25"
+      fillColor="#2B627F"
       titleColumn="name"
       typeColumnCount="category"
       [icon]="this.faComments"
       [isProposal]=false
     ></app-stats-dashboard>
-
-
-
     </section>
   </div>
-  <h3>
-    {{'stats.most_commented_categories' | translate}} <fa-icon [icon]="this.faComments"></fa-icon>
-  </h3>
   <div *ngIf="this.categoriesByComments; else still_loading">
     <app-stats-dashboard
       *ngIf="this.categoriesByComments"

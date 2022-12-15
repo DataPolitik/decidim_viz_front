@@ -6,3 +6,7 @@
 .stats_chart{
   min-height: 600px;
 }
+
+h3{
+  padding-left: 0px;
+}

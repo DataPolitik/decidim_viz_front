@@ -85,7 +85,7 @@
     "message": "Cargando datos..."
   },
   "activities":{
-    "dynamics": "Dinámica temporal",
+    "dynamics": "Evolución temporal",
     "showing_from": "Desde",
     "showing_to": "Hasta",
     "date": "Fecha",
