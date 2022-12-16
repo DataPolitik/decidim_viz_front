@@ -39,6 +39,12 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     this.colorSubscription?.unsubscribe();
   }
 
+  public isMinimumRatio(key: any): boolean {
+    const ratio = this.getRatioOfCommunity(key);
+    return ratio > 0.05;
+
+  }
+
 
   private getCommunitiesNodes(): void {
     if (this.currentElement == 'comments'){

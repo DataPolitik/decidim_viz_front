@@ -1,31 +1,46 @@
 <a id="top"></a>
 <div id="interaction_tabView">
-  <div class="graph" *ngIf="this.currentElement == 'comments'">
-    <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
+  <div>
+    <div class="graph" *ngIf="this.currentElement == 'comments'">
+      <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
+    </div>
+    <div class="graph" *ngIf="this.currentElement == 'endorsements'">
+      <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
+    </div>
   </div>
-  <div class="graph" *ngIf="this.currentElement == 'endorsements'">
-    <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
+  <div>
+    <div>
+      Communities population
+    </div>
+    <ng-container *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
+      <div>
+        <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
+        <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</span>
+      </div>
+    </ng-container>
   </div>
   <div id="interaction_tabView__communities">
-    <p-card class="community_card" *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
-      <ng-template pTemplate="header" >
-        <h3 [style]="'color:' + item.key +';'">
-          Comunidad:  {{indexOfelement + 1}}
-        </h3>
-      </ng-template>
-          <ul>
-            <li>Color: <div class="target_color" [style]="'background-color:' + item.key +';'"> </div></li>
-            <li>Total number of people: {{getLenghtOfCommunity(item.key)}}</li>
-            <li>% over the total network: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
-          </ul>
-      <ng-template pTemplate="footer">
-          <div>
-            <h4>Most endorsed proposals</h4>
-            <ul class="proposal_list" *ngIf="this.communitiesProposals">
-              <li *ngFor="let prop of getProposals(item.key) | keyvalue">{{prop.key}}</li>
+    <ng-container *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
+      <p-card class="community_card" *ngIf="isMinimumRatio(item.key)" >
+        <ng-template pTemplate="header" >
+          <h3 [style]="'color:' + item.key +';'">
+            Comunidad:  {{indexOfelement + 1}}
+          </h3>
+        </ng-template>
+            <ul>
+              <li>Color: <div class="target_color" [style]="'background-color:' + item.key +';'"> </div></li>
+              <li>Total number of people: {{getLenghtOfCommunity(item.key)}}</li>
+              <li>% over the total network: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
             </ul>
-          </div>
-      </ng-template>
-    </p-card>
+        <ng-template pTemplate="footer">
+            <div>
+              <h4>Most endorsed proposals</h4>
+              <ul class="proposal_list" *ngIf="this.communitiesProposals">
+                <li *ngFor="let prop of getProposals(item.key) | keyvalue">{{prop.key}}</li>
+              </ul>
+            </div>
+        </ng-template>
+      </p-card>
+    </ng-container>
   </div>
 </div>

@@ -32,6 +32,15 @@
   display: inline-block;
 }
 
+.target_color_legend{
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 4px;
+  vertical-align: top;
+}
+
 #interaction_tabView__communities{
   margin: 0 auto;
   margin-top: 65vh;
