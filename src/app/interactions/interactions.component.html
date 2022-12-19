@@ -12,15 +12,15 @@
     <div>
       Communities population
     </div>
-    <ng-container *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
-      <div>
+    <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
+      <div  *ngIf="isMinimumRatio(item.key)">
         <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
         <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</span>
       </div>
     </ng-container>
   </div>
   <div id="interaction_tabView__communities">
-    <ng-container *ngFor="let item of this.colorsNodes | keyvalue; let indexOfelement=index;">
+    <ng-container *ngFor="let item of this.colorsNodesSortedList; let indexOfelement=index;">
       <p-card class="community_card" *ngIf="isMinimumRatio(item.key)" >
         <ng-template pTemplate="header" >
           <h3 [style]="'color:' + item.key +';'">

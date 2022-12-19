@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { GraphResponse } from '../models/graph_response.model';
 import { LineChart, MarketChart } from '../models/graph.model';
 import { StatsService } from '../services/stats.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';

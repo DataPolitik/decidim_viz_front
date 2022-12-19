@@ -20,6 +20,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public currentElement = 'comments';
   public totalNodes: number = 0;
   public colorsNodes: { [id: string]: string[]; }[] = [];
+  public colorsNodesSortedList: any[] = [];
   public communitiesProposals: any[] = [];
 
 
@@ -45,14 +46,33 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   }
 
+  private processResponse(response: ColorCommunities){
+    this.totalNodes = response.total;
+    this.colorsNodes = response.colors.users;
+    this.communitiesProposals = response.colors.proposals;
+
+    const listCommunities = [];
+    for (let key in response.colors.users) {
+      let value = response.colors.users[key];
+      listCommunities.push(
+        {
+          'key': key, 'value': value, 'length':  Object.keys(value).length
+        }
+      )
+    }
+    let sortedAscendingCountries = listCommunities.sort(function (first, second) {
+      return second.length - first.length;
+    });
+    this.colorsNodesSortedList = sortedAscendingCountries;
+
+  }
+
 
   private getCommunitiesNodes(): void {
     if (this.currentElement == 'comments'){
       this.colorSubscription = this.statsService.getCommentsColors().subscribe(
         (response: ColorCommunities) => {
-          this.totalNodes = response.total;
-          this.colorsNodes = response.colors.users;
-          this.communitiesProposals = response.colors.proposals;
+          this.processResponse(response);
         }
       )
     }else{
