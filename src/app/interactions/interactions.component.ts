@@ -78,9 +78,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     }else{
       this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
         (response: ColorCommunities) => {
-          this.totalNodes = response.total;
-          this.colorsNodes = response.colors.users;
-          this.communitiesProposals = response.colors.proposals;
+          this.processResponse(response);
         }
       )
     }

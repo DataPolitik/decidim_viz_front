@@ -3,6 +3,12 @@
   margin-top: 4vh;
 }
 
+#communities_summary{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
 .graph{
   display: block;
   height: 100px;
