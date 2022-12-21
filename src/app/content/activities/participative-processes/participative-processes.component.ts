@@ -88,5 +88,9 @@ export class ParticipativeProcessesComponent extends AbstractActivitiesComponent
     }
   }
 
+  protected processChange(): void {
+    throw new Error('Method not implemented.');
+  }
+
 }
 

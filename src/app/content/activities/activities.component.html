@@ -22,32 +22,17 @@
 <div class="new_section" id="dynamics_section"></div>
 <div id="history">
   <div *ngIf="dateFrom && dateTo">
-    <app-activities-proposals *ngIf="this.dateFrom && this.dateTo"
-      [dateFrom]="this.dateFrom"
-      [dateTo]="this.dateTo">
+    <app-activities-proposals *ngIf="dateFromLimit && dateToLimit"
+      [minDate]="dateFromLimit"
+      [maxDate]="dateToLimit"
+      >
     </app-activities-proposals>
-      <app-activities-comments *ngIf="this.dateFrom && this.dateTo"
-      [dateFrom]="this.dateFrom"
-      [dateTo]="this.dateTo">
+    <app-activities-comments *ngIf="dateFromLimit && dateToLimit"
+      [minDate]="dateFromLimit"
+      [maxDate]="dateToLimit"
+      >
     </app-activities-comments>
-    <section id="filters" *ngIf="dateFrom && dateTo && dateFromLimit && dateToLimit">
-      <span>{{"activities.showing_from" | translate }} </span>
-      <p-calendar [(ngModel)]="dateFrom"
-        dateFormat="dd/mm/yy"
-        [readonlyInput]="true"
-        [showIcon]="true"
-        [minDate]="dateFromLimit"
-        [maxDate]="dateToLimit"
-        (ngModelChange)="this.dateChanged()"></p-calendar>
-      <span>{{"activities.showing_to" | translate }}</span>
-      <p-calendar [(ngModel)]="dateTo"
-        dateFormat="dd/mm/yy"
-        [readonlyInput]="true"
-        [showIcon]="true"
-        [minDate]="dateFromLimit"
-        [maxDate]="dateToLimit"
-        (ngModelChange)="this.dateChanged()"></p-calendar>
-    </section>
+
   </div>
 </div>
 

@@ -2,7 +2,7 @@
   <h3>
     {{'activities.proposals.title' | translate }}
   </h3>
-<section *ngIf="!this.daily_proposal_loading && !this.accumulated_proposal_loading; else still_loading" class="histogram_chart">
+<section *ngIf="!this.isLoading; else still_loading" class="histogram_chart">
   <div>
     <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="{{'activities.daily' | translate}}">
@@ -24,6 +24,24 @@
     <p>
       {{'errors.no_results' | translate }}
     </p>
+  </section>
+  <section id="filters" *ngIf="dateFrom && dateTo && minDate && maxDate">
+    <span>{{"activities.showing_from" | translate }} </span>
+    <p-calendar [(ngModel)]="dateFrom"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      (ngModelChange)="this.processChange()"></p-calendar>
+    <span>{{"activities.showing_to" | translate }}</span>
+    <p-calendar [(ngModel)]="dateTo"
+      dateFormat="dd/mm/yy"
+      [readonlyInput]="true"
+      [showIcon]="true"
+      [minDate]="minDate"
+      [maxDate]="maxDate"
+      (ngModelChange)="this.processChange()"></p-calendar>
   </section>
   </div>
 </section>

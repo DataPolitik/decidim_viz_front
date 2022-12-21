@@ -12,16 +12,18 @@ import { AbstractActivitiesComponent } from '../abstract-activities/abstract-act
 })
 export class ProposalsComponent extends AbstractActivitiesComponent implements OnInit, OnDestroy {
 
+
   @ViewChild(MapsComponent) maps!: MapsComponent;
 
   public accumulated_proposal_activities: Activities | undefined;
   public daily_proposal_activities: Activities | undefined;
-  public accumulated_proposal_loading: boolean = true;
+  public isLoading: boolean = true;
   public numberOfGeographicalProposals: number = 0;
 
   private accumulatedSubscription: Subscription | undefined;
   private dailySubscription: Subscription | undefined;
   private proposalsSubscription: Subscription | undefined;
+
 
   daily_proposal_loading: boolean = true;
 
@@ -30,24 +32,7 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
     this.loadedGraphs = 0;
 
     if (this.dateFrom && this.dateTo){
-      this.accumulatedSubscription = this.statsService.getAccumulatedNumberOfProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
-        (response: Activities) => {
-          this.accumulated_proposal_loading = false;
-          this.accumulated_proposal_activities = response;
-          this.loadedGraphs = this.loadedGraphs + 1;
-          this.isEmpty = response.history.length == 0;
-        }
-      )
-
-      this.dailySubscription = this.statsService.getDailyNumberOfProposalsByRange(this.dateFromAsString, this.dateToAsString ).subscribe(
-        (response: Activities) => {
-          this.daily_proposal_loading = false;
-          this.daily_proposal_activities = response;
-          this.loadedGraphs = this.loadedGraphs + 1;
-          this.isEmpty = response.history.length == 0;
-        }
-      )
-
+      this.processChange();
       this.proposalsSubscription = this.statsService.getProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
         (response: Array<Proposal>) => {
           response.forEach(
@@ -62,6 +47,36 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
       )
 
     }
+    super.updateLimitsDate('proposals');
+    this.dateChanged();
+    this.ref.detectChanges();
+  }
+
+  protected override  processChange(): void {
+    super.dateChanged();
+    this.isLoading = true;
+    this.accumulatedSubscription = this.statsService.getAccumulatedNumberOfProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
+      (response: Activities) => {
+        this.isLoading = false;
+        this.accumulated_proposal_activities = response;
+        this.loadedGraphs = this.loadedGraphs + 1;
+        this.isEmpty = response.history.length == 0;
+        this.dateChanged();
+        this.ref.detectChanges();
+      }
+    )
+
+    this.dailySubscription = this.statsService.getDailyNumberOfProposalsByRange(this.dateFromAsString, this.dateToAsString ).subscribe(
+      (response: Activities) => {
+        this.isLoading = false;
+        this.daily_proposal_activities = response;
+        this.loadedGraphs = this.loadedGraphs + 1;
+        this.isEmpty = response.history.length == 0;
+        this.dateChanged();
+        this.ref.detectChanges();
+      }
+    )
+
   }
 
   ngOnDestroy(): void {
