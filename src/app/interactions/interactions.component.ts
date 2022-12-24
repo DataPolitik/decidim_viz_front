@@ -22,6 +22,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public colorsNodes: { [id: string]: string[]; }[] = [];
   public colorsNodesSortedList: any[] = [];
   public communitiesProposals: any[] = [];
+  public othersRatio: number = 0;
 
 
   constructor(private statsService: StatsService, private subMenuService: SubMenuService) {
@@ -64,6 +65,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
       return second.length - first.length;
     });
     this.colorsNodesSortedList = sortedAscendingCountries;
+    this.othersRatio = this.computeOthersRatio();
 
   }
 
@@ -84,6 +86,12 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     }
 
 
+  }
+
+  public computeOthersRatio(): number {
+    let sum = 0;
+    this.colorsNodesSortedList.forEach((element) => {sum += element.key['length']});
+    return sum / this.totalNodes;
   }
 
   public getLenghtOfCommunity(key: any): number{

@@ -1,12 +1,25 @@
 #interaction_tabView{
   margin-left: 4vw;
-  margin-top: 4vh;
 }
 
 #communities_summary{
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 3px;
+}
+
+#legend{
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 1vh;
+}
+
+#content{
+    height: 75vh !important;
+}
+
+.population_legend_entry{
+  display: inline-block;
 }
 
 .graph{
@@ -47,10 +60,21 @@
   vertical-align: top;
 }
 
+.target_text_legend{
+  width: 41px;
+  height: 22px;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 9px;
+  vertical-align: top;
+  margin-left: 9px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
 #interaction_tabView__communities{
   margin: 0 auto;
-  margin-top: 65vh;
-  margin-bottom: 10vh;
+  margin-top: 60vh;
 }
 
 .community_card{

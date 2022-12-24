@@ -126,7 +126,8 @@
     "comments_network": "Red de comentarios",
     "endorsements_network": "Red de apoyos",
     "comments": "Comentarios",
-    "endorsements": "Apoyos"
+    "endorsements": "Apoyos",
+    "legend_title": "Comunidades"
   },
   "proposal_viewer":{
     "proposal": "Propuesta",

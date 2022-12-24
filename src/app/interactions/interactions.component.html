@@ -1,4 +1,19 @@
 <a id="top"></a>
+<div id="legend">
+  <div id="communities_summary">
+    {{'interactions.legend_title' | translate}}
+  </div>
+  <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
+    <div *ngIf="isMinimumRatio(item.key)" class="population_legend_entry">
+      <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
+      <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</span>
+    </div>
+  </ng-container>
+  <div class="population_legend_entry">
+    <div class="target_text_legend"> Otros </div>
+    <span>{{this.othersRatio | number:'1.2'}}%</span>
+  </div>
+</div>
 <div id="interaction_tabView">
   <div>
     <div class="graph" *ngIf="this.currentElement == 'comments'">
@@ -7,17 +22,6 @@
     <div class="graph" *ngIf="this.currentElement == 'endorsements'">
       <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
     </div>
-  </div>
-  <div>
-    <div id="communities_summary">
-      Communities population
-    </div>
-    <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
-      <div  *ngIf="isMinimumRatio(item.key)">
-        <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
-        <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</span>
-      </div>
-    </ng-container>
   </div>
   <div id="interaction_tabView__communities">
     <ng-container *ngFor="let item of this.colorsNodesSortedList; let indexOfelement=index;">
