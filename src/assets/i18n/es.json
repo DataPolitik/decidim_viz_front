@@ -43,8 +43,8 @@
       "download": "Descarga de datos masivos"
     },"about": {
       "goto": "Ir a Decidim.org",
-      "front": "Repositorio de GitHub (Front-end)",
-      "back": "Repositorio de GitHub (Back-end)"
+      "front": "Repositorio (Front-end)",
+      "back": "Repositorio (Back-end)"
     }
   },
   "about":{
