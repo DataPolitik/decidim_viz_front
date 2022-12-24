@@ -86,8 +86,6 @@
   },
   "activities":{
     "dynamics": "Evolución temporal",
-    "showing_from": "Desde",
-    "showing_to": "Hasta",
     "date": "Fecha",
     "accumulated": "Acumulado",
     "daily": "Diario",
@@ -111,6 +109,16 @@
     "comments":{
       "title": "Evolución temporal de los comentarios",
       "number_of_comments": "Número de comentarios"
+    },
+    "histogram":{
+      "number_of_proposals": "Número de propuestas",
+      "number_of_people": "Número de personas",
+      "number_of_processes": "Número de Procesos Participativos",
+      "proposal": "Propuesta",
+      "proposals": "Propuestas",
+      "area": "Área",
+      "endorsements": "Apoyos",
+      "comments": "Comentarios"
     }
   },
   "interactions":{

@@ -24,6 +24,7 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() typeColumnCount: any  = 'number';
   @Input() isProposal: boolean = true;
   @Input() x_axis_title: string = '';
+  @Input() y_axis_title: string = '';
 
   private translated_title: string = '';
   private translated_var_name: string = '';
@@ -52,11 +53,6 @@ export class StatsDashboardComponent<T> implements OnInit {
     this.translate.get(this.title).subscribe((text:string) => {this.translated_title = text});
     if(!this.data){
       return
-    }
-
-    let axis_x_content = this.x_axis_title;
-    if(this.isProposal){
-      axis_x_content += ' ' + ' (' + this.translated_var_name + ')'
     }
 
     this.options = {
@@ -92,7 +88,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: 'number',
             position: 'left',
             title: {
-              text: this.countColumn,
+              text: this.y_axis_title,
             },
             label: {
               format: ',.0f',
@@ -103,7 +99,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: this.typeColumnCount,
             position: 'bottom',
             title: {
-              text: axis_x_content,
+              text: this.x_axis_title,
             },
             label: {
               fontSize: 10,

@@ -10,7 +10,7 @@
       <app-activities-histogram
         [response]="this.user_activities?.history?.slice(0)?.reverse()"
         xName="Fecha"
-        yName="Número de personas">
+        yName="{{'activities.histogram.number_of_people' | translate}}">
       </app-activities-histogram>
     </div>
 
@@ -25,7 +25,7 @@
       <app-activities-histogram
       [response]="this.proposal_activities?.history?.slice(0)?.reverse()"
       xName="Fecha"
-      yName="Número de propuestas">
+      yName="{{'activities.histogram.number_of_proposals' | translate}}">
       </app-activities-histogram>
     </div>
 
@@ -39,7 +39,7 @@
       <app-activities-histogram
       [response]="this.participatory_processes_activities?.history?.slice(0)?.reverse()"
       xName="Fecha"
-      yName="Número de procesos participativos">
+      yName="{{'activities.histogram.number_of_processes' | translate}}">
       </app-activities-histogram>
     </div>
 
