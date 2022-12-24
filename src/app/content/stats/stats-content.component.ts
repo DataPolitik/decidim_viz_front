@@ -96,11 +96,22 @@ export class StatsContentComponent implements OnInit, OnDestroy {
           labelKey: 'name',
           angleKey: 'size',
           innerRadiusOffset: -70,
+          calloutLabelKey: 'label',
+          calloutLabel: {
+              formatter: ({ datum, calloutLabelKey, angleKey }) => {
+                  if(calloutLabelKey){
+                    const value = Math.floor(datum[angleKey]);
+                    return `${datum[calloutLabelKey]}: ${value}%`;
+                  }else{
+                    return '';
+                  }
+              }
+          }
         },
       ],
       title: {
         text: this.graphTitle,
-      }
+      },
     };
   }
 

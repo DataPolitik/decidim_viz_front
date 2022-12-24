@@ -10,8 +10,6 @@
 }
 
 
-
-
 .histogram_chart{
   width: 90%;
   height: 70%;
@@ -19,8 +17,13 @@
 
 .treemap{
   position: inherit !important;
-  height: 700px;
-  width: 700px;
+  height: 576px;
+  width: 962px;
+  display: inline-block;
+}
+
+.demographic_table{
+  text-align: center;
 }
 
 #internal_navigation{
