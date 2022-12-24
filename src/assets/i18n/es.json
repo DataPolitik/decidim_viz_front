@@ -31,7 +31,7 @@
   "submenu":{
     "activities": {
       "general_data": "Datos generales",
-      "dynamics": "Dinámica temporal",
+      "dynamics": "Evolución temporal",
       "featured": "Valores destacados"
     },"interactions": {
       "comments": "Comentarios",

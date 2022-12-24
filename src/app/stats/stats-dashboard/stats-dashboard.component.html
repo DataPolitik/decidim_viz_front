@@ -1,10 +1,4 @@
 <div id="stats_dashboard">
-<h3 *ngIf="this.title && this.icon">
-  {{title | translate}} <fa-icon [icon]="this.icon"></fa-icon>
-</h3>
-<h3 *ngIf="this.title && !this.icon">
-  {{title | translate}}
-</h3>
 <div *ngIf="this.gini" class="demographic_table--gini">
   <span class="additional_info" pTooltip="El índice de Gini calcula la desigualdad existente en una muestra. Siendo 0 la máxima igualdad y 1 la máxima desigualdad.">ⓘ </span>
   <span>{{this.gini_title | translate}}: </span>

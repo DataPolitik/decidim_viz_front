@@ -22,7 +22,6 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() countColumn: string  = '';
   @Input() fillColor: string  = '';
   @Input() typeColumnCount: any  = 'number';
-  @Input() icon: IconProp | undefined = undefined;
   @Input() isProposal: boolean = true;
   @Input() x_axis_title: string = '';
 

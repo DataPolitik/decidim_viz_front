@@ -88,7 +88,6 @@
         titleColumn="position"
         typeColumnCount="category"
         x_axis_title="Propuesta"
-        [icon]="this.faHandsClapping"
       ></app-stats-dashboard>
 
       <app-stats-dashboard
@@ -103,10 +102,8 @@
         titleColumn="position"
         typeColumnCount="category"
         x_axis_title="Propuesta"
-        [icon]="this.faComments"
       ></app-stats-dashboard>
 
-      <h3>{{'stats.users' | translate}}</h3>
 
       <app-stats-dashboard
       *ngIf="this.usersByComments"
@@ -119,7 +116,6 @@
       fillColor="#2B627F"
       titleColumn="name"
       typeColumnCount="category"
-      [icon]="this.faComments"
       [isProposal]=false
     ></app-stats-dashboard>
     </section>
@@ -135,7 +131,6 @@
       fillColor="#2B627F"
       titleColumn="name_en"
       typeColumnCount="category"
-      [icon]="this.faComments"
       [isProposal]=false
     ></app-stats-dashboard>
   </div>
@@ -151,7 +146,6 @@
     titleColumn="name_en"
     typeColumnCount="category"
     x_axis_title="Área"
-    [icon]="this.faLayerGroup"
     [isProposal]=false
   ></app-stats-dashboard>
 </div>
