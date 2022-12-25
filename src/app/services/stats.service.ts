@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 import { ColorCommunities } from '../models/color_communities.model';
+import { CommentLenghtResponse } from '../models/comment_length_response';
 
 
 @Injectable({
@@ -65,6 +66,10 @@ export class StatsService {
 
   getUsersByProposal(idProposal: string | number){
     return this.http.get<Activities>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
+  }
+
+  getCommentsLength(){
+    return this.http.get<CommentLenghtResponse>(this.host + '/stats/comments/length');
   }
 
   getComments() {

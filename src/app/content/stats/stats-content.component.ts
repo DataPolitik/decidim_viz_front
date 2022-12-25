@@ -1,14 +1,8 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AgChartOptions, AgHierarchyChartOptions } from 'ag-charts-community';
+import { AgChartOptions } from 'ag-charts-community';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { TemporalLimitsAPI } from 'src/app/models/temporal-limits-api.model';
-import { TemporalLimitsGraphHQL } from 'src/app/models/temporal-limits-graphql.model';
 import { Apollo } from 'apollo-angular';
-import { METRICS_COMMENTS, METRICS_PARTICIPATORY_PROCESSES, METRICS_PROPOSALS, METRICS_USERS } from '../../graphql/graphql.queries';
-import { Category, CategoryResponse } from '../../models/category.model';
 import { LanguagesCount } from '../../models/languages.count.model';
-import { Activities } from '../../models/activities.model';
-import { Proposal, ProposalResponse } from '../../models/proposal.model';
 import { StatsService } from '../../services/stats.service';
 
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { SubMenuService } from 'src/app/services/sub_menu.service';
 import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
+import { CommentLenghtResponse } from 'src/app/models/comment_length_response';
 
 @Component({
   selector: 'app-content-stats-content',
@@ -32,6 +27,7 @@ export class StatsContentComponent implements OnInit, OnDestroy {
 
   protected subs = new Subscription();
   public languageTreeMapOptions: AgChartOptions | undefined;
+  public commentsLengthData: Array<any> | undefined;
 
   public faLanguage = faLanguage;
   private graphTitle: string = ''
@@ -49,7 +45,7 @@ export class StatsContentComponent implements OnInit, OnDestroy {
     private subMenuService: SubMenuService) {
 
       this.subMenuService.setEntries([
-        { label: 'submenu.stats.languages', action: () => {}},
+        { label: 'submenu.stats.comments', action: () => {document.getElementById("comments_section")?.scrollIntoView()}},
       ] as SubMenuEntry[]
     );
     }
@@ -82,6 +78,14 @@ export class StatsContentComponent implements OnInit, OnDestroy {
 
     this.subs.add(
       this.languageCountObservable.subscribe()
+    );
+
+    this.subs.add(
+      this.statsService.getCommentsLength().subscribe(
+        (response: CommentLenghtResponse) => {
+          this.commentsLengthData = response.len;
+        }
+      )
     );
 
 

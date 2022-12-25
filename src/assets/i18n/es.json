@@ -18,6 +18,7 @@
       "featured": "Valores destacados",
       "comments": "Comentarios",
       "comments_written_language": "Idiomas de los comentarios",
+      "comment_length": "Longitud de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
       "inequality": "Desigualdad",
       "polarization": "Polarización",
@@ -37,7 +38,8 @@
       "comments": "Comentarios",
       "endorsements": "Apoyos"
     },"stats": {
-      "languages": "Idiomas"
+      "languages": "Idiomas",
+      "comments": "Comentarios"
     },"about_instance": {
       "goto": "Web de la instancia",
       "download": "Descarga de datos masivos"

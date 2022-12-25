@@ -55,3 +55,12 @@
   padding: 0;
   vertical-align: middle;
 }
+
+.box{
+  display: inline-block;
+}
+
+
+.graph_element{
+  margin-top: 150px;
+}
