@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 import { ColorCommunities } from '../models/color_communities.model';
-import { CommentLenghtResponse } from '../models/comment_length_response';
+import { BoxDataModel } from '../models/box_data.model';
 
 
 @Injectable({
@@ -69,7 +69,7 @@ export class StatsService {
   }
 
   getCommentsLength(){
-    return this.http.get<CommentLenghtResponse>(this.host + '/stats/comments/length');
+    return this.http.get<BoxDataModel>(this.host + '/stats/comments/length');
   }
 
   getComments() {
@@ -78,6 +78,10 @@ export class StatsService {
 
   getCommentsByProposal(idProposal: string | number) {
     return this.http.get<Activities>(this.host + '/stats/comments/by_proposal/'+idProposal+'/daily/');
+  }
+
+  getCommentsDepth(){
+    return this.http.get<BoxDataModel>(this.host + '/stats/comments/depth');
   }
 
   getUsersByComments(limit: number) {

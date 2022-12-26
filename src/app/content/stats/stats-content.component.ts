@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api/menuitem';
 import { SubMenuService } from 'src/app/services/sub_menu.service';
 import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
-import { CommentLenghtResponse } from 'src/app/models/comment_length_response';
+import { BoxDataModel } from 'src/app/models/box_data.model';
 
 @Component({
   selector: 'app-content-stats-content',
@@ -28,6 +28,7 @@ export class StatsContentComponent implements OnInit, OnDestroy {
   protected subs = new Subscription();
   public languageTreeMapOptions: AgChartOptions | undefined;
   public commentsLengthData: Array<any> | undefined;
+  public commentsDepth: Array<any> | undefined;
 
   public faLanguage = faLanguage;
   private graphTitle: string = ''
@@ -82,8 +83,16 @@ export class StatsContentComponent implements OnInit, OnDestroy {
 
     this.subs.add(
       this.statsService.getCommentsLength().subscribe(
-        (response: CommentLenghtResponse) => {
-          this.commentsLengthData = response.len;
+        (response: BoxDataModel) => {
+          this.commentsLengthData = response.box_data;
+        }
+      )
+    );
+
+    this.subs.add(
+      this.statsService.getCommentsDepth().subscribe(
+        (response: BoxDataModel) => {
+          this.commentsDepth = response.box_data;
         }
       )
     );

@@ -22,6 +22,15 @@
           [width]="500"
           ></app-boxplot>
     </div>
+    <div class="graph_element">
+      <h2 id="languages" fragment="languages">{{'stats.comments_depth' | translate}}</h2>
+      <app-boxplot class="box" *ngIf="this.commentsDepth"
+          [dataInput]="this.commentsDepth"
+          title=""
+          [height]="600"
+          [width]="500"
+          ></app-boxplot>
+    </div>
   </div>
 
 
