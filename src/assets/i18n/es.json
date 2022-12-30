@@ -140,7 +140,8 @@
     "endorsements_network": "Red de apoyos",
     "comments": "Comentarios",
     "endorsements": "Apoyos",
-    "legend_title": "Comunidades"
+    "legend_title": "Comunidades",
+    "modularity_explanation": "Valor de modularidad"
   },
   "proposal_viewer":{
     "proposal": "Propuesta",

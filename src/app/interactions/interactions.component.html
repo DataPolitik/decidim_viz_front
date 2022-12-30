@@ -21,6 +21,9 @@
     </div>
     <div class="graph" *ngIf="this.currentElement == 'endorsements'">
       <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
+      <div *ngIf="this.modularityValue" id="modularity_explanation">
+        {{'interactions.modularity_explanation' | translate }} {{this.modularityValue | number:'1.2'}} <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="info">🛈</a>
+      </div>
     </div>
   </div>
   <div id="interaction_tabView__communities">

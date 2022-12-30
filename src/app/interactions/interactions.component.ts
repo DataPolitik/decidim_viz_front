@@ -14,7 +14,9 @@ import { SubMenuEntry } from '../models/sub_menu_entry.model';
 })
 export class InteractionsComponent implements OnInit, OnDestroy {
   private colorSubscription: Subscription | undefined;
+  private modularitySubscription: Subscription | undefined;
 
+  public modularityValue: number | undefined = undefined;
   public commentsGraphType: string = "comments";
   public endorsementsGraphType: string = "endorsements";
   public currentElement = 'comments';
@@ -39,6 +41,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.colorSubscription?.unsubscribe();
+    this.modularitySubscription?.unsubscribe();
   }
 
   public isMinimumRatio(key: any): boolean {
@@ -81,6 +84,11 @@ export class InteractionsComponent implements OnInit, OnDestroy {
       this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
         (response: ColorCommunities) => {
           this.processResponse(response);
+        }
+      )
+      this.modularitySubscription = this.statsService.getModularityValue().subscribe(
+        (response) => {
+          this.modularityValue = response.modularity;
         }
       )
     }

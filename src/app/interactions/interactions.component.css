@@ -18,6 +18,14 @@
     height: 75vh !important;
 }
 
+#modularity_explanation{
+  width: 200px;
+}
+
+#modularity_explanation a{
+  text-decoration: none;
+}
+
 .population_legend_entry{
   display: inline-block;
 }
