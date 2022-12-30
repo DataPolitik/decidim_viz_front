@@ -1,8 +1,18 @@
 <div id="container">
   <div id="header">
-    <app-navigation-menu></app-navigation-menu>
-    <div id="logo">
-      Decidim.Viz
+    <div id="header--menu">
+      <app-navigation-menu></app-navigation-menu>
+      <div id="right_side">
+        <span id="language">
+          <app-language></app-language>
+        </span>
+        <span id="logo">
+          Decidim.Viz
+        </span>
+      </div>
+    </div>
+    <div id="header--submenu">
+      <app-sub-header></app-sub-header>
     </div>
   </div>
   <div id="scrollable">

@@ -44,6 +44,7 @@ import { SafeHtmlPipe } from './pipes/safeHtml.pipe';
 import { StatsContentComponent } from './content/stats/stats-content.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { BoxplotComponent } from './content/boxplot/boxplot.component';
+import { LanguageComponent } from './language/language.component';
 
 
 
@@ -69,7 +70,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     AboutComponent,
     SafeHtmlPipe,
     SubHeaderComponent,
-    BoxplotComponent
+    BoxplotComponent,
+    LanguageComponent
   ],
   imports: [
     AgChartsAngularModule,

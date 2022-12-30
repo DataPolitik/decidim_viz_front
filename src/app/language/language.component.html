@@ -1,0 +1,6 @@
+<p-dropdown [options]="languageItems"
+  [(ngModel)]="currentLanguage"
+  optionLabel="name"
+  [style]="{'background-color': 'transparent', 'outline': 'none', 'border': 'none', 'color': 'white'}"
+  (onChange)="this.changeLanguage($event)">
+</p-dropdown>
