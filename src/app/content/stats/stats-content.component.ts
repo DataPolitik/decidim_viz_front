@@ -13,6 +13,8 @@ import { MenuItem } from 'primeng/api/menuitem';
 import { SubMenuService } from 'src/app/services/sub_menu.service';
 import { SubMenuEntry } from 'src/app/models/sub_menu_entry.model';
 import { BoxDataModel } from 'src/app/models/box_data.model';
+import { CommentsCountResponse } from 'src/app/models/comments_count_response.model';
+import { ActiveInactiveUsersCountResponse } from 'src/app/models/active_inactive_users_count_response.model copy';
 
 @Component({
   selector: 'app-content-stats-content',
@@ -27,13 +29,18 @@ export class StatsContentComponent implements OnInit, OnDestroy {
 
   protected subs = new Subscription();
   public languageTreeMapOptions: AgChartOptions | undefined;
+  public commentsStructureTreeMapOptions: AgChartOptions | undefined;
+  public activeInactiveUsersTreeMapOptions: AgChartOptions | undefined;
   public commentsLengthData: Array<any> | undefined;
   public commentsDepth: Array<any> | undefined;
+  public commentsPerUser: Array<any> | undefined;
+  public timeToFirstComment: Array<any> | undefined;
 
   public faLanguage = faLanguage;
-  private graphTitle: string = ''
   public languages: Array<string> | undefined = undefined;
   public languageCount: Array<{name:string, size: number, color: number}> = [];
+  public commentsTimesCount: Array<{name:string, size: number, color: number}> = [];
+  public activeInactiveUsers: Array<{name:string, size: number, color: number}> = [];
   public categoryCommentCount: Array<{name:string, size: number, color: number}> = [];
 
 
@@ -47,6 +54,8 @@ export class StatsContentComponent implements OnInit, OnDestroy {
 
       this.subMenuService.setEntries([
         { label: 'submenu.stats.comments', action: () => {document.getElementById("comments_section")?.scrollIntoView()}},
+        { label: 'submenu.stats.proposals', action: () => {document.getElementById("proposals_section")?.scrollIntoView()}},
+        { label: 'submenu.stats.users', action: () => {document.getElementById("users_section")?.scrollIntoView()}},
       ] as SubMenuEntry[]
     );
     }
@@ -57,7 +66,6 @@ export class StatsContentComponent implements OnInit, OnDestroy {
     this.subs.add(this.statsService.getLanguages().subscribe(
       (languages_response) => {
         this.languages = languages_response;
-        let counter = 0;
         this.subs.add(
           this.statsService.getLanguagesCount().subscribe(
             (response: LanguagesCount) => {
@@ -97,6 +105,75 @@ export class StatsContentComponent implements OnInit, OnDestroy {
       )
     );
 
+    this.subs.add(
+      this.statsService.getTimeToFirstResponse().subscribe(
+        (response: BoxDataModel) => {
+          this.timeToFirstComment = response.box_data;
+        }
+      )
+    );
+
+    this.subs.add(
+      this.statsService.getProposalsCommentsCount().subscribe(
+        (response: CommentsCountResponse) => {
+          const zeroCounts = response[0];
+          const commentsCount = response['>0'];
+          this.commentsTimesCount?.push({
+            name: 'No comments',
+            size: zeroCounts,
+            color: 2
+          });
+          this.commentsTimesCount?.push({
+            name: 'Comments',
+            size: commentsCount,
+            color: 3
+          });
+          this.processCommentsTimeTreemap();
+        }
+      )
+    );
+
+    this.subs.add(
+      this.statsService.getCommentsPerUser().subscribe(
+        (response: BoxDataModel) => {
+          this.commentsPerUser = response.box_data;
+        }
+      )
+    );
+
+    this.subs.add(
+      this.statsService.getActiveInactiveUsers().subscribe(
+        (response: ActiveInactiveUsersCountResponse) => {
+          const inactiveCounts = response.inactive;
+          const allCounts = response.all;
+          const endorsementsCount = response.endorsements;
+          const commentsCount = response.comments;
+          console.log(response);
+          this.activeInactiveUsers?.push({
+            name: 'Inactive',
+            size: inactiveCounts,
+            color: 3
+          });
+          this.activeInactiveUsers?.push({
+            name: 'Endorsements + comments',
+            size: allCounts,
+            color: 4
+          });
+          this.activeInactiveUsers?.push({
+            name: 'Endorsements',
+            size: endorsementsCount,
+            color: 5
+          });
+          this.activeInactiveUsers?.push({
+            name: 'Comments',
+            size: commentsCount,
+            color: 6
+          });
+          this.processCommentsActiveInactiveUsersTreemap();
+        }
+      )
+    );
+
 
   }
 
@@ -123,10 +200,45 @@ export class StatsContentComponent implements OnInit, OnDestroy {
         },
       ],
       title: {
-        text: this.graphTitle,
+        text: '',
       },
     };
   }
+
+  processCommentsTimeTreemap() {
+    this.commentsStructureTreeMapOptions = {
+      data: this.commentsTimesCount,
+      series: [
+        {
+          type: 'pie',
+          labelKey: 'name',
+          angleKey: 'size',
+          innerRadiusOffset: -70
+        },
+      ],
+      title: {
+        text: '',
+      },
+    };
+  }
+
+  processCommentsActiveInactiveUsersTreemap() {
+    this.activeInactiveUsersTreeMapOptions = {
+      data: this.activeInactiveUsers,
+      series: [
+        {
+          type: 'pie',
+          labelKey: 'name',
+          angleKey: 'size',
+          innerRadiusOffset: -70
+        },
+      ],
+      title: {
+        text: '',
+      },
+    };
+  }
+
 
   ngOnDestroy(){  }
 

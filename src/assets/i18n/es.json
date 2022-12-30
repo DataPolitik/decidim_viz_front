@@ -1,4 +1,8 @@
 {
+  "general":{
+      "seconds": "segundos",
+      "hours": "horas"
+  },
   "stats": {
       "stats": "Datos generales",
       "users": "Personas",
@@ -18,6 +22,7 @@
       "featured": "Valores destacados",
       "comments": "Comentarios",
       "comments_written_language": "Idiomas de los comentarios",
+      "comments_proposal_structure": "Propuestas con y sin comentarios",
       "comments_depth": "Profundidad de los comentarios",
       "comment_length": "Longitud de los comentarios",
       "most_commented_categories": "Categorías más comentadas",
@@ -25,6 +30,9 @@
       "polarization": "Polarización",
       "axis_x_help": "Seleccionar el punto para más información",
       "gini_contribution": "Contribución a ",
+      "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
+      "comments_per_user": "Comentarios por usuario",
+      "users_participation_type": "Actividad de los usuarios",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"
@@ -40,7 +48,9 @@
       "endorsements": "Apoyos"
     },"stats": {
       "languages": "Idiomas",
-      "comments": "Comentarios"
+      "comments": "Comentarios",
+      "users": "Usuarios",
+      "proposals": "Propuestas"
     },"about_instance": {
       "goto": "Web de la instancia",
       "download": "Descarga de datos masivos"

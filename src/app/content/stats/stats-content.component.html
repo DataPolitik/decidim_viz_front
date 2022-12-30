@@ -31,8 +31,52 @@
           [width]="500"
           ></app-boxplot>
     </div>
-  </div>
+</div>
 
+<div>
+  <div class="new_section" id="proposals_section"></div>
+  <div class="container" class="demographic_table">
+    <div>
+      <h2 id="languages" fragment="languages">{{'stats.first_comment' | translate}} ({{'general.hours' | translate}})</h2>
+      <app-boxplot class="box" *ngIf="this.timeToFirstComment"
+          [dataInput]="this.timeToFirstComment"
+          title=""
+          [height]="600"
+          [width]="500"
+          ></app-boxplot>
+    </div>
+    <div>
+      <h2 id="languages" fragment="languages">{{'stats.comments_proposal_structure' | translate}}</h2>
+      <ag-charts-angular *ngIf="this.commentsTimesCount.length > 0 && this.commentsStructureTreeMapOptions"
+        class="treemap"
+        style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
+        [options]="this.commentsStructureTreeMapOptions"
+      ></ag-charts-angular>
+    </div>
+</div>
+
+
+<div>
+  <div class="new_section" id="users_section"></div>
+  <div class="container" class="demographic_table">
+    <div>
+      <h2 id="languages" fragment="languages">{{'stats.comments_per_user' | translate}}</h2>
+      <app-boxplot class="box" *ngIf="this.commentsPerUser"
+          [dataInput]="this.commentsPerUser"
+          title=""
+          [height]="600"
+          [width]="500"
+          ></app-boxplot>
+    </div>
+    <div>
+      <h2 id="languages" fragment="languages">{{'stats.users_participation_type' | translate}}</h2>
+      <ag-charts-angular *ngIf="this.activeInactiveUsers.length > 0 && this.activeInactiveUsersTreeMapOptions"
+        class="treemap"
+        style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
+        [options]="this.activeInactiveUsersTreeMapOptions"
+      ></ag-charts-angular>
+    </div>
+</div>
 
 
 <ng-template #still_loading>

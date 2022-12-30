@@ -23,6 +23,9 @@
       "polarization": "Polarization",
       "axis_x_help": "Hover on the bar for more information",
       "gini_contribution": "Contribution to ",
+      "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
+      "comments_per_user": "Comentarios por usuario",
+      "users_participation_type": "Actividad de los usuarios",
       "graph": {
         "title": "Proportion of languages used",
         "context_text": "Number of comments"

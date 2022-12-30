@@ -1,6 +1,4 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'app-boxplot',
@@ -36,7 +34,8 @@ export class BoxplotComponent implements OnInit {
     this.data = [{
       y: this.dataInput,
       type: 'box',
-      name: ''
+      name: '',
+      boxpoints: false
     }]
    }
 

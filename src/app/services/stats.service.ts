@@ -16,6 +16,8 @@ import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model'
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 import { ColorCommunities } from '../models/color_communities.model';
 import { BoxDataModel } from '../models/box_data.model';
+import { CommentsCountResponse } from '../models/comments_count_response.model';
+import { ActiveInactiveUsersCountResponse } from '../models/active_inactive_users_count_response.model copy';
 
 
 @Injectable({
@@ -68,6 +70,10 @@ export class StatsService {
     return this.http.get<Activities>(this.host + '/stats/users/by_proposal/'+idProposal+'/');
   }
 
+  getActiveInactiveUsers(){
+    return this.http.get<ActiveInactiveUsersCountResponse>(this.host + '/stats/users/active_proportion');
+  }
+
   getCommentsLength(){
     return this.http.get<BoxDataModel>(this.host + '/stats/comments/length');
   }
@@ -100,12 +106,20 @@ export class StatsService {
     return this.http.get<Histogram>(this.host + '/stats/comments/histogram');
   }
 
+  getCommentsPerUser() {
+    return this.http.get<BoxDataModel>(this.host + '/stats/comments/per_user');
+  }
+
   getProposalsBySupports(limit: number){
     return this.http.get<ProposalResponse>(this.host + '/stats/proposals/supports/'+limit);
   }
 
   getProposalsByComments(limit: number){
     return this.http.get<ProposalResponse>(this.host + '/stats/proposals/comments/'+limit);
+  }
+
+  getProposalsCommentsCount(){
+    return this.http.get<CommentsCountResponse>(this.host + '/stats/proposals/responses/comments/count');
   }
 
   getMostCommentedProposal(){
@@ -151,6 +165,10 @@ export class StatsService {
 
   getLanguages(){
     return this.http.get<Array<string>>(this.host + '/stats/languages/');
+  }
+
+  getTimeToFirstResponse(){
+    return this.http.get<BoxDataModel>(this.host + '/stats/proposals/responses/first/time/');
   }
 
   getLanguagesCount(){
