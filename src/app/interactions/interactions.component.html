@@ -15,6 +15,9 @@
   </div>
 </div>
 <div id="interaction_tabView">
+  <div id="long_explanation">
+    {{'interactions.long_explanation' | translate}}
+  </div>
   <div>
     <div class="graph" *ngIf="this.currentElement == 'comments'">
       <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>

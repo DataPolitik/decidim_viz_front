@@ -143,6 +143,7 @@
     "comments": "Comentarios",
     "endorsements": "Apoyos",
     "legend_title": "Comunidades",
+    "long_explanation": "En esta red podemos ver relaciones entre usuarios. Si dos usuarios comentan (o apoyan) la misma propuesta, se establece un vínculo entre ellos. Si existen varios vínculos y son estadísticamente significativos, se establece una conexión entre ellos.",
     "modularity_explanation": "Valor de modularidad"
   },
   "proposal_viewer":{
