@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AgChartOptions } from 'ag-charts-community';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, ignoreElements, Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { LanguagesCount } from '../../models/languages.count.model';
 import { StatsService } from '../../services/stats.service';
@@ -148,12 +148,11 @@ export class StatsContentComponent implements OnInit, OnDestroy {
           const allCounts = response.all;
           const endorsementsCount = response.endorsements;
           const commentsCount = response.comments;
-          console.log(response);
-          this.activeInactiveUsers?.push({
-            name: 'Inactive',
-            size: inactiveCounts,
-            color: 3
-          });
+          // this.activeInactiveUsers?.push({
+          //   name: 'Inactive',
+          //   size: inactiveCounts,
+          //   color: 3
+          // });
           this.activeInactiveUsers?.push({
             name: 'Endorsements + comments',
             size: allCounts,
@@ -213,7 +212,22 @@ export class StatsContentComponent implements OnInit, OnDestroy {
           type: 'pie',
           labelKey: 'name',
           angleKey: 'size',
-          innerRadiusOffset: -70
+          innerRadiusOffset: -70,
+          calloutLabelKey: 'label',
+          calloutLabel: {
+              formatter: ({ datum, calloutLabelKey, angleKey }) => {
+                  if(calloutLabelKey){
+                    const value = Math.floor(datum[angleKey]);
+                    let label = "nc";
+                    if (datum[calloutLabelKey] === 'Comments'){
+                      label = "c"
+                    }
+                    return `${label}: ${value}%`;
+                  }else{
+                    return '';
+                  }
+              }
+          }
         },
       ],
       title: {
@@ -230,7 +244,26 @@ export class StatsContentComponent implements OnInit, OnDestroy {
           type: 'pie',
           labelKey: 'name',
           angleKey: 'size',
-          innerRadiusOffset: -70
+          innerRadiusOffset: -70,
+          calloutLabelKey: 'label',
+          calloutLabel: {
+              formatter: ({ datum, calloutLabelKey, angleKey }) => {
+                  if(calloutLabelKey){
+                    const value = Math.floor(datum[angleKey]);
+                    let label = "nc";
+                    if (datum[calloutLabelKey] === 'Comments'){
+                      label = "c"
+                    }else if(datum[calloutLabelKey] === 'Endorsements'){
+                      label = "e"
+                    }else{
+                      label = "c + e"
+                    }
+                    return `${label}: ${value}%`;
+                  }else{
+                    return '';
+                  }
+              }
+          }
         },
       ],
       title: {

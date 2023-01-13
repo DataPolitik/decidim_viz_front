@@ -21,6 +21,9 @@
           [height]="600"
           [width]="500"
           ></app-boxplot>
+          <p>
+            <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
+        </p>
     </div>
     <div class="graph_element">
       <h2 id="languages" fragment="languages">{{'stats.comments_depth' | translate}}</h2>
@@ -30,12 +33,23 @@
           [height]="600"
           [width]="500"
           ></app-boxplot>
+          <p>
+            <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
+        </p>
     </div>
 </div>
 
 <div>
   <div class="new_section" id="proposals_section"></div>
   <div class="container" class="demographic_table">
+    <div>
+      <h2 id="languages" fragment="languages">{{'stats.comments_proposal_structure' | translate}}</h2>
+      <ag-charts-angular *ngIf="this.commentsTimesCount.length > 0 && this.commentsStructureTreeMapOptions"
+        class="treemap"
+        style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
+        [options]="this.commentsStructureTreeMapOptions"
+      ></ag-charts-angular>
+    </div>
     <div>
       <h2 id="languages" fragment="languages">{{'stats.first_comment' | translate}} ({{'general.hours' | translate}})</h2>
       <app-boxplot class="box" *ngIf="this.timeToFirstComment"
@@ -44,14 +58,9 @@
           [height]="600"
           [width]="500"
           ></app-boxplot>
-    </div>
-    <div>
-      <h2 id="languages" fragment="languages">{{'stats.comments_proposal_structure' | translate}}</h2>
-      <ag-charts-angular *ngIf="this.commentsTimesCount.length > 0 && this.commentsStructureTreeMapOptions"
-        class="treemap"
-        style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;"
-        [options]="this.commentsStructureTreeMapOptions"
-      ></ag-charts-angular>
+        <p>
+            <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
+        </p>
     </div>
 </div>
 
@@ -67,6 +76,9 @@
           [height]="600"
           [width]="500"
           ></app-boxplot>
+          <p>
+            <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
+        </p>
     </div>
     <div>
       <h2 id="languages" fragment="languages">{{'stats.users_participation_type' | translate}}</h2>
