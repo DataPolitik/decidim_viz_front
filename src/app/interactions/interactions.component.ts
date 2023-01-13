@@ -46,7 +46,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   public isMinimumRatio(key: any): boolean {
     const ratio = this.getRatioOfCommunity(key);
-    return ratio > 0.05;
+    return ratio > 0.005;
 
   }
 
@@ -64,10 +64,10 @@ export class InteractionsComponent implements OnInit, OnDestroy {
         }
       )
     }
-    let sortedAscendingCountries = listCommunities.sort(function (first, second) {
+    let sortedAscendingCommunities = listCommunities.sort(function (first, second) {
       return second.length - first.length;
     });
-    this.colorsNodesSortedList = sortedAscendingCountries;
+    this.colorsNodesSortedList = sortedAscendingCommunities;
     this.othersRatio = this.computeOthersRatio();
 
   }
