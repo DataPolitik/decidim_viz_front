@@ -142,7 +142,11 @@ export class StatsService {
     return this.http.get<Array<Proposal>>(this.host + '/stats/proposals/by_date/'+date_from+'/'+date_to+'/');
   }
 
-  getModularityValue(){
+  getCommentsModularityValue(){
+    return this.http.get<{modularity: number}>(this.host + '/stats/comments/modularity');
+  }
+
+  getEndorsementsModularityValue(){
     return this.http.get<{modularity: number}>(this.host + '/stats/endorsements/modularity');
   }
 

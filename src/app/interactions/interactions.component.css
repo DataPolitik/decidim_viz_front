@@ -1,3 +1,4 @@
+
 #interaction_tabView{
   margin-left: 4vw;
 }
@@ -10,12 +11,13 @@
 
 #long_explanation{
   margin-top: 20px;
+  width: 1097px;
 }
 
 #legend{
   margin: 0 auto;
   text-align: center;
-  margin-top: 1vh;
+  margin-top: 3vh;
 }
 
 #content{
@@ -86,7 +88,7 @@
 
 #interaction_tabView__communities{
   margin: 0 auto;
-  margin-top: 60vh;
+  margin-top: 70vh;
 }
 
 .community_card{
@@ -98,4 +100,9 @@
 .proposal_list{
   height: 120px;
   overflow-y: scroll;
+}
+
+
+.explanation_list {
+  list-style: outside none none;
 }

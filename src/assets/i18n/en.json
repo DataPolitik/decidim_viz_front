@@ -1,122 +1,184 @@
 {
-  "stats": {
-      "stats": "Statistics",
-      "users": "People",
-      "users_registered": "people",
-      "proposals_done": "proposals",
-      "categories": "categories",
-      "started_participative_processes": "participative processes",
-      "comments_language": "comments on",
-      "proposals": "Proposals",
-      "most_endorsed_proposals": "Most supported proposals",
-      "title": "Title",
-      "endorsements": "Supports",
-      "most_commented_proposals": "Most commented proposals",
-      "most_active_users_by_comments": "Users with more comments",
-      "areas_with_more_proposals": "Areas with more proposals",
-      "languages": "languages",
-      "comments_written_language": "Commentary languages",
-      "comment_length": "Commentary lengths",
-      "most_commented_categories": "Most commented categories",
-      "comments": "Comments",
-      "inequality": "Inequality",
-      "polarization": "Polarization",
-      "axis_x_help": "Hover on the bar for more information",
-      "gini_contribution": "Contribution to ",
-      "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
-      "comments_per_user": "Comentarios por usuario",
-      "users_participation_type": "Actividad de los usuarios",
-      "graph": {
-        "title": "Proportion of languages used",
-        "context_text": "Number of comments"
-      }
+  "general": {
+    "seconds": "seconds",
+    "hours": "hours"
   },
-  "about":{
-      "title": "About Decidim.viz",
-      "in3": "Internet Interdisciplinary Institute",
-      "platoniq": "Platoniq foundation",
-      "d2": "D2, Espacio de Datos y Democracia",
-      "what_is_this": "What is Decidim.viz?",
-      "p1p1": "Decidim.viz is a proof of concept of an information viewer of a single instance of",
-      "p1p2": "The objective of Decidim.viz is to meet the need of the Decidim user community to quickly obtain metrics and statistical information that may be useful to them",
-      "p2p1": "Decidim.viz is a project driven by",
-      "p2p2": "group research unit",
-      "p2p3": "from",
-      "p2p4": "of the",
-      "p2p5": "with the support of initiatives such as the association",
-      "p2p6": "and the",
-      "p2p7": "within the framework of the",
-      "p2p8": "with the aim of building a tool to make democratic participation in the Decidim platform more transparent and reflexive",
-      "where_does_the_data_come_from": "Where does Decidim.viz get its data from?",
-      "p3p1": "Decidim.viz obtains data from two sources",
-      "p3p2": "Decidim instance API",
-      "p3p3": "Decidim mass download files",
-      "p3p4": "Currently, for the Proof of Concept, we use the instance of",
-      "p3p5": "as a source of data",
-      "can_i_help": "Can I make comments or give feedback on the project?",
-      "p4p1": "Of course. You can do so by visiting"
+  "stats": {
+    "stats": "General data",
+    "users": "People",
+    "users_registered": "people",
+    "boxplot": "Interpretation",
+    "boxplot_url": "https://en.wikipedia.org/wiki/Box_plot",
+    "proposals_done": "proposals",
+    "categories": "categories",
+    "started_participative_processes": "participatory processes",
+    "comments_language": "comments on",
+    "proposals": "proposals",
+    "most_endorsed_proposals": "Proposals with the most support",
+    "title": "Title",
+    "endorsements": "endorsements",
+    "most_commented_proposals": "Most commented proposals",
+    "most_active_users_by_comments": "People with the most comments",
+    "areas_with_more_proposals": "Areas with more proposals",
+    "languages": "Languages",
+    "featured": "outstanding values",
+    "comments": "comments",
+    "comments_written_language": "Comment languages",
+    "comments_proposal_structure": "Proposals with and without comments",
+    "comments_depth": "Extension of comment threads",
+    "comment_length": "Comment characters",
+    "most_commented_categories": "Most commented categories",
+    "inequality": "Concentration",
+    "polarization": "Concentration",
+    "gini_explanation": "The concentration index is computed as the Gini Index of the distribution. 0 is the minimum concentration while 1 is the maximum one.",
+    "axis_x_help": "Select point for more information",
+    "gini_contribution": "contribution to ",
+    "first_comment": "Time between publication of the proposal and first comment",
+    "comments_per_user": "Comments per user",
+    "users_participation_type": "user activity",
+    "graph": {
+      "title": "Proportion of languages ​​used",
+      "context_text": "Number of comments"
+    },
+    "activity_explanation": "Active users are people who have commented, endorsed proposals or both actions."
+  },
+  "submenu": {
+    "activities": {
+      "general_data": "General data",
+      "dynamics": "Dynamics",
+      "featured": "Featured values"
+    },
+    "interactions": {
+      "comments": "Comments",
+      "endorsements": "Endorsements"
+    },
+    "stats": {
+      "languages": "Languages",
+      "comments": "Comments",
+      "users": "users",
+      "proposals": "proposals"
+    },
+    "about_instance": {
+      "goto": "Instance website",
+      "download": "Massive data download"
+    },
+    "about": {
+      "goto": "Decidim.org",
+      "front": "Repository (Front-end)",
+      "back": "Repository (Backend)"
+    }
+  },
+  "about": {
+    "title": "Decidim.vs and ",
+    "in3": "Interdisciplinary Internet Institute",
+    "platoniq": "Platonic Foundation",
+    "d2": "D2, Data Space and Democracy",
+    "what_is_this": "What is Decidim.viz?",
+    "p1p1": "Decidim.viz is a proof of concept of an information viewer for an instance of",
+    "p1p2": "The objective of Decidim.viz is to provide useful visualizations, metrics and statistical information to interested people",
+    "p2p1": "Decidim.viz is a project promoted by",
+    "p2p2": "group research unit",
+    "p2p3": "of",
+    "p2p4": "of the",
+    "p2p5": "with the support of initiatives such as the association",
+    "p2p6": "and the",
+    "p2p7": "under the",
+    "p2p8": "with the aim of building a tool to make democratic participation in the Decidim platform more transparent and reflective",
+    "where_does_the_data_come_from": "Where does Decidim.viz get the data from?",
+    "p3p1": "Decidim.viz gets the data from two sources",
+    "p3p2": "Decidim instance API",
+    "p3p3": "Decidim bulk download files",
+    "p3p4": "Currently, for proof of concept, we use the instance of",
+    "p3p5": "as data source",
+    "can_i_help": "Can I make comments or give feedback to the project?",
+    "p4p1": "Of course. "
+  },
+  "instance": {
+    "description": "The Conference on the Future of Europe provides tools (such as this instance of Decidim) and resources for European citizens to discuss Europe's challenges and priorities. "
   },
   "menu": {
-      "stats": "Statistics",
-      "activities": "Activity",
-      "interactions": "Community",
-      "about": "About Decidim.viz"
+    "stats": "Statistics",
+    "activities": "Activity",
+    "interactions": "Community",
+    "about": "Decidim.viz and "
   },
-  "still_loading":{
+  "still_loading": {
     "message": "Loading data..."
   },
-  "activities":{
-    "activities": "Activity",
-    "showing_from": "Showing from",
-    "showing_to": "Up to",
+  "activities": {
+    "dynamics": "temporary evolution",
     "date": "Date",
     "accumulated": "Accumulated",
     "daily": "Daily",
+    "submenu": "Watch",
     "menu": {
-      "proposals": "Proposals",
-      "participative_proccesses": "Participatory processes",
+      "proposals": "proposals",
+      "participative_proccesses": "participatory processes",
       "comments": "Comments"
     },
-    "proposals":{
+    "proposals": {
       "title": "Temporal evolution of proposals",
       "number_of_proposals": "Number of proposals",
       "geolocalization": "Geolocation of proposals",
-      "exists": "There are",
-      "geolocalization_proposals": "geolocalized proposals."
+      "exists": "exist",
+      "geolocalization_proposals": "geolocated proposals."
     },
-    "participative_proccesses":{
+    "participative_proccesses": {
       "title": "Temporal evolution of participatory processes",
       "number_of_proccesses": "Number of participatory processes"
     },
-    "comments":{
-      "title": "Temporal evolution of comments",
+    "comments": {
+      "title": "Time evolution of comments",
       "number_of_comments": "Number of comments"
+    },
+    "histogram": {
+      "number_of_proposals": "Number of proposals",
+      "number_of_people": "Number of people",
+      "number_of_processes": "Number of Participatory Processes",
+      "proposal": "Proposal",
+      "proposals": "proposals",
+      "area": "Area",
+      "endorsements": "endorsements",
+      "comments": "Comments"
     }
   },
-  "interactions":{
-    "title": "Interactions",
-    "comments_network": "Comment Network",
-    "endorsements_network": "Endorsement Network",
+  "interactions": {
+    "title": "interactions",
+    "comments_network": "feedback network",
+    "endorsements_network": "support network",
     "comments": "Comments",
-    "endorsements": "Endorsements"
+    "endorsements": "endorsements",
+    "legend_title": "communities",
+    "long_explanation": "In this network we can see relationships between users. The graph only show the activity of the most active users. Usernames have been removed to preserve the privacy ",
+    "modularity_explanation": "modularity value",
+    "community": "Community",
+    "color": "Color",
+    "people": "Total number of people",
+    "percentage": "% over the total network (filtered)",
+    "endorsed_proposal": "Most endorsed proposals",
+    "commented_proposal": "Most Commented proposals",
+    "community_url": "https://en.wikipedia.org/wiki/Virtual_community",
+    "network_url": "https://en.wikipedia.org/wiki/Social_network",
+    "what_community": "What is a community?",
+    "what_network": "What is a network?"
   },
-  "proposal_viewer":{
+  "proposal_viewer": {
     "proposal": "Proposal",
     "comments": "Comments",
-    "users": "Users",
+    "users": "People",
     "go_to": "Go to the proposal page",
     "date": "Date",
     "number_of_comments": "Number of comments",
-    "total_comments": "Number of comments made until today:  ",
-    "comments_histogram": "Histogram of comments",
-    "user_name": "User name"
+    "total_comments": "Number of comments to date: ",
+    "comments_histogram": "Feedback Histogram",
+    "user_name": "Username"
   },
-  "footer":{
+  "footer": {
     "language": "Language",
     "download_data": "Download raw data"
   },
-  "errors":{
-    "no_results": "No results were found for the dates indicated.",
-    "no_proposal_found": "The proposal has not been found. It is possible that our database has not yet been updated."
+  "errors": {
+    "no_results": "No results have been found for the dates indicated.",
+    "no_proposal_found": "Proposal not found. "
   }
 }

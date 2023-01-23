@@ -28,8 +28,9 @@
       "comments_depth": "Extensión de los hilos de comentarios",
       "comment_length": "Caracteres de los comentarios",
       "most_commented_categories": "Most commented categories",
-      "inequality": "Desigualdad",
-      "polarization": "Polarización",
+      "inequality": "Concentración",
+      "polarization": "Concentración",
+      "gini_explanation": "Hemos calculado el índice concentración como el índice de Gini de la distribución. Siendo 0 la mínima concentración y 1 la máxima concentración",
       "axis_x_help": "Seleccionar el punto para más información",
       "gini_contribution": "Contribución a ",
       "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
@@ -38,7 +39,8 @@
       "graph": {
         "title": "Proporción de lenguajes utilizados",
         "context_text": "Número de comentarios"
-      }
+      },
+      "activity_explanation": "Los usuarios activos son aquello usuarios que han participado comentando, apoyando o ambas cosas."
   },
   "submenu":{
     "activities": {
@@ -143,8 +145,18 @@
     "comments": "Comentarios",
     "endorsements": "Apoyos",
     "legend_title": "Comunidades",
-    "long_explanation": "En esta red podemos ver relaciones entre usuarios. Si dos usuarios comentan (o apoyan) la misma propuesta, se establece un vínculo entre ellos. Si existen varios vínculos y son estadísticamente significativos, se establece una conexión entre ellos.",
-    "modularity_explanation": "Valor de modularidad"
+    "long_explanation": "En esta red podemos ver relaciones entre personas. Solamente se muestran las personas más activos de la instancia, y los nombres de usuario se han eliminado por cuestiones de privacidad.",
+    "modularity_explanation": "Valor de modularidad",
+    "community": "Comunidad",
+    "color": "Color",
+    "people": "Número total de personas",
+    "percentage": "% sobre el total de la red (filtrada)",
+    "endorsed_proposal": "Propuestas más apoyadas",
+    "commented_proposal": "Propuestas más comentadas",
+    "community_url": "https://es.wikipedia.org/wiki/Comunidad_virtual",
+    "network_url": "https://es.wikipedia.org/wiki/Red_social",
+    "what_community": "¿Qué es una comunidad?",
+    "what_network": "¿Qué es una red?"
   },
   "proposal_viewer":{
     "proposal": "Propuesta",

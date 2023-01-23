@@ -210,23 +210,15 @@ export class StatsContentComponent implements OnInit, OnDestroy {
       series: [
         {
           type: 'pie',
-          labelKey: 'name',
           angleKey: 'size',
-          innerRadiusOffset: -70,
-          calloutLabelKey: 'label',
-          calloutLabel: {
-              formatter: ({ datum, calloutLabelKey, angleKey }) => {
-                  if(calloutLabelKey){
-                    const value = Math.floor(datum[angleKey]);
-                    let label = "nc";
-                    if (datum[calloutLabelKey] === 'Comments'){
-                      label = "c"
-                    }
-                    return `${label}: ${value}%`;
-                  }else{
-                    return '';
-                  }
+          innerRadiusOffset: -110,
+          sectorLabelKey: 'name',
+          sectorLabel:{
+            formatter: ({ datum, sectorLabelKey, angleKey }) => {
+              if(sectorLabelKey){
+                return datum[sectorLabelKey];
               }
+            }
           }
         },
       ],
@@ -242,27 +234,20 @@ export class StatsContentComponent implements OnInit, OnDestroy {
       series: [
         {
           type: 'pie',
-          labelKey: 'name',
           angleKey: 'size',
-          innerRadiusOffset: -70,
-          calloutLabelKey: 'label',
-          calloutLabel: {
-              formatter: ({ datum, calloutLabelKey, angleKey }) => {
-                  if(calloutLabelKey){
-                    const value = Math.floor(datum[angleKey]);
-                    let label = "nc";
-                    if (datum[calloutLabelKey] === 'Comments'){
-                      label = "c"
-                    }else if(datum[calloutLabelKey] === 'Endorsements'){
-                      label = "e"
-                    }else{
-                      label = "c + e"
-                    }
-                    return `${label}: ${value}%`;
-                  }else{
-                    return '';
-                  }
+          innerRadiusOffset: -110,
+          sectorLabelKey: 'name',
+          sectorLabel:{
+            formatter: ({ datum, sectorLabelKey, angleKey }) => {
+              if(sectorLabelKey){
+                const name = datum[sectorLabelKey];
+                if(name == "Endorsements + comments"){
+                  return 'Both'
+                }else{
+                  return name;
+                }
               }
+            }
           }
         },
       ],

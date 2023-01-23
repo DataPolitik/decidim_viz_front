@@ -1,6 +1,6 @@
 <div id="stats_dashboard">
 <div *ngIf="this.gini" class="demographic_table--gini">
-  <span class="additional_info" pTooltip="El índice de Gini calcula la desigualdad existente en una muestra. Siendo 0 la máxima igualdad y 1 la máxima desigualdad.">ⓘ </span>
+  <span class="additional_info" pTooltip="{{'stats.gini_explanation' | translate}}">ⓘ </span>
   <span>{{this.gini_title | translate}}: </span>
   <span>{{this.gini.value | number:'1.3'}}</span>
 </div>

@@ -1,8 +1,5 @@
 <a id="top"></a>
 <div id="legend">
-  <div id="communities_summary">
-    {{'interactions.legend_title' | translate}}
-  </div>
   <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
     <div *ngIf="isMinimumRatio(item.key)" class="population_legend_entry">
       <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
@@ -15,17 +12,31 @@
   </div>
 </div>
 <div id="interaction_tabView">
-  <div id="long_explanation">
-    {{'interactions.long_explanation' | translate}}
-  </div>
   <div>
     <div class="graph" *ngIf="this.currentElement == 'comments'">
       <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
+      <div id="long_explanation">
+        {{'interactions.long_explanation' | translate}}.
+        <ul class="explanation_list">
+          <li><a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a></li>
+          <li><a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a></li>
+        </ul>
+      </div>
+      <div *ngIf="this.modularityCommentsValue" id="modularity_explanation">
+        {{'interactions.modularity_explanation' | translate }} {{this.modularityCommentsValue | number:'1.2'}} <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="info">🛈</a>
+      </div>
     </div>
     <div class="graph" *ngIf="this.currentElement == 'endorsements'">
       <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
-      <div *ngIf="this.modularityValue" id="modularity_explanation">
-        {{'interactions.modularity_explanation' | translate }} {{this.modularityValue | number:'1.2'}} <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="info">🛈</a>
+      <div id="long_explanation">
+        {{'interactions.long_explanation' | translate}}.
+        <ul class="explanation_list">
+          <li><a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a></li>
+          <li><a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a></li>
+        </ul>
+      </div>
+      <div *ngIf="this.modularityEndorsementsValue" id="modularity_explanation">
+        {{'interactions.modularity_explanation' | translate }} {{this.modularityEndorsementsValue | number:'1.2'}} <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="info">🛈</a>
       </div>
     </div>
   </div>
@@ -34,17 +45,18 @@
       <p-card class="community_card" *ngIf="isMinimumRatio(item.key)" >
         <ng-template pTemplate="header" >
           <h3 [style]="'color:' + item.key +';'">
-            Comunidad:  {{indexOfelement + 1}}
+            {{'interactions.community' | translate }}:  {{indexOfelement + 1}}
           </h3>
         </ng-template>
             <ul>
-              <li>Color: <div class="target_color" [style]="'background-color:' + item.key +';'"> </div></li>
-              <li>Total number of people: {{getLenghtOfCommunity(item.key)}}</li>
-              <li>% over the total network: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
+              <li>{{'interactions.color' | translate }}: <div class="target_color" [style]="'background-color:' + item.key +';'"> </div></li>
+              <li>{{'interactions.people' | translate }}: {{getLenghtOfCommunity(item.key)}}</li>
+              <li>{{'interactions.percentage' | translate }}: {{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</li>
             </ul>
         <ng-template pTemplate="footer">
             <div>
-              <h4>Most endorsed proposals</h4>
+              <h4 *ngIf="this.currentElement == 'endorsements'">{{'interactions.endorsed_proposal' | translate }}</h4>
+              <h4 *ngIf="this.currentElement == 'comments'">{{'interactions.commented_proposal' | translate }}</h4>
               <ul class="proposal_list" *ngIf="this.communitiesProposals">
                 <li *ngFor="let prop of getProposals(item.key) | keyvalue">{{prop.key}}</li>
               </ul>

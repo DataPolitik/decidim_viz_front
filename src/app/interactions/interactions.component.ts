@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MenuItem } from 'primeng/api';
 import { StatsService } from '../services/stats.service';
 import { ColorCommunities } from '../models/color_communities.model';
-import { CONFIGS } from '../config/config.dev';
 import { SubMenuService } from '../services/sub_menu.service';
 import { SubMenuEntry } from '../models/sub_menu_entry.model';
 
@@ -14,9 +12,11 @@ import { SubMenuEntry } from '../models/sub_menu_entry.model';
 })
 export class InteractionsComponent implements OnInit, OnDestroy {
   private colorSubscription: Subscription | undefined;
-  private modularitySubscription: Subscription | undefined;
+  private commentsModularitySubscription: Subscription | undefined;
+  private endorsementsModularitySubscription: Subscription | undefined;
 
-  public modularityValue: number | undefined = undefined;
+  public modularityCommentsValue: number | undefined = undefined;
+  public modularityEndorsementsValue: number | undefined = undefined;
   public commentsGraphType: string = "comments";
   public endorsementsGraphType: string = "endorsements";
   public currentElement = 'comments';
@@ -41,7 +41,8 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.colorSubscription?.unsubscribe();
-    this.modularitySubscription?.unsubscribe();
+    this.commentsModularitySubscription?.unsubscribe();
+    this.endorsementsModularitySubscription?.unsubscribe();
   }
 
   public isMinimumRatio(key: any): boolean {
@@ -86,9 +87,14 @@ export class InteractionsComponent implements OnInit, OnDestroy {
           this.processResponse(response);
         }
       )
-      this.modularitySubscription = this.statsService.getModularityValue().subscribe(
+      this.commentsModularitySubscription = this.statsService.getCommentsModularityValue().subscribe(
         (response) => {
-          this.modularityValue = response.modularity;
+          this.modularityCommentsValue = response.modularity;
+        }
+      )
+      this.endorsementsModularitySubscription = this.statsService.getEndorsementsModularityValue().subscribe(
+        (response) => {
+          this.modularityEndorsementsValue = response.modularity;
         }
       )
     }

@@ -19,6 +19,7 @@
   height: 40%;
   width: 100vw;
   background-color: rgb(250, 239, 239);
+  min-height: 5vh;
 }
 
 #footer{
