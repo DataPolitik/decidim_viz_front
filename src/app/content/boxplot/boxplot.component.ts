@@ -8,9 +8,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 export class BoxplotComponent implements OnInit {
 
   @Input() dataInput: Array<any> | undefined;
+  @Input() name: string | undefined;
   @Input() title: string | undefined;
   @Input() height: number | undefined;
   @Input() width: number | undefined;
+  @Input() boxpointsValue: string | boolean | undefined;
 
   layout: any;
   public data: any | undefined = undefined
@@ -34,8 +36,8 @@ export class BoxplotComponent implements OnInit {
     this.data = [{
       y: this.dataInput,
       type: 'box',
-      name: '',
-      boxpoints: false
+      name: this.name,
+      boxpoints: this.boxpointsValue
     }]
    }
 

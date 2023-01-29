@@ -35,6 +35,8 @@
     "gini_contribution": "contribution to ",
     "first_comment": "Time between publication of the proposal and first comment",
     "comments_per_user": "Comments per user",
+    "length_limit_warning": "Due to restrictions on the Futureu instance, the maximum length is 1,001 characters.",
+    "depth_limit_warning": "Due to restrictions on the Futureu instance, the maximum depth is 4.",
     "users_participation_type": "user activity",
     "graph": {
       "title": "Proportion of languages ​​used",

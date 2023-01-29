@@ -15,11 +15,16 @@
     </div>
     <div class="graph_element">
       <h2 id="languages" fragment="languages">{{'stats.comment_length' | translate}}</h2>
+      <p>
+        {{'stats.length_limit_warning' | translate}}
+      </p>
       <app-boxplot class="box" *ngIf="this.commentsLengthData"
           [dataInput]="this.commentsLengthData"
           title=""
+          [name]="'Number of characters'"
           [height]="600"
           [width]="500"
+          [boxpointsValue]="false"
           ></app-boxplot>
           <p>
             <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
@@ -27,15 +32,20 @@
     </div>
     <div class="graph_element">
       <h2 id="languages" fragment="languages">{{'stats.comments_depth' | translate}}</h2>
+      <p>
+        {{'stats.depth_limit_warning' | translate}}
+      </p>
       <app-boxplot class="box" *ngIf="this.commentsDepth"
           [dataInput]="this.commentsDepth"
           title=""
+          [name]="'Depth'"
           [height]="600"
           [width]="500"
+          [boxpointsValue]="false"
           ></app-boxplot>
           <p>
             <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
-        </p>
+          </p>
     </div>
 </div>
 
@@ -55,8 +65,10 @@
       <app-boxplot class="box" *ngIf="this.timeToFirstComment"
           [dataInput]="this.timeToFirstComment"
           title=""
+          [name]="'Hours'"
           [height]="600"
           [width]="500"
+          [boxpointsValue]="false"
           ></app-boxplot>
         <p>
             <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>
@@ -73,8 +85,10 @@
       <app-boxplot class="box" *ngIf="this.commentsPerUser"
           [dataInput]="this.commentsPerUser"
           title=""
+          [name]="'Number of comments'"
           [height]="600"
           [width]="500"
+          [boxpointsValue]="'suspectedoutliers'"
           ></app-boxplot>
           <p>
             <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.boxplot' | translate}}" target="_blank">{{'stats.boxplot' | translate}}</a>

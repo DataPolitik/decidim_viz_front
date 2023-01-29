@@ -35,6 +35,8 @@
       "gini_contribution": "Contribución a ",
       "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
       "comments_per_user": "Comentarios por usuario",
+      "length_limit_warning": "Debido a restricciones de la instancia de Futureu, la longitud máxima es de 1001 caracteres.",
+      "depth_limit_warning": "Debido a restricciones de la instancia de Futureu, la profundidad máxima es 4.",
       "users_participation_type": "Actividad de los usuarios",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
