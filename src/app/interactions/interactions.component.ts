@@ -81,15 +81,15 @@ export class InteractionsComponent implements OnInit, OnDestroy {
           this.processResponse(response);
         }
       )
+      this.commentsModularitySubscription = this.statsService.getCommentsModularityValue().subscribe(
+        (response) => {
+          this.modularityCommentsValue = response.modularity;
+        }
+      )
     }else{
       this.colorSubscription = this.statsService.getEndorsesColors().subscribe(
         (response: ColorCommunities) => {
           this.processResponse(response);
-        }
-      )
-      this.commentsModularitySubscription = this.statsService.getCommentsModularityValue().subscribe(
-        (response) => {
-          this.modularityCommentsValue = response.modularity;
         }
       )
       this.endorsementsModularitySubscription = this.statsService.getEndorsementsModularityValue().subscribe(

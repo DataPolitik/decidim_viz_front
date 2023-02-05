@@ -152,7 +152,7 @@
     "endorsements": "endorsements",
     "legend_title": "communities",
     "long_explanation": "In this network we can see relationships between users. The graph only show the activity of the most active users. Usernames have been removed to preserve the privacy ",
-    "modularity_explanation": "modularity value",
+    "modularity_explanation": "Modularity value",
     "community": "Community",
     "color": "Color",
     "people": "Total number of people",
