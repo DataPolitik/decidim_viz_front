@@ -1,4 +1,4 @@
 export const LANGUAGES = {
-    'en': 'Inglés',
+    'en': 'English',
     'es': 'Castellano'
  }
