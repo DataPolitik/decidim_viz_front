@@ -14,8 +14,9 @@
     "started_participative_processes": "participatory processes",
     "comments_language": "comments on",
     "proposals": "proposals",
-    "most_endorsed_proposals": "Proposals with the most support",
+    "most_endorsed_proposals": "Most supported proposals",
     "title": "Title",
+    "interpretation": "interpretation",
     "endorsements": "endorsements",
     "most_commented_proposals": "Most commented proposals",
     "most_active_users_by_comments": "People with the most comments",
@@ -30,19 +31,19 @@
     "most_commented_categories": "Most commented categories",
     "inequality": "Concentration",
     "polarization": "Concentration",
-    "gini_explanation": "The concentration index is computed as the Gini Index of the distribution. 0 is the minimum concentration while 1 is the maximum one.",
+    "gini_explanation": "The concentration index is computed as the Gini Coefficient of the distribution. 0 is the minimum concentration while 1 is the maximum one.",
     "axis_x_help": "Select point for more information",
     "gini_contribution": "contribution to ",
     "first_comment": "Time between publication of the proposal and first comment",
     "comments_per_user": "Comments per user",
     "length_limit_warning": "Due to restrictions on the Futureu instance, the maximum length is 1,001 characters.",
-    "depth_limit_warning": "Due to restrictions on the Futureu instance, the maximum depth is 4.",
+    "depth_limit_warning": "Due to restrictions on the Futureu instance, the maximum depth is 3.",
     "users_participation_type": "user activity",
     "graph": {
       "title": "Proportion of languages ​​used",
       "context_text": "Number of comments"
     },
-    "activity_explanation": "Active users are people who have commented, endorsed proposals or both actions."
+    "activity_explanation": "Users with not activity on the platform are not taken into account"
   },
   "submenu": {
     "activities": {
@@ -57,8 +58,8 @@
     "stats": {
       "languages": "Languages",
       "comments": "Comments",
-      "users": "users",
-      "proposals": "proposals"
+      "users": "Users",
+      "proposals": "Proposals"
     },
     "about_instance": {
       "goto": "Instance website",
@@ -67,13 +68,14 @@
     "about": {
       "goto": "Decidim.org",
       "front": "Repository (Front-end)",
-      "back": "Repository (Backend)"
+      "back": "Repository (Back-end)",
+      "tecnopolitica": "Tecnopolitica.net"
     }
   },
   "about": {
     "title": "Decidim.vs and ",
     "in3": "Interdisciplinary Internet Institute",
-    "platoniq": "Platonic Foundation",
+    "platoniq": "Platoniq Foundation",
     "d2": "D2, Data Space and Democracy",
     "what_is_this": "What is Decidim.viz?",
     "p1p1": "Decidim.viz is a proof of concept of an information viewer for an instance of",
@@ -119,14 +121,14 @@
       "comments": "Comments"
     },
     "proposals": {
-      "title": "Temporal evolution of proposals",
+      "title": "Time evolution of proposals",
       "number_of_proposals": "Number of proposals",
       "geolocalization": "Geolocation of proposals",
       "exists": "exist",
       "geolocalization_proposals": "geolocated proposals."
     },
     "participative_proccesses": {
-      "title": "Temporal evolution of participatory processes",
+      "title": "Time evolution of participatory processes",
       "number_of_proccesses": "Number of participatory processes"
     },
     "comments": {
@@ -139,6 +141,7 @@
       "number_of_processes": "Number of Participatory Processes",
       "proposal": "Proposal",
       "proposals": "proposals",
+      "categories": "Categories",
       "area": "Area",
       "endorsements": "endorsements",
       "comments": "Comments"
@@ -151,18 +154,21 @@
     "comments": "Comments",
     "endorsements": "endorsements",
     "legend_title": "communities",
-    "long_explanation": "In this network we can see relationships between users. The graph only show the activity of the most active users. Usernames have been removed to preserve the privacy ",
+    "long_explanation_1": "In this",
+    "long_explanation_2": "we can see relationships between users. The graph only show the activity of the most active users, grouped into",
+    "long_explanation_3": "Usernames have been removed to preserve privacy ",
     "modularity_explanation": "Modularity value",
     "community": "Community",
     "color": "Color",
+    "others": "Others",
     "people": "Total number of people",
     "percentage": "% over the total network (filtered)",
     "endorsed_proposal": "Most endorsed proposals",
     "commented_proposal": "Most Commented proposals",
-    "community_url": "https://en.wikipedia.org/wiki/Virtual_community",
+    "community_url": "https://en.wikipedia.org/wiki/Community_structure",
     "network_url": "https://en.wikipedia.org/wiki/Social_network",
-    "what_community": "What is a community?",
-    "what_network": "What is a network?"
+    "what_community": "communities",
+    "what_network": "network"
   },
   "proposal_viewer": {
     "proposal": "Proposal",

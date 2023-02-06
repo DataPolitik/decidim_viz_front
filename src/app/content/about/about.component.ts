@@ -13,10 +13,11 @@ export class AboutComponent implements OnInit {
 
   constructor(private subMenuService: SubMenuService) {
     this.subMenuService.setEntries([
-        { label: 'futureu.europe.eu', action: () => {window.location.href = "https://futureu.europe.eu/"}},
+        { label: 'futureu.europa.eu', action: () => {window.location.href = "https://futureu.europa.eu/"}},
         { label: 'submenu.about.goto', action: () => {window.location.href = "https://decidim.org/"}},
         { label: 'submenu.about.front', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_front"}},
-        { label: 'submenu.about.back', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_back"}}
+        { label: 'submenu.about.back', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_back"}},
+        { label: 'submenu.about.tecnopolitica', action: () => {window.location.href = "https://www.tecnopolitica.net/"}}
       ] as SubMenuEntry[]
     );
   }

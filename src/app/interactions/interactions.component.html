@@ -3,12 +3,12 @@
   <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
     <div *ngIf="isMinimumRatio(item.key)" class="population_legend_entry">
       <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
-      <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.2'}}%</span>
+      <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.0-1'}}%</span>
     </div>
   </ng-container>
   <div class="population_legend_entry">
-    <div class="target_text_legend"> Otros </div>
-    <span>{{this.othersRatio | number:'1.2'}}%</span>
+    <div class="target_text_legend"> {{'interactions.others' | translate}} </div>
+    <span>{{this.othersRatio | number:'1.0-1'}}%</span>
   </div>
 </div>
 <div id="interaction_tabView">
@@ -16,14 +16,15 @@
     <div class="graph" *ngIf="this.currentElement == 'comments'">
       <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
       <div id="long_explanation">
-        {{'interactions.long_explanation' | translate}}.
-        <ul class="explanation_list">
-          <li><a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a></li>
-          <li><a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a></li>
-        </ul>
+        {{'interactions.long_explanation_1' | translate}}
+          <a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a>
+        {{'interactions.long_explanation_2' | translate}}
+        <a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a>
+        .{{'interactions.long_explanation_3' | translate}}.
       </div>
       <div *ngIf="this.modularityCommentsValue" id="modularity_explanation">
-        {{'interactions.modularity_explanation' | translate }} {{this.modularityCommentsValue | number:'1.2'}} <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="info">🛈</a>
+        <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
+        {{this.modularityCommentsValue | number:'1.2'}}
       </div>
     </div>
     <div class="graph" *ngIf="this.currentElement == 'endorsements'">
