@@ -45,7 +45,7 @@ import { StatsContentComponent } from './content/stats/stats-content.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { BoxplotComponent } from './content/boxplot/boxplot.component';
 import { LanguageComponent } from './language/language.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -101,7 +101,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
                    }
     })
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
