@@ -9,6 +9,7 @@
     "users_registered": "people",
     "boxplot": "Interpretation",
     "boxplot_url": "https://en.wikipedia.org/wiki/Box_plot",
+    "doughnut_url": "https://www.mit.edu/~mbarker/formula1/f1help/11-ch-c6.htm",
     "proposals_done": "proposals",
     "categories": "categories",
     "started_participative_processes": "participatory processes",
@@ -87,19 +88,19 @@
     "p2p5": "with the sponsorship of the Office for Digital and Democratic Innovation of the Barcelona city council, and support of initiatives such as the association",
     "p2p6": "and the",
     "p2p7": "in the context of the",
-    "p2p8": "ts broader aim is to prototype a tool that may contribute to make democratic participation on the Decidim platform more transparent and reflective",
+    "p2p8": "its broader aim is to prototype a tool that may contribute to make democratic participation on the Decidim platform more transparent and reflective",
     "where_does_the_data_come_from": "Where does Decidim.viz get the data from?",
     "p3p1": "Decidim.viz gets the data from two sources in a given Decidim instance",
     "p3p2": "Its API",
     "p3p3": "Its bulk data download files",
     "p3p4": "For this proof of concept we use the instance of the Conference on the Future of Europe",
-    "p3p5": "as data source. The Conference was a hybrid, online-offline participatory process that ran between 2021 and 2022, which promoted citizen debates on the future of the Union. The Conference provided resources and tools, such as this instance of Decidim, for european citizens to discuss Europe's challenges and priorities.",
+    "p3p5": "as data source. The Conference was a hybrid, online-offline participatory process that ran between 2021 and 2022, which promoted citizen debates on the future of the Union. The Conference provided resources and tools, such as this instance of Decidim, for european citizens to discuss Europe's challenges and priorities",
     "can_i_help": "Can I give feedback or contribute to the Decidim.viz project?",
     "p4p1": "Of course. Please, go to",
     "p4p2": "or write an email to tecnopolitica@uoc.edu to become part of the process"
   },
   "instance": {
-    "description": "The Conference on the Future of Europe provides tools (such as this instance of Decidim) and resources for European citizens to discuss Europe's challenges and priorities"
+    "description": "The Conference on the Future of Europe provides resources and tools (such as this instance of Decidim) for European citizens to discuss Europe's challenges and priorities."
   },
   "menu": {
     "stats": "Statistics",

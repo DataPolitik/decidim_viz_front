@@ -8,9 +8,6 @@
     <div>
       <h2 id="languages" fragment="languages">
         {{'stats.comments_written_language' | translate}}
-        <span class="additional_info">
-          <a href="https://www.mit.edu/~mbarker/formula1/f1help/11-ch-c6.htm" title="{{'stats.interpretation' | translate}}" target="_blank">ⓘ</a>
-        </span>
       </h2>
       <ag-charts-angular *ngIf="this.languageCount.length > 0 && this.languageTreeMapOptions"
         class="treemap"
@@ -58,9 +55,6 @@
     <div>
       <h2 id="languages" fragment="languages">
         {{'stats.comments_proposal_structure' | translate}}
-        <span class="additional_info">
-          <a href="https://www.mit.edu/~mbarker/formula1/f1help/11-ch-c6.htm" title="{{'stats.interpretation' | translate}}" target="_blank">ⓘ</a>
-        </span>
       </h2>
       <ag-charts-angular *ngIf="this.commentsTimesCount.length > 0 && this.commentsStructureTreeMapOptions"
         class="treemap"
@@ -109,9 +103,6 @@
     <div>
       <h2 id="languages" fragment="languages">
         {{'stats.users_participation_type' | translate}}
-        <span class="additional_info" pTooltip="{{'stats.activity_explanation' | translate}}">
-          <a href="https://www.mit.edu/~mbarker/formula1/f1help/11-ch-c6.htm" title="{{'stats.interpretation' | translate}}" target="_blank">ⓘ</a>
-        </span>
       </h2>
       <ag-charts-angular *ngIf="this.activeInactiveUsers.length > 0 && this.activeInactiveUsersTreeMapOptions"
         class="treemap"

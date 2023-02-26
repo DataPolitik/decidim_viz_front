@@ -182,15 +182,15 @@ export class StatsContentComponent implements OnInit, OnDestroy {
       series: [
         {
           type: 'pie',
-          labelKey: 'name',
           angleKey: 'size',
           innerRadiusOffset: -70,
-          calloutLabelKey: 'label',
-          calloutLabel: {
-              formatter: ({ datum, calloutLabelKey, angleKey }) => {
-                  if(calloutLabelKey){
-                    const value = Math.floor(datum[angleKey]);
-                    return `${datum[calloutLabelKey]}: ${value}%`;
+          sectorLabelKey: 'name',
+          sectorLabel: {
+              formatter: ({ datum, sectorLabelKey, angleKey }) => {
+                  if(sectorLabelKey){
+                    if(sectorLabelKey){
+                      return datum[sectorLabelKey];
+                    }
                   }else{
                     return '';
                   }
