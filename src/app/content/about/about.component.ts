@@ -13,7 +13,7 @@ export class AboutComponent implements OnInit {
 
   constructor(private subMenuService: SubMenuService) {
     this.subMenuService.setEntries([
-        { label: 'submenu.about.front', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_front"}}
+        { label: 'submenu.about.front', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_front"}},
         { label: 'submenu.about.back', action: () => {window.location.href = "https://github.com/DataPolitik/decidim_viz_back"}}
       ] as SubMenuEntry[]
     );
