@@ -1,4 +1,4 @@
-Note: As future.eu is not longer active, Decidimos.viz is not working anymore. Nevertheless, the code can be usted to retrieve data frontera other Decidim instances.
+Note: As future.eu is not longer active, Decidim.viz is not working anymore. Nevertheless, the code can be usted to retrieve data from others Decidim instances.
 
 # Decidim Viz - Front
 
