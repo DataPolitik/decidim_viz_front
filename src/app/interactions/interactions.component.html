@@ -8,7 +8,7 @@
   </ng-container>
   <div class="population_legend_entry">
     <div class="target_text_legend"> {{'interactions.others' | translate}} </div>
-    <span>{{this.othersRatio | number:'1.0-1'}}%</span>
+    <span>{{this.othersRatio * 100 | number:'1.0-1'}}%</span>
   </div>
 </div>
 <div id="interaction_tabView">

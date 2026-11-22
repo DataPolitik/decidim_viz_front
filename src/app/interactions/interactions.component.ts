@@ -102,10 +102,19 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   }
 
+  /**
+   * Share of users (0 to 1) in the communities too small to get their own
+   * legend entry, i.e. those for which isMinimumRatio is false. Together with
+   * the listed communities it adds up to 1.
+   */
   public computeOthersRatio(): number {
-    let sum = 0;
-    this.colorsNodesSortedList.forEach((element) => {sum += element.key['length']});
-    return sum / this.totalNodes;
+    if (!this.totalNodes) {
+      return 0;
+    }
+    const usersInOthers = this.colorsNodesSortedList
+      .filter((community) => !this.isMinimumRatio(community.key))
+      .reduce((sum, community) => sum + community.length, 0);
+    return usersInOthers / this.totalNodes;
   }
 
   public getLenghtOfCommunity(key: any): number{
