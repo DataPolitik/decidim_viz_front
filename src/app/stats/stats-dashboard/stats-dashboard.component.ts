@@ -4,6 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TranslateService } from '@ngx-translate/core';
 import { AgChartOptions } from 'ag-charts-community';
 import { Gini } from 'src/app/models/abstract_dash.model';
+import { proposalTitle } from 'src/app/utils/proposal-title';
 
 @Component({
   selector: 'app-stats-dashboard',
@@ -41,12 +42,17 @@ export class StatsDashboardComponent<T> implements OnInit {
     let titleText = params.xValue;
     if(this.isProposal){
       contentText += ' ' + 'Click para más información';
-      titleText = params.datum.title_es;
+      titleText = this.proposalTitle(params.datum);
     }
     return {
       title: titleText,
       content: contentText,
     };
+  }
+
+  /** A proposal's title in the interface language, falling back to any other. */
+  public proposalTitle(proposal: any): string {
+    return proposalTitle(proposal, this.translate.currentLang || this.translate.getDefaultLang());
   }
 
   ngOnInit(): void {
