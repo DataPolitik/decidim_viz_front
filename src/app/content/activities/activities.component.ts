@@ -6,6 +6,7 @@ import { TemporalLimitsGraphHQL } from 'src/app/models/temporal-limits-graphql.m
 import { Apollo } from 'apollo-angular';
 import { PARTICIPATORY_PROCESSES_TOTAL } from '../../graphql/graphql.queries';
 import { Summary } from '../../models/summary.model';
+import { withUniqueLabels } from '../../utils/person-labels';
 import { Category, CategoryResponse } from '../../models/category.model';
 import { LanguagesCount } from '../../models/languages.count.model';
 import { Activities } from '../../models/activities.model';
@@ -172,8 +173,13 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
     }));
 
     this.subs.add( this.statsService.getUsersByComments(50).subscribe((response: UsersByCommentsHistory) => {
-      this.usersByComments = response.comments;
-      this.usersByCommentsGini = response.gini;
+      // Each bar needs its own label: unnamed people and namesakes would otherwise share one bar.
+      this.subs.add(this.translate_service.get('stats.unnamed_participant').subscribe((unnamed: string) => {
+        this.usersByCommentsGini = response.gini;
+        // Bars are numbered by rank, like the proposal charts; the name shows on hover.
+        this.usersByComments = withUniqueLabels(response.comments, unnamed)
+          .map((person, i) => ({ ...person, position: i + 1 }));
+      }));
     }));
 
     this.subs.add( this.statsService.getProposalsBySupports(50).subscribe((response: ProposalResponse) => {

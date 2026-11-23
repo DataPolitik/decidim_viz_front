@@ -31,7 +31,7 @@
                 <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{proposalTitle(element)}}</a>
               </td>
               <td *ngIf="!this.isProposal" style="flex-basis:70%">
-                {{element[titleColumn]}}
+                {{nameColumn ? element[nameColumn] : element[titleColumn]}}
               </td>
               <td style="flex-basis:15%">
                 {{element[countColumn]}}

@@ -20,6 +20,8 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() title: string = '';
   @Input() countColumnName: string  = '';
   @Input() titleColumn: string  = '';
+  /** Column with each item's name, shown in the tooltip and table when titleColumn is just a rank. */
+  @Input() nameColumn: string = '';
   @Input() countColumn: string  = '';
   @Input() fillColor: string  = '';
   @Input() typeColumnCount: any  = 'number';
@@ -43,6 +45,8 @@ export class StatsDashboardComponent<T> implements OnInit {
     if(this.isProposal){
       contentText += ' ' + 'Click para más información';
       titleText = this.proposalTitle(params.datum);
+    } else if (this.nameColumn) {
+      titleText = params.datum[this.nameColumn];
     }
     return {
       title: titleText,
