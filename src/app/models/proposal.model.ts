@@ -9,6 +9,8 @@ export interface Proposal{
   title_es: string | null,
   title_fr: string | null,
   title_en: string | null,
+  /** As originally written, in any language; never empty. */
+  title?: string,
   endorsements: number,
   url: string,
   latitude: string,

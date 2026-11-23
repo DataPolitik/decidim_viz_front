@@ -28,10 +28,10 @@
         <ng-template pTemplate="body" let-element let-i="rowIndex">
             <tr>
               <td *ngIf="this.isProposal" style="flex-basis:70%">
-                <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{element.title_es}}</a>
+                <a [routerLink]="['/proposal/' + element.id]"  title="Ir a la propuesta">{{proposalTitle(element)}}</a>
               </td>
               <td *ngIf="!this.isProposal" style="flex-basis:70%">
-                {{element[titleColumn]}}
+                {{nameColumn ? element[nameColumn] : element[titleColumn]}}
               </td>
               <td style="flex-basis:15%">
                 {{element[countColumn]}}

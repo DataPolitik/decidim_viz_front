@@ -1,14 +1,14 @@
 <a id="top"></a>
 <div id="legend">
   <ng-container *ngFor="let item of this.colorsNodesSortedList ; let indexOfelement=index;">
-    <div *ngIf="isMinimumRatio(item.key)" class="population_legend_entry">
+    <div *ngIf="isListed(item.key)" class="population_legend_entry">
       <div class="target_color_legend" [style]="'background-color:' + item.key +';'"> </div>
       <span>{{getRatioOfCommunity(item.key) * 100 | number:'1.0-1'}}%</span>
     </div>
   </ng-container>
   <div class="population_legend_entry">
     <div class="target_text_legend"> {{'interactions.others' | translate}} </div>
-    <span>{{this.othersRatio | number:'1.0-1'}}%</span>
+    <span>{{this.othersRatio * 100 | number:'1.0-1'}}%</span>
   </div>
 </div>
 <div id="interaction_tabView">
@@ -22,7 +22,7 @@
         <a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a>.
          {{'interactions.long_explanation_3' | translate}}.
       </div>
-      <div *ngIf="this.modularityCommentsValue" id="modularity_explanation">
+      <div *ngIf="this.modularityCommentsValue !== undefined" id="modularity_explanation">
         <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
         {{this.modularityCommentsValue | number:'1.2'}}
       </div>
@@ -36,7 +36,7 @@
         <a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a>.
          {{'interactions.long_explanation_3' | translate}}.
       </div>
-      <div *ngIf="this.modularityCommentsValue" id="modularity_explanation">
+      <div *ngIf="this.modularityEndorsementsValue !== undefined" id="modularity_explanation">
         <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
         {{this.modularityEndorsementsValue | number:'1.2'}}
       </div>
@@ -44,7 +44,7 @@
   </div>
   <div id="interaction_tabView__communities">
     <ng-container *ngFor="let item of this.colorsNodesSortedList; let indexOfelement=index;">
-      <p-card class="community_card" *ngIf="isMinimumRatio(item.key)" >
+      <p-card class="community_card" *ngIf="isListed(item.key)" >
         <ng-template pTemplate="header" >
           <h3 [style]="'color:' + item.key +';'">
             {{'interactions.community' | translate }}:  {{indexOfelement + 1}}

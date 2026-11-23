@@ -4,6 +4,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TranslateService } from '@ngx-translate/core';
 import { AgChartOptions } from 'ag-charts-community';
 import { Gini } from 'src/app/models/abstract_dash.model';
+import { proposalTitle } from 'src/app/utils/proposal-title';
+import { capitalizeFirst } from 'src/app/utils/capitalize';
 
 @Component({
   selector: 'app-stats-dashboard',
@@ -19,6 +21,8 @@ export class StatsDashboardComponent<T> implements OnInit {
   @Input() title: string = '';
   @Input() countColumnName: string  = '';
   @Input() titleColumn: string  = '';
+  /** Column with each item's name, shown in the tooltip and table when titleColumn is just a rank. */
+  @Input() nameColumn: string = '';
   @Input() countColumn: string  = '';
   @Input() fillColor: string  = '';
   @Input() typeColumnCount: any  = 'number';
@@ -41,12 +45,19 @@ export class StatsDashboardComponent<T> implements OnInit {
     let titleText = params.xValue;
     if(this.isProposal){
       contentText += ' ' + 'Click para más información';
-      titleText = params.datum.title_es;
+      titleText = this.proposalTitle(params.datum);
+    } else if (this.nameColumn) {
+      titleText = params.datum[this.nameColumn];
     }
     return {
       title: titleText,
       content: contentText,
     };
+  }
+
+  /** A proposal's title in the interface language, falling back to any other. */
+  public proposalTitle(proposal: any): string {
+    return proposalTitle(proposal, this.translate.currentLang || this.translate.getDefaultLang());
   }
 
   ngOnInit(): void {
@@ -88,7 +99,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: 'number',
             position: 'left',
             title: {
-              text: this.y_axis_title,
+              text: capitalizeFirst(this.y_axis_title),
             },
             label: {
               format: ',.0f',
@@ -99,7 +110,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: this.typeColumnCount,
             position: 'bottom',
             title: {
-              text: this.x_axis_title,
+              text: capitalizeFirst(this.x_axis_title),
             },
             label: {
               fontSize: 10,

@@ -4,7 +4,9 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { TemporalLimitsAPI } from 'src/app/models/temporal-limits-api.model';
 import { TemporalLimitsGraphHQL } from 'src/app/models/temporal-limits-graphql.model';
 import { Apollo } from 'apollo-angular';
-import { METRICS_COMMENTS, METRICS_PARTICIPATORY_PROCESSES, METRICS_PROPOSALS, METRICS_USERS } from '../../graphql/graphql.queries';
+import { PARTICIPATORY_PROCESSES_TOTAL } from '../../graphql/graphql.queries';
+import { Summary } from '../../models/summary.model';
+import { withUniqueLabels } from '../../utils/person-labels';
 import { Category, CategoryResponse } from '../../models/category.model';
 import { LanguagesCount } from '../../models/languages.count.model';
 import { Activities } from '../../models/activities.model';
@@ -69,16 +71,11 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   private graphContexText: string = ''
 
 
-  public daily_user_loading: boolean = true;
-  public daily_proposal_loading: boolean = true;
-  public daily_comment_loading: boolean = true;
-  public participatory_processes_loading: boolean = true;
-
-  public daily_user_metrics: Activities | undefined;
-  public daily_proposal_metrics: Activities | undefined;
-  public daily_comment_metrics: Activities | undefined;
-  public daily_participatory_processes_metrics: Activities | undefined;
-  public comments_metrics: Activities | undefined;
+  // Headline counts; a failed request shows "not available" instead of loading forever.
+  public summary: Summary | undefined;
+  public summaryFailed = false;
+  public participatoryProcessesCount: number | undefined;
+  public participatoryProcessesFailed = false;
 
   public categories: Array<Category> | undefined = undefined;
   public categoriesByProposalsGini: Gini | undefined = undefined;
@@ -156,29 +153,33 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subs.add(execute_metrics_query(this.apollo, METRICS_USERS).subscribe(({ data, loading }) => {
-      this.daily_user_loading = false;
-      this.daily_user_metrics = data.metrics[0];
+    // Participants, proposals and comments come from the imported data, like the rest of the page.
+    this.subs.add(this.statsService.getSummary().subscribe({
+      next: (summary: Summary) => this.summary = summary,
+      error: () => this.summaryFailed = true,
     }));
 
-    this.subs.add(execute_metrics_query(this.apollo, METRICS_PROPOSALS).subscribe(({ data, loading }) => {
-      this.daily_proposal_loading = false;
-      this.daily_proposal_metrics = data.metrics[0];
-    }));
-
-    this.subs.add(execute_metrics_query(this.apollo, METRICS_PARTICIPATORY_PROCESSES).subscribe(({ data, loading }) => {
-      this.participatory_processes_loading = false;
-      this.daily_participatory_processes_metrics = data.metrics[0];
-    }));
-
-    this.subs.add( execute_metrics_query(this.apollo, METRICS_COMMENTS).subscribe(({ data, loading }) => {
-      this.daily_comment_loading = false;
-      this.comments_metrics= data.metrics[0];
+    // Participatory processes are not in the imported data: ask the Decidim instance.
+    // Apollo reports some failures as an error and others as a result without data.
+    this.subs.add(execute_metrics_query(this.apollo, PARTICIPATORY_PROCESSES_TOTAL).subscribe({
+      next: ({ data, loading }) => {
+        if (loading) {
+          return;
+        }
+        this.participatoryProcessesCount = data?.participatoryProcesses?.length;
+        this.participatoryProcessesFailed = this.participatoryProcessesCount === undefined;
+      },
+      error: () => this.participatoryProcessesFailed = true,
     }));
 
     this.subs.add( this.statsService.getUsersByComments(50).subscribe((response: UsersByCommentsHistory) => {
-      this.usersByComments = response.comments;
-      this.usersByCommentsGini = response.gini;
+      // Each bar needs its own label: unnamed people and namesakes would otherwise share one bar.
+      this.subs.add(this.translate_service.get('stats.unnamed_participant').subscribe((unnamed: string) => {
+        this.usersByCommentsGini = response.gini;
+        // Bars are numbered by rank, like the proposal charts; the name shows on hover.
+        this.usersByComments = withUniqueLabels(response.comments, unnamed)
+          .map((person, i) => ({ ...person, position: i + 1 }));
+      }));
     }));
 
     this.subs.add( this.statsService.getProposalsBySupports(50).subscribe((response: ProposalResponse) => {

@@ -14,3 +14,24 @@
 #submenu ul li:hover{
   color: #6c757d;
 }
+
+#history_submenu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#data_source{
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-right: 24px;
+  font-size: 14px;
+  font-family: Verdana, Geneva, sans-serif;
+  color: #555;
+}
+
+#data_source a{
+  color: #2B627F;
+  font-weight: bold;
+}

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { appTestingImports, SHALLOW } from '../../testing/test-setup';
 
 import { NavigationMenuComponent } from './navigation-menu.component';
 
@@ -8,7 +9,9 @@ describe('NavigationMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationMenuComponent ]
+      declarations: [ NavigationMenuComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

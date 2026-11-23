@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Activities } from 'src/app/models/activities.model';
 import { Proposal } from 'src/app/models/proposal.model';
 import { StatsService } from 'src/app/services/stats.service';
+import { TranslateService } from '@ngx-translate/core';
+import { proposalTitle } from 'src/app/utils/proposal-title';
 
 @Component({
   selector: 'app-proposals-viewer',
@@ -23,9 +25,15 @@ export class ProposalsViewerComponent implements OnInit, OnDestroy {
   private usersSubscription!: Subscription;
 
   constructor(private activatedRouteService:ActivatedRoute,
-              private stats: StatsService) {
+              private stats: StatsService,
+              private translate: TranslateService) {
     this.id = this.activatedRouteService.snapshot.paramMap.get('id');
    }
+
+  /** The proposal's title in the interface language, falling back to any other. */
+  public get title(): string {
+    return proposalTitle(this.proposal, this.translate.currentLang || this.translate.getDefaultLang());
+  }
 
    private getCommentsHistogram(){
     if (this.id){

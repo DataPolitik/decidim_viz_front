@@ -1,25 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { LineChart, MarketChart } from '../models/graph.model';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { GraphResponse } from '../models/graph_response.model';
 import { StatsService } from '../services/stats.service';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { CONFIGS } from '../config/config.dev';
+import { buildNetworkFigure, NetworkFigure } from './network-figure';
 
+/** Draws the comments or endorsements network with Plotly, from the back end's JSON. */
 @Component({
   selector: 'app-graph-component',
   templateUrl: './graph-component.component.html',
   styleUrls: ['./graph-component.component.css']
 })
-export class GraphComponentComponent implements OnInit {
-  public host = CONFIGS.host + ':' + CONFIGS.port;
-  public url: any | undefined =  undefined;
-  revision = 0;
-  htmlOutput: any | undefined = undefined;
-  graph: ({ data: (LineChart | MarketChart)[]; layout: { width: number; height: number; title: string; xaxis: { showticklabels: boolean; }; yaxis: { showticklabels: boolean; }; showlegend: boolean; }; } | undefined) = undefined;  @Input() graphTitle: string = '';
+export class GraphComponentComponent implements OnInit, OnDestroy {
+  @Input() graphTitle: string = '';
+  /** 'comments' or 'endorsements' */
   @Input() graphToCall: string = '';
 
-  constructor(private stats: StatsService, private sanitizer:DomSanitizer) { }
+  public figure: NetworkFigure | undefined = undefined;
+  public failed = false;
+  public readonly plotConfig = { displaylogo: false, responsive: true };
+  private subscription: Subscription | undefined;
+
+  constructor(private stats: StatsService) { }
 
   ngOnInit(): void {
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.host + '/stats/' + this.graphToCall);
+    this.subscription = this.stats.getNetwork(this.graphToCall).subscribe({
+      next: (network: GraphResponse) => {
+        this.figure = buildNetworkFigure(network, this.graphTitle);
+      },
+      error: () => {
+        this.failed = true;
+      },
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

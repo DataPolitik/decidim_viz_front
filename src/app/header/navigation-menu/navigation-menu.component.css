@@ -40,3 +40,16 @@
   color: #FFFFFF;
 }
 
+
+/* The menu may shrink so the wordmark next to it always fits. */
+:host{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Narrower windows: tighter tabs. */
+@media (max-width: 1000px) {
+  :host ::ng-deep #header_content .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+    padding: 0.75rem 0.7rem;
+  }
+}

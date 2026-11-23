@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { appTestingImports, SHALLOW } from '../testing/test-setup';
 
 import { StillLoadingComponent } from './still-loading.component';
 
@@ -8,7 +9,9 @@ describe('StillLoadingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StillLoadingComponent ]
+      declarations: [ StillLoadingComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

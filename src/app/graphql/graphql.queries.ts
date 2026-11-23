@@ -105,6 +105,13 @@ const USERS_COUNT = gql`
     }
   }`
 
+// Works on every Decidim version, unlike the `metrics` field (removed in newer ones).
+const PARTICIPATORY_PROCESSES_TOTAL = gql`
+  query getParticipatoryProcessesTotal{
+    participatoryProcesses {
+      id
+    }
+  }`
 
 
 export {
@@ -114,6 +121,7 @@ export {
   METRICS_COMMENTS,
   PARTICIPATORY_PROCESSES,
   PARTICIPATORY_PROCESSES_COUNT,
+  PARTICIPATORY_PROCESSES_TOTAL,
   USERS,
   USERS_COUNT,
   TEMPORAL_LIMITS_PARTICIPATORY_PROCESSES

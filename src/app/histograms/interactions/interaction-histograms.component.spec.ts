@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { appTestingImports, SHALLOW } from '../../testing/test-setup';
 
 import { InteractionHistogramComponent } from './interaction-histograms.component';
 
@@ -8,7 +9,9 @@ describe('HistogramsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InteractionHistogramComponent ]
+      declarations: [ InteractionHistogramComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

@@ -22,7 +22,19 @@ Once Angular is installed, you need to get all the dependencies of the project. 
 
 ## Configuration
 
-The folder **/src/app/config/** contains configuration file that you need to adjust before launching or building the application
+The settings are read when the app starts in the browser, from **src/assets/config.json** (deployed as `assets/config.json`). To point a deployment at another back end or Decidim instance, edit that file on the server and reload the page; no rebuild is needed.
+
+| Key | Meaning | Example |
+|---|---|---|
+| `host`, `port` | Address of the back end (decidim_viz_back) | `"https://viz.example.org"`, `"443"` |
+| `instanceName` | Decidim instance the data come from, shown on the About page | `"meta.decidim.org"` |
+| `decidimApiUrl` | GraphQL API of that instance (used for the participatory processes count) | `"https://meta.decidim.org/api"` |
+| `defaultLanguage` | Interface language: `en` or `es` | `"en"` |
+| `interactions_number_of_proposals` | Proposals listed per community on the Community page | `3` |
+
+All keys are optional; missing ones keep the defaults in `src/app/config/config.dev.ts`. Make sure `instanceName` and `decidimApiUrl` match the instance whose data the back end imported.
+
+For local development, put overrides in **src/assets/config.local.json**, which is ignored by git and left out of production builds, e.g. `{"host": "http://localhost", "port": "8000"}`.
 
 ## Executing
 

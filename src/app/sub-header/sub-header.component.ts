@@ -3,6 +3,8 @@ import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { SubMenuEntry } from '../models/sub_menu_entry.model';
 import { SubMenuService } from '../services/sub_menu.service';
+import { StatsService } from '../services/stats.service';
+import { InstanceInfo } from '../models/instance.model';
 
 @Component({
   selector: 'app-sub-header',
@@ -11,11 +13,13 @@ import { SubMenuService } from '../services/sub_menu.service';
 })
 export class SubHeaderComponent implements OnInit, OnDestroy {
   private entriesSubscription: Subscription | undefined = undefined;
+  private instanceSubscription: Subscription | undefined = undefined;
+  public instance: InstanceInfo | undefined;
 
   @Input() entries: SubMenuEntry[] = [];
 
 
-  constructor(private subMenuService: SubMenuService) { }
+  constructor(private subMenuService: SubMenuService, private stats: StatsService) { }
 
   ngOnInit(): void {
     this.entriesSubscription = this.subMenuService.getEntries().subscribe(
@@ -23,10 +27,12 @@ export class SubHeaderComponent implements OnInit, OnDestroy {
         this.entries = newEntries;
       }
     )
+    this.instanceSubscription = this.stats.getInstance().subscribe(instance => this.instance = instance);
   }
 
   ngOnDestroy(): void {
     this.entriesSubscription?.unsubscribe();
+    this.instanceSubscription?.unsubscribe();
   }
 
   public executeAction(item: SubMenuEntry): void {

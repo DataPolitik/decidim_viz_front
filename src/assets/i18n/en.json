@@ -12,6 +12,9 @@
     "doughnut_url": "https://www.mit.edu/~mbarker/formula1/f1help/11-ch-c6.htm",
     "proposals_done": "proposals",
     "categories": "categories",
+    "participants": "participants",
+    "unnamed_participant": "Unnamed participant",
+    "not_available": "not available",
     "started_participative_processes": "participatory processes",
     "comments_language": "comments on",
     "proposals": "proposals",
@@ -22,7 +25,7 @@
     "most_commented_proposals": "Most commented proposals",
     "most_active_users_by_comments": "People with the most comments",
     "areas_with_more_proposals": "Areas with more proposals",
-    "languages": "Languages",
+    "languages": "languages",
     "featured": "outstanding values",
     "comments": "comments",
     "comments_written_language": "Comments languages",
@@ -37,8 +40,8 @@
     "gini_contribution": "contribution to ",
     "first_comment": "Time between publication of the proposal and first comment",
     "comments_per_user": "Comments per user",
-    "length_limit_warning": "Due to restrictions on the Futureu instance, the maximum length is 1,001 characters.",
-    "depth_limit_warning": "Due to restrictions on the Futureu instance, the maximum depth is 3.",
+    "length_limit_warning": "Number of characters of each comment. Some Decidim instances limit how long a comment can be.",
+    "depth_limit_warning": "How deep replies are nested: 0 for a comment on a proposal, 1 for a reply to it, and so on. Some Decidim instances limit the depth.",
     "users_participation_type": "user activity",
     "graph": {
       "title": "Proportion of languages ​​used",
@@ -93,20 +96,17 @@
     "p3p1": "Decidim.viz gets the data from two sources in a given Decidim instance",
     "p3p2": "Its API",
     "p3p3": "Its bulk data download files",
-    "p3p4": "For this proof of concept we use the instance of the Conference on the Future of Europe",
-    "p3p5": "as data source. The Conference was a hybrid, online-offline participatory process that ran between 2021 and 2022, which promoted citizen debates on the future of the Union. The Conference provided resources and tools, such as this instance of Decidim, for european citizens to discuss Europe's challenges and priorities",
+    "p3p4": "In this installation, the data come from the Decidim instance",
     "can_i_help": "Can I give feedback or contribute to the Decidim.viz project?",
     "p4p1": "Of course. Please, go to",
     "p4p2": "or write an email to tecnopolitica@uoc.edu to become part of the process"
-  },
-  "instance": {
-    "description": "The Conference on the Future of Europe provides resources and tools (such as this instance of Decidim) for European citizens to discuss Europe's challenges and priorities."
   },
   "menu": {
     "stats": "Statistics",
     "activities": "Activity",
     "interactions": "Community",
-    "about": "Decidim.viz and "
+    "data_from": "Data from",
+    "about": "About Decidim.viz"
   },
   "still_loading": {
     "message": "Loading data..."
@@ -140,12 +140,12 @@
     "histogram": {
       "number_of_proposals": "Number of proposals",
       "number_of_people": "Number of people",
-      "number_of_processes": "Number of Participatory Processes",
+      "number_of_processes": "Number of participatory processes",
       "proposal": "Proposal",
-      "proposals": "proposals",
+      "proposals": "Proposals",
       "categories": "Categories",
       "area": "Area",
-      "endorsements": "endorsements",
+      "endorsements": "Endorsements",
       "comments": "Comments"
     }
   },
@@ -157,9 +157,11 @@
     "endorsements": "endorsements",
     "legend_title": "communities",
     "long_explanation_1": "In this",
-    "long_explanation_2": "we can see relationships between users. The graph only show the activity of the most active users, grouped into",
+    "long_explanation_2": "we can see relationships between users: two people are linked when they comment on (or support) the same proposals more often than chance would predict. Only people with at least one such link are drawn, grouped into",
     "long_explanation_3": "Usernames have been removed to preserve privacy",
     "modularity_explanation": "Modularity value",
+    "isolated_hidden": "{{count}} people without any connection are not drawn.",
+    "graph_error": "The network could not be loaded.",
     "community": "Community",
     "color": "Color",
     "others": "Others",

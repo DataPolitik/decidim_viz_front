@@ -3,7 +3,7 @@ import { DocumentNode } from 'graphql';
 
 
 export function execute_metrics_query(apollo_instance: Apollo, gql_to_execute: DocumentNode, parameters = {} ){
-    return apollo_instance.use('futureu').watchQuery<any>({
+    return apollo_instance.use('decidim').watchQuery<any>({
       query: gql_to_execute,
       variables: parameters
     }).valueChanges

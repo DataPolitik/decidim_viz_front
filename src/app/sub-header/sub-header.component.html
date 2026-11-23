@@ -5,4 +5,10 @@
       <li *ngFor="let item of this.entries"><a (click)="this.executeAction(item)" title="{{item.label | translate}}">{{item.label | translate}}</a> </li>
     </ul>
   </div>
+  <!-- Where every number on the dashboard comes from, shown on all pages. -->
+  <div id="data_source" *ngIf="this.instance?.name">
+    {{'menu.data_from' | translate}}
+    <a *ngIf="this.instance?.url; else plainName" [href]="this.instance?.url" target="_blank" rel="noopener">{{this.instance?.name}}</a>
+    <ng-template #plainName>{{this.instance?.name}}</ng-template>
+  </div>
 </div>

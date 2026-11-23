@@ -2,20 +2,20 @@
 <div class="new_section" id="general_stats_section"></div>
 <div id="general_stats">
   <section id="summary">
-    <p *ngIf="!daily_user_loading; else still_loading">
-      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.daily_user_metrics?.count }}
+    <p *ngIf="this.summary; else summaryPending" id="summary_participants">
+      <fa-icon [icon]="this.faUsers"></fa-icon> {{this.summary.participants }} {{'stats.participants' | translate}}
     </p>
-    <p *ngIf="!daily_proposal_loading; else still_loading">
-      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.daily_proposal_metrics?.count }}
+    <p *ngIf="this.summary; else summaryPending" id="summary_proposals">
+      <fa-icon [icon]="this.faLightbulb"></fa-icon> {{this.summary.proposals }} {{'stats.proposals_done' | translate}}
     </p>
     <p *ngIf="this.categories; else still_loading">
       <fa-icon [icon]="this.faDiagramProject"></fa-icon> {{this.categories.length }} {{'stats.categories' | translate}}
     </p>
-    <p *ngIf="!participatory_processes_loading; else still_loading">
-      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.daily_participatory_processes_metrics?.count }} {{'stats.started_participative_processes' | translate}}
+    <p *ngIf="this.participatoryProcessesCount !== undefined; else processesPending" id="summary_processes">
+      <fa-icon [icon]="this.faUsersBetweenLines"></fa-icon> {{this.participatoryProcessesCount }} {{'stats.started_participative_processes' | translate}}
     </p>
-    <p *ngIf="!daily_comment_loading && languages; else still_loading">
-      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.comments_metrics?.count }} {{'stats.comments_language' | translate}} {{this.languages.length }} {{'stats.languages' | translate}}
+    <p *ngIf="this.summary && languages; else summaryPending" id="summary_comments">
+      <fa-icon [icon]="this.faLanguage"></fa-icon> {{this.summary.comments }} {{'stats.comments_language' | translate}} {{this.languages.length }} {{'stats.languages' | translate}}
     </p>
   </section>
 </div>
@@ -77,7 +77,7 @@
         [data]="this.proposalsBySupports"
         [gini]="this.proposalsBySupportsGini"
         gini_title="stats.polarization"
-        title="stats.most_endorsed_proposals"
+        [title]="'stats.most_endorsed_proposals'"
         countColumnName="stats.endorsements"
         fillColor="#E8A9A9"
         countColumn="endorsements"
@@ -93,7 +93,7 @@
         [gini]="this.proposalsByCommentsGini"
         gini_title="stats.inequality"
         countColumnName="stats.comments"
-        title="stats.most_commented_proposals"
+        [title]="'stats.most_commented_proposals'"
         countColumn="comments"
         fillColor="#E8A9A9"
         titleColumn="position"
@@ -109,10 +109,11 @@
       [gini]="this.usersByCommentsGini"
       gini_title="stats.inequality"
       countColumnName="stats.comments"
-      title="stats.most_active_users_by_comments"
+      [title]="'stats.most_active_users_by_comments'"
       countColumn="comments"
       fillColor="#2B627F"
-      titleColumn="name"
+      titleColumn="position"
+      nameColumn="label"
       typeColumnCount="category"
       y_axis_title="{{'activities.histogram.comments' | translate}}"
       [isProposal]=false
@@ -126,14 +127,14 @@
       [gini]="this.categoriesByCommentsGini"
       gini_title="stats.inequality"
       countColumnName="stats.proposals"
-      title="stats.most_commented_categories"
+      [title]="'stats.most_commented_categories'"
       countColumn="comments"
       fillColor="#2B627F"
       titleColumn="name_en"
       typeColumnCount="category"
       [isProposal]=false
       x_axis_title="{{'activities.histogram.area' | translate}}"
-      y_axis_title="{{'activities.histogram.categories' | translate}}"
+      y_axis_title="{{'activities.histogram.comments' | translate}}"
     ></app-stats-dashboard>
   </div>
   <div>
@@ -143,7 +144,7 @@
     [gini]="this.categoriesByProposalsGini"
     gini_title="stats.inequality"
     countColumnName="stats.proposals"
-    title="stats.areas_with_more_proposals"
+    [title]="'stats.areas_with_more_proposals'"
     countColumn="categories"
     fillColor="#2B627F"
     titleColumn="name_en"
@@ -157,4 +158,12 @@
 
 <ng-template #still_loading>
   <app-still-loading></app-still-loading>
+</ng-template>
+
+<ng-template #summaryPending>
+  <p *ngIf="this.summaryFailed; else still_loading" class="not_available">{{'stats.not_available' | translate}}</p>
+</ng-template>
+
+<ng-template #processesPending>
+  <p *ngIf="this.participatoryProcessesFailed; else still_loading" class="not_available">{{'stats.not_available' | translate}}</p>
 </ng-template>
