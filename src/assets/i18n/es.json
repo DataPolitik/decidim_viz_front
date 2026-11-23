@@ -154,6 +154,9 @@
     "modularity_explanation": "Valor de modularidad",
     "isolated_hidden": "No se dibujan {{count}} personas sin ninguna conexión.",
     "graph_error": "No se ha podido cargar la red.",
+    "long_explanation_1": "En esta",
+    "long_explanation_2": "podemos ver las relaciones entre personas: dos personas están conectadas cuando comentan (o apoyan) las mismas propuestas más a menudo de lo que cabría esperar por azar. Solo se dibujan las personas con al menos una conexión, agrupadas en",
+    "long_explanation_3": "Los nombres de usuario se han eliminado para preservar la privacidad",
     "community": "Comunidad",
     "color": "Color",
     "people": "Número total de personas",
@@ -162,8 +165,8 @@
     "commented_proposal": "Propuestas más comentadas",
     "community_url": "https://es.wikipedia.org/wiki/Comunidad_virtual",
     "network_url": "https://es.wikipedia.org/wiki/Red_social",
-    "what_community": "¿Qué es una comunidad?",
-    "what_network": "¿Qué es una red?"
+    "what_community": "comunidades",
+    "what_network": "red"
   },
   "proposal_viewer":{
     "proposal": "Propuesta",

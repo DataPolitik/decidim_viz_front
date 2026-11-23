@@ -160,7 +160,7 @@
     "endorsements": "endorsements",
     "legend_title": "communities",
     "long_explanation_1": "In this",
-    "long_explanation_2": "we can see relationships between users. The graph only show the activity of the most active users, grouped into",
+    "long_explanation_2": "we can see relationships between users: two people are linked when they comment on (or support) the same proposals more often than chance would predict. Only people with at least one such link are drawn, grouped into",
     "long_explanation_3": "Usernames have been removed to preserve privacy",
     "modularity_explanation": "Modularity value",
     "isolated_hidden": "{{count}} people without any connection are not drawn.",
