@@ -1,6 +1,7 @@
-import { Component, Input, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MapsComponent } from 'src/app/maps/maps.component';
+import { CONFIGS } from 'src/app/config/config.dev';
+import { proposalCoordinates } from 'src/app/maps/maps.component';
 import { Activities } from 'src/app/models/activities.model';
 import { Proposal } from 'src/app/models/proposal.model';
 import { AbstractActivitiesComponent } from '../abstract-activities/abstract-activities.component';
@@ -12,12 +13,13 @@ import { AbstractActivitiesComponent } from '../abstract-activities/abstract-act
 })
 export class ProposalsComponent extends AbstractActivitiesComponent implements OnInit, OnDestroy {
 
-  @ViewChild(MapsComponent) maps!: MapsComponent;
+  /** The map of geolocated proposals is optional (showProposalsMap in assets/config.json). */
+  public readonly showMap: boolean = CONFIGS.showProposalsMap;
 
   public accumulated_proposal_activities: Activities | undefined;
   public daily_proposal_activities: Activities | undefined;
   public accumulated_proposal_loading: boolean = true;
-  public numberOfGeographicalProposals: number = 0;
+  public geolocatedProposals: Proposal[] = [];
 
   private accumulatedSubscription: Subscription | undefined;
   private dailySubscription: Subscription | undefined;
@@ -48,18 +50,14 @@ export class ProposalsComponent extends AbstractActivitiesComponent implements O
         }
       )
 
-      this.proposalsSubscription = this.statsService.getProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
-        (response: Array<Proposal>) => {
-          response.forEach(
-            (proposal: Proposal) => {
-              if (proposal.latitude.length > 0 && proposal.longitude.length > 0){
-                this.maps.addMarker(proposal);
-                this.numberOfGeographicalProposals = this.numberOfGeographicalProposals + 1;
-              }
-            }
-          )
-        }
-      )
+      // Every proposal in the range is downloaded only to place them on the map.
+      if (this.showMap){
+        this.proposalsSubscription = this.statsService.getProposalsByRange(this.dateFromAsString, this.dateToAsString).subscribe(
+          (response: Array<Proposal>) => {
+            this.geolocatedProposals = response.filter(proposal => proposalCoordinates(proposal) !== null);
+          }
+        )
+      }
 
     }
   }

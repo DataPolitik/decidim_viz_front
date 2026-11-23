@@ -26,7 +26,17 @@
   </section>
   </div>
 </section>
-
+<ng-container *ngIf="this.showMap && !this.isEmpty">
+  <h3>
+    {{'activities.proposals.geolocalization' | translate }}
+  </h3>
+  <section id="maps">
+    <app-maps [proposals]="this.geolocatedProposals"></app-maps>
+    <p>
+      {{'activities.proposals.exists' | translate }} {{this.geolocatedProposals.length}} {{'activities.proposals.geolocalization_proposals' | translate }}
+    </p>
+  </section>
+</ng-container>
 
 
 <ng-template #still_loading>
