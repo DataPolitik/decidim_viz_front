@@ -98,8 +98,11 @@
     "p3p3": "Its bulk data download files",
     "p3p4": "In this installation, the data come from the Decidim instance",
     "can_i_help": "Can I give feedback or contribute to the Decidim.viz project?",
-    "p4p1": "Of course. Please, go to",
-    "p4p2": "or write an email to tecnopolitica@uoc.edu to become part of the process"
+    "p4p1": "Of course. Ideas, proposals and discussion about Decidim.viz happen in its participatory space,",
+    "space": "Decidim.viz on heuristica.participa.cloud",
+    "p4p2": ", run by DataPolitik - Heurística, where anyone with an account can post an idea or a proposal, comment and endorse",
+    "p4p3": "You can also go to",
+    "p4p4": "or write an email to tecnopolitica@uoc.edu to become part of the process"
   },
   "menu": {
     "stats": "Statistics",
