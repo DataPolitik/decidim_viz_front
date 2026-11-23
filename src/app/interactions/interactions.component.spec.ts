@@ -1,5 +1,9 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { NEVER, Observable, of } from 'rxjs';
 
+import { StatsService } from '../services/stats.service';
 import { InteractionsComponent } from './interactions.component';
 
 describe('InteractionsComponent', () => {
@@ -63,5 +67,57 @@ describe('InteractionsComponent legend ratios', () => {
   it('is 0 for an empty network', () => {
     load({});
     expect(component.othersRatio).toBe(0);
+  });
+});
+
+describe('InteractionsComponent modularity line', () => {
+  const emptyColors = of({ total: 0, colors: { users: {}, proposals: {} } });
+
+  function render(comments: Observable<{ modularity: number }>,
+                  endorsements: Observable<{ modularity: number }>,
+                  tab: 'comments' | 'endorsements'): HTMLElement {
+    TestBed.configureTestingModule({
+      declarations: [InteractionsComponent],
+      imports: [TranslateModule.forRoot()],
+      providers: [{
+        provide: StatsService,
+        useValue: {
+          getCommentsColors: () => emptyColors,
+          getEndorsesColors: () => emptyColors,
+          getCommentsModularityValue: () => comments,
+          getEndorsementsModularityValue: () => endorsements,
+        },
+      }],
+      schemas: [NO_ERRORS_SCHEMA],  // app-graph-component, p-card
+    });
+    const fixture = TestBed.createComponent(InteractionsComponent);
+    fixture.componentInstance.currentElement = tab;
+    fixture.detectChanges();
+    return fixture.nativeElement as HTMLElement;
+  }
+
+  function modularityText(element: HTMLElement): string | undefined {
+    return element.querySelector('#modularity_explanation')?.textContent?.trim();
+  }
+
+  it('shows the endorsements modularity without waiting for the comments one', () => {
+    // Regression: the endorsements line was guarded by modularityCommentsValue.
+    const element = render(NEVER, of({ modularity: 0.42 }), 'endorsements');
+    expect(modularityText(element)).toContain('0.42');
+  });
+
+  it('shows the comments modularity', () => {
+    const element = render(of({ modularity: 0.31 }), NEVER, 'comments');
+    expect(modularityText(element)).toContain('0.31');
+  });
+
+  it('shows a modularity of 0', () => {
+    const element = render(of({ modularity: 0 }), NEVER, 'comments');
+    expect(modularityText(element)).toContain('0.00');
+  });
+
+  it('hides the line until the value has loaded', () => {
+    const element = render(NEVER, NEVER, 'endorsements');
+    expect(modularityText(element)).toBeUndefined();
   });
 });
