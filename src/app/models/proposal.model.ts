@@ -13,8 +13,9 @@ export interface Proposal{
   title?: string,
   endorsements: number,
   url: string,
-  latitude: string,
-  longitude: string,
+  /** Decimal degrees as text; null when the proposal has no location. */
+  latitude: string | null,
+  longitude: string | null,
   category: number,
   comments: number,
   position: number

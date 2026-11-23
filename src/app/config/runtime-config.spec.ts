@@ -34,6 +34,14 @@ describe('runtime config', () => {
     expect(DECIDIM_API[0].url).toBe('https://decidim.example.org/api');
   });
 
+  it('turns the proposals map on only with a boolean', () => {
+    expect(CONFIGS.showProposalsMap).toBe(false);
+    applyRuntimeConfig({ showProposalsMap: 'yes' });
+    expect(CONFIGS.showProposalsMap).toBe(false);
+    applyRuntimeConfig({ showProposalsMap: true });
+    expect(CONFIGS.showProposalsMap).toBe(true);
+  });
+
   it('ignores unknown and mistyped keys', () => {
     applyRuntimeConfig({ hots: 'typo', port: 8000, interactions_number_of_proposals: 'three' });
     expect(CONFIGS).toEqual(savedConfigs);

@@ -7,5 +7,6 @@ export const CONFIGS = {
   port: "443",
   defaultLanguage: 'en',
   instanceName: 'meta.decidim.org',
-  interactions_number_of_proposals: 3
+  interactions_number_of_proposals: 3,
+  showProposalsMap: false
 };

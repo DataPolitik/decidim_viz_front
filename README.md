@@ -31,6 +31,7 @@ The settings are read when the app starts in the browser, from **src/assets/conf
 | `decidimApiUrl` | GraphQL API of that instance (used for the participatory processes count) | `"https://meta.decidim.org/api"` |
 | `defaultLanguage` | Interface language: `en` or `es` | `"en"` |
 | `interactions_number_of_proposals` | Proposals listed per community on the Community page | `3` |
+| `showProposalsMap` | Show a map of the geolocated proposals under the proposals chart. Off by default; turn it on for instances whose proposals have addresses | `false` |
 
 All keys are optional; missing ones keep the defaults in `src/app/config/config.dev.ts`. Make sure `instanceName` and `decidimApiUrl` match the instance whose data the back end imported.
 

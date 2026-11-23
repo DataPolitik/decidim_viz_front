@@ -23,6 +23,11 @@ export interface RuntimeConfig {
   defaultLanguage?: string;
   /** Proposals listed per community on the Community page. */
   interactions_number_of_proposals?: number;
+  /**
+   * Show a map of the geolocated proposals under the proposals chart. Off by
+   * default: only useful for instances whose proposals have addresses.
+   */
+  showProposalsMap?: boolean;
 }
 
 /**
@@ -47,6 +52,8 @@ export function applyRuntimeConfig(config: any): void {
       DECIDIM_API[0].url = value;
     } else if (key === 'interactions_number_of_proposals' && typeof value === 'number') {
       CONFIGS.interactions_number_of_proposals = value;
+    } else if (key === 'showProposalsMap' && typeof value === 'boolean') {
+      CONFIGS.showProposalsMap = value;
     } else {
       console.warn(`Ignoring unknown or mistyped runtime config key "${key}"`);
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -12,16 +12,32 @@ import {Circle, Fill, Icon, Style} from 'ol/style';
 import { Proposal } from '../models/proposal.model';
 import { MAP_CONFIG } from '../config/map';
 
-
+/**
+ * A proposal's location as [longitude, latitude] (the order OpenLayers uses),
+ * or null when it has none: no coordinates, empty or unparseable text, or
+ * values outside the valid range.
+ */
+export function proposalCoordinates(proposal: Proposal): [number, number] | null {
+  const latitude = parseFloat(proposal.latitude ?? '');
+  const longitude = parseFloat(proposal.longitude ?? '');
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude)
+      || Math.abs(latitude) > 90 || Math.abs(longitude) > 180) {
+    return null;
+  }
+  return [longitude, latitude];
+}
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.css']
 })
-export class MapsComponent implements OnInit {
+export class MapsComponent implements AfterViewInit, OnChanges, OnDestroy {
+  /** Proposals to mark; those without a location are skipped. */
+  @Input() proposals: Proposal[] = [];
+
   map!: Map;
-  vectorSource!: VectorSource;
+  vectorSource = new VectorSource({ features: [] });
   vectorLayer!: any;
   xyzSource!: XyzSource;
   tileLayer: any;
@@ -59,9 +75,10 @@ export class MapsComponent implements OnInit {
     this.closePopUp = this.closePopUp.bind(this);
   }
 
-  private generateFeature(latitude: number, longitude: number, name: string): Feature{
+  private generateFeature(longitude: number, latitude: number, name: string): Feature{
     return new Feature({
-      geometry: new Point(fromLonLat([latitude, longitude])),
+      // OpenLayers takes coordinates as [longitude, latitude].
+      geometry: new Point(fromLonLat([longitude, latitude])),
       name: name,
       population: 4000,
       rainfall: 500,
@@ -69,12 +86,16 @@ export class MapsComponent implements OnInit {
     });
   }
 
-  public addMarker(proposalToAdd: Proposal, showIcon = true){
-    const latitude: number = parseFloat(proposalToAdd.latitude);
-    const longitude: number = parseFloat(proposalToAdd.longitude);
+  /** Adds the proposal to the map; returns false (and adds nothing) when it has no valid location. */
+  public addMarker(proposalToAdd: Proposal, showIcon = true): boolean{
+    const coordinates = proposalCoordinates(proposalToAdd);
+    if (!coordinates){
+      return false;
+    }
+    const [longitude, latitude] = coordinates;
     const name = proposalToAdd.id.toString();
 
-    const newMarker = this.generateFeature(latitude, longitude, name);
+    const newMarker = this.generateFeature(longitude, latitude, name);
     if(showIcon){
       newMarker.setStyle(this.iconStyle);
     }else{
@@ -84,18 +105,29 @@ export class MapsComponent implements OnInit {
     newMarker.setProperties(
       {
         'idProposal':proposalToAdd.id,
-        'title_es':proposalToAdd.title_es,
+        'title': proposalToAdd.title_en ?? proposalToAdd.title_es ?? proposalToAdd.title ?? '',
         'url':proposalToAdd.url
       }
     )
     this.vectorSource.addFeature(newMarker);
+    return true;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    this.showProposals();
+  }
 
-    this.vectorSource = new VectorSource({
-      features: []
-    });
+  ngOnDestroy() {
+    this.map?.setTarget(undefined);
+  }
+
+  private showProposals() {
+    this.vectorSource.clear();
+    this.proposals.forEach(proposal => this.addMarker(proposal));
+  }
+
+  // Built once the template's elements (#map, #popup) exist.
+  ngAfterViewInit() {
 
     this.vectorLayer = new VectorLayer({
       source: this.vectorSource
@@ -103,7 +135,7 @@ export class MapsComponent implements OnInit {
 
     // XYZ
     this.xyzSource = new XyzSource({
-      url: 'http://tile.osm.org/{z}/{x}/{y}.png'
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
     });
 
     this.tileLayer = new TileLayer({
@@ -112,7 +144,7 @@ export class MapsComponent implements OnInit {
 
     // View and map
     this.view = new View({
-      center: fromLonLat([MAP_CONFIG.center_latitude, MAP_CONFIG.center_longitude]),
+      center: fromLonLat([MAP_CONFIG.center_longitude, MAP_CONFIG.center_latitude]),
       zoom: MAP_CONFIG.center_zoom
     });
 
@@ -156,9 +188,10 @@ export class MapsComponent implements OnInit {
       const features =this.map.getFeaturesAtPixel(event.pixel);
       if (features.length > 0){
         const feature = features[0];
-        const title = feature.get('title_es');
-        const htmlText = '<b>'+title+'</b><br />';
-        this.content.innerHTML = htmlText;
+        // Titles are participants' text: insert them as text, never as HTML.
+        const bold = document.createElement('b');
+        bold.textContent = feature.get('title');
+        this.content.replaceChildren(bold);
         this.overlay.setPosition(coordinate);
       }
 
