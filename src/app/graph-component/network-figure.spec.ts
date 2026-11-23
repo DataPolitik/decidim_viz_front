@@ -1,5 +1,5 @@
 import { GraphResponse } from '../models/graph_response.model';
-import { buildNetworkFigure } from './network-figure';
+import { buildNetworkFigure, markerSize } from './network-figure';
 
 describe('buildNetworkFigure', () => {
   const red: [number, number, number] = [200, 0, 0];
@@ -64,5 +64,24 @@ describe('buildNetworkFigure', () => {
     const figure = buildNetworkFigure({ users: {}, positions: {}, usernames: {}, colors: {} });
     expect(figure.nodeCount).toBe(0);
     expect(figure.data.length).toBe(1);
+  });
+});
+
+describe('markerSize', () => {
+  const network = (spacing?: number): GraphResponse => ({
+    users: {}, positions: {}, usernames: {}, colors: {},
+    parameters: spacing === undefined ? {} : { min_node_distance: spacing },
+  });
+
+  it('keeps 8 px markers when the back end keeps the default spacing', () => {
+    expect(markerSize(network(0.06))).toBe(8);
+    expect(markerSize(network())).toBe(8);
+  });
+
+  it('shrinks markers for very large networks so they do not overlap', () => {
+    const spacing = 0.0184;  // 5000 nodes
+    const size = markerSize(network(spacing));
+    expect(size).toBeLessThan(spacing * 180);
+    expect(size).toBeGreaterThanOrEqual(3);
   });
 });

@@ -8,6 +8,23 @@ export interface NetworkFigure {
   isolatedCount: number;
 }
 
+/** Approximate plot pixels per layout unit: the layout fills the unit disc, often only ~375 px across. */
+const PIXELS_PER_UNIT = 180;
+
+/**
+ * Marker diameter in pixels. The back end keeps drawn nodes at least
+ * `min_node_distance` apart (0.06, about 11 px, unless the network is too big
+ * for that); markers take three quarters of it, between 3 and 8 px, so they do
+ * not overlap.
+ */
+export function markerSize(network: GraphResponse): number {
+  const spacing = network.parameters?.min_node_distance;
+  if (!spacing) {
+    return 8;
+  }
+  return Math.max(3, Math.min(8, Math.floor(spacing * PIXELS_PER_UNIT * 0.75)));
+}
+
 function rgba(color: number[], alpha: number): string {
   return `rgba(${color[0]},${color[1]},${color[2]},${alpha})`;
 }
@@ -83,7 +100,7 @@ export function buildNetworkFigure(network: GraphResponse, title = '', showIsola
   }
   data.push({
     type: 'scatter', mode: 'markers', x: nodes.x, y: nodes.y,
-    marker: { color: nodes.color, size: 8, line: { color: 'white', width: 0.5 } },
+    marker: { color: nodes.color, size: markerSize(network), line: { color: 'white', width: 0.5 } },
     text: nodes.text, hoverinfo: 'text',
   });
 

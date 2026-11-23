@@ -8,4 +8,9 @@ export interface GraphResponse {
   colors: { [id: string]: [number, number, number] };
   communities?: { [id: string]: number };
   modularity?: number;
+  parameters?: {
+    /** Minimum distance kept between drawn nodes, in layout units. */
+    min_node_distance?: number;
+    [name: string]: any;
+  };
 }
