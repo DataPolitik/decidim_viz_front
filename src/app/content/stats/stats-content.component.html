@@ -19,7 +19,7 @@
       <h2 id="languages" fragment="languages">
         {{'stats.comment_length' | translate}}
         <span class="additional_info" pTooltip="{{'stats.length_limit_warning' | translate}}">
-          <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.interpretation' | translate}}" target="_blank">ⓘ</a>
+          <a href="{{'stats.boxplot_url' | translate}}" target="_blank">ⓘ</a>
         </span>
       </h2>
       <app-boxplot class="box" *ngIf="this.commentsLengthData"
@@ -35,7 +35,7 @@
       <h2 id="languages" fragment="languages">
         {{'stats.comments_depth' | translate}}
         <span class="additional_info" pTooltip="{{'stats.depth_limit_warning' | translate}}">
-          <a href="{{'stats.boxplot_url' | translate}}" title="{{'stats.interpretation' | translate}}" target="_blank">ⓘ</a>
+          <a href="{{'stats.boxplot_url' | translate}}" target="_blank">ⓘ</a>
         </span>
       </h2>
       <app-boxplot class="box" *ngIf="this.commentsDepth"
