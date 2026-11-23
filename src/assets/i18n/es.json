@@ -132,9 +132,10 @@
     "histogram":{
       "number_of_proposals": "Número de propuestas",
       "number_of_people": "Número de personas",
-      "number_of_processes": "Número de Procesos Participativos",
+      "number_of_processes": "Número de procesos participativos",
       "proposal": "Propuesta",
       "proposals": "Propuestas",
+      "categories": "Categorías",
       "area": "Área",
       "endorsements": "Apoyos",
       "comments": "Comentarios"

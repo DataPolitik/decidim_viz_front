@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AgChartOptions } from 'ag-charts-community';
 import { Gini } from 'src/app/models/abstract_dash.model';
 import { proposalTitle } from 'src/app/utils/proposal-title';
+import { capitalizeFirst } from 'src/app/utils/capitalize';
 
 @Component({
   selector: 'app-stats-dashboard',
@@ -98,7 +99,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: 'number',
             position: 'left',
             title: {
-              text: this.y_axis_title,
+              text: capitalizeFirst(this.y_axis_title),
             },
             label: {
               format: ',.0f',
@@ -109,7 +110,7 @@ export class StatsDashboardComponent<T> implements OnInit {
             type: this.typeColumnCount,
             position: 'bottom',
             title: {
-              text: this.x_axis_title,
+              text: capitalizeFirst(this.x_axis_title),
             },
             label: {
               fontSize: 10,

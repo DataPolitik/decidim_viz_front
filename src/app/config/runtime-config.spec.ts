@@ -1,6 +1,6 @@
 import { CONFIGS } from './config.dev';
 import { DECIDIM_API } from './decidim_api';
-import { applyRuntimeConfig, loadRuntimeConfig } from './runtime-config';
+import { applyRuntimeConfig, loadRuntimeConfig, useBackendInstanceApi } from './runtime-config';
 
 describe('runtime config', () => {
   let savedConfigs: typeof CONFIGS;
@@ -45,7 +45,7 @@ describe('runtime config', () => {
       'config.json': response(200, { host: 'https://viz.example.org', port: '443' }),
       'config.local.json': response(200, { host: 'http://localhost', port: '8000' }),
     };
-    await loadRuntimeConfig(Object.keys(files), async url => files[url]);
+    await loadRuntimeConfig(Object.keys(files), async url => files[url] || response(404));
     expect(CONFIGS.host).toBe('http://localhost');
     expect(CONFIGS.port).toBe('8000');
   });
@@ -59,5 +59,34 @@ describe('runtime config', () => {
     };
     await loadRuntimeConfig(['config.json', 'config.local.json', 'broken.json'], fetchFn);
     expect(CONFIGS).toEqual(savedConfigs);
+  });
+
+  describe('GraphQL API from the back end', () => {
+    it('uses the API of the instance the back end reports', async () => {
+      const fetchFn = jasmine.createSpy('fetch').and.callFake(async (url: string) =>
+        url.endsWith('/stats/instance') ? response(200, { name: 'x.org', url: 'https://x.org', api_url: 'https://x.org/api' }) : response(404));
+      await loadRuntimeConfig(['config.json'], fetchFn);
+      expect(fetchFn).toHaveBeenCalledWith(CONFIGS.host + ':' + CONFIGS.port + '/stats/instance');
+      expect(DECIDIM_API[0].url).toBe('https://x.org/api');
+    });
+
+    it('prefers the back end over the configured decidimApiUrl', async () => {
+      const files: { [url: string]: Response } = {
+        'config.json': response(200, { decidimApiUrl: 'https://configured.org/api' }),
+      };
+      await loadRuntimeConfig(['config.json'], async url =>
+        files[url] || response(200, { name: 'data.org', url: 'https://data.org', api_url: 'https://data.org/api' }));
+      expect(DECIDIM_API[0].url).toBe('https://data.org/api');
+    });
+
+    it('keeps the configured API when the back end cannot tell or does not answer', async () => {
+      DECIDIM_API[0].url = 'https://configured.org/api';
+      await useBackendInstanceApi(async () => response(200, { name: null, url: null, api_url: null }));
+      expect(DECIDIM_API[0].url).toBe('https://configured.org/api');
+      await useBackendInstanceApi(async () => response(500));
+      expect(DECIDIM_API[0].url).toBe('https://configured.org/api');
+      await useBackendInstanceApi(() => new Promise<Response>(() => {}), 10);  // never answers
+      expect(DECIDIM_API[0].url).toBe('https://configured.org/api');
+    });
   });
 });

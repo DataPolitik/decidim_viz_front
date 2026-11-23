@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AgChartOptions } from 'ag-charts-community';
 import { Activities_History } from 'src/app/models/activities_history.model';
+import { capitalizeFirst } from 'src/app/utils/capitalize';
 
 @Component({
   selector: 'app-activities-histogram',
@@ -40,7 +41,7 @@ export class ActivitiesHistogramComponent implements OnInit {
           type: 'number',
           position: 'left',
           title: {
-            text: this.yName,
+            text: capitalizeFirst(this.yName),
           },
           label: {
             format: ',.0f',
@@ -51,7 +52,7 @@ export class ActivitiesHistogramComponent implements OnInit {
           type: 'category',
           position: 'bottom',
           title: {
-            text: this.xName,
+            text: capitalizeFirst(this.xName),
           },
           label: {
             fontSize: 10,

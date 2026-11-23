@@ -25,7 +25,7 @@
     "most_commented_proposals": "Most commented proposals",
     "most_active_users_by_comments": "People with the most comments",
     "areas_with_more_proposals": "Areas with more proposals",
-    "languages": "Languages",
+    "languages": "languages",
     "featured": "outstanding values",
     "comments": "comments",
     "comments_written_language": "Comments languages",
@@ -140,12 +140,12 @@
     "histogram": {
       "number_of_proposals": "Number of proposals",
       "number_of_people": "Number of people",
-      "number_of_processes": "Number of Participatory Processes",
+      "number_of_processes": "Number of participatory processes",
       "proposal": "Proposal",
-      "proposals": "proposals",
+      "proposals": "Proposals",
       "categories": "Categories",
       "area": "Area",
-      "endorsements": "endorsements",
+      "endorsements": "Endorsements",
       "comments": "Comments"
     }
   },

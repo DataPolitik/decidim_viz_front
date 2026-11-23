@@ -1,6 +1,10 @@
 #summary{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  /* Keep the counts apart; on narrow windows they wrap onto a second line. */
+  gap: 8px 40px;
+  padding: 0 16px;
 }
 
 #filters{
