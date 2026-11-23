@@ -54,6 +54,8 @@ This front-end is connected to a back-end using a REST API. You can download and
 
 ## Can I contribute?
 
-Sure, please, go to the issues section (https://github.com/DataPolitik/decidim_viz_front/issues) to see pending task, if you need inspiration. Also, you can propose new tasks by creating a new issue. Please, feel free to implement your contribution and, then, creating a pull request (https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). 
+Ideas, proposals and discussion about Decidim.viz happen in its participatory space, [Decidim.viz on heuristica.participa.cloud](https://heuristica.participa.cloud/assemblies/decidimviz), run by DataPolitik - Heurística. With a free account there, anyone can post an idea or a proposal, comment and endorse.
+
+For the code, please, go to the issues section (https://github.com/DataPolitik/decidim_viz_front/issues) to see pending task, if you need inspiration. Also, you can propose new tasks by creating a new issue. Please, feel free to implement your contribution and, then, creating a pull request (https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). 
 
 Finally, you can take a look to the document "Desarrollo de Decidim.Viz.pdf" to see the current technical status of the project as well as limitations found.
