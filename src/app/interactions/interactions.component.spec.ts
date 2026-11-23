@@ -1,4 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { appTestingImports, SHALLOW } from '../testing/test-setup';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { NEVER, Observable, of } from 'rxjs';
@@ -12,7 +13,9 @@ describe('InteractionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InteractionsComponent ]
+      declarations: [ InteractionsComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { appTestingImports, SHALLOW } from '../testing/test-setup';
 
 import { LanguageComponent } from './language.component';
 
@@ -8,7 +9,9 @@ describe('LanguageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LanguageComponent ]
+      declarations: [ LanguageComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

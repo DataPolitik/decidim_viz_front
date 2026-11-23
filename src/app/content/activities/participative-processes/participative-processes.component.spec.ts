@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { appTestingImports, SHALLOW } from '../../../testing/test-setup';
 
 import { ParticipativeProcessesComponent } from './participative-processes.component';
 
@@ -8,7 +9,9 @@ describe('ParticipativeProcessesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParticipativeProcessesComponent ]
+      declarations: [ ParticipativeProcessesComponent ],
+      imports: appTestingImports(),
+      schemas: SHALLOW
     })
     .compileComponents();
 

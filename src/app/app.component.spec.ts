@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { appTestingImports, SHALLOW } from './testing/test-setup';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      // AppComponent creates the named GraphQL clients itself.
+      imports: appTestingImports([]),
       declarations: [
         AppComponent
       ],
+      schemas: SHALLOW,
     }).compileComponents();
   });
 
@@ -26,10 +26,12 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('decidim_viz_front');
   });
 
-  it('should render title', () => {
+  it('should render the header and the routed content', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('decidim_viz_front app is running!');
+    expect(compiled.querySelector('#logo')?.textContent).toContain('Decidim.Viz');
+    expect(compiled.querySelector('app-navigation-menu')).not.toBeNull();
+    expect(compiled.querySelector('#content router-outlet')).not.toBeNull();
   });
 });
