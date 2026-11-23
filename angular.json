@@ -48,7 +48,18 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "assets": [
+                "src/favicon.ico",
+                {
+                  "glob": "**/*",
+                  "input": "src/assets",
+                  "output": "assets",
+                  "ignore": [
+                    "config.local.json"
+                  ]
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,

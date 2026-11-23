@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Local overrides of src/assets/config.json (see README)
+/src/assets/config.local.json
