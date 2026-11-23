@@ -26,7 +26,9 @@
     <li>{{'about.p3p3' | translate }}.</li>
   </ul>
   <p>
-    {{'about.p3p4' | translate}} <a [href]="'https://' + instanceName">{{instanceName}}</a>.
+    <ng-container *ngIf="instance?.name">
+      {{'about.p3p4' | translate}} <a [href]="instance?.url">{{instance?.name}}</a>.
+    </ng-container>
   </p>
   <h2>{{'about.can_i_help' | translate}}</h2>
   <p>

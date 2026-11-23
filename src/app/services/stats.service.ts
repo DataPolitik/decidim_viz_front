@@ -10,9 +10,10 @@ import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
 import { Activities } from '../models/activities.model';
 import { Proposal, ProposalResponse } from '../models/proposal.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, map, of, shareReplay } from 'rxjs';
 import { TemporalLimitsAPI as TemporalLimitsAPI } from '../models/temporal-limits-api.model';
 import { Observable } from 'rxjs';
+import { InstanceInfo } from '../models/instance.model';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 import { ColorCommunities } from '../models/color_communities.model';
@@ -83,6 +84,27 @@ export class StatsService {
   getSummary(): Observable<Summary> {
     return this.http.get<Summary>(this.host + '/stats/summary');
   }
+
+  /**
+   * The Decidim instance the data come from, as reported by the back end
+   * (from the imported proposals). Falls back to the configured instanceName
+   * when the back end cannot tell. Requested once and shared.
+   */
+  getInstance(): Observable<InstanceInfo> {
+    if (!this.instance$) {
+      const configured = (): InstanceInfo => ({
+        name: CONFIGS.instanceName || null,
+        url: CONFIGS.instanceName ? 'https://' + CONFIGS.instanceName : null,
+      });
+      this.instance$ = this.http.get<InstanceInfo>(this.host + '/stats/instance').pipe(
+        map(instance => instance && instance.name ? instance : configured()),
+        catchError(() => of(configured())),
+        shareReplay(1),
+      );
+    }
+    return this.instance$;
+  }
+  private instance$: Observable<InstanceInfo> | undefined;
 
   /** The comments or endorsements network (kind: 'comments' | 'endorsements'). */
   getNetwork(kind: string): Observable<GraphResponse> {
