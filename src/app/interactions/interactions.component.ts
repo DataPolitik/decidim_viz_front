@@ -45,11 +45,19 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     this.endorsementsModularitySubscription?.unsubscribe();
   }
 
-  public isMinimumRatio(key: any): boolean {
-    const ratio = this.getRatioOfCommunity(key);
-    return ratio > 0.005;
-
+  /**
+   * Whether a community gets its own legend entry and card: it has at least
+   * MIN_COMMUNITY_SIZE people and is among the MAX_LISTED_COMMUNITIES largest.
+   * A single person is not a community (they have no link and are not drawn);
+   * everyone else is counted under "Others".
+   */
+  public isListed(key: any): boolean {
+    return this.listedKeys.has(key);
   }
+
+  private static readonly MIN_COMMUNITY_SIZE = 2;
+  private static readonly MAX_LISTED_COMMUNITIES = 10;
+  private listedKeys = new Set<string>();
 
   private processResponse(response: ColorCommunities){
     this.totalNodes = response.total;
@@ -69,6 +77,10 @@ export class InteractionsComponent implements OnInit, OnDestroy {
       return second.length - first.length;
     });
     this.colorsNodesSortedList = sortedAscendingCommunities;
+    this.listedKeys = new Set(sortedAscendingCommunities
+      .filter(community => community.length >= InteractionsComponent.MIN_COMMUNITY_SIZE)
+      .slice(0, InteractionsComponent.MAX_LISTED_COMMUNITIES)
+      .map(community => community.key));
     this.othersRatio = this.computeOthersRatio();
 
   }
@@ -104,7 +116,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
 
   /**
    * Share of users (0 to 1) in the communities too small to get their own
-   * legend entry, i.e. those for which isMinimumRatio is false. Together with
+   * legend entry, i.e. those for which isListed is false. Together with
    * the listed communities it adds up to 1.
    */
   public computeOthersRatio(): number {
@@ -112,7 +124,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
       return 0;
     }
     const usersInOthers = this.colorsNodesSortedList
-      .filter((community) => !this.isMinimumRatio(community.key))
+      .filter((community) => !this.isListed(community.key))
       .reduce((sum, community) => sum + community.length, 0);
     return usersInOthers / this.totalNodes;
   }

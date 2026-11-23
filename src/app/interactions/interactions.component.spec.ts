@@ -48,16 +48,41 @@ describe('InteractionsComponent legend ratios', () => {
     component = new InteractionsComponent({} as any, subMenu);
   });
 
-  it('counts the users of the communities without their own legend entry', () => {
-    // 1000 users: two large communities and three below the 0.5% threshold.
-    load({ '#aaaaaa': 600, '#bbbbbb': 390, '#cccccc': 4, '#dddddd': 3, '#eeeeee': 3 });
-    expect(component.othersRatio).toBeCloseTo(0.01, 10);
+  const listedCount = () => component.colorsNodesSortedList.filter(c => component.isListed(c.key)).length;
+
+  it('counts people without a community of their own under Others', () => {
+    // A single person is not a community: they have no link and are not drawn.
+    load({ '#aaaaaa': 5, '#bbbbbb': 3, '#cccccc': 1, '#dddddd': 1 });
+    expect(listedCount()).toBe(2);
+    expect(component.othersRatio).toBeCloseTo(0.2, 10);
+  });
+
+  it('lists at most the ten largest communities', () => {
+    const sizes: { [color: string]: number } = {};
+    for (let i = 0; i < 12; i++) {
+      sizes['#' + (100000 + i)] = 20 - i;  // 20, 19, ..., 9
+    }
+    load(sizes);
+    expect(listedCount()).toBe(10);
+    const total = Object.values(sizes).reduce((a, b) => a + b, 0);
+    expect(component.othersRatio).toBeCloseTo((10 + 9) / total, 10);  // the two smallest
+  });
+
+  it('does not list every isolated person as a community', () => {
+    // Regression: with 153 people, 0.5% is less than one person, so the old
+    // threshold gave each of the 54 unconnected people a legend box (70 in all).
+    const sizes: { [color: string]: number } = { '#a00001': 24, '#a00002': 14, '#a00003': 13 };
+    for (let i = 0; i < 54; i++) {
+      sizes['#b' + (10000 + i)] = 1;
+    }
+    load(sizes);
+    expect(listedCount()).toBe(3);
   });
 
   it('adds up to 1 with the listed communities', () => {
     load({ '#aaaaaa': 500, '#bbbbbb': 300, '#cccccc': 197, '#dddddd': 2, '#eeeeee': 1 });
     const listed = component.colorsNodesSortedList
-      .filter((community) => component.isMinimumRatio(community.key))
+      .filter((community) => component.isListed(community.key))
       .reduce((sum, community) => sum + component.getRatioOfCommunity(community.key), 0);
     expect(listed + component.othersRatio).toBeCloseTo(1, 10);
   });
