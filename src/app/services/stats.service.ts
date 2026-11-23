@@ -5,6 +5,7 @@ import { CategoryResponse } from '../models/category.model';
 
 
 import { GraphResponse } from '../models/graph_response.model';
+import { Summary } from '../models/summary.model';
 import { Histogram } from '../models/histogram.model';
 import { LanguagesCount } from '../models/languages.count.model';
 import { Activities } from '../models/activities.model';
@@ -76,6 +77,11 @@ export class StatsService {
 
   getCommentsLength(){
     return this.http.get<BoxDataModel>(this.host + '/stats/comments/length');
+  }
+
+  /** Headline counts: participants, proposals and comments. */
+  getSummary(): Observable<Summary> {
+    return this.http.get<Summary>(this.host + '/stats/summary');
   }
 
   /** The comments or endorsements network (kind: 'comments' | 'endorsements'). */
