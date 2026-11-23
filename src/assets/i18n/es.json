@@ -91,7 +91,11 @@
       "p3p3": "Ficheros de descarga masiva de Decidim",
       "p3p4": "En esta instalación, los datos provienen de la instancia de Decidim",
       "can_i_help": "¿Puedo hacer comentarios o dar feedback al proyecto?",
-      "p4p1": "Por supuesto. Puedes hacerlo, entrando en"
+      "p4p1": "Por supuesto. Las ideas, propuestas y debates sobre Decidim.viz tienen lugar en su espacio de participación,",
+      "space": "Decidim.viz en heuristica.participa.cloud",
+      "p4p2": ", impulsado por DataPolitik - Heurística, donde cualquier persona con una cuenta puede publicar una idea o una propuesta, comentar y adherirse",
+      "p4p3": "También puedes entrar en",
+      "p4p4": "o escribir a tecnopolitica@uoc.edu para formar parte del proceso"
   },
   "menu": {
       "stats": "Estadísticas",
