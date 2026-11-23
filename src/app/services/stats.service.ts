@@ -78,6 +78,11 @@ export class StatsService {
     return this.http.get<BoxDataModel>(this.host + '/stats/comments/length');
   }
 
+  /** The comments or endorsements network (kind: 'comments' | 'endorsements'). */
+  getNetwork(kind: string): Observable<GraphResponse> {
+    return this.http.get<GraphResponse>(this.host + '/stats/' + kind + '/');
+  }
+
   getComments() {
     return this.http.get<GraphResponse>(this.host + '/stats/comments');
   }

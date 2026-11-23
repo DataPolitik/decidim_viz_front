@@ -149,6 +149,8 @@
     "legend_title": "Comunidades",
     "long_explanation": "En esta red podemos ver relaciones entre personas. Solamente se muestran las personas más activos de la instancia, y los nombres de usuario se han eliminado por cuestiones de privacidad.",
     "modularity_explanation": "Valor de modularidad",
+    "isolated_hidden": "No se dibujan {{count}} personas sin ninguna conexión.",
+    "graph_error": "No se ha podido cargar la red.",
     "community": "Comunidad",
     "color": "Color",
     "people": "Número total de personas",

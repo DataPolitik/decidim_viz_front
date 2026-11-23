@@ -160,6 +160,8 @@
     "long_explanation_2": "we can see relationships between users. The graph only show the activity of the most active users, grouped into",
     "long_explanation_3": "Usernames have been removed to preserve privacy",
     "modularity_explanation": "Modularity value",
+    "isolated_hidden": "{{count}} people without any connection are not drawn.",
+    "graph_error": "The network could not be loaded.",
     "community": "Community",
     "color": "Color",
     "others": "Others",

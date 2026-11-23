@@ -5,7 +5,8 @@
   max-height: 100%;
 }
 
-.graph_iframe{
-  height: 100%;
-  width:  100%;
+.graph_note{
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0 0 0;
 }
