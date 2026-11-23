@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StatsDashboardComponent } from './stats-dashboard.component';
 
 describe('StatsDashboardComponent', () => {
-  let component: StatsDashboardComponent;
-  let fixture: ComponentFixture<StatsDashboardComponent>;
+  let component: StatsDashboardComponent<unknown>;
+  let fixture: ComponentFixture<StatsDashboardComponent<unknown>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
