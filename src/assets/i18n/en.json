@@ -40,8 +40,8 @@
     "gini_contribution": "contribution to ",
     "first_comment": "Time between publication of the proposal and first comment",
     "comments_per_user": "Comments per user",
-    "length_limit_warning": "Due to restrictions on the Futureu instance, the maximum length is 1,001 characters.",
-    "depth_limit_warning": "Due to restrictions on the Futureu instance, the maximum depth is 3.",
+    "length_limit_warning": "Number of characters of each comment. Some Decidim instances limit how long a comment can be.",
+    "depth_limit_warning": "How deep replies are nested: 0 for a comment on a proposal, 1 for a reply to it, and so on. Some Decidim instances limit the depth.",
     "users_participation_type": "user activity",
     "graph": {
       "title": "Proportion of languages ​​used",
@@ -96,20 +96,16 @@
     "p3p1": "Decidim.viz gets the data from two sources in a given Decidim instance",
     "p3p2": "Its API",
     "p3p3": "Its bulk data download files",
-    "p3p4": "For this proof of concept we use the instance of the Conference on the Future of Europe",
-    "p3p5": "as data source. The Conference was a hybrid, online-offline participatory process that ran between 2021 and 2022, which promoted citizen debates on the future of the Union. The Conference provided resources and tools, such as this instance of Decidim, for european citizens to discuss Europe's challenges and priorities",
+    "p3p4": "In this installation, the data come from the Decidim instance",
     "can_i_help": "Can I give feedback or contribute to the Decidim.viz project?",
     "p4p1": "Of course. Please, go to",
     "p4p2": "or write an email to tecnopolitica@uoc.edu to become part of the process"
-  },
-  "instance": {
-    "description": "The Conference on the Future of Europe provides resources and tools (such as this instance of Decidim) for European citizens to discuss Europe's challenges and priorities."
   },
   "menu": {
     "stats": "Statistics",
     "activities": "Activity",
     "interactions": "Community",
-    "about": "Decidim.viz and "
+    "about": "About Decidim.viz"
   },
   "still_loading": {
     "message": "Loading data..."

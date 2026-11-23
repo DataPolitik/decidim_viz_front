@@ -1,7 +1,7 @@
 export const DECIDIM_API = [
   {
-    'name': 'futureu',
-    'url': 'https://futureu.europa.eu/api'
+    'name': 'decidim',
+    'url': 'https://meta.decidim.org/api'
   }
 ]
 

@@ -8,13 +8,13 @@ import { ApolloTestingModule } from 'apollo-angular/testing';
  * Imports that give a component under test what the app module provides:
  * HttpClient (no real requests: they stay pending), the router, ngx-translate
  * (keys are shown untranslated) and Apollo with the named GraphQL clients the
- * app creates at start-up ('futureu', see config/decidim_api.ts and
+ * app creates at start-up ('decidim', see config/decidim_api.ts and
  * utils/metrics.utils.ts).
  *
  * Pass apolloClients = [] for a component that creates those clients itself
  * (AppComponent).
  */
-export function appTestingImports(apolloClients: string[] = ['futureu']): any[] {
+export function appTestingImports(apolloClients: string[] = ['decidim']): any[] {
   return [
     HttpClientTestingModule,
     RouterTestingModule,

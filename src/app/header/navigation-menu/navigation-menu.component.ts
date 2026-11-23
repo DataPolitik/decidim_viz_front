@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
-import { CONFIGS } from 'src/app/config/config.dev';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -48,33 +47,32 @@ export class NavigationMenuComponent implements OnInit {
     let activitiesName = '';
     let interactionsName = '';
     let aboutName = '';
-    let instanceName = CONFIGS.instanceName;
 
     this.translate_service.stream('menu.stats').subscribe((res: string) => {
       statsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
     this.translate_service.stream('menu.activities').subscribe((res: string) => {
       activitiesName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
     this.translate_service.stream('menu.interactions').subscribe((res: string) => {
       interactionsName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
 
     this.translate_service.stream('menu.about').subscribe((res: string) => {
       aboutName = res;
       if(statsName.length > 0 && activitiesName.length > 0 && interactionsName.length > 0){
-        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName + instanceName);
+        this.buildMenuItems(statsName, activitiesName, interactionsName, aboutName);
       }
     });
   }

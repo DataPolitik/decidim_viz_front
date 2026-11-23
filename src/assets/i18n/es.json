@@ -38,8 +38,8 @@
       "gini_contribution": "Contribución a ",
       "first_comment": "Tiempo entre publicación de la propuesta y primer comentario",
       "comments_per_user": "Comentarios por usuario",
-      "length_limit_warning": "Debido a restricciones de la instancia de Futureu, la longitud máxima es de 1001 caracteres.",
-      "depth_limit_warning": "Debido a restricciones de la instancia de Futureu, la profundidad máxima es 4.",
+      "length_limit_warning": "Número de caracteres de cada comentario. Algunas instancias de Decidim limitan la longitud de los comentarios.",
+      "depth_limit_warning": "Nivel de anidamiento de las respuestas: 0 para un comentario a una propuesta, 1 para una respuesta a ese comentario, etc. Algunas instancias de Decidim limitan la profundidad.",
       "users_participation_type": "Actividad de los usuarios",
       "graph": {
         "title": "Proporción de lenguajes utilizados",
@@ -89,19 +89,15 @@
       "p3p1": "Decidim.viz obtiene los datos de dos fuentes",
       "p3p2": "API de de la instancia de Decidim",
       "p3p3": "Ficheros de descarga masiva de Decidim",
-      "p3p4": "Actualmente, para la prueba de concepto, utilizamos la instancia de",
-      "p3p5": "como fuente de datos",
+      "p3p4": "En esta instalación, los datos provienen de la instancia de Decidim",
       "can_i_help": "¿Puedo hacer comentarios o dar feedback al proyecto?",
       "p4p1": "Por supuesto. Puedes hacerlo, entrando en"
-  },
-  "instance":{
-    "description": "La Conferencia sobre el Futuro de Europa proporciona herramientas (como esta instancia de Decidim) y recursos para que los ciudadanos europeos debatan sobre los retos y las prioridades de Europa. Sea cual sea tu procedencia u ocupación, este es el foro para reflexionar sobre el rumbo que quieres imprimir a la Unión Europea."
   },
   "menu": {
       "stats": "Estadísticas",
       "activities": "Actividad",
       "interactions": "Comunidad",
-      "about": "Decidim.viz y "
+      "about": "Sobre Decidim.viz"
   },
   "still_loading":{
     "message": "Cargando datos..."
