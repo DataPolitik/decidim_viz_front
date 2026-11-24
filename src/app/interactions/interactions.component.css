@@ -9,9 +9,14 @@
   margin-bottom: 3px;
 }
 
-#long_explanation{
+.network_info{
   margin-top: 20px;
-  width: 1097px;
+  white-space: nowrap;
+}
+
+.additional_info{
+  cursor: help;
+  margin-right: 0.3em;
 }
 
 #legend{
@@ -25,7 +30,7 @@
 }
 
 #modularity_explanation{
-  width: 200px;
+  display: inline;
 }
 
 .population_legend_entry{
@@ -82,9 +87,13 @@
   font-weight: 300;
 }
 
+/* The cards wrap in rows and each row is centred, so there is no blank band on the right. */
 #interaction_tabView__communities{
   margin: 0 auto;
   margin-top: 75vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .community_card{
