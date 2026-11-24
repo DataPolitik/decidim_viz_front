@@ -2,6 +2,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { StatsService } from 'src/app/services/stats.service';
+import { ProcessPeriod } from 'src/app/models/process_period.model';
 
 
 @Component({ template: '' })
@@ -17,7 +18,12 @@ export abstract class AbstractActivitiesComponent implements OnInit {
   public isEmpty = true;
   public loadedGraphs: number = 0;
 
-  constructor(protected statsService: StatsService, protected apollo: Apollo){}
+  /** Participatory processes of the instance, drawn as vertical lines on the charts. */
+  public processPeriods: ProcessPeriod[] = [];
+
+  constructor(protected statsService: StatsService, protected apollo: Apollo){
+    this.subs.add(this.statsService.getProcessPeriods().subscribe(periods => this.processPeriods = periods));
+  }
 
   ngOnInit(){
 

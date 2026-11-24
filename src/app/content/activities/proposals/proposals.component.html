@@ -4,6 +4,7 @@
     <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="{{'activities.daily' | translate}}">
         <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
+          [processes]="this.processPeriods"
           [response]="this.daily_proposal_activities?.history?.slice(0)?.reverse()"
           title="{{'activities.proposals.title' | translate}}"
           xName="{{'activities.date' | translate}}"
@@ -12,6 +13,8 @@
     </p-tabPanel>
     <p-tabPanel header="{{'activities.accumulated' | translate}}">
       <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
+          [processes]="this.processPeriods"
+          [cumulative]="true"
         [response]="this.accumulated_proposal_activities?.history?.slice(0)?.reverse()"
         title="{{'activities.proposals.title' | translate}}"
         xName="{{'activities.date' | translate}}"

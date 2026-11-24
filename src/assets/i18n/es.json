@@ -108,6 +108,8 @@
     "message": "Cargando datos..."
   },
   "activities":{
+    "process_start": "{{process}}: comenzó el {{date}}",
+    "process_end": "{{process}}: terminó el {{date}}",
     "dynamics": "Evolución temporal",
     "date": "Fecha",
     "accumulated": "Acumulado",

@@ -14,6 +14,7 @@ import { BehaviorSubject, catchError, map, of, shareReplay } from 'rxjs';
 import { TemporalLimitsAPI as TemporalLimitsAPI } from '../models/temporal-limits-api.model';
 import { Observable } from 'rxjs';
 import { InstanceInfo } from '../models/instance.model';
+import { ProcessPeriod } from '../models/process_period.model';
 import { TemporalLimitsGraphHQL } from '../models/temporal-limits-graphql.model';
 import { UsersByCommentsHistory } from '../models/activities_users_comments.model';
 import { ColorCommunities } from '../models/color_communities.model';
@@ -105,6 +106,28 @@ export class StatsService {
     return this.instance$;
   }
   private instance$: Observable<InstanceInfo> | undefined;
+
+  /**
+   * The instance's participatory processes with their start and end dates, as
+   * imported by the back end (/stats/processes). Requested once and shared; an
+   * older back end without the endpoint gives no processes.
+   */
+  getProcessPeriods(): Observable<ProcessPeriod[]> {
+    if (!this.processPeriods$) {
+      this.processPeriods$ = this.http.get<{ processes: ProcessResponse[] }>(
+          this.host + '/stats/processes?lang=' + encodeURIComponent(CONFIGS.defaultLanguage)).pipe(
+        map(response => (response?.processes ?? []).map(process => ({
+          title: process.title,
+          start: parseDay(process.start_date),
+          end: parseDay(process.end_date),
+        }))),
+        catchError(() => of([])),
+        shareReplay(1),
+      );
+    }
+    return this.processPeriods$;
+  }
+  private processPeriods$: Observable<ProcessPeriod[]> | undefined;
 
   /** The comments or endorsements network (kind: 'comments' | 'endorsements'). */
   getNetwork(kind: string): Observable<GraphResponse> {
@@ -214,4 +237,18 @@ export class StatsService {
   getLanguagesCount(){
     return this.http.get<LanguagesCount>(this.host + '/stats/languages/count/');
   }
+}
+
+interface ProcessResponse {
+  id: number,
+  title: string,
+  start_date: string | null,
+  end_date: string | null,
+  url: string | null,
+}
+
+/** A "YYYY-MM-DD" day as a local date (midnight), or null. */
+function parseDay(value: string | null | undefined): Date | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value ?? '');
+  return match ? new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])) : null;
 }

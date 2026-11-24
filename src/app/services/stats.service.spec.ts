@@ -28,4 +28,36 @@ describe('StatsService', () => {
     });
     expect(modularity).toBe(0.5);
   });
+
+  describe('process periods', () => {
+    const url = `${CONFIGS.host}:${CONFIGS.port}/stats/processes?lang=${CONFIGS.defaultLanguage}`;
+
+    it('reads the processes with their days as local dates', () => {
+      let periods: any[] = [];
+      service.getProcessPeriods().subscribe(p => periods = p);
+      http.expectOne(url).flush({ processes: [
+        { id: 1, title: 'Redesign', start_date: '2021-11-04', end_date: '2022-12-31', url: null },
+        { id: 2, title: 'News', start_date: '2022-10-06', end_date: null, url: null },
+      ] });
+      expect(periods).toEqual([
+        { title: 'Redesign', start: new Date(2021, 10, 4), end: new Date(2022, 11, 31) },
+        { title: 'News', start: new Date(2022, 9, 6), end: null },
+      ]);
+    });
+
+    it('asks the back end only once', () => {
+      let answers = 0;
+      service.getProcessPeriods().subscribe(() => answers++);
+      service.getProcessPeriods().subscribe(() => answers++);
+      http.expectOne(url).flush({ processes: [] });  // fails if there were two requests
+      expect(answers).toBe(2);
+    });
+
+    it('gives no processes when the back end has no such endpoint', () => {
+      let periods: any[] | undefined;
+      service.getProcessPeriods().subscribe(p => periods = p);
+      http.expectOne(url).flush('Not found', { status: 404, statusText: 'Not Found' });
+      expect(periods).toEqual([]);
+    });
+  });
 });

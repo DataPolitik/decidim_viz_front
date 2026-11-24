@@ -115,6 +115,8 @@
     "message": "Loading data..."
   },
   "activities": {
+    "process_start": "{{process}}: started on {{date}}",
+    "process_end": "{{process}}: ended on {{date}}",
     "dynamics": "temporary evolution",
     "date": "Date",
     "accumulated": "Accumulated",
