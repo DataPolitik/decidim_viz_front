@@ -15,30 +15,24 @@
   <div>
     <div class="graph" *ngIf="this.currentElement == 'comments'">
       <app-graph-component class="graphComponent" [graphToCall]="this.commentsGraphType" graphTitle="{{'interactions.comments_network' | translate}}"></app-graph-component>
-      <div id="long_explanation">
-        {{'interactions.long_explanation_1' | translate}}
-          <a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a>
-        {{'interactions.long_explanation_2' | translate}}
-        <a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a>.
-         {{'interactions.long_explanation_3' | translate}}.
-      </div>
-      <div *ngIf="this.modularityCommentsValue !== undefined" id="modularity_explanation">
-        <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
-        {{this.modularityCommentsValue | number:'1.2'}}
+      <div class="network_info">
+        <span class="additional_info" tooltipPosition="top"
+          pTooltip="{{'interactions.long_explanation_1' | translate}} {{'interactions.what_network' | translate}} {{'interactions.long_explanation_2' | translate}} {{'interactions.what_community' | translate}}. {{'interactions.long_explanation_3' | translate}}.">ⓘ</span>
+        <div *ngIf="this.modularityCommentsValue !== undefined" id="modularity_explanation">
+          <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" target="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
+          {{this.modularityCommentsValue | number:'1.2'}}
+        </div>
       </div>
     </div>
     <div class="graph" *ngIf="this.currentElement == 'endorsements'">
       <app-graph-component class="graphComponent" [graphToCall]="this.endorsementsGraphType" graphTitle="{{'interactions.endorsements_network' | translate}}"></app-graph-component>
-      <div id="long_explanation">
-        {{'interactions.long_explanation_1' | translate}}
-          <a href="{{'interactions.network_url' | translate}}" target="_blank" title="{{'interactions.what_network' | translate}}">{{'interactions.what_network' | translate}}</a>
-        {{'interactions.long_explanation_2' | translate}}
-        <a href="{{'interactions.community_url' | translate}}" target="_blank" title="{{'interactions.what_community' | translate}}">{{'interactions.what_community' | translate}}</a>.
-         {{'interactions.long_explanation_3' | translate}}.
-      </div>
-      <div *ngIf="this.modularityEndorsementsValue !== undefined" id="modularity_explanation">
-        <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" parent="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
-        {{this.modularityEndorsementsValue | number:'1.2'}}
+      <div class="network_info">
+        <span class="additional_info" tooltipPosition="top"
+          pTooltip="{{'interactions.long_explanation_1' | translate}} {{'interactions.what_network' | translate}} {{'interactions.long_explanation_2' | translate}} {{'interactions.what_community' | translate}}. {{'interactions.long_explanation_3' | translate}}.">ⓘ</span>
+        <div *ngIf="this.modularityEndorsementsValue !== undefined" id="modularity_explanation">
+          <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.quality.modularity.html" target="_blank" title="{{'interactions.modularity_explanation' | translate }}">{{'interactions.modularity_explanation' | translate }}</a>:
+          {{this.modularityEndorsementsValue | number:'1.2'}}
+        </div>
       </div>
     </div>
   </div>
