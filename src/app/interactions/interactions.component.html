@@ -60,7 +60,11 @@
               <h4 *ngIf="this.currentElement == 'endorsements'">{{'interactions.endorsed_proposal' | translate }}</h4>
               <h4 *ngIf="this.currentElement == 'comments'">{{'interactions.commented_proposal' | translate }}</h4>
               <ul class="proposal_list" *ngIf="this.communitiesProposals">
-                <li *ngFor="let prop of getProposals(item.key) | keyvalue">{{prop.key}}</li>
+                <li *ngFor="let prop of getProposals(item.key) | keyvalue">
+                  <a *ngIf="getProposalUrl(item.key, prop.key) as url; else plainTitle"
+                     [href]="url" target="_blank" rel="noopener">{{prop.key}}</a>
+                  <ng-template #plainTitle>{{prop.key}}</ng-template>
+                </li>
               </ul>
             </div>
         </ng-template>

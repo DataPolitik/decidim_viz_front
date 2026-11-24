@@ -24,6 +24,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public colorsNodes: { [id: string]: string[]; }[] = [];
   public colorsNodesSortedList: any[] = [];
   public communitiesProposals: any[] = [];
+  private communitiesUrls: {[color: string]: {[title: string]: string}} = {};
   public othersRatio: number = 0;
 
 
@@ -63,6 +64,7 @@ export class InteractionsComponent implements OnInit, OnDestroy {
     this.totalNodes = response.total;
     this.colorsNodes = response.colors.users;
     this.communitiesProposals = response.colors.proposals;
+    this.communitiesUrls = response.colors.urls ?? {};
 
     const listCommunities = [];
     for (let key in response.colors.users) {
@@ -140,5 +142,10 @@ export class InteractionsComponent implements OnInit, OnDestroy {
   public getProposals(color: string): any[]{
     const communities = this.communitiesProposals[color as any];
     return communities;
+  }
+
+  /** The proposal's page on Decidim, if the back end knows it. */
+  public getProposalUrl(color: string, title: string): string | undefined {
+    return this.communitiesUrls[color]?.[title];
   }
 }

@@ -98,6 +98,30 @@ describe('InteractionsComponent legend ratios', () => {
   });
 });
 
+describe('InteractionsComponent proposal links', () => {
+  let component: InteractionsComponent;
+
+  beforeEach(() => {
+    component = new InteractionsComponent({} as any, jasmine.createSpyObj('SubMenuService', ['setEntries']));
+  });
+
+  it('gives the Decidim page of a listed proposal', () => {
+    (component as any).processResponse({ total: 2, colors: {
+      users: { '#aaaaaa': [1, 2] },
+      proposals: { '#aaaaaa': { 'Section 2 of the original text': 2, 'No address': 1 } },
+      urls: { '#aaaaaa': { 'Section 2 of the original text': 'https://decidim.example.org/proposals/2' } },
+    } });
+    expect(component.getProposalUrl('#aaaaaa', 'Section 2 of the original text')).toBe('https://decidim.example.org/proposals/2');
+    expect(component.getProposalUrl('#aaaaaa', 'No address')).toBeUndefined();
+    expect(component.getProposalUrl('#bbbbbb', 'Section 2 of the original text')).toBeUndefined();
+  });
+
+  it('works with a back end that sends no urls', () => {
+    (component as any).processResponse({ total: 1, colors: { users: { '#aaaaaa': [1] }, proposals: { '#aaaaaa': { 'A': 1 } } } });
+    expect(component.getProposalUrl('#aaaaaa', 'A')).toBeUndefined();
+  });
+});
+
 describe('InteractionsComponent modularity line', () => {
   const emptyColors = of({ total: 0, colors: { users: {}, proposals: {} } });
 
