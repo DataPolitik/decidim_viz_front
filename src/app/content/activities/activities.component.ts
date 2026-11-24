@@ -125,8 +125,8 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
         this.dateToLimit = new Date(this.temporalLimitsAPI?.proposals_to);
         this.dateFromLimit = new Date(this.temporalLimitsAPI?.proposals_from);
 
-        this.dateFrom  = new Date(this.temporalLimitsAPI?.proposals_to);
-        this.dateFrom.setDate(this.dateFrom.getDate() - 90);
+        // By default the whole period with data is shown.
+        this.dateFrom  = new Date(this.temporalLimitsAPI?.proposals_from);
       }
     }
     else if(typeOfDates == 'comments'){
@@ -136,7 +136,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
         this.dateFromLimit = new Date(this.temporalLimitsAPI?.comments_from);
 
         this.dateFrom  = new Date(this.temporalLimitsAPI?.comments_from);
-        this.dateFrom.setDate(this.dateFrom.getDate() - 90);
       }
     }
     else if(typeOfDates == 'processes'){
