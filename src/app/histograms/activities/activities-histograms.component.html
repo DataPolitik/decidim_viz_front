@@ -1,8 +1,14 @@
-<div>
+<div class="histogram_wrapper">
     <ag-charts-angular
     class="histogram"
     *ngIf="this.options !== undefined"
     style="display:block; position: absolute; top: 0; right: 0; bottom: 0; left: 0; height: 100%; width: 100%;"
     [options]="options">
   </ag-charts-angular>
+  <ng-container *ngFor="let line of this.processLines">
+    <span *ngIf="line.left !== undefined" class="process_line"
+      [style.left.px]="line.left" [style.top.px]="line.top" [style.height.px]="line.height"
+      [pTooltip]="('activities.process_' + line.kind) | translate:{ process: line.title, date: line.day }"
+      tooltipPosition="top"></span>
+  </ng-container>
 </div>

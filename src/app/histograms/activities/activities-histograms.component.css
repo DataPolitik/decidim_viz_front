@@ -2,3 +2,15 @@
   position: inherit !important;
   height: 700px;
 }
+
+.histogram_wrapper{
+  position: relative;
+}
+
+/* Invisible strip over a process line, wide enough to hover easily. */
+.process_line{
+  position: absolute;
+  width: 9px;
+  margin-left: -4px;
+  cursor: help;
+}

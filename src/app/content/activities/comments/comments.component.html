@@ -3,6 +3,7 @@
     <p-tabView *ngIf="!this.isEmpty">
       <p-tabPanel header="{{'activities.daily' | translate}}">
         <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
+          [processes]="this.processPeriods"
           [response]="this.daily_comment_metrics?.history?.slice(0)?.reverse()"
           title="{{'activities.comments.title' | translate}}"
           xName="{{'activities.date' | translate}}"
@@ -11,6 +12,8 @@
       </p-tabPanel>
       <p-tabPanel header="{{'activities.accumulated' | translate}}">
         <app-activities-histogram *ngIf="this.loadedGraphs >= 2"
+          [processes]="this.processPeriods"
+          [cumulative]="true"
           [response]="this.accumulated_comment_metrics?.history?.slice(0)?.reverse()"
           title="{{'activities.comments.title' | translate}}"
           xName="{{'activities.date' | translate}}"
