@@ -46,9 +46,11 @@ describe('StatsService', () => {
     });
 
     it('asks the back end only once', () => {
-      service.getProcessPeriods().subscribe();
-      service.getProcessPeriods().subscribe();
-      http.expectOne(url).flush({ processes: [] });
+      let answers = 0;
+      service.getProcessPeriods().subscribe(() => answers++);
+      service.getProcessPeriods().subscribe(() => answers++);
+      http.expectOne(url).flush({ processes: [] });  // fails if there were two requests
+      expect(answers).toBe(2);
     });
 
     it('gives no processes when the back end has no such endpoint', () => {
